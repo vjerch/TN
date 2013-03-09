@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--LLBLGen Pro v3.5 project file. Do not manually edit this file. Incorrect references could lead to an unloadable project file.-->
+<Project Version="3.5" TargetFrameworkName="LLBLGen Pro Runtime Framework">
+  <Properties>
+    <Abbreviations />
+    <Property Name="AdditionalTaskPerformerFolder" Value="" />
+    <Property Name="AdditionalTasksFolder" Value="" />
+    <Property Name="AdditionalTemplatesFolder" Value="" />
+    <Property Name="AdditionalTypeConverterFolder" Value="" />
+    <Property Name="AddNewElementsAfterRefresh" Value="0" />
+    <Property Name="AddNewFieldsAfterRefresh" Value="0" />
+    <Property Name="AddNewViewsAsEntitiesAfterRefresh" Value="0" />
+    <Property Name="AutoAddManyToManyRelationships" Value="false" />
+    <Property Name="AutoAssignSequencesToIntegerPks" Value="true" />
+    <Property Name="AutoAssignTypeConverterToFieldMapping" Value="false" />
+    <Property Name="CleanUpVsNetProjects" Value="true" />
+    <Property Name="ConnectionStringKeyNamePattern" Value="ConnectionString.{$ProviderName}" />
+    <Property Name="EncodingToUse" Value="0" />
+    <Property Name="EnforcePascalCasingAlways" Value="true" />
+    <Property Name="EntityFieldNameStripPattern" Value="{}{}" />
+    <Property Name="EntityNameStripPattern" Value="{tbl_}{}" />
+    <Property Name="ExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="FailCodeGenerationOnWriteError" Value="false" />
+    <Property Name="FieldMappedOntoRelatedFieldPattern" Value="{$RelatedFieldName}" />
+    <Property Name="FkFieldsAreNamedAfterTargetField" Value="true" />
+    <Property Name="ForeignKeyFieldPattern" Value="{$NavigatorName}{$RelatedFieldName}" />
+    <Property Name="GroupUsage" Value="0" />
+    <Property Name="IdentifyingFieldsFollowDBPrimaryKeyConstraints" Value="0" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseInsensitiveDBs" Value="false" />
+    <Property Name="InsertUnderscoreAtWordBreakCaseSensitiveDBs" Value="false" />
+    <Property Name="LengthPrecisionScaleFollowDBLengthPrecisionScale" Value="0" />
+    <Property Name="MakeElementNamePascalCasing" Value="true" />
+    <Property Name="NavigatorMappedOntoManyToManyPattern" Value="{$EndEntityName}CollectionVia{$IntermediateEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneManyToOnePattern" Value="{$EndEntityName$S}" />
+    <Property Name="NavigatorMappedOntoOneToManyPattern" Value="{$EndEntityName$P}" />
+    <Property Name="NonExcludableOrphanedElementDetectedAction" Value="3" />
+    <Property Name="PreferDecimalOverCurrencyTypes" Value="true" />
+    <Property Name="PreferNaturalCharacterTypes" Value="true" />
+    <Property Name="PreferVariableLengthTypes" Value="true" />
+    <Property Name="ProjectCreator" Value="ninja" />
+    <Property Name="ProjectName" Value="NinjaSoftware.TrzisteNovca" />
+    <Property Name="ReflectNullabilityOfElementFieldInTargetField" Value="0" />
+    <Property Name="RelationalModelDataElementNameCasingCaseInsensitiveDBs" Value="3" />
+    <Property Name="RelationalModelDataElementNameCasingCaseSensitiveDBs" Value="3" />
+    <Property Name="RelationshipsFollowDBForeignKeyConstraints" Value="0" />
+    <Property Name="RemoveUnderscoresFromElementName" Value="true" />
+    <Property Name="RemoveUnmappedElementsAfterRefresh" Value="0" />
+    <Property Name="ResetFieldOrderBasedOnTargetOrderAtRefresh" Value="false" />
+    <Property Name="RetrieveDBCustomProperties" Value="false" />
+    <Property Name="RootNamespace" Value="" />
+    <Property Name="SequencePattern" Value="SEQ_{$EntityName}" />
+    <Property Name="SetGroupNameAfterSchemaName" Value="true" />
+    <Property Name="SetSchemaNameAfterGroupName" Value="true" />
+    <Property Name="StoredProcNameStripPattern" Value="{pr_, sp_}{}" />
+    <Property Name="StoreTimeLastGeneratedIntoProject" Value="false" />
+    <Property Name="SyncMappedElementNamesAfterRefresh" Value="0" />
+    <Property Name="SyncRelationalModelDataElementNameAfterRename" Value="0" />
+    <Property Name="SyncRenamedMappedElementNamesAfterRefresh" Value="0" />
+    <Property Name="TargetPerEntityEdgesRequireBackingFkConstraint" Value="true" />
+    <Property Name="TypedViewFieldNameStripPattern" Value="{}{}" />
+    <Property Name="TypedViewNameStripPattern" Value="{vw_}{}" />
+    <Property Name="UniqueConstraintsFollowDBUniqueConstraints" Value="0" />
+    <Property Name="UpdateCustomPropertiesAfterRefresh" Value="0" />
+    <Property Name="UseCustomFieldOrderingOnNewElements" Value="false" />
+  </Properties>
+  <TypeShortcuts />
+  <CodeGenerationCyclePreferences>
+    <OutputType Value="2">
+      <LastUsedPreferences>
+        <DestinationRootFolder Value="" />
+        <FrameworkName Value="DDL SQL" />
+        <LanguageName Value="SQL" />
+        <PlatformName Value="RDBMS" />
+        <PresetName Value="" />
+        <RootNamespace Value="" />
+        <TemplateGroup Value="Update DDL SQL" />
+        <TemplateBindings />
+      </LastUsedPreferences>
+    </OutputType>
+    <OutputType Value="1">
+      <LastUsedPreferences>
+        <DestinationRootFolder Value="G:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\DbScripts" />
+        <FrameworkName Value="DDL SQL" />
+        <LanguageName Value="SQL" />
+        <PlatformName Value="RDBMS" />
+        <PresetName Value="SD.Presets.DDLSQL.CreateScript" />
+        <RootNamespace Value="" />
+        <TemplateGroup Value="Create DDL SQL" />
+        <TemplateBindings>
+          <Binding Name="SD.TemplateBindings.SqlServerSpecific.DDLSQL" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.DDLSQL" />
+        </TemplateBindings>
+      </LastUsedPreferences>
+    </OutputType>
+    <OutputType Value="3">
+      <LastUsedPreferences>
+        <DestinationRootFolder Value="G:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ" />
+        <FrameworkName Value="LLBLGen Pro Runtime Framework" />
+        <LanguageName Value="C#" />
+        <PlatformName Value=".NET 4.0" />
+        <PresetName Value="SD.Presets.Adapter.General2010" />
+        <RootNamespace Value="NinjaSoftware.TrzisteNovca.CoolJ" />
+        <TemplateGroup Value="Adapter" />
+        <TemplateBindings>
+          <Binding Name="SD.TemplateBindings.SqlServerSpecific.NET20" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.NET40" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.NET35" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.NET20" />
+          <Binding Name="SD.TemplateBindings.General" />
+        </TemplateBindings>
+      </LastUsedPreferences>
+    </OutputType>
+  </CodeGenerationCyclePreferences>
+  <CodeGenerationMetaDataDefaults>
+    <TargetElement Type="256">
+      <OutputSettingValues>
+        <Attributes>
+          <Attribute Value="Browsable($false)" />
+        </Attributes>
+      </OutputSettingValues>
+    </TargetElement>
+  </CodeGenerationMetaDataDefaults>
+  <EntityModel>
+    <ValueTypeDefinitions />
+    <EntityDefinitions>
+      <EntityDefinition Name="AuditInfo">
+        <Fields>
+          <Field Name="ActionDateTime" Type="datetime" />
+          <Field Name="AuditInfoActionTypeId" Type="long" />
+          <Field Name="AuditInfoId" Type="long" IsPrimaryKey="true" />
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="EntityId" Type="long" />
+          <Field Name="JsonData" Type="string" />
+          <Field Name="PrimaryKeyValue" Type="long" />
+          <Field Name="UserId" Type="long" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="AuditInfoActionTypeRo">
+        <Fields>
+          <Field Name="AuditInfoActionTypeId" Type="long" IsPrimaryKey="true" />
+          <Field Name="Code" Type="string" MaxLength="128" />
+          <Field Name="Name" Type="string" MaxLength="256" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="EntityRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="128" />
+          <Field Name="EntityId" Type="long" IsPrimaryKey="true" />
+          <Field Name="Name" Type="string" MaxLength="256" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="Error">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="ErrorDateTime" Type="datetime" />
+          <Field Name="ErrorId" Type="long" IsPrimaryKey="true" />
+          <Field Name="Message" Type="string" />
+          <Field Name="ParentErrorId" Type="long" IsOptional="true" />
+          <Field Name="StackTrace" Type="string" IsOptional="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="Rok">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Naziv" Type="string" MaxLength="50" />
+          <Field Name="RokId" Type="long" IsPrimaryKey="true" />
+          <Field Name="RokTipId" Type="long" />
+          <Field Name="Sifra" Type="string" MaxLength="50" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="RokTipRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="128" />
+          <Field Name="Name" Type="string" MaxLength="256" />
+          <Field Name="RokTipId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="RoleRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="128" />
+          <Field Name="Name" Type="string" MaxLength="256" />
+          <Field Name="RoleId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TrgovanjeGlava">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Datum" Type="datetime" />
+          <Field Name="Komentar" Type="string" IsOptional="true" />
+          <Field Name="TrgovanjeGlavaId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TrgovanjeStavka">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Ponuda" Type="decimal" Precision="18" Scale="2" />
+          <Field Name="PonudaDodatak" Type="decimal" Precision="10" Scale="4" />
+          <Field Name="Potraznja" Type="decimal" Precision="18" Scale="2" />
+          <Field Name="PotraznjaDodatak" Type="decimal" Precision="10" Scale="4" />
+          <Field Name="Promet" Type="decimal" Precision="18" Scale="2" />
+          <Field Name="PrometDodatak" Type="decimal" Precision="10" Scale="4" />
+          <Field Name="RokId" Type="long" />
+          <Field Name="TrgovanjeGlavaId" Type="long" />
+          <Field Name="TrgovanjeStavkaId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="User">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Password" Type="string" MaxLength="50" />
+          <Field Name="RoleId" Type="long" />
+          <Field Name="UserId" Type="long" IsPrimaryKey="true" />
+          <Field Name="Username" Type="string" MaxLength="50" />
+        </Fields>
+      </EntityDefinition>
+    </EntityDefinitions>
+    <Relationships>
+      <NormalRelationship Name="AuditInfo.AuditInfoActionType-AuditInfoActionTypeRo.AuditInfoCollection" Start=":AuditInfo" End=":AuditInfoActionTypeRo" StartNavigator="AuditInfoActionType" EndNavigator="AuditInfoCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="AuditInfoActionTypeId" PkField="AuditInfoActionTypeId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="AuditInfo.Entity-EntityRo.AuditInfoCollection" Start=":AuditInfo" End=":EntityRo" StartNavigator="Entity" EndNavigator="AuditInfoCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="EntityId" PkField="EntityId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="AuditInfo.User-User.AuditInfoCollection" Start=":AuditInfo" End=":User" StartNavigator="User" EndNavigator="AuditInfoCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="UserId" PkField="UserId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Error.ParentError-Error.ChildErrorCollection" Start=":Error" End=":Error" StartNavigator="ParentError" EndNavigator="ChildErrorCollection" Type="4" EndIsOptional="true">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="ParentErrorId" PkField="ErrorId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Rok.RokTip-RokTipRo.RokCollection" Start=":Rok" End=":RokTipRo" StartNavigator="RokTip" EndNavigator="RokCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RokTipId" PkField="RokTipId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavka.Rok-Rok.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":Rok" StartNavigator="Rok" EndNavigator="TrgovanjeStavkaCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RokId" PkField="RokId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavka.TrgovanjeGlava-TrgovanjeGlava.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":TrgovanjeGlava" StartNavigator="TrgovanjeGlava" EndNavigator="TrgovanjeStavkaCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TrgovanjeGlavaId" PkField="TrgovanjeGlavaId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="User.Role-RoleRo.UserCollection" Start=":User" End=":RoleRo" StartNavigator="Role" EndNavigator="UserCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="RoleId" PkField="RoleId" />
+        </FieldRelationships>
+      </NormalRelationship>
+    </Relationships>
+    <InheritanceHierarchies />
+  </EntityModel>
+  <TargetDatabases>
+    <TargetDatabase Type="2D18D138-1DD2-467E-86CC-4838250611AE">
+      <ConnectionElements />
+      <SystemSequences>
+        <Sequence Name="SCOPE_IDENTITY()" />
+        <Sequence Name="@@IDENTITY" />
+      </SystemSequences>
+      <Catalogs>
+        <Catalog Name="NinjaSoftwareTrzisteNovca">
+          <Schemas>
+            <Schema Name="dbo">
+              <Tables>
+                <Table Name="AuditInfo">
+                  <Fields>
+                    <Field Name="ActionDateTime" Ordinal="1" DbType="4" />
+                    <Field Name="AuditInfoActionTypeId" Ordinal="2" DbType="0" Precision="19" />
+                    <Field Name="AuditInfoId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_5fbe1ce4206a3bfa45845343663" DbType="0" Precision="19" />
+                    <Field Name="ConcurrencyGuid" Ordinal="4" DbType="12" Length="50" />
+                    <Field Name="EntityId" Ordinal="5" DbType="0" Precision="19" />
+                    <Field Name="JsonData" Ordinal="6" DbType="12" Length="2147483647" />
+                    <Field Name="PrimaryKeyValue" Ordinal="7" DbType="0" Precision="19" />
+                    <Field Name="UserId" Ordinal="8" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="AuditInfoActionTypeRo">
+                  <Fields>
+                    <Field Name="AuditInfoActionTypeId" Ordinal="1" IsPrimaryKey="true" PkConstraintName="PK_057e91646e3a0b69e685e56664f" DbType="0" Precision="19" />
+                    <Field Name="Code" Ordinal="2" DbType="12" Length="128" />
+                    <Field Name="Name" Ordinal="3" DbType="12" Length="256" />
+                  </Fields>
+                </Table>
+                <Table Name="EntityRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
+                    <Field Name="EntityId" Ordinal="2" IsPrimaryKey="true" PkConstraintName="PK_6a8c30d43cbb48a28f4d88e9ae8" DbType="0" Precision="19" />
+                    <Field Name="Name" Ordinal="3" DbType="12" Length="256" />
+                  </Fields>
+                </Table>
+                <Table Name="Error">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="ErrorDateTime" Ordinal="2" DbType="4" />
+                    <Field Name="ErrorId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_345c01a4dadaa2743b182e09867" DbType="0" Precision="19" />
+                    <Field Name="Message" Ordinal="4" DbType="12" Length="2147483647" />
+                    <Field Name="ParentErrorId" Ordinal="5" IsOptional="true" DbType="0" Precision="19" />
+                    <Field Name="StackTrace" Ordinal="6" IsOptional="true" DbType="12" Length="2147483647" />
+                  </Fields>
+                </Table>
+                <Table Name="Rok">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Naziv" Ordinal="2" DbType="12" Length="50" />
+                    <Field Name="RokId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_ed3032145d7ae45e490ba4237cc" DbType="0" Precision="19" />
+                    <Field Name="RokTipId" Ordinal="4" DbType="0" Precision="19" />
+                    <Field Name="Sifra" Ordinal="5" DbType="12" Length="50" />
+                  </Fields>
+                </Table>
+                <Table Name="RokTipRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
+                    <Field Name="Name" Ordinal="2" DbType="12" Length="256" />
+                    <Field Name="RokTipId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_9fb98c240df8f0aa09ec4ceaa3b" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="RoleRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
+                    <Field Name="Name" Ordinal="2" DbType="12" Length="256" />
+                    <Field Name="RoleId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_170de0f44939388fcb1bce06ff0" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="TrgovanjeGlava">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Datum" Ordinal="2" DbType="4" />
+                    <Field Name="Komentar" Ordinal="3" IsOptional="true" DbType="12" Length="2147483647" />
+                    <Field Name="TrgovanjeGlavaId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_e70c3a9430685d1ef18a66c72b7" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="TrgovanjeStavka">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Ponuda" Ordinal="2" DbType="5" Precision="18" Scale="2" />
+                    <Field Name="PonudaDodatak" Ordinal="3" DbType="5" Precision="10" Scale="4" />
+                    <Field Name="Potraznja" Ordinal="4" DbType="5" Precision="18" Scale="2" />
+                    <Field Name="PotraznjaDodatak" Ordinal="5" DbType="5" Precision="10" Scale="4" />
+                    <Field Name="Promet" Ordinal="6" DbType="5" Precision="18" Scale="2" />
+                    <Field Name="PrometDodatak" Ordinal="7" DbType="5" Precision="10" Scale="4" />
+                    <Field Name="RokId" Ordinal="8" DbType="0" Precision="19" />
+                    <Field Name="TrgovanjeGlavaId" Ordinal="9" DbType="0" Precision="19" />
+                    <Field Name="TrgovanjeStavkaId" Ordinal="10" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_b48c25d42bbbd667ce3f02e792c" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="User">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Password" Ordinal="2" DbType="12" Length="50" />
+                    <Field Name="RoleId" Ordinal="3" DbType="0" Precision="19" />
+                    <Field Name="UserId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_24218b24e158ab08eb275b53ab2" DbType="0" Precision="19" />
+                    <Field Name="Username" Ordinal="5" DbType="12" Length="50" />
+                  </Fields>
+                </Table>
+              </Tables>
+            </Schema>
+          </Schemas>
+          <ForeignKeyConstraints>
+            <ForeignKeyConstraint Name="dbo:AuditInfo:FK_56ed3d44496bd1deb89aebbd528">
+              <FieldPairs>
+                <FieldPair PkField="dbo:EntityRo:EntityId" FkField="dbo:AuditInfo:EntityId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:AuditInfo:FK_cde33334db28c14fa63323491b8">
+              <FieldPairs>
+                <FieldPair PkField="dbo:AuditInfoActionTypeRo:AuditInfoActionTypeId" FkField="dbo:AuditInfo:AuditInfoActionTypeId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:AuditInfo:FK_d1b51b94d6894675b65b18ccd0f">
+              <FieldPairs>
+                <FieldPair PkField="dbo:User:UserId" FkField="dbo:AuditInfo:UserId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:Error:FK_ab4fe0247e582ce86e6abe92334">
+              <FieldPairs>
+                <FieldPair PkField="dbo:Error:ErrorId" FkField="dbo:Error:ParentErrorId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:Rok:FK_fcddd17480fa6aeed58816a30e9">
+              <FieldPairs>
+                <FieldPair PkField="dbo:RokTipRo:RokTipId" FkField="dbo:Rok:RokTipId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_2bce43e4429a1dd42d60a67a59c">
+              <FieldPairs>
+                <FieldPair PkField="dbo:Rok:RokId" FkField="dbo:TrgovanjeStavka:RokId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_5baa8394c8c809c80f23bdb291e">
+              <FieldPairs>
+                <FieldPair PkField="dbo:TrgovanjeGlava:TrgovanjeGlavaId" FkField="dbo:TrgovanjeStavka:TrgovanjeGlavaId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:User:FK_a36527a479ea6a74d40fc5b5244">
+              <FieldPairs>
+                <FieldPair PkField="dbo:RoleRo:RoleId" FkField="dbo:User:RoleId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+          </ForeignKeyConstraints>
+        </Catalog>
+      </Catalogs>
+    </TargetDatabase>
+  </TargetDatabases>
+  <MappingStores>
+    <MappingStore Type="2D18D138-1DD2-467E-86CC-4838250611AE">
+      <EntityMappings>
+        <EntityMapping EntityName=":AuditInfo" TargetName="NinjaSoftwareTrzisteNovca:dbo:AuditInfo">
+          <FieldMappings>
+            <FieldMapping FieldName="ActionDateTime" TargetFieldName="ActionDateTime" />
+            <FieldMapping FieldName="AuditInfoActionTypeId" TargetFieldName="AuditInfoActionTypeId" />
+            <FieldMapping FieldName="AuditInfoId" TargetFieldName="AuditInfoId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="EntityId" TargetFieldName="EntityId" />
+            <FieldMapping FieldName="JsonData" TargetFieldName="JsonData" />
+            <FieldMapping FieldName="PrimaryKeyValue" TargetFieldName="PrimaryKeyValue" />
+            <FieldMapping FieldName="UserId" TargetFieldName="UserId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":AuditInfoActionTypeRo" TargetName="NinjaSoftwareTrzisteNovca:dbo:AuditInfoActionTypeRo">
+          <FieldMappings>
+            <FieldMapping FieldName="AuditInfoActionTypeId" TargetFieldName="AuditInfoActionTypeId" />
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":EntityRo" TargetName="NinjaSoftwareTrzisteNovca:dbo:EntityRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="EntityId" TargetFieldName="EntityId" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Error" TargetName="NinjaSoftwareTrzisteNovca:dbo:Error">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="ErrorDateTime" TargetFieldName="ErrorDateTime" />
+            <FieldMapping FieldName="ErrorId" TargetFieldName="ErrorId" />
+            <FieldMapping FieldName="Message" TargetFieldName="Message" />
+            <FieldMapping FieldName="ParentErrorId" TargetFieldName="ParentErrorId" />
+            <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":Rok" TargetName="NinjaSoftwareTrzisteNovca:dbo:Rok">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Naziv" TargetFieldName="Naziv" />
+            <FieldMapping FieldName="RokId" TargetFieldName="RokId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="RokTipId" TargetFieldName="RokTipId" />
+            <FieldMapping FieldName="Sifra" TargetFieldName="Sifra" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":RokTipRo" TargetName="NinjaSoftwareTrzisteNovca:dbo:RokTipRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+            <FieldMapping FieldName="RokTipId" TargetFieldName="RokTipId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":RoleRo" TargetName="NinjaSoftwareTrzisteNovca:dbo:RoleRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+            <FieldMapping FieldName="RoleId" TargetFieldName="RoleId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TrgovanjeGlava" TargetName="NinjaSoftwareTrzisteNovca:dbo:TrgovanjeGlava">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Datum" TargetFieldName="Datum" />
+            <FieldMapping FieldName="Komentar" TargetFieldName="Komentar" />
+            <FieldMapping FieldName="TrgovanjeGlavaId" TargetFieldName="TrgovanjeGlavaId" SequenceToUse="SCOPE_IDENTITY()" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TrgovanjeStavka" TargetName="NinjaSoftwareTrzisteNovca:dbo:TrgovanjeStavka">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Ponuda" TargetFieldName="Ponuda" />
+            <FieldMapping FieldName="PonudaDodatak" TargetFieldName="PonudaDodatak" />
+            <FieldMapping FieldName="Potraznja" TargetFieldName="Potraznja" />
+            <FieldMapping FieldName="PotraznjaDodatak" TargetFieldName="PotraznjaDodatak" />
+            <FieldMapping FieldName="Promet" TargetFieldName="Promet" />
+            <FieldMapping FieldName="PrometDodatak" TargetFieldName="PrometDodatak" />
+            <FieldMapping FieldName="RokId" TargetFieldName="RokId" />
+            <FieldMapping FieldName="TrgovanjeGlavaId" TargetFieldName="TrgovanjeGlavaId" />
+            <FieldMapping FieldName="TrgovanjeStavkaId" TargetFieldName="TrgovanjeStavkaId" SequenceToUse="SCOPE_IDENTITY()" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":User" TargetName="NinjaSoftwareTrzisteNovca:dbo:User">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Password" TargetFieldName="Password" />
+            <FieldMapping FieldName="RoleId" TargetFieldName="RoleId" />
+            <FieldMapping FieldName="UserId" TargetFieldName="UserId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="Username" TargetFieldName="Username" />
+          </FieldMappings>
+        </EntityMapping>
+      </EntityMappings>
+      <TypedViewMappings />
+      <SPCallMappings />
+      <TypeConversionDefinitions />
+    </MappingStore>
+  </MappingStores>
+  <ModelViews />
+</Project>
