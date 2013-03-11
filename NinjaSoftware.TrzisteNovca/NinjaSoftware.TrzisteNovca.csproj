@@ -43,6 +43,9 @@
     <Reference Include="NinjaSoftware.Api.Core">
       <HintPath>..\Dlls\NinjaSoftware.Api.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NinjaSoftware.Api.Mvc">
+      <HintPath>..\Dlls\NinjaSoftware.Api.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="SD.LLBLGen.Pro.ORMSupportClasses.NET20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ca73b74ba4e3ff27, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\SD.LLBLGen.Pro.ORMSupportClasses.NET20.dll</HintPath>
@@ -128,6 +131,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BackOffice\PagerBase.cs" />
+    <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
+    <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Home\IndexViewModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
@@ -157,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\BackOffice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -174,6 +179,10 @@
       <Project>{B767C548-2D99-481B-8167-787D7EA0AE67}</Project>
       <Name>NinjaSoftware.TrzisteNovca.CoolJDBSpecific</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NinjaSoftware.TrzisteNovca.Common\NinjaSoftware.TrzisteNovca.Common.csproj">
+      <Project>{3B79743D-4F0B-4AFC-A6D2-D775D09DD346}</Project>
+      <Name>NinjaSoftware.TrzisteNovca.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
@@ -185,7 +194,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_BackOfficeLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BackOffice\TrgovanjeGlavaList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

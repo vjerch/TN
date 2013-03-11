@@ -1,0 +1,41 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeGlavaPager
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+
+@{
+    string title = "Pregled trgovanja";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj trgovanje", "TrgovanjeEdit")
+</p>
+<table>
+    <tr>
+        <th>
+            Datum
+        </th>
+        <th>
+            Komentar
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.DataSource) {
+    <tr>
+        <td>
+            @trgovanjeGlava.Datum.ToShortDateString()
+        </td>
+        <td>
+            @trgovanjeGlava.Komentar
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
