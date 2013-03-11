@@ -12,6 +12,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Text;
 using System.Configuration;
+using System.Web.Optimization;
 
 namespace NinjaSoftware.TrzisteNovca
 {
@@ -26,6 +27,7 @@ namespace NinjaSoftware.TrzisteNovca
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
         protected void Application_Error()

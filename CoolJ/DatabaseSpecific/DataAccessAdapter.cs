@@ -21,6 +21,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 {
 	
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
+    using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
+    using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 	// __LLBLGENPRO_USER_CODE_REGION_END
 	/// <summary>Data access adapter class, which controls the complete database interaction with the database for all objects.</summary>
 	/// <remarks>Use a DataAccessAdapter object solely per thread, and per connection. A DataAccessAdapter object contains 1 active connection 
@@ -181,16 +183,16 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 
         protected override void OnSaveEntityComplete(IActionQuery saveQuery, IEntity2 entityToSave)
         {
-            if (!(entityToSave is NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.AuditInfoEntity) &&
-                !(entityToSave is NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.ErrorEntity))
+            if (!(entityToSave is AuditInfoEntity) &&
+                !(entityToSave is ErrorEntity))
             {
                 if (entityToSave.IsNew)
                 {
-                    AuditInfo(entityToSave, NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum.Insert);
+                    AuditInfo(entityToSave, AuditInfoActionTypeEnum.Insert);
                 }
                 else
                 {
-                    AuditInfo(entityToSave, NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum.Update);
+                    AuditInfo(entityToSave, AuditInfoActionTypeEnum.Update);
                 }
             }
 
@@ -199,7 +201,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 
         protected override void OnDeleteEntityComplete(IActionQuery deleteQuery, IEntity2 entityToDelete)
         {
-            AuditInfo(entityToDelete, NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum.Delete);
+            AuditInfo(entityToDelete, AuditInfoActionTypeEnum.Delete);
             base.OnDeleteEntityComplete(deleteQuery, entityToDelete);
         }
 		
@@ -207,12 +209,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
         /// Saves data from changed fields in JSON.
         /// Enables to track entity history.
         /// </summary>
-        private void AuditInfo(IEntity2 entity, NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum auditInfoActionTypeEnum)
+        private void AuditInfo(IEntity2 entity, AuditInfoActionTypeEnum auditInfoActionTypeEnum)
         {
-            NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.AuditInfoEntity auditInfo = new NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.AuditInfoEntity();
+            AuditInfoEntity auditInfo = new AuditInfoEntity();
             auditInfo.ActionDateTime = DateTime.Now;
             auditInfo.AuditInfoActionTypeId = (long)auditInfoActionTypeEnum;
-            auditInfo.EntityId = (long)(NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.EntityEnum)Enum.Parse(typeof(NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.EntityEnum), entity.LLBLGenProEntityName.Replace("Entity", ""));
+            auditInfo.EntityId = (long)(EntityEnum)Enum.Parse(typeof(EntityEnum), entity.LLBLGenProEntityName.Replace("Entity", ""));
             auditInfo.UserId = this.UserId.Value;
 
             System.Collections.Generic.Dictionary<string, object> fieldsDictionary = new System.Collections.Generic.Dictionary<string, object>();
@@ -227,11 +229,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
                     // primary key is saved in separately
                     auditInfo.PrimaryKeyValue = (long)field.CurrentValue;
                 }
-                else if (NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum.Delete == auditInfoActionTypeEnum)
+                else if (AuditInfoActionTypeEnum.Delete == auditInfoActionTypeEnum)
                 {
                     // nothing, you can recreate entity from other audit infos for this entity
                 }
-                else if ((auditInfoActionTypeEnum != NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.AuditInfoActionTypeEnum.Update || field.IsChanged) &&
+                else if ((auditInfoActionTypeEnum != AuditInfoActionTypeEnum.Update || field.IsChanged) &&
                     !field.IsPrimaryKey &&
                     field.Name != concurrencyFieldName)
                 {

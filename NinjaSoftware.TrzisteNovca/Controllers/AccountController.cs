@@ -28,7 +28,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     FormsAuthentication.RedirectFromLoginPage(model.UserName, false);
                     if (string.IsNullOrWhiteSpace(returnUrl))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("BackOffice", "Home");
                     }
                     else
                     {

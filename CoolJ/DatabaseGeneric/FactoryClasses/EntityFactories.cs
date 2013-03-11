@@ -171,7 +171,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new ErrorEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewErrorUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code

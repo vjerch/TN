@@ -65,10 +65,10 @@
     <Compile Include="DatabaseGeneric\BusinessLogic\ErrorEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\Enums.cs" />
     <AppDesigner Include="Properties\" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\UserEntity.cs" />
     <Compile Include="DatabaseGeneric\AssemblyInfo.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
-    <Compile Include="DatabaseGeneric\BusinessLogic\UserEntity.cs" />
     <Compile Include="DatabaseGeneric\ConstantsEnums.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
