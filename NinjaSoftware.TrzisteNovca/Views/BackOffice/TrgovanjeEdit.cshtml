@@ -1,0 +1,172 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel
+@using Newtonsoft.Json
+
+@Scripts.Render("/bundles/globalize")
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.1.0.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/CoolJEntites.js")"></script>
+
+@{
+    string title;
+    
+    if (Model.TrgovanjeGlava.IsNew)
+    {
+        title = "Unos novog trgovanja";
+    }
+    else
+    {
+        title = string.Format("Uređivanje trgovanja za datum {0}.", Model.TrgovanjeGlava.Datum.ToShortDateString());
+    }
+    
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<form id="FormTrgovanje" action="/someServerSideHandler">
+
+    <input type="submit" value="Pohrani" />
+
+    <div data-bind="template: { name: 'TrgovanjeGlavaTemplate', data: trgovanjeGlava }"></div>
+
+    <script type="text/html" id="TrgovanjeGlavaTemplate">
+        <table>
+            <tr>
+                <td>Datum:</td>
+                <td>
+                    <input id="InputDatum" class="requred date" data-bind="value: Datum" />
+                </td>
+            </tr>
+            <tr>
+                <td>Dnevni komentar:</td>
+                <td>
+                    <input id="InputDnevniKomentar" data-bind="value: Komentar" />
+                </td>
+            </tr>
+        </table>
+    </script>
+    
+    <h3>Rokovi</h3>
+
+    <table>
+        <tr>
+            <td>
+                <select id="dropDownRok" data-bind="options: $root.rokCollection, value: $root.selectedRok, optionsText: 'Naziv'"></select>
+            </td>
+            <td>
+                <input type="button" value="Unesi" onclick="viewModel.addRok();" />
+            </td>
+        </tr>
+    </table>
+
+    <table id="tableStavke">
+        <thead>
+            <tr>
+                <th>Rok</th>
+                <th>Ponuda</th>
+                <th>Pon. KS/Tečaj/Omjer</th>
+                <th>Potražnja</th>
+                <th>Pot. KS/Tečaj/Omjer</th>
+                <th>Promet</th>
+                <th>Prom. KS/Tečaj/Omjer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: trgovanjeStavkaCollection">
+            <tr>
+                <td data-bind="text: Rok.Naziv"></td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: Ponuda, uniqueName: true" />
+                </td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: PonudaDodatak, uniqueName: true" />
+                </td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: Potraznja, uniqueName: true" />
+                </td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: PotraznjaDodatak, uniqueName: true" />
+                </td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: Promet, uniqueName: true" />
+                </td>
+                <td>
+                    <input class="required number numberCss" data-bind="value: PrometDodatak, uniqueName: true" />
+                </td>
+                <td>Obriši</td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<script type="text/javascript">
+    
+    $(document).ready(function () {
+        Globalize.culture("hr");
+
+        $("#InputDatum").datepicker();
+    });
+
+    var trgovanjeViewModel = function () {
+        var self = {};
+
+        self.trgovanjeGlava = ko.observable(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeGlava)));
+        self.trgovanjeStavkaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeStavkaCollection)));
+        self.rokCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.RokCollection)));
+        self.selectedRok = ko.observable();
+
+        self.addRok = function() {
+            var rokExist = false;
+            $(self.trgovanjeStavkaCollection()).each(function () {
+                if (this.RokId === self.selectedRok().RokId) {
+                    rokExist = true;
+                }
+            });
+
+            if (rokExist) {
+                alert("Rok " + self.selectedRok().Naziv + " je ranije unesen.");
+            }
+            else {
+                var trgovanjeStavka = TrgovanjeStavka({
+                    RokId: self.selectedRok().RokId,
+                    Ponuda: 0,
+                    PonudaDodatak: 0,
+                    Potraznja: 0,
+                    PotraznjaDodatak: 0,
+                    Promet: 0,
+                    PrometDodatak: 0
+                });
+
+                trgovanjeStavka.Rok = { "Naziv": self.selectedRok().Naziv };
+
+                self.trgovanjeStavkaCollection.push(trgovanjeStavka);    
+            }
+        }
+
+        self.save = function() {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("TrgovanjeSave")",
+                data: {
+                    trgovanjeGlavaId: @Model.TrgovanjeGlava.TrgovanjeGlavaId,
+                    trgovanjeGlavaJson: ko.toJSON(self.trgovanjeGlava),
+                    trgovanjeStavkaCollectionJson: ko.toJSON(self.trgovanjeStavkaCollection)
+                },
+                success: function (result) {
+                    alert(result);
+                },
+                error: function () {
+                    alert("Desila se greška prilikom pohranjivanja podataka.");
+                },
+                async: false,
+                cache: false
+            });
+        };
+
+        return self;
+    };
+
+    var viewModel = trgovanjeViewModel();
+    ko.applyBindings(viewModel);
+    $("#FormTrgovanje").validate({ submitHandler: viewModel.save });
+</script>
