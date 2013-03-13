@@ -6,6 +6,10 @@ using NinjaSoftware.Api.Mvc;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ;
+using Newtonsoft.Json;
+using System.Globalization;
+using NinjaSoftware.Api.CoolJ;
+using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
 {
@@ -44,7 +48,21 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
 
         public void Save(DataAccessAdapterBase adapter)
         {
-            throw new NotImplementedException();
+            this.TrgovanjeGlava.Save(adapter, this.TrgovanjeStavkaCollectionToDelete, false);
+        }
+
+        public void UpdateModelFromJson(string trgovanjeGlavaJson, string trgovanjeStavkaCollectionJson)
+        {
+            JsonSerializerSettings jsonSettings = new JsonSerializerSettings();
+            CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            jsonSettings.Culture = currentCulture;
+
+            TrgovanjeGlavaEntity trgovanjeGlavaDeserialized = JsonConvert.DeserializeObject<TrgovanjeGlavaEntity>(trgovanjeGlavaJson, jsonSettings);
+            this.TrgovanjeGlava.UpdateDataFromOtherObject(trgovanjeGlavaDeserialized, null, null);
+
+            this.TrgovanjeStavkaCollectionToDelete = this.TrgovanjeGlava.TrgovanjeStavkaCollection.GetEntitiesNotIncludedInJson(trgovanjeStavkaCollectionJson, jsonSettings);
+
+            this.TrgovanjeGlava.TrgovanjeStavkaCollection.UpdateEntityCollectionFromJson(trgovanjeStavkaCollectionJson, TrgovanjeStavkaFields.TrgovanjeStavkaId, null, null, jsonSettings);
         }
 
         #endregion
@@ -54,6 +72,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
         public TrgovanjeGlavaEntity TrgovanjeGlava { get; set; }
         public IEnumerable<TrgovanjeStavkaEntity> TrgovanjeStavkaCollection { get; set; }
         public IEnumerable<RokEntity> RokCollection { get; set; }
+        public List<TrgovanjeStavkaEntity> TrgovanjeStavkaCollectionToDelete { get; set; }
 
         #endregion
     }

@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseGeneric\BusinessLogic\RokEntity.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\ErrorEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\Enums.cs" />
     <AppDesigner Include="Properties\" />

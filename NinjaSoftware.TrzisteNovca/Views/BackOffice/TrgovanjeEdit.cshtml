@@ -93,14 +93,17 @@
                 <td>
                     <input class="required number numberCss" data-bind="value: PrometDodatak, uniqueName: true" />
                 </td>
-                <td>Obriši</td>
+                <td>
+                    <a href="#" data-bind="click: function(data) { $root.deleteTrgovanjeStavka(data); }"><span>Obriši</span></a>
+                </td>
             </tr>
         </tbody>
     </table>
 </form>
 
 <script type="text/javascript">
-    
+    Globalize.culture("hr");
+
     $(document).ready(function () {
         Globalize.culture("hr");
 
@@ -110,11 +113,37 @@
     var trgovanjeViewModel = function () {
         var self = {};
 
+        // data sources
         self.trgovanjeGlava = ko.observable(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeGlava)));
         self.trgovanjeStavkaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeStavkaCollection)));
         self.rokCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.RokCollection)));
         self.selectedRok = ko.observable();
 
+        // hr data formating
+        var date = new Date(self.trgovanjeGlava().Datum);
+        self.trgovanjeGlava().Datum = Globalize.format(date, "d");
+
+        $(self.trgovanjeStavkaCollection()).each(function () {
+            var tmp = parseFloat(this.Ponuda.toString());
+            this.Ponuda = Globalize.format(tmp, "n2");
+
+            tmp = parseFloat(this.PonudaDodatak.toString());
+            this.PonudaDodatak = Globalize.format(tmp, "n2");
+
+            tmp = parseFloat(this.Potraznja.toString());
+            this.Potraznja = Globalize.format(tmp, "n2");
+
+            tmp = parseFloat(this.PotraznjaDodatak.toString());
+            this.PotraznjaDodatak = Globalize.format(tmp, "n2");
+
+            tmp = parseFloat(this.Promet.toString());
+            this.Promet = Globalize.format(tmp, "n2");
+
+            tmp = parseFloat(this.PrometDodatak.toString());
+            this.PrometDodatak = Globalize.format(tmp, "n2");
+        });
+
+        // functions
         self.addRok = function() {
             var rokExist = false;
             $(self.trgovanjeStavkaCollection()).each(function () {
@@ -153,7 +182,15 @@
                     trgovanjeStavkaCollectionJson: ko.toJSON(self.trgovanjeStavkaCollection)
                 },
                 success: function (result) {
-                    alert(result);
+                    if (result.Error) {
+                        alert(result.Error);
+                    }
+                    else if (result.Url) {
+                        window.location.href = result.Url;
+                    }
+                    else {
+                        alert("Greška kod odgovora servisa za pohranu podataka.");
+                    }
                 },
                 error: function () {
                     alert("Desila se greška prilikom pohranjivanja podataka.");
@@ -162,6 +199,10 @@
                 cache: false
             });
         };
+
+        self.deleteTrgovanjeStavka = function (trgovanjeStavka) {
+            self.trgovanjeStavkaCollection.remove(trgovanjeStavka);
+        }
 
         return self;
     };

@@ -12,5 +12,10 @@ namespace NinjaSoftware.TrzisteNovca.Common
         {
             return Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
         }
+
+        public static string SettDirectoryPath()
+        {
+            return ConfigurationManager.AppSettings["SettDirectoryPath"];
+        }
     }
 }

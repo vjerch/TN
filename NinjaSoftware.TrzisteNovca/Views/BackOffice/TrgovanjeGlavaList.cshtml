@@ -9,8 +9,13 @@
 <h2>@title</h2>
 
 <p>
+    @Html.ActionLink("Učitaj trgovanje iz SETT datoteke", "TrgovanjeUpload")
+</p>
+
+<p>
     @Html.ActionLink("Kreiraj trgovanje", "TrgovanjeEdit")
 </p>
+
 <table>
     <tr>
         <th>
@@ -31,7 +36,7 @@
             @trgovanjeGlava.Komentar
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>

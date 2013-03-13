@@ -20,6 +20,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             return View();
         }
 
+        #region Trgovanje
+
         [HttpGet]
         public ActionResult TrgovanjeGlavaList(int? pageNumber, string sortField, bool? isSortAscending)
         {
@@ -50,11 +52,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             string returnJson;
 
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            TrgovanjeStavkaEntity e = new TrgovanjeStavkaEntity();
             
             try
             {
                 adapter.StartTransaction(System.Data.IsolationLevel.Serializable, "TrgovanjeSave");
                 TrgovanjeViewModel viewModel = new TrgovanjeViewModel(adapter, trgovanjeGlavaId);
+                viewModel.UpdateModelFromJson(trgovanjeGlavaJson, trgovanjeStavkaCollectionJson);
                 viewModel.Save(adapter);
 
                 adapter.Commit();
@@ -79,5 +83,40 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
             return new ContentResult() { Content = returnJson, ContentType = "application/json" };
         }
+
+        [HttpGet]
+        public ActionResult TrgovanjeUpload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TrgovanjeUpload(FormCollection formCollection)
+        {
+            foreach (string file in Request.Files)
+            {
+                HttpPostedFileBase httpPostedFileBase = Request.Files[file];
+
+                if (httpPostedFileBase.ContentLength > 0)
+                {
+                    DateTime now = DateTime.Now;
+                    string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                        @"Upload\Sett\",
+                        System.IO.Path.GetFileName(httpPostedFileBase.FileName));
+
+                    httpPostedFileBase.SaveAs(filePath);
+
+                    DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+
+                    TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.LoadTrgovanjeFromSettFile(adapter, filePath, httpPostedFileBase.FileName);
+
+                    return RedirectToAction("TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId });
+                }
+            }
+
+            return View();
+        }
+
+        #endregion Trgovanje
     }
 }

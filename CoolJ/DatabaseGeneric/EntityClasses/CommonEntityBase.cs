@@ -110,6 +110,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             adapter.SaveEntity(this, refetchAfterSave, recurse);
         }
 
+        public virtual void Delete(DataAccessAdapterBase adapter)
+        {
+            adapter.DeleteEntity(this);
+        }
+
 		// __LLBLGENPRO_USER_CODE_REGION_END
 		#endregion
 

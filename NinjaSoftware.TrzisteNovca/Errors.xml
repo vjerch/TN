@@ -990,4 +990,410 @@
    at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
     <_lps fs="RAQ=" es="0" />
   </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="4469e670-8d84-4989-9a47-89dbc9a4db75" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:35:39.0792997</ErrorDateTime>
+    <Message>The controller for path '/favicon.ico' was not found or does not implement IController.</Message>
+    <StackTrace>   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)</StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="90c2484e-eb74-45fd-b4d9-451599a9bac7" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:35:39.406906</ErrorDateTime>
+    <Message>The controller for path '/favicon.ico' was not found or does not implement IController.</Message>
+    <StackTrace>   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)</StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="badfd064-5130-41f5-a3c2-b6c74ee6bc69" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:36:31.9707627</ErrorDateTime>
+    <Message>Object reference not set to an instance of an object.</Message>
+    <StackTrace><![CDATA[   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.Save(DataAccessAdapterBase adapter, IEnumerable`1 trgovanjeStavkaCollectionToDelete, Boolean refetchAfterSave) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 19
+   at NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel.Save(DataAccessAdapterBase adapter) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Models\BackOffice\TrgovanjeViewModel.cs:line 51
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeSave(Int64 trgovanjeGlavaId, String trgovanjeGlavaJson, String trgovanjeStavkaCollectionJson) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 73
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="4d037de0-371e-4479-a2d7-3f4949333a27" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:37:41.2694886</ErrorDateTime>
+    <Message>Object reference not set to an instance of an object.</Message>
+    <StackTrace><![CDATA[   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.Save(DataAccessAdapterBase adapter, IEnumerable`1 trgovanjeStavkaCollectionToDelete, Boolean refetchAfterSave) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 19
+   at NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel.Save(DataAccessAdapterBase adapter) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Models\BackOffice\TrgovanjeViewModel.cs:line 51
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeSave(Int64 trgovanjeGlavaId, String trgovanjeGlavaJson, String trgovanjeStavkaCollectionJson) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 58
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="b48d7092-60eb-4093-a409-fc2e27859bf5" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:37:48.0244185</ErrorDateTime>
+    <Message>Object reference not set to an instance of an object.</Message>
+    <StackTrace><![CDATA[   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.Save(DataAccessAdapterBase adapter, IEnumerable`1 trgovanjeStavkaCollectionToDelete, Boolean refetchAfterSave) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 19
+   at NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel.Save(DataAccessAdapterBase adapter) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Models\BackOffice\TrgovanjeViewModel.cs:line 51
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeSave(Int64 trgovanjeGlavaId, String trgovanjeGlavaJson, String trgovanjeStavkaCollectionJson) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 58
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="285c1db2-ada1-4f9b-958f-1352b035f38e" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:39:57.9025163</ErrorDateTime>
+    <Message>An exception was caught during the execution of an action query: Cannot insert the value NULL into column 'TrgovanjeGlavaId', table 'TrzisteNovca.dbo.TrgovanjeStavka'; column does not allow nulls. INSERT fails.
+The statement has been terminated.. Check InnerException, QueryExecuted and Parameters of this exception to examine the cause of this exception.</Message>
+    <StackTrace><![CDATA[   at SD.LLBLGen.Pro.ORMSupportClasses.ActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\ActionQuery.cs:line 261
+   at SD.LLBLGen.Pro.ORMSupportClasses.BatchActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\BatchActionQuery.cs:line 112
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.ExecuteActionQuery(IActionQuery queryToExecute) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 526
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.PersistQueue(List`1 queueToPersist, Boolean insertActions, Int32& totalAmountSaved) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1408
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.SaveEntity(IEntity2 entityToSave, Boolean refetchAfterSave, IPredicateExpression updateRestriction, Boolean recurse) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1271
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.SaveEntity(IEntity2 entityToSave, Boolean refetchAfterSave, Boolean recurse) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1129
+   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.CommonEntityBase.Save(DataAccessAdapterBase adapter, Boolean refetchAfterSave, Boolean recurse) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\EntityClasses\CommonEntityBase.cs:line 110
+   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.Save(DataAccessAdapterBase adapter, IEnumerable`1 trgovanjeStavkaCollectionToDelete, Boolean refetchAfterSave) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 30
+   at NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel.Save(DataAccessAdapterBase adapter) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Models\BackOffice\TrgovanjeViewModel.cs:line 51
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeSave(Int64 trgovanjeGlavaId, String trgovanjeGlavaJson, String trgovanjeStavkaCollectionJson) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <ChildErrorCollection>
+      <ErrorEntity ObjectID="e0de6643-9cea-4cad-8eda-1776489ebaa9">
+        <ErrorDateTime>2013-03-13T13:39:57.9025163</ErrorDateTime>
+        <Message>Cannot insert the value NULL into column 'TrgovanjeGlavaId', table 'TrzisteNovca.dbo.TrgovanjeStavka'; column does not allow nulls. INSERT fails.
+The statement has been terminated.</Message>
+        <StackTrace>   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at SD.LLBLGen.Pro.ORMSupportClasses.ActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\ActionQuery.cs:line 233</StackTrace>
+        <ParentError Ref="285c1db2-ada1-4f9b-958f-1352b035f38e" />
+        <_lps fs="RAQ=" es="0" />
+      </ErrorEntity>
+      <_lps f="7" />
+    </ChildErrorCollection>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="ea97851f-29e8-4ef3-93c7-e2fef9129f84" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:40:50.9461613</ErrorDateTime>
+    <Message>An exception was caught during the execution of an action query: Cannot insert the value NULL into column 'TrgovanjeGlavaId', table 'TrzisteNovca.dbo.TrgovanjeStavka'; column does not allow nulls. INSERT fails.
+The statement has been terminated.. Check InnerException, QueryExecuted and Parameters of this exception to examine the cause of this exception.</Message>
+    <StackTrace><![CDATA[   at SD.LLBLGen.Pro.ORMSupportClasses.ActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\ActionQuery.cs:line 261
+   at SD.LLBLGen.Pro.ORMSupportClasses.BatchActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\BatchActionQuery.cs:line 112
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.ExecuteActionQuery(IActionQuery queryToExecute) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 526
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.PersistQueue(List`1 queueToPersist, Boolean insertActions, Int32& totalAmountSaved) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1408
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.SaveEntity(IEntity2 entityToSave, Boolean refetchAfterSave, IPredicateExpression updateRestriction, Boolean recurse) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1271
+   at SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase.SaveEntity(IEntity2 entityToSave, Boolean refetchAfterSave, Boolean recurse) in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\AdapterSpecific\DataAccessAdapterBase.cs:line 1129
+   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.CommonEntityBase.Save(DataAccessAdapterBase adapter, Boolean refetchAfterSave, Boolean recurse) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\EntityClasses\CommonEntityBase.cs:line 110
+   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.Save(DataAccessAdapterBase adapter, IEnumerable`1 trgovanjeStavkaCollectionToDelete, Boolean refetchAfterSave) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 30
+   at NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel.Save(DataAccessAdapterBase adapter) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Models\BackOffice\TrgovanjeViewModel.cs:line 51
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeSave(Int64 trgovanjeGlavaId, String trgovanjeGlavaJson, String trgovanjeStavkaCollectionJson) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <ChildErrorCollection>
+      <ErrorEntity ObjectID="10f1cb7c-ecaa-46f1-9a3c-627bff44c701">
+        <ErrorDateTime>2013-03-13T13:40:50.9461613</ErrorDateTime>
+        <Message>Cannot insert the value NULL into column 'TrgovanjeGlavaId', table 'TrzisteNovca.dbo.TrgovanjeStavka'; column does not allow nulls. INSERT fails.
+The statement has been terminated.</Message>
+        <StackTrace>   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at SD.LLBLGen.Pro.ORMSupportClasses.ActionQuery.Execute() in c:\Myprojects\VS.NET Projects\LLBLGen Pro v3.5\Frameworks\LLBLGen Pro\RuntimeLibraries\ORMSupportClasses\Query\ActionQuery.cs:line 233</StackTrace>
+        <ParentError Ref="ea97851f-29e8-4ef3-93c7-e2fef9129f84" />
+        <_lps fs="RAQ=" es="0" />
+      </ErrorEntity>
+      <_lps f="7" />
+    </ChildErrorCollection>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="f817e93e-1948-42b9-b0ea-2f1b12ca2cb2" Format="Compact25">
+    <ErrorDateTime>2013-03-13T13:42:52.1238792</ErrorDateTime>
+    <Message>A public action method 'Edit' was not found on controller 'NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController'.</Message>
+    <StackTrace><![CDATA[   at System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="2198fb92-d1d5-48a3-9896-1ea266471c05" Format="Compact25">
+    <ErrorDateTime>2013-03-13T16:14:10.5133762</ErrorDateTime>
+    <Message>Could not find a part of the path 'g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Upload\Sett\WEB_2013_01_07.txt'.</Message>
+    <StackTrace><![CDATA[   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at System.Web.HttpPostedFile.SaveAs(String filename)
+   at System.Web.HttpPostedFileWrapper.SaveAs(String filename)
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeUpload(FormCollection formCollection) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 107
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
+</ErrorEntity><?xml version="1.0" encoding="utf-16"?>
+<ErrorEntity>
+  <ErrorEntity ObjectID="23232f67-a403-4760-8d32-60c813d7e87d" Format="Compact25">
+    <ErrorDateTime>2013-03-13T17:02:46.8827989</ErrorDateTime>
+    <Message>Rok 'EUR - 1TJ' - 'POZAJMICA DEVIZA' nije unesen.</Message>
+    <StackTrace><![CDATA[   at NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity.LoadTrgovanjeFromSettFile(DataAccessAdapterBase adapter, String filePath, String fileName) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\CoolJ\DatabaseGeneric\BusinessLogic\TrgovanjeGlavaEntity.cs:line 97
+   at NinjaSoftware.TrzisteNovca.Controllers.BackOfficeController.TrgovanjeUpload(FormCollection formCollection) in g:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca\Controllers\BackOfficeController.cs:line 111
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)]]></StackTrace>
+    <_lps fs="RAQ=" es="0" />
+  </ErrorEntity>
 </ErrorEntity>
