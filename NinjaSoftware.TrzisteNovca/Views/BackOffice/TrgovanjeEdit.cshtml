@@ -29,12 +29,15 @@
     
     <script type="text/html" id="TrgovanjeGlavaTemplate">
         <table>
+@if (Model.TrgovanjeGlava.IsNew)
+{
             <tr>
                 <td>Datum:</td>
                 <td>
                     <input id="InputDatum" class="requred date" data-bind="value: Datum" />
                 </td>
             </tr>
+}
             <tr>
                 <td>Dnevni komentar:</td>
                 <td>

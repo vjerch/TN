@@ -59,6 +59,12 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
 
             TrgovanjeGlavaEntity trgovanjeGlavaDeserialized = JsonConvert.DeserializeObject<TrgovanjeGlavaEntity>(trgovanjeGlavaJson, jsonSettings);
             this.TrgovanjeGlava.UpdateDataFromOtherObject(trgovanjeGlavaDeserialized, null, null);
+            this.TrgovanjeGlava.Komentar = Helper.SanitazeHtml(this.TrgovanjeGlava.Komentar);
+
+            if (!Helper.IsSafeHtml(this.TrgovanjeGlava.Komentar))
+            {
+                throw new Exception("Unsafe HTML!!!");
+            }
 
             this.TrgovanjeStavkaCollectionToDelete = this.TrgovanjeGlava.TrgovanjeStavkaCollection.GetEntitiesNotIncludedInJson(trgovanjeStavkaCollectionJson, jsonSettings);
 
