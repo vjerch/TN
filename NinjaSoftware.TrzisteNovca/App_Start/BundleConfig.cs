@@ -24,6 +24,13 @@ namespace NinjaSoftware.TrzisteNovca
             bundles.Add(new ScriptBundle("~/bundles/globalize").Include(
                 "~/Scripts/globalize.js",
                 "~/Scripts/globalize.culture.hr.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                "~/Scripts/knockout-2.1.0.js",
+                "~/Scripts/CoolJEntites.js"));
+
+            //bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
+            //    "/ckeditor/ckeditor.js"));
         }
     }
 }

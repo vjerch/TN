@@ -1,6 +1,6 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeGlavaPager
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
-
+@using NinjaSoftware.TrzisteNovca.Common
 @{
     string title = "Pregled trgovanja";
     ViewBag.Title = title;
@@ -36,11 +36,16 @@
             @trgovanjeGlava.Komentar
         </td>
         <td>
-            @Html.ActionLink("Edit", "TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Uredi", "TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId }) |
+            @Html.ActionLink("Obriši", "TrgovanjeDelete", 
+                new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId }, 
+                new { onclick = "return confirm('Jeste li sigurni da želite obrisati trgovanje?');" })
         </td>
     </tr>
 }
-
+    <tr>
+        <td colspan="3" style="text-align: center;">
+            @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
+        </td>
+    </tr>
 </table>

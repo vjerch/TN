@@ -17,5 +17,10 @@ namespace NinjaSoftware.TrzisteNovca.Common
         {
             return ConfigurationManager.AppSettings["SettDirectoryPath"];
         }
+
+        public static string PagerPrefixText()
+        {
+            return ConfigurationManager.AppSettings["PagerPrefixText"];
+        }
     }
 }

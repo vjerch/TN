@@ -13,7 +13,7 @@ using NinjaSoftware.Api.Core;
 namespace NinjaSoftware.TrzisteNovca.Controllers
 {
     [Authorize(Roles = "User, Admin")]
-    public class BackOfficeController : Controller
+    public class BackOfficeController : NinjaSoftware.Api.Mvc.NsController
     {
         public ActionResult Index()
         {
@@ -47,6 +47,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ContentResult TrgovanjeSave(long trgovanjeGlavaId, string trgovanjeGlavaJson, string trgovanjeStavkaCollectionJson)
         {
             string returnJson;
@@ -93,28 +94,49 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         [HttpPost]
         public ActionResult TrgovanjeUpload(FormCollection formCollection)
         {
-            foreach (string file in Request.Files)
+            try
             {
-                HttpPostedFileBase httpPostedFileBase = Request.Files[file];
-
-                if (httpPostedFileBase.ContentLength > 0)
+                foreach (string file in Request.Files)
                 {
-                    DateTime now = DateTime.Now;
-                    string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                        @"Upload\Sett\",
-                        System.IO.Path.GetFileName(httpPostedFileBase.FileName));
+                    HttpPostedFileBase httpPostedFileBase = Request.Files[file];
 
-                    httpPostedFileBase.SaveAs(filePath);
+                    if (httpPostedFileBase.ContentLength > 0)
+                    {
+                        DateTime now = DateTime.Now;
+                        string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                            @"Upload\Sett\",
+                            System.IO.Path.GetFileName(httpPostedFileBase.FileName));
 
-                    DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+                        httpPostedFileBase.SaveAs(filePath);
 
-                    TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.LoadTrgovanjeFromSettFile(adapter, filePath, httpPostedFileBase.FileName);
+                        DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
 
-                    return RedirectToAction("TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId });
+                        TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.LoadTrgovanjeFromSettFile(adapter, filePath, httpPostedFileBase.FileName);
+
+                        return RedirectToAction("TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId });
+                    }
                 }
             }
+            catch (UserException ex)
+            {
+                this.ViewUserErrorMessage = ex.Message;   
+            }
+
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeDelete(long trgovanjeGlavaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlava(adapter, null, trgovanjeGlavaId);
+                trgovanjeGlava.Delete(adapter);
+
+                return RedirectToAction("TrgovanjeGlavaList");
+            }
         }
 
         #endregion Trgovanje

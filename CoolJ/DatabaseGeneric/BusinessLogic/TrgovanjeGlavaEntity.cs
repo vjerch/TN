@@ -52,6 +52,25 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             base.Save(adapter, refetchAfterSave, recurse);
         }
 
+        public override void Delete(DataAccessAdapterBase adapter)
+        {
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = this.TrgovanjeStavkaCollection;
+
+            if (null == trgovanjeStavkaCollection ||
+                0 == trgovanjeStavkaCollection.Count)
+            {
+                RelationPredicateBucket bucket = new RelationPredicateBucket(TrgovanjeStavkaFields.TrgovanjeGlavaId == this.TrgovanjeGlavaId);
+                trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, bucket, null);
+            }
+
+            foreach (TrgovanjeStavkaEntity trgovanjeStavka in trgovanjeStavkaCollection)
+            {
+                trgovanjeStavka.Delete(adapter);
+            }
+
+            base.Delete(adapter);
+        }
+
         public static TrgovanjeGlavaEntity LoadTrgovanjeFromSettFile(DataAccessAdapterBase adapter, string filePath, string fileName)
         {
             fileName = fileName.Replace(".txt", "");
