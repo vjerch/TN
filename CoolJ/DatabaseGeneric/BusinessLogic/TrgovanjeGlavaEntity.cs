@@ -6,6 +6,7 @@ using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 using NinjaSoftware.Api.Core;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
+using NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
@@ -13,17 +14,77 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
     {
         #region Custom properties
 
-        //private decimal? _ponuda;
-        //public decimal Ponuda 
-        //{
-        //    get
-        //    {
-        //        if (!_ponuda.HasValue)
-        //        { 
-        //            _ponuda =
-        //        }
-        //    }
-        //}
+        public TrgovanjeGlavaEntity _trgovanjeGlavaPrethodniDan;
+        
+        private decimal? _ponuda;
+        public decimal Ponuda
+        {
+            get
+            {
+                if (!_ponuda.HasValue)
+                {
+                    _ponuda = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Ponuda);
+                }
+
+                return _ponuda.Value;
+            }
+        }
+
+        private decimal? _potraznja;
+        public decimal Potraznja 
+        {
+            get
+            {
+                if (!_potraznja.HasValue)
+                {
+                    _potraznja = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Potraznja);
+                }
+
+                return _potraznja.Value;
+            }
+        }
+
+        private decimal? _promet;
+        public decimal Promet 
+        {
+            get
+            {
+                if (!_promet.HasValue)
+                {
+                    _promet = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Promet);
+                }
+
+                return _promet.Value;
+            }
+        }
+
+        private decimal? _ponudaPromjenaPosto;
+        public decimal? PonudaPromjenaPosto 
+        {
+            get
+            {
+                if (!_ponudaPromjenaPosto.HasValue && null != _trgovanjeGlavaPrethodniDan)
+                {
+                    _ponudaPromjenaPosto = (1 - this.Promet / _trgovanjeGlavaPrethodniDan.Promet) * 100;
+                }
+
+                return _ponudaPromjenaPosto;
+            }
+        }
+
+        private decimal? _potraznjaPromjenaPosto;
+        public decimal? PotraznjaPromjenaPosto 
+        {
+            get
+            {
+                if (!_potraznjaPromjenaPosto.HasValue && null != _trgovanjeGlavaPrethodniDan)
+                {
+                    _potraznjaPromjenaPosto = (1 - this.Promet / _trgovanjeGlavaPrethodniDan.Promet) * 100;
+                }
+
+                return _potraznjaPromjenaPosto;
+            }
+        }
 
         #endregion
 
@@ -88,6 +149,19 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
 
             base.Delete(adapter);
+        }
+
+        public void LoadTrgovanjeGlavaPrethodniDan(DataAccessAdapterBase adapter)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(TrgovanjeGlavaFields.Datum < this.Datum);
+
+            SortExpression sort = new SortExpression(TrgovanjeGlavaFields.Datum | SortOperator.Descending);
+
+            EntityCollection<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = new EntityCollection<TrgovanjeGlavaEntity>(new TrgovanjeGlavaEntityFactory());
+            adapter.FetchEntityCollection(trgovanjeGlavaCollection, bucket, 1, sort);
+
+            _trgovanjeGlavaPrethodniDan = trgovanjeGlavaCollection.SingleOrDefault();
         }
 
         #endregion
