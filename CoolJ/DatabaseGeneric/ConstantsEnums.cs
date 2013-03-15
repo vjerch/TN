@@ -74,34 +74,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
-	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: Rok.</summary>
-	public enum RokFieldIndex
-	{
-		///<summary>ConcurrencyGuid. </summary>
-		ConcurrencyGuid,
-		///<summary>Naziv. </summary>
-		Naziv,
-		///<summary>RokId. </summary>
-		RokId,
-		///<summary>RokTipId. </summary>
-		RokTipId,
-		///<summary>Sifra. </summary>
-		Sifra,
-		/// <summary></summary>
-		AmountOfFields
-	}
-	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RokTipRo.</summary>
-	public enum RokTipRoFieldIndex
-	{
-		///<summary>Code. </summary>
-		Code,
-		///<summary>Name. </summary>
-		Name,
-		///<summary>RokTipId. </summary>
-		RokTipId,
-		/// <summary></summary>
-		AmountOfFields
-	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RoleRo.</summary>
 	public enum RoleRoFieldIndex
 	{
@@ -145,12 +117,28 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		Promet,
 		///<summary>PrometDodatak. </summary>
 		PrometDodatak,
-		///<summary>RokId. </summary>
-		RokId,
 		///<summary>TrgovanjeGlavaId. </summary>
 		TrgovanjeGlavaId,
 		///<summary>TrgovanjeStavkaId. </summary>
 		TrgovanjeStavkaId,
+		///<summary>TrgovanjeVrstaId. </summary>
+		TrgovanjeVrstaId,
+		///<summary>ValutaId. </summary>
+		ValutaId,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: TrgovanjeVrstaRo.</summary>
+	public enum TrgovanjeVrstaRoFieldIndex
+	{
+		///<summary>Code. </summary>
+		Code,
+		///<summary>Name. </summary>
+		Name,
+		///<summary>SifraSlog. </summary>
+		SifraSlog,
+		///<summary>TrgovanjeVrstaId. </summary>
+		TrgovanjeVrstaId,
 		/// <summary></summary>
 		AmountOfFields
 	}
@@ -170,6 +158,20 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: ValutaRo.</summary>
+	public enum ValutaRoFieldIndex
+	{
+		///<summary>Code. </summary>
+		Code,
+		///<summary>Name. </summary>
+		Name,
+		///<summary>SifraSlog. </summary>
+		SifraSlog,
+		///<summary>ValutaId. </summary>
+		ValutaId,
+		/// <summary></summary>
+		AmountOfFields
+	}
 
 
 
@@ -184,18 +186,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		EntityRoEntity,
 		///<summary>Error</summary>
 		ErrorEntity,
-		///<summary>Rok</summary>
-		RokEntity,
-		///<summary>RokTipRo</summary>
-		RokTipRoEntity,
 		///<summary>RoleRo</summary>
 		RoleRoEntity,
 		///<summary>TrgovanjeGlava</summary>
 		TrgovanjeGlavaEntity,
 		///<summary>TrgovanjeStavka</summary>
 		TrgovanjeStavkaEntity,
+		///<summary>TrgovanjeVrstaRo</summary>
+		TrgovanjeVrstaRoEntity,
 		///<summary>User</summary>
-		UserEntity
+		UserEntity,
+		///<summary>ValutaRo</summary>
+		ValutaRoEntity
 	}
 
 

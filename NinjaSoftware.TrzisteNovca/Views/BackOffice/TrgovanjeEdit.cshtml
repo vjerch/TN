@@ -52,10 +52,13 @@
     <table>
         <tr>
             <td>
-                <select id="dropDownRok" data-bind="options: $root.rokCollection, value: $root.selectedRok, optionsText: 'Naziv'"></select>
+                <select id="dropDownTrgovanjeVrsta" data-bind="options: $root.trgovanjeVrstaCollection, value: $root.selectedTrgovanjeVrsta, optionsText: 'Name'"></select>
             </td>
             <td>
-                <input type="button" value="Unesi" onclick="viewModel.addRok();" />
+                <select id="dropDownValuta" data-bind="options: $root.valutaCollection, value: $root.selectedValuta, optionsText: 'Name'"></select>
+            </td>
+            <td>
+                <input type="button" value="Unesi" onclick="viewModel.addTrgovanjeStavka();" />
             </td>
         </tr>
     </table>
@@ -63,7 +66,8 @@
     <table id="tableStavke">
         <thead>
             <tr>
-                <th>Rok</th>
+                <th>Naziv</th>
+                <th>Valuta</th>
                 <th>Ponuda</th>
                 <th>Pon. KS/Tečaj/Omjer</th>
                 <th>Potražnja</th>
@@ -75,7 +79,8 @@
         </thead>
         <tbody data-bind="foreach: trgovanjeStavkaCollection">
             <tr>
-                <td data-bind="text: Rok.Naziv"></td>
+                <td data-bind="text: TrgovanjeVrsta.Name"></td>
+                <td data-bind="text: Valuta.Name"></td>
                 <td>
                     <input class="required number numberCss" data-bind="value: Ponuda, uniqueName: true" />
                 </td>
@@ -124,8 +129,10 @@
         // data sources
         self.trgovanjeGlava = ko.observable(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeGlava)));
         self.trgovanjeStavkaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeStavkaCollection)));
-        self.rokCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.RokCollection)));
-        self.selectedRok = ko.observable();
+        self.trgovanjeVrstaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeVrstaCollection)));
+        self.valutaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.ValutaCollection)));
+        self.selectedTrgovanjeVrsta = ko.observable();
+        self.selectedValuta = ko.observable();
 
         // hr data formating
         var date = new Date(self.trgovanjeGlava().Datum);
@@ -152,20 +159,22 @@
         });
 
         // functions
-        self.addRok = function() {
-            var rokExist = false;
+        self.addTrgovanjeStavka = function() {
+            var stavkaExist = false;
             $(self.trgovanjeStavkaCollection()).each(function () {
-                if (this.RokId === self.selectedRok().RokId) {
-                    rokExist = true;
+                if (this.TrgovanjeVrstaId === self.selectedTrgovanjeVrsta().TrgovanjeVrstaId &&
+                 this.ValutaId === self.selectedValuta().ValutaId) {
+                    stavkaExist = true;
                 }
             });
 
-            if (rokExist) {
-                alert("Rok " + self.selectedRok().Naziv + " je ranije unesen.");
+            if (stavkaExist) {
+                alert("Trgovanje '" + self.selectedTrgovanjeVrsta().Name + "' za valutu '" + self.selectedValuta().Name + "' je ranije uneseno.");
             }
             else {
                 var trgovanjeStavka = TrgovanjeStavka({
-                    RokId: self.selectedRok().RokId,
+                    TrgovanjeVrstaId: self.selectedTrgovanjeVrsta().TrgovanjeVrstaId,
+                    ValutaId: self.selectedValuta().ValutaId,
                     Ponuda: 0,
                     PonudaDodatak: 0,
                     Potraznja: 0,
@@ -174,7 +183,8 @@
                     PrometDodatak: 0
                 });
 
-                trgovanjeStavka.Rok = { "Naziv": self.selectedRok().Naziv };
+                trgovanjeStavka.TrgovanjeVrsta = { "Name": self.selectedTrgovanjeVrsta().Name };
+                trgovanjeStavka.Valuta = { "Name": self.selectedValuta().Name };
 
                 self.trgovanjeStavkaCollection.push(trgovanjeStavka);    
             }

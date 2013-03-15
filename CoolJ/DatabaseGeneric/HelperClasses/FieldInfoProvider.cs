@@ -53,12 +53,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
 			InitErrorEntityInfos();
-			InitRokEntityInfos();
-			InitRokTipRoEntityInfos();
 			InitRoleRoEntityInfos();
 			InitTrgovanjeGlavaEntityInfos();
 			InitTrgovanjeStavkaEntityInfos();
+			InitTrgovanjeVrstaRoEntityInfos();
 			InitUserEntityInfos();
+			InitValutaRoEntityInfos();
 
 			this.ConstructElementFieldStructures(InheritanceInfoProviderSingleton.GetInstance());
 		}
@@ -103,24 +103,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("ErrorEntity", "ParentErrorId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)ErrorFieldIndex.ParentErrorId, 0, 0, 19);
 			this.AddElementFieldInfo("ErrorEntity", "StackTrace", typeof(System.String), false, false, false, true,  (int)ErrorFieldIndex.StackTrace, 2147483647, 0, 0);
 		}
-		/// <summary>Inits RokEntity's FieldInfo objects</summary>
-		private void InitRokEntityInfos()
-		{
-			this.AddFieldIndexEnumForElementName(typeof(RokFieldIndex), "RokEntity");
-			this.AddElementFieldInfo("RokEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)RokFieldIndex.ConcurrencyGuid, 50, 0, 0);
-			this.AddElementFieldInfo("RokEntity", "Naziv", typeof(System.String), false, false, false, false,  (int)RokFieldIndex.Naziv, 50, 0, 0);
-			this.AddElementFieldInfo("RokEntity", "RokId", typeof(System.Int64), true, false, false, false,  (int)RokFieldIndex.RokId, 0, 0, 19);
-			this.AddElementFieldInfo("RokEntity", "RokTipId", typeof(System.Int64), false, true, false, false,  (int)RokFieldIndex.RokTipId, 0, 0, 19);
-			this.AddElementFieldInfo("RokEntity", "Sifra", typeof(System.String), false, false, false, false,  (int)RokFieldIndex.Sifra, 50, 0, 0);
-		}
-		/// <summary>Inits RokTipRoEntity's FieldInfo objects</summary>
-		private void InitRokTipRoEntityInfos()
-		{
-			this.AddFieldIndexEnumForElementName(typeof(RokTipRoFieldIndex), "RokTipRoEntity");
-			this.AddElementFieldInfo("RokTipRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)RokTipRoFieldIndex.Code, 128, 0, 0);
-			this.AddElementFieldInfo("RokTipRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)RokTipRoFieldIndex.Name, 256, 0, 0);
-			this.AddElementFieldInfo("RokTipRoEntity", "RokTipId", typeof(System.Int64), true, false, false, false,  (int)RokTipRoFieldIndex.RokTipId, 0, 0, 19);
-		}
 		/// <summary>Inits RoleRoEntity's FieldInfo objects</summary>
 		private void InitRoleRoEntityInfos()
 		{
@@ -149,9 +131,19 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "PotraznjaDodatak", typeof(System.Decimal), false, false, false, false,  (int)TrgovanjeStavkaFieldIndex.PotraznjaDodatak, 0, 4, 10);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "Promet", typeof(System.Decimal), false, false, false, false,  (int)TrgovanjeStavkaFieldIndex.Promet, 0, 2, 18);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "PrometDodatak", typeof(System.Decimal), false, false, false, false,  (int)TrgovanjeStavkaFieldIndex.PrometDodatak, 0, 4, 10);
-			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "RokId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.RokId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "TrgovanjeGlavaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.TrgovanjeGlavaId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "TrgovanjeStavkaId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeStavkaFieldIndex.TrgovanjeStavkaId, 0, 0, 19);
+			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "TrgovanjeVrstaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId, 0, 0, 19);
+			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "ValutaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.ValutaId, 0, 0, 19);
+		}
+		/// <summary>Inits TrgovanjeVrstaRoEntity's FieldInfo objects</summary>
+		private void InitTrgovanjeVrstaRoEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(TrgovanjeVrstaRoFieldIndex), "TrgovanjeVrstaRoEntity");
+			this.AddElementFieldInfo("TrgovanjeVrstaRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)TrgovanjeVrstaRoFieldIndex.Code, 50, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeVrstaRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)TrgovanjeVrstaRoFieldIndex.Name, 50, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeVrstaRoEntity", "SifraSlog", typeof(System.String), false, false, false, false,  (int)TrgovanjeVrstaRoFieldIndex.SifraSlog, 50, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeVrstaRoEntity", "TrgovanjeVrstaId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeVrstaRoFieldIndex.TrgovanjeVrstaId, 0, 0, 19);
 		}
 		/// <summary>Inits UserEntity's FieldInfo objects</summary>
 		private void InitUserEntityInfos()
@@ -162,6 +154,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("UserEntity", "RoleId", typeof(System.Int64), false, true, false, false,  (int)UserFieldIndex.RoleId, 0, 0, 19);
 			this.AddElementFieldInfo("UserEntity", "UserId", typeof(System.Int64), true, false, false, false,  (int)UserFieldIndex.UserId, 0, 0, 19);
 			this.AddElementFieldInfo("UserEntity", "Username", typeof(System.String), false, false, false, false,  (int)UserFieldIndex.Username, 50, 0, 0);
+		}
+		/// <summary>Inits ValutaRoEntity's FieldInfo objects</summary>
+		private void InitValutaRoEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(ValutaRoFieldIndex), "ValutaRoEntity");
+			this.AddElementFieldInfo("ValutaRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)ValutaRoFieldIndex.Code, 50, 0, 0);
+			this.AddElementFieldInfo("ValutaRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)ValutaRoFieldIndex.Name, 50, 0, 0);
+			this.AddElementFieldInfo("ValutaRoEntity", "SifraSlog", typeof(System.String), false, false, false, false,  (int)ValutaRoFieldIndex.SifraSlog, 50, 0, 0);
+			this.AddElementFieldInfo("ValutaRoEntity", "ValutaId", typeof(System.Int64), true, false, false, false,  (int)ValutaRoFieldIndex.ValutaId, 0, 0, 19);
 		}
 		
 	}

@@ -2,7 +2,7 @@
 // This is generated code. 
 //////////////////////////////////////////////////////////////
 // Code is generated using LLBLGen Pro version: 3.5
-// Code is generated on: 11. ožujak 2013. 15:40:43
+// Code is generated on: 15. ožujak 2013. 13:34:28
 // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET35
 // Templates vendor: Solutions Design.
 ////////////////////////////////////////////////////////////// 
@@ -119,18 +119,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			get { return Create<ErrorEntity>(); }
 		}
 
-		/// <summary>Creates and returns a new EntityQuery for the Rok entity</summary>
-		public EntityQuery<RokEntity> Rok
-		{
-			get { return Create<RokEntity>(); }
-		}
-
-		/// <summary>Creates and returns a new EntityQuery for the RokTipRo entity</summary>
-		public EntityQuery<RokTipRoEntity> RokTipRo
-		{
-			get { return Create<RokTipRoEntity>(); }
-		}
-
 		/// <summary>Creates and returns a new EntityQuery for the RoleRo entity</summary>
 		public EntityQuery<RoleRoEntity> RoleRo
 		{
@@ -149,10 +137,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			get { return Create<TrgovanjeStavkaEntity>(); }
 		}
 
+		/// <summary>Creates and returns a new EntityQuery for the TrgovanjeVrstaRo entity</summary>
+		public EntityQuery<TrgovanjeVrstaRoEntity> TrgovanjeVrstaRo
+		{
+			get { return Create<TrgovanjeVrstaRoEntity>(); }
+		}
+
 		/// <summary>Creates and returns a new EntityQuery for the User entity</summary>
 		public EntityQuery<UserEntity> User
 		{
 			get { return Create<UserEntity>(); }
+		}
+
+		/// <summary>Creates and returns a new EntityQuery for the ValutaRo entity</summary>
+		public EntityQuery<ValutaRoEntity> ValutaRo
+		{
+			get { return Create<ValutaRoEntity>(); }
 		}
 
 	}

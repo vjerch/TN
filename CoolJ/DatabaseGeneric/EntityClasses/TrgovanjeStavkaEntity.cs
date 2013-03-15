@@ -34,8 +34,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		// __LLBLGENPRO_USER_CODE_REGION_END	
 	{
 		#region Class Member Declarations
-		private RokEntity _rok;
 		private TrgovanjeGlavaEntity _trgovanjeGlava;
+		private TrgovanjeVrstaRoEntity _trgovanjeVrsta;
+		private ValutaRoEntity _valuta;
 
 		// __LLBLGENPRO_USER_CODE_REGION_START PrivateMembers
 		// __LLBLGENPRO_USER_CODE_REGION_END
@@ -48,10 +49,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary>All names of fields mapped onto a relation. Usable for in-memory filtering</summary>
 		public static partial class MemberNames
 		{
-			/// <summary>Member name Rok</summary>
-			public static readonly string Rok = "Rok";
 			/// <summary>Member name TrgovanjeGlava</summary>
 			public static readonly string TrgovanjeGlava = "TrgovanjeGlava";
+			/// <summary>Member name TrgovanjeVrsta</summary>
+			public static readonly string TrgovanjeVrsta = "TrgovanjeVrsta";
+			/// <summary>Member name Valuta</summary>
+			public static readonly string Valuta = "Valuta";
 		}
 
         /// <summary>
@@ -169,15 +172,20 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			if(SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				_rok = (RokEntity)info.GetValue("_rok", typeof(RokEntity));
-				if(_rok!=null)
-				{
-					_rok.AfterSave+=new EventHandler(OnEntityAfterSave);
-				}
 				_trgovanjeGlava = (TrgovanjeGlavaEntity)info.GetValue("_trgovanjeGlava", typeof(TrgovanjeGlavaEntity));
 				if(_trgovanjeGlava!=null)
 				{
 					_trgovanjeGlava.AfterSave+=new EventHandler(OnEntityAfterSave);
+				}
+				_trgovanjeVrsta = (TrgovanjeVrstaRoEntity)info.GetValue("_trgovanjeVrsta", typeof(TrgovanjeVrstaRoEntity));
+				if(_trgovanjeVrsta!=null)
+				{
+					_trgovanjeVrsta.AfterSave+=new EventHandler(OnEntityAfterSave);
+				}
+				_valuta = (ValutaRoEntity)info.GetValue("_valuta", typeof(ValutaRoEntity));
+				if(_valuta!=null)
+				{
+					_valuta.AfterSave+=new EventHandler(OnEntityAfterSave);
 				}
 				this.FixupDeserialization(FieldInfoProviderSingleton.GetInstance());
 			}
@@ -192,11 +200,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch((TrgovanjeStavkaFieldIndex)fieldIndex)
 			{
-				case TrgovanjeStavkaFieldIndex.RokId:
-					DesetupSyncRok(true, false);
-					break;
 				case TrgovanjeStavkaFieldIndex.TrgovanjeGlavaId:
 					DesetupSyncTrgovanjeGlava(true, false);
+					break;
+				case TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId:
+					DesetupSyncTrgovanjeVrsta(true, false);
+					break;
+				case TrgovanjeStavkaFieldIndex.ValutaId:
+					DesetupSyncValuta(true, false);
 					break;
 				default:
 					base.PerformDesyncSetupFKFieldChange(fieldIndex);
@@ -212,11 +223,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(propertyName)
 			{
-				case "Rok":
-					this.Rok = (RokEntity)entity;
-					break;
 				case "TrgovanjeGlava":
 					this.TrgovanjeGlava = (TrgovanjeGlavaEntity)entity;
+					break;
+				case "TrgovanjeVrsta":
+					this.TrgovanjeVrsta = (TrgovanjeVrstaRoEntity)entity;
+					break;
+				case "Valuta":
+					this.Valuta = (ValutaRoEntity)entity;
 					break;
 				default:
 					this.OnSetRelatedEntityProperty(propertyName, entity);
@@ -240,11 +254,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			RelationCollection toReturn = new RelationCollection();
 			switch(fieldName)
 			{
-				case "Rok":
-					toReturn.Add(Relations.RokEntityUsingRokId);
-					break;
 				case "TrgovanjeGlava":
 					toReturn.Add(Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
+					break;
+				case "TrgovanjeVrsta":
+					toReturn.Add(Relations.TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaId);
+					break;
+				case "Valuta":
+					toReturn.Add(Relations.ValutaRoEntityUsingValutaId);
 					break;
 				default:
 					break;				
@@ -274,11 +291,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "Rok":
-					SetupSyncRok(relatedEntity);
-					break;
 				case "TrgovanjeGlava":
 					SetupSyncTrgovanjeGlava(relatedEntity);
+					break;
+				case "TrgovanjeVrsta":
+					SetupSyncTrgovanjeVrsta(relatedEntity);
+					break;
+				case "Valuta":
+					SetupSyncValuta(relatedEntity);
 					break;
 				default:
 					break;
@@ -293,11 +313,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "Rok":
-					DesetupSyncRok(false, true);
-					break;
 				case "TrgovanjeGlava":
 					DesetupSyncTrgovanjeGlava(false, true);
+					break;
+				case "TrgovanjeVrsta":
+					DesetupSyncTrgovanjeVrsta(false, true);
+					break;
+				case "Valuta":
+					DesetupSyncValuta(false, true);
 					break;
 				default:
 					break;
@@ -318,13 +341,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override List<IEntity2> GetDependentRelatedEntities()
 		{
 			List<IEntity2> toReturn = new List<IEntity2>();
-			if(_rok!=null)
-			{
-				toReturn.Add(_rok);
-			}
 			if(_trgovanjeGlava!=null)
 			{
 				toReturn.Add(_trgovanjeGlava);
+			}
+			if(_trgovanjeVrsta!=null)
+			{
+				toReturn.Add(_trgovanjeVrsta);
+			}
+			if(_valuta!=null)
+			{
+				toReturn.Add(_valuta);
 			}
 			return toReturn;
 		}
@@ -345,8 +372,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			if (SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				info.AddValue("_rok", (!this.MarkedForDeletion?_rok:null));
 				info.AddValue("_trgovanjeGlava", (!this.MarkedForDeletion?_trgovanjeGlava:null));
+				info.AddValue("_trgovanjeVrsta", (!this.MarkedForDeletion?_trgovanjeVrsta:null));
+				info.AddValue("_valuta", (!this.MarkedForDeletion?_valuta:null));
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
 			// __LLBLGENPRO_USER_CODE_REGION_END
@@ -362,21 +390,30 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			return new TrgovanjeStavkaRelations().GetAllRelations();
 		}
 
-		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entity of type 'Rok' to this entity.</summary>
-		/// <returns></returns>
-		public virtual IRelationPredicateBucket GetRelationInfoRok()
-		{
-			IRelationPredicateBucket bucket = new RelationPredicateBucket();
-			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(RokFields.RokId, null, ComparisonOperator.Equal, this.RokId));
-			return bucket;
-		}
-
 		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entity of type 'TrgovanjeGlava' to this entity.</summary>
 		/// <returns></returns>
 		public virtual IRelationPredicateBucket GetRelationInfoTrgovanjeGlava()
 		{
 			IRelationPredicateBucket bucket = new RelationPredicateBucket();
 			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(TrgovanjeGlavaFields.TrgovanjeGlavaId, null, ComparisonOperator.Equal, this.TrgovanjeGlavaId));
+			return bucket;
+		}
+
+		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entity of type 'TrgovanjeVrstaRo' to this entity.</summary>
+		/// <returns></returns>
+		public virtual IRelationPredicateBucket GetRelationInfoTrgovanjeVrsta()
+		{
+			IRelationPredicateBucket bucket = new RelationPredicateBucket();
+			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(TrgovanjeVrstaRoFields.TrgovanjeVrstaId, null, ComparisonOperator.Equal, this.TrgovanjeVrstaId));
+			return bucket;
+		}
+
+		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entity of type 'ValutaRo' to this entity.</summary>
+		/// <returns></returns>
+		public virtual IRelationPredicateBucket GetRelationInfoValuta()
+		{
+			IRelationPredicateBucket bucket = new RelationPredicateBucket();
+			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(ValutaRoFields.ValutaId, null, ComparisonOperator.Equal, this.ValutaId));
 			return bucket;
 		}
 		
@@ -423,8 +460,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override Dictionary<string, object> GetRelatedData()
 		{
 			Dictionary<string, object> toReturn = new Dictionary<string, object>();
-			toReturn.Add("Rok", _rok);
 			toReturn.Add("TrgovanjeGlava", _trgovanjeGlava);
+			toReturn.Add("TrgovanjeVrsta", _trgovanjeVrsta);
+			toReturn.Add("Valuta", _valuta);
 			return toReturn;
 		}
 
@@ -461,46 +499,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("PrometDodatak", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("RokId", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("TrgovanjeGlavaId", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("TrgovanjeStavkaId", fieldHashtable);
+			fieldHashtable = new Dictionary<string, string>();
+			_fieldsCustomProperties.Add("TrgovanjeVrstaId", fieldHashtable);
+			fieldHashtable = new Dictionary<string, string>();
+			_fieldsCustomProperties.Add("ValutaId", fieldHashtable);
 		}
 		#endregion
-
-		/// <summary> Removes the sync logic for member _rok</summary>
-		/// <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
-		/// <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
-		private void DesetupSyncRok(bool signalRelatedEntity, bool resetFKFields)
-		{
-			this.PerformDesetupSyncRelatedEntity( _rok, new PropertyChangedEventHandler( OnRokPropertyChanged ), "Rok", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.RokEntityUsingRokIdStatic, true, signalRelatedEntity, "TrgovanjeStavkaCollection", resetFKFields, new int[] { (int)TrgovanjeStavkaFieldIndex.RokId } );
-			_rok = null;
-		}
-
-		/// <summary> setups the sync logic for member _rok</summary>
-		/// <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
-		private void SetupSyncRok(IEntityCore relatedEntity)
-		{
-			if(_rok!=relatedEntity)
-			{
-				DesetupSyncRok(true, true);
-				_rok = (RokEntity)relatedEntity;
-				this.PerformSetupSyncRelatedEntity( _rok, new PropertyChangedEventHandler( OnRokPropertyChanged ), "Rok", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.RokEntityUsingRokIdStatic, true, new string[] {  } );
-			}
-		}
-		
-		/// <summary>Handles property change events of properties in a related entity.</summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnRokPropertyChanged( object sender, PropertyChangedEventArgs e )
-		{
-			switch( e.PropertyName )
-			{
-				default:
-					break;
-			}
-		}
 
 		/// <summary> Removes the sync logic for member _trgovanjeGlava</summary>
 		/// <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
@@ -527,6 +534,72 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnTrgovanjeGlavaPropertyChanged( object sender, PropertyChangedEventArgs e )
+		{
+			switch( e.PropertyName )
+			{
+				default:
+					break;
+			}
+		}
+
+		/// <summary> Removes the sync logic for member _trgovanjeVrsta</summary>
+		/// <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		/// <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		private void DesetupSyncTrgovanjeVrsta(bool signalRelatedEntity, bool resetFKFields)
+		{
+			this.PerformDesetupSyncRelatedEntity( _trgovanjeVrsta, new PropertyChangedEventHandler( OnTrgovanjeVrstaPropertyChanged ), "TrgovanjeVrsta", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaIdStatic, true, signalRelatedEntity, "TrgovanjeStavkaCollection", resetFKFields, new int[] { (int)TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId } );
+			_trgovanjeVrsta = null;
+		}
+
+		/// <summary> setups the sync logic for member _trgovanjeVrsta</summary>
+		/// <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		private void SetupSyncTrgovanjeVrsta(IEntityCore relatedEntity)
+		{
+			if(_trgovanjeVrsta!=relatedEntity)
+			{
+				DesetupSyncTrgovanjeVrsta(true, true);
+				_trgovanjeVrsta = (TrgovanjeVrstaRoEntity)relatedEntity;
+				this.PerformSetupSyncRelatedEntity( _trgovanjeVrsta, new PropertyChangedEventHandler( OnTrgovanjeVrstaPropertyChanged ), "TrgovanjeVrsta", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaIdStatic, true, new string[] {  } );
+			}
+		}
+		
+		/// <summary>Handles property change events of properties in a related entity.</summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void OnTrgovanjeVrstaPropertyChanged( object sender, PropertyChangedEventArgs e )
+		{
+			switch( e.PropertyName )
+			{
+				default:
+					break;
+			}
+		}
+
+		/// <summary> Removes the sync logic for member _valuta</summary>
+		/// <param name="signalRelatedEntity">If set to true, it will call the related entity's UnsetRelatedEntity method</param>
+		/// <param name="resetFKFields">if set to true it will also reset the FK fields pointing to the related entity</param>
+		private void DesetupSyncValuta(bool signalRelatedEntity, bool resetFKFields)
+		{
+			this.PerformDesetupSyncRelatedEntity( _valuta, new PropertyChangedEventHandler( OnValutaPropertyChanged ), "Valuta", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.ValutaRoEntityUsingValutaIdStatic, true, signalRelatedEntity, "TrgovanjeStavkaCollection", resetFKFields, new int[] { (int)TrgovanjeStavkaFieldIndex.ValutaId } );
+			_valuta = null;
+		}
+
+		/// <summary> setups the sync logic for member _valuta</summary>
+		/// <param name="relatedEntity">Instance to set as the related entity of type entityType</param>
+		private void SetupSyncValuta(IEntityCore relatedEntity)
+		{
+			if(_valuta!=relatedEntity)
+			{
+				DesetupSyncValuta(true, true);
+				_valuta = (ValutaRoEntity)relatedEntity;
+				this.PerformSetupSyncRelatedEntity( _valuta, new PropertyChangedEventHandler( OnValutaPropertyChanged ), "Valuta", NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses.StaticTrgovanjeStavkaRelations.ValutaRoEntityUsingValutaIdStatic, true, new string[] {  } );
+			}
+		}
+		
+		/// <summary>Handles property change events of properties in a related entity.</summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void OnValutaPropertyChanged( object sender, PropertyChangedEventArgs e )
 		{
 			switch( e.PropertyName )
 			{
@@ -566,18 +639,25 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			get { return _customProperties;}
 		}
 
-		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'Rok' for this entity.</summary>
-		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
-		public static IPrefetchPathElement2 PrefetchPathRok
-		{
-			get	{ return new PrefetchPathElement2(new EntityCollection(EntityFactoryCache2.GetEntityFactory(typeof(RokEntityFactory))),	(IEntityRelation)GetRelationsForField("Rok")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokEntity, 0, null, null, null, null, "Rok", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne); }
-		}
-
 		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'TrgovanjeGlava' for this entity.</summary>
 		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
 		public static IPrefetchPathElement2 PrefetchPathTrgovanjeGlava
 		{
 			get	{ return new PrefetchPathElement2(new EntityCollection(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeGlavaEntityFactory))),	(IEntityRelation)GetRelationsForField("TrgovanjeGlava")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaEntity, 0, null, null, null, null, "TrgovanjeGlava", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne); }
+		}
+
+		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'TrgovanjeVrstaRo' for this entity.</summary>
+		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
+		public static IPrefetchPathElement2 PrefetchPathTrgovanjeVrsta
+		{
+			get	{ return new PrefetchPathElement2(new EntityCollection(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeVrstaRoEntityFactory))),	(IEntityRelation)GetRelationsForField("TrgovanjeVrsta")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity, 0, null, null, null, null, "TrgovanjeVrsta", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne); }
+		}
+
+		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'ValutaRo' for this entity.</summary>
+		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
+		public static IPrefetchPathElement2 PrefetchPathValuta
+		{
+			get	{ return new PrefetchPathElement2(new EntityCollection(EntityFactoryCache2.GetEntityFactory(typeof(ValutaRoEntityFactory))),	(IEntityRelation)GetRelationsForField("Valuta")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity, 0, null, null, null, null, "Valuta", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne); }
 		}
 
 
@@ -681,17 +761,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			set	{ SetValue((int)TrgovanjeStavkaFieldIndex.PrometDodatak, value); }
 		}
 
-		/// <summary> The RokId property of the Entity TrgovanjeStavka<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "TrgovanjeStavka"."RokId"<br/>
-		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		[JsonProperty]		
-		public virtual System.Int64 RokId
-		{
-			get { return (System.Int64)GetValue((int)TrgovanjeStavkaFieldIndex.RokId, true); }
-			set	{ SetValue((int)TrgovanjeStavkaFieldIndex.RokId, value); }
-		}
-
 		/// <summary> The TrgovanjeGlavaId property of the Entity TrgovanjeStavka<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "TrgovanjeStavka"."TrgovanjeGlavaId"<br/>
 		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
@@ -714,23 +783,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			set	{ SetValue((int)TrgovanjeStavkaFieldIndex.TrgovanjeStavkaId, value); }
 		}
 
-		/// <summary> Gets / sets related entity of type 'RokEntity' which has to be set using a fetch action earlier. If no related entity is set for this property, null is returned..<br/><br/></summary>
-		[Browsable(false)]
-		[JsonProperty]
-		public virtual RokEntity Rok
+		/// <summary> The TrgovanjeVrstaId property of the Entity TrgovanjeStavka<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "TrgovanjeStavka"."TrgovanjeVrstaId"<br/>
+		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		[JsonProperty]		
+		public virtual System.Int64 TrgovanjeVrstaId
 		{
-			get	{ return _rok; }
-			set
-			{
-				if(this.IsDeserializing)
-				{
-					SetupSyncRok(value);
-				}
-				else
-				{
-					SetSingleRelatedEntityNavigator(value, "TrgovanjeStavkaCollection", "Rok", _rok, true); 
-				}
-			}
+			get { return (System.Int64)GetValue((int)TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId, true); }
+			set	{ SetValue((int)TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId, value); }
+		}
+
+		/// <summary> The ValutaId property of the Entity TrgovanjeStavka<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "TrgovanjeStavka"."ValutaId"<br/>
+		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		[JsonProperty]		
+		public virtual System.Int64 ValutaId
+		{
+			get { return (System.Int64)GetValue((int)TrgovanjeStavkaFieldIndex.ValutaId, true); }
+			set	{ SetValue((int)TrgovanjeStavkaFieldIndex.ValutaId, value); }
 		}
 
 		/// <summary> Gets / sets related entity of type 'TrgovanjeGlavaEntity' which has to be set using a fetch action earlier. If no related entity is set for this property, null is returned..<br/><br/></summary>
@@ -748,6 +820,44 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 				else
 				{
 					SetSingleRelatedEntityNavigator(value, "TrgovanjeStavkaCollection", "TrgovanjeGlava", _trgovanjeGlava, true); 
+				}
+			}
+		}
+
+		/// <summary> Gets / sets related entity of type 'TrgovanjeVrstaRoEntity' which has to be set using a fetch action earlier. If no related entity is set for this property, null is returned..<br/><br/></summary>
+		[Browsable(false)]
+		[JsonProperty]
+		public virtual TrgovanjeVrstaRoEntity TrgovanjeVrsta
+		{
+			get	{ return _trgovanjeVrsta; }
+			set
+			{
+				if(this.IsDeserializing)
+				{
+					SetupSyncTrgovanjeVrsta(value);
+				}
+				else
+				{
+					SetSingleRelatedEntityNavigator(value, "TrgovanjeStavkaCollection", "TrgovanjeVrsta", _trgovanjeVrsta, true); 
+				}
+			}
+		}
+
+		/// <summary> Gets / sets related entity of type 'ValutaRoEntity' which has to be set using a fetch action earlier. If no related entity is set for this property, null is returned..<br/><br/></summary>
+		[Browsable(false)]
+		[JsonProperty]
+		public virtual ValutaRoEntity Valuta
+		{
+			get	{ return _valuta; }
+			set
+			{
+				if(this.IsDeserializing)
+				{
+					SetupSyncValuta(value);
+				}
+				else
+				{
+					SetSingleRelatedEntityNavigator(value, "TrgovanjeStavkaCollection", "Valuta", _valuta, true); 
 				}
 			}
 		}

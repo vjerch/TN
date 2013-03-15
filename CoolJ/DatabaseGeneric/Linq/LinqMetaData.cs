@@ -72,12 +72,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					toReturn = this.Error;
 					break;
-				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokEntity:
-					toReturn = this.Rok;
-					break;
-				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokTipRoEntity:
-					toReturn = this.RokTipRo;
-					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					toReturn = this.RoleRo;
 					break;
@@ -87,8 +81,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity:
 					toReturn = this.TrgovanjeStavka;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity:
+					toReturn = this.TrgovanjeVrstaRo;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.UserEntity:
 					toReturn = this.User;
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity:
+					toReturn = this.ValutaRo;
 					break;
 				default:
 					toReturn = null;
@@ -121,18 +121,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 			get { return new DataSource2<ErrorEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
-		/// <summary>returns the datasource to use in a Linq query when targeting RokEntity instances in the database.</summary>
-		public DataSource2<RokEntity> Rok
-		{
-			get { return new DataSource2<RokEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
-		}
-		
-		/// <summary>returns the datasource to use in a Linq query when targeting RokTipRoEntity instances in the database.</summary>
-		public DataSource2<RokTipRoEntity> RokTipRo
-		{
-			get { return new DataSource2<RokTipRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
-		}
-		
 		/// <summary>returns the datasource to use in a Linq query when targeting RoleRoEntity instances in the database.</summary>
 		public DataSource2<RoleRoEntity> RoleRo
 		{
@@ -151,10 +139,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 			get { return new DataSource2<TrgovanjeStavkaEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
+		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeVrstaRoEntity instances in the database.</summary>
+		public DataSource2<TrgovanjeVrstaRoEntity> TrgovanjeVrstaRo
+		{
+			get { return new DataSource2<TrgovanjeVrstaRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
 		/// <summary>returns the datasource to use in a Linq query when targeting UserEntity instances in the database.</summary>
 		public DataSource2<UserEntity> User
 		{
 			get { return new DataSource2<UserEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting ValutaRoEntity instances in the database.</summary>
+		public DataSource2<ValutaRoEntity> ValutaRo
+		{
+			get { return new DataSource2<ValutaRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		

@@ -133,56 +133,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
-	/// <summary>Field Creation Class for entity RokEntity</summary>
-	public partial class RokFields
-	{
-		/// <summary>Creates a new RokEntity.ConcurrencyGuid field instance</summary>
-		public static EntityField2 ConcurrencyGuid
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokFieldIndex.ConcurrencyGuid);}
-		}
-		/// <summary>Creates a new RokEntity.Naziv field instance</summary>
-		public static EntityField2 Naziv
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokFieldIndex.Naziv);}
-		}
-		/// <summary>Creates a new RokEntity.RokId field instance</summary>
-		public static EntityField2 RokId
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokFieldIndex.RokId);}
-		}
-		/// <summary>Creates a new RokEntity.RokTipId field instance</summary>
-		public static EntityField2 RokTipId
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokFieldIndex.RokTipId);}
-		}
-		/// <summary>Creates a new RokEntity.Sifra field instance</summary>
-		public static EntityField2 Sifra
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokFieldIndex.Sifra);}
-		}
-	}
-
-	/// <summary>Field Creation Class for entity RokTipRoEntity</summary>
-	public partial class RokTipRoFields
-	{
-		/// <summary>Creates a new RokTipRoEntity.Code field instance</summary>
-		public static EntityField2 Code
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokTipRoFieldIndex.Code);}
-		}
-		/// <summary>Creates a new RokTipRoEntity.Name field instance</summary>
-		public static EntityField2 Name
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokTipRoFieldIndex.Name);}
-		}
-		/// <summary>Creates a new RokTipRoEntity.RokTipId field instance</summary>
-		public static EntityField2 RokTipId
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(RokTipRoFieldIndex.RokTipId);}
-		}
-	}
-
 	/// <summary>Field Creation Class for entity RoleRoEntity</summary>
 	public partial class RoleRoFields
 	{
@@ -266,11 +216,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.PrometDodatak);}
 		}
-		/// <summary>Creates a new TrgovanjeStavkaEntity.RokId field instance</summary>
-		public static EntityField2 RokId
-		{
-			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.RokId);}
-		}
 		/// <summary>Creates a new TrgovanjeStavkaEntity.TrgovanjeGlavaId field instance</summary>
 		public static EntityField2 TrgovanjeGlavaId
 		{
@@ -280,6 +225,41 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		public static EntityField2 TrgovanjeStavkaId
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.TrgovanjeStavkaId);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaEntity.TrgovanjeVrstaId field instance</summary>
+		public static EntityField2 TrgovanjeVrstaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaEntity.ValutaId field instance</summary>
+		public static EntityField2 ValutaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.ValutaId);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity TrgovanjeVrstaRoEntity</summary>
+	public partial class TrgovanjeVrstaRoFields
+	{
+		/// <summary>Creates a new TrgovanjeVrstaRoEntity.Code field instance</summary>
+		public static EntityField2 Code
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeVrstaRoFieldIndex.Code);}
+		}
+		/// <summary>Creates a new TrgovanjeVrstaRoEntity.Name field instance</summary>
+		public static EntityField2 Name
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeVrstaRoFieldIndex.Name);}
+		}
+		/// <summary>Creates a new TrgovanjeVrstaRoEntity.SifraSlog field instance</summary>
+		public static EntityField2 SifraSlog
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeVrstaRoFieldIndex.SifraSlog);}
+		}
+		/// <summary>Creates a new TrgovanjeVrstaRoEntity.TrgovanjeVrstaId field instance</summary>
+		public static EntityField2 TrgovanjeVrstaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeVrstaRoFieldIndex.TrgovanjeVrstaId);}
 		}
 	}
 
@@ -310,6 +290,31 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		public static EntityField2 Username
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(UserFieldIndex.Username);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity ValutaRoEntity</summary>
+	public partial class ValutaRoFields
+	{
+		/// <summary>Creates a new ValutaRoEntity.Code field instance</summary>
+		public static EntityField2 Code
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ValutaRoFieldIndex.Code);}
+		}
+		/// <summary>Creates a new ValutaRoEntity.Name field instance</summary>
+		public static EntityField2 Name
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ValutaRoFieldIndex.Name);}
+		}
+		/// <summary>Creates a new ValutaRoEntity.SifraSlog field instance</summary>
+		public static EntityField2 SifraSlog
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ValutaRoFieldIndex.SifraSlog);}
+		}
+		/// <summary>Creates a new ValutaRoEntity.ValutaId field instance</summary>
+		public static EntityField2 ValutaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ValutaRoFieldIndex.ValutaId);}
 		}
 	}
 	

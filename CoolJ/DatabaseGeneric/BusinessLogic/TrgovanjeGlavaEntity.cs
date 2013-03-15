@@ -5,11 +5,30 @@ using System.Text;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 using NinjaSoftware.Api.Core;
+using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class TrgovanjeGlavaEntity
     {
+        #region Custom properties
+
+        //private decimal? _ponuda;
+        //public decimal Ponuda 
+        //{
+        //    get
+        //    {
+        //        if (!_ponuda.HasValue)
+        //        { 
+        //            _ponuda =
+        //        }
+        //    }
+        //}
+
+        #endregion
+
+        #region Dynamic methods
+
         /// <summary>
         /// Ne radi rekurzivni save, već briše dane TrgovanjeStavka, pohranjuje TrgovanjeStavka jednu po jednu i na kraju pohranjuje TrgovanjeGlava.
         /// </summary>
@@ -71,6 +90,10 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             base.Delete(adapter);
         }
 
+        #endregion
+
+        #region Public static methods
+
         public static TrgovanjeGlavaEntity LoadTrgovanjeFromSettFile(DataAccessAdapterBase adapter, string filePath, string fileName)
         {
             fileName = fileName.Replace(".txt", "");
@@ -105,26 +128,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 {
                     if (!string.IsNullOrWhiteSpace(line))
                     {
-                        ValidateSettRecord(line);
-
-                        string[] settRecordParts = line.Split('#');
-
-                        RokEntity rok = RokEntity.FetchRok(adapter, settRecordParts[0]);
-
-                        if (null == rok)
-                        {
-                            throw new UserException(string.Format("Rok '{0}' - '{1}' nije unesen.", settRecordParts[0], settRecordParts[1]));
-                        }
-
-                        TrgovanjeStavkaEntity trgovanjeStavka = new TrgovanjeStavkaEntity();
-                        trgovanjeStavka.RokId = rok.RokId;
-                        trgovanjeStavka.Ponuda = decimal.Parse(settRecordParts[2]);
-                        trgovanjeStavka.PonudaDodatak = decimal.Parse(settRecordParts[3]);
-                        trgovanjeStavka.Potraznja = decimal.Parse(settRecordParts[4]);
-                        trgovanjeStavka.PotraznjaDodatak = decimal.Parse(settRecordParts[5]);
-                        trgovanjeStavka.Promet = decimal.Parse(settRecordParts[6]);
-                        trgovanjeStavka.PrometDodatak = decimal.Parse(settRecordParts[7]);
-
+                        TrgovanjeStavkaEntity trgovanjeStavka = CreateTrgovanjeStavkaFromSettRecord(adapter, line);
                         trgovanjeGlava.TrgovanjeStavkaCollection.Add(trgovanjeStavka);
                     }
                 }
@@ -142,6 +146,67 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             trgovanjeGlava.Save(adapter, null, true);
 
             return trgovanjeGlava;
+        }
+
+        #endregion
+
+        #region private static methods
+
+        private static TrgovanjeStavkaEntity CreateTrgovanjeStavkaFromSettRecord(DataAccessAdapterBase adapter, string settRecord)
+        {
+            ValidateSettRecord(settRecord);
+
+            string[] settRecordParts = settRecord.Split('#');
+
+            TrgovanjeStavkaEntity trgovanjeStavka = new TrgovanjeStavkaEntity();
+            trgovanjeStavka.Ponuda = decimal.Parse(settRecordParts[2]);
+            trgovanjeStavka.PonudaDodatak = decimal.Parse(settRecordParts[3]);
+            trgovanjeStavka.Potraznja = decimal.Parse(settRecordParts[4]);
+            trgovanjeStavka.PotraznjaDodatak = decimal.Parse(settRecordParts[5]);
+            trgovanjeStavka.Promet = decimal.Parse(settRecordParts[6]);
+            trgovanjeStavka.PrometDodatak = decimal.Parse(settRecordParts[7]);
+
+            string[] vrstaTrgovanjaValutaParts = settRecordParts[0].Split('-');
+            string trgovanjeVrstaSifraSlog = string.Empty;
+            bool isVrstaTrgovanjaValutaInvalid = false;
+
+            if (vrstaTrgovanjaValutaParts.Length == 1)
+            {
+                trgovanjeStavka.ValutaId = (long)ValutaEnum.Kn;
+                trgovanjeVrstaSifraSlog = vrstaTrgovanjaValutaParts[0].Trim();
+            }
+            else if (vrstaTrgovanjaValutaParts.Length == 2)
+            {
+                ValutaRoEntity valuta = ValutaRoEntity.FetchValutaRo(adapter, vrstaTrgovanjaValutaParts[0].Trim());
+                if (null == valuta)
+                {
+                    isVrstaTrgovanjaValutaInvalid = true;
+                }
+                else
+                {
+                    trgovanjeStavka.ValutaId = valuta.ValutaId;
+                    trgovanjeVrstaSifraSlog = vrstaTrgovanjaValutaParts[1].Trim();
+                }
+            }
+            else
+            {
+                isVrstaTrgovanjaValutaInvalid = true;
+            }
+
+            TrgovanjeVrstaRoEntity trgovanjeVrsta = TrgovanjeVrstaRoEntity.FetchTrgovanjeVrstaRo(adapter, trgovanjeVrstaSifraSlog);
+            if (null == trgovanjeVrsta)
+            {
+                isVrstaTrgovanjaValutaInvalid = true;
+            }
+
+            if (isVrstaTrgovanjaValutaInvalid)
+            {
+                throw new UserException(string.Format("Neispravnja vrsta trgovanja - '{0}'", settRecordParts[0]));
+            }
+
+            trgovanjeStavka.TrgovanjeVrstaId = trgovanjeVrsta.TrgovanjeVrstaId;
+
+            return trgovanjeStavka;
         }
 
         private static void ValidateSettFileName(string[] fileNameParts)
@@ -191,5 +256,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 throw new UserException("Brojčane vrijednosti u datoteci nisu ispravne.");
             }
         }
+
+        #endregion
     }
 }

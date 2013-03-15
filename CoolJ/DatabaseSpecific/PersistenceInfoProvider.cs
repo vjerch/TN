@@ -51,12 +51,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
 			InitErrorEntityMappings();
-			InitRokEntityMappings();
-			InitRokTipRoEntityMappings();
 			InitRoleRoEntityMappings();
 			InitTrgovanjeGlavaEntityMappings();
 			InitTrgovanjeStavkaEntityMappings();
+			InitTrgovanjeVrstaRoEntityMappings();
 			InitUserEntityMappings();
+			InitValutaRoEntityMappings();
 
 		}
 
@@ -101,24 +101,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "ErrorEntity", "ParentErrorId", "ParentErrorId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 4 );
 			this.AddElementFieldMapping( "ErrorEntity", "StackTrace", "StackTrace", true, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 5 );
 		}
-		/// <summary>Inits RokEntity's mappings</summary>
-		private void InitRokEntityMappings()
-		{
-			this.AddElementMapping( "RokEntity", @"TrzisteNovca", @"dbo", "Rok", 5 );
-			this.AddElementFieldMapping( "RokEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
-			this.AddElementFieldMapping( "RokEntity", "Naziv", "Naziv", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
-			this.AddElementFieldMapping( "RokEntity", "RokId", "RokId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
-			this.AddElementFieldMapping( "RokEntity", "RokTipId", "RokTipId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
-			this.AddElementFieldMapping( "RokEntity", "Sifra", "Sifra", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 4 );
-		}
-		/// <summary>Inits RokTipRoEntity's mappings</summary>
-		private void InitRokTipRoEntityMappings()
-		{
-			this.AddElementMapping( "RokTipRoEntity", @"TrzisteNovca", @"dbo", "RokTipRo", 3 );
-			this.AddElementFieldMapping( "RokTipRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 0 );
-			this.AddElementFieldMapping( "RokTipRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
-			this.AddElementFieldMapping( "RokTipRoEntity", "RokTipId", "RokTipId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
-		}
 		/// <summary>Inits RoleRoEntity's mappings</summary>
 		private void InitRoleRoEntityMappings()
 		{
@@ -139,7 +121,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits TrgovanjeStavkaEntity's mappings</summary>
 		private void InitTrgovanjeStavkaEntityMappings()
 		{
-			this.AddElementMapping( "TrgovanjeStavkaEntity", @"TrzisteNovca", @"dbo", "TrgovanjeStavka", 10 );
+			this.AddElementMapping( "TrgovanjeStavkaEntity", @"TrzisteNovca", @"dbo", "TrgovanjeStavka", 11 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "Ponuda", "Ponuda", false, "Decimal", 0, 2, 18, false, "", null, typeof(System.Decimal), 1 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "PonudaDodatak", "PonudaDodatak", false, "Decimal", 0, 4, 10, false, "", null, typeof(System.Decimal), 2 );
@@ -147,9 +129,19 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "PotraznjaDodatak", "PotraznjaDodatak", false, "Decimal", 0, 4, 10, false, "", null, typeof(System.Decimal), 4 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "Promet", "Promet", false, "Decimal", 0, 2, 18, false, "", null, typeof(System.Decimal), 5 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "PrometDodatak", "PrometDodatak", false, "Decimal", 0, 4, 10, false, "", null, typeof(System.Decimal), 6 );
-			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "RokId", "RokId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 7 );
-			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeGlavaId", "TrgovanjeGlavaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 8 );
-			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeStavkaId", "TrgovanjeStavkaId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 9 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeGlavaId", "TrgovanjeGlavaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 7 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeStavkaId", "TrgovanjeStavkaId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 8 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeVrstaId", "TrgovanjeVrstaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 9 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "ValutaId", "ValutaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 10 );
+		}
+		/// <summary>Inits TrgovanjeVrstaRoEntity's mappings</summary>
+		private void InitTrgovanjeVrstaRoEntityMappings()
+		{
+			this.AddElementMapping( "TrgovanjeVrstaRoEntity", @"TrzisteNovca", @"dbo", "TrgovanjeVrstaRo", 4 );
+			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "Name", "Name", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "SifraSlog", "SifraSlog", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 2 );
+			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "TrgovanjeVrstaId", "TrgovanjeVrstaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
 		}
 		/// <summary>Inits UserEntity's mappings</summary>
 		private void InitUserEntityMappings()
@@ -160,6 +152,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "UserEntity", "RoleId", "RoleId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
 			this.AddElementFieldMapping( "UserEntity", "UserId", "UserId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 3 );
 			this.AddElementFieldMapping( "UserEntity", "Username", "Username", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 4 );
+		}
+		/// <summary>Inits ValutaRoEntity's mappings</summary>
+		private void InitValutaRoEntityMappings()
+		{
+			this.AddElementMapping( "ValutaRoEntity", @"TrzisteNovca", @"dbo", "ValutaRo", 4 );
+			this.AddElementFieldMapping( "ValutaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "ValutaRoEntity", "Name", "Name", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "ValutaRoEntity", "SifraSlog", "SifraSlog", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 2 );
+			this.AddElementFieldMapping( "ValutaRoEntity", "ValutaId", "ValutaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
 		}
 
 	}

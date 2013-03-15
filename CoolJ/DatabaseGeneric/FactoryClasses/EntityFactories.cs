@@ -178,46 +178,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
-	/// <summary>Factory to create new, empty RokEntity objects.</summary>
-	[Serializable]
-	public partial class RokEntityFactory : EntityFactoryBase2<RokEntity> {
-		/// <summary>CTor</summary>
-		public RokEntityFactory() : base("RokEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokEntity, false) { }
-		
-		/// <summary>Creates a new RokEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
-		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
-		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
-		public override IEntity2 Create(IEntityFields2 fields) {
-			IEntity2 toReturn = new RokEntity(fields);
-			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewRokUsingFields
-			// __LLBLGENPRO_USER_CODE_REGION_END
-			return toReturn;
-		}
-		#region Included Code
-
-		#endregion
-	}
-
-	/// <summary>Factory to create new, empty RokTipRoEntity objects.</summary>
-	[Serializable]
-	public partial class RokTipRoEntityFactory : EntityFactoryBase2<RokTipRoEntity> {
-		/// <summary>CTor</summary>
-		public RokTipRoEntityFactory() : base("RokTipRoEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokTipRoEntity, false) { }
-		
-		/// <summary>Creates a new RokTipRoEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
-		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
-		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
-		public override IEntity2 Create(IEntityFields2 fields) {
-			IEntity2 toReturn = new RokTipRoEntity(fields);
-			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewRokTipRoUsingFields
-			// __LLBLGENPRO_USER_CODE_REGION_END
-			return toReturn;
-		}
-		#region Included Code
-
-		#endregion
-	}
-
 	/// <summary>Factory to create new, empty RoleRoEntity objects.</summary>
 	[Serializable]
 	public partial class RoleRoEntityFactory : EntityFactoryBase2<RoleRoEntity> {
@@ -278,6 +238,27 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty TrgovanjeVrstaRoEntity objects.</summary>
+	[Serializable]
+	public partial class TrgovanjeVrstaRoEntityFactory : EntityFactoryBase2<TrgovanjeVrstaRoEntity> {
+		/// <summary>CTor</summary>
+		public TrgovanjeVrstaRoEntityFactory() : base("TrgovanjeVrstaRoEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity, false) { }
+		
+		/// <summary>Creates a new TrgovanjeVrstaRoEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new TrgovanjeVrstaRoEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeVrstaRoUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty UserEntity objects.</summary>
 	[Serializable]
 	public partial class UserEntityFactory : EntityFactoryBase2<UserEntity> {
@@ -291,6 +272,27 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new UserEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewUserUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
+	/// <summary>Factory to create new, empty ValutaRoEntity objects.</summary>
+	[Serializable]
+	public partial class ValutaRoEntityFactory : EntityFactoryBase2<ValutaRoEntity> {
+		/// <summary>CTor</summary>
+		public ValutaRoEntityFactory() : base("ValutaRoEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity, false) { }
+		
+		/// <summary>Creates a new ValutaRoEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new ValutaRoEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewValutaRoUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			return toReturn;
 		}
 		#region Included Code
@@ -322,12 +324,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					factoryToUse = new ErrorEntityFactory();
 					break;
-				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokEntity:
-					factoryToUse = new RokEntityFactory();
-					break;
-				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RokTipRoEntity:
-					factoryToUse = new RokTipRoEntityFactory();
-					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					factoryToUse = new RoleRoEntityFactory();
 					break;
@@ -337,8 +333,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity:
 					factoryToUse = new TrgovanjeStavkaEntityFactory();
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity:
+					factoryToUse = new TrgovanjeVrstaRoEntityFactory();
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.UserEntity:
 					factoryToUse = new UserEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity:
+					factoryToUse = new ValutaRoEntityFactory();
 					break;
 			}
 			IEntity2 toReturn = null;

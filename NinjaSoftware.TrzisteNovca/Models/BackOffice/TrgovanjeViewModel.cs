@@ -22,8 +22,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
             if (trgovanjeGlavaId.HasValue && trgovanjeGlavaId.Value > 0)
             {
                 PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
-                prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection).
-                    SubPath.Add(TrgovanjeStavkaEntity.PrefetchPathRok);
+                IPrefetchPathElement2 trgovanjeStavkaPrefetchElement = prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection);
+                trgovanjeStavkaPrefetchElement.SubPath.Add(TrgovanjeStavkaEntity.PrefetchPathTrgovanjeVrsta);
+                trgovanjeStavkaPrefetchElement.SubPath.Add(TrgovanjeStavkaEntity.PrefetchPathValuta);
 
                 this.TrgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlava(adapter, prefetchPath, trgovanjeGlavaId.Value);
                 this.TrgovanjeStavkaCollection = this.TrgovanjeGlava.TrgovanjeStavkaCollection;
@@ -43,7 +44,8 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
 
         public void LoadViewSpecificData(DataAccessAdapterBase adapter)
         {
-            this.RokCollection = RokEntity.FetchRokCollection(adapter, null, null).OrderBy(rok => rok.Naziv);
+            this.TrgovanjeVrstaCollection = TrgovanjeVrstaRoEntity.FetchTrgovanjeVrstaRoCollection(adapter, null, null).OrderBy(t => t.Name);
+            this.ValutaCollection = ValutaRoEntity.FetchValutaRoCollection(adapter, null, null).OrderBy(v => v.Name);
         }
 
         public void Save(DataAccessAdapterBase adapter)
@@ -77,8 +79,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
 
         public TrgovanjeGlavaEntity TrgovanjeGlava { get; set; }
         public IEnumerable<TrgovanjeStavkaEntity> TrgovanjeStavkaCollection { get; set; }
-        public IEnumerable<RokEntity> RokCollection { get; set; }
         public List<TrgovanjeStavkaEntity> TrgovanjeStavkaCollectionToDelete { get; set; }
+        public IEnumerable<TrgovanjeVrstaRoEntity> TrgovanjeVrstaCollection { get; set; }
+        public IEnumerable<ValutaRoEntity> ValutaCollection { get; set; }
 
         #endregion
     }

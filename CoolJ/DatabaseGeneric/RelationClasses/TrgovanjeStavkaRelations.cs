@@ -29,8 +29,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 		public virtual List<IEntityRelation> GetAllRelations()
 		{
 			List<IEntityRelation> toReturn = new List<IEntityRelation>();
-			toReturn.Add(this.RokEntityUsingRokId);
 			toReturn.Add(this.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
+			toReturn.Add(this.TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaId);
+			toReturn.Add(this.ValutaRoEntityUsingValutaId);
 			return toReturn;
 		}
 
@@ -38,20 +39,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 
 
 
-		/// <summary>Returns a new IEntityRelation object, between TrgovanjeStavkaEntity and RokEntity over the m:1 relation they have, using the relation between the fields:
-		/// TrgovanjeStavka.RokId - Rok.RokId
-		/// </summary>
-		public virtual IEntityRelation RokEntityUsingRokId
-		{
-			get
-			{
-				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne, "Rok", false);
-				relation.AddEntityFieldPair(RokFields.RokId, TrgovanjeStavkaFields.RokId);
-				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("RokEntity", false);
-				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeStavkaEntity", true);
-				return relation;
-			}
-		}
 		/// <summary>Returns a new IEntityRelation object, between TrgovanjeStavkaEntity and TrgovanjeGlavaEntity over the m:1 relation they have, using the relation between the fields:
 		/// TrgovanjeStavka.TrgovanjeGlavaId - TrgovanjeGlava.TrgovanjeGlavaId
 		/// </summary>
@@ -62,6 +49,34 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne, "TrgovanjeGlava", false);
 				relation.AddEntityFieldPair(TrgovanjeGlavaFields.TrgovanjeGlavaId, TrgovanjeStavkaFields.TrgovanjeGlavaId);
 				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeGlavaEntity", false);
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeStavkaEntity", true);
+				return relation;
+			}
+		}
+		/// <summary>Returns a new IEntityRelation object, between TrgovanjeStavkaEntity and TrgovanjeVrstaRoEntity over the m:1 relation they have, using the relation between the fields:
+		/// TrgovanjeStavka.TrgovanjeVrstaId - TrgovanjeVrstaRo.TrgovanjeVrstaId
+		/// </summary>
+		public virtual IEntityRelation TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaId
+		{
+			get
+			{
+				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne, "TrgovanjeVrsta", false);
+				relation.AddEntityFieldPair(TrgovanjeVrstaRoFields.TrgovanjeVrstaId, TrgovanjeStavkaFields.TrgovanjeVrstaId);
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeVrstaRoEntity", false);
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeStavkaEntity", true);
+				return relation;
+			}
+		}
+		/// <summary>Returns a new IEntityRelation object, between TrgovanjeStavkaEntity and ValutaRoEntity over the m:1 relation they have, using the relation between the fields:
+		/// TrgovanjeStavka.ValutaId - ValutaRo.ValutaId
+		/// </summary>
+		public virtual IEntityRelation ValutaRoEntityUsingValutaId
+		{
+			get
+			{
+				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.ManyToOne, "Valuta", false);
+				relation.AddEntityFieldPair(ValutaRoFields.ValutaId, TrgovanjeStavkaFields.ValutaId);
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("ValutaRoEntity", false);
 				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeStavkaEntity", true);
 				return relation;
 			}
@@ -80,8 +95,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 	/// <summary>Static class which is used for providing relationship instances which are re-used internally for syncing</summary>
 	internal static class StaticTrgovanjeStavkaRelations
 	{
-		internal static readonly IEntityRelation RokEntityUsingRokIdStatic = new TrgovanjeStavkaRelations().RokEntityUsingRokId;
 		internal static readonly IEntityRelation TrgovanjeGlavaEntityUsingTrgovanjeGlavaIdStatic = new TrgovanjeStavkaRelations().TrgovanjeGlavaEntityUsingTrgovanjeGlavaId;
+		internal static readonly IEntityRelation TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaIdStatic = new TrgovanjeStavkaRelations().TrgovanjeVrstaRoEntityUsingTrgovanjeVrstaId;
+		internal static readonly IEntityRelation ValutaRoEntityUsingValutaIdStatic = new TrgovanjeStavkaRelations().ValutaRoEntityUsingValutaId;
 
 		/// <summary>CTor</summary>
 		static StaticTrgovanjeStavkaRelations()

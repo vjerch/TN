@@ -29,8 +29,12 @@ var TrgovanjeStavka = function (spec) {
         self.PrometDodatak = spec.PrometDodatak;
     }
 
-    if (undefined !== spec.RokId) {
-        self.RokId = spec.RokId;
+    if (undefined !== spec.TrgovanjeVrstaId) {
+        self.TrgovanjeVrstaId = spec.TrgovanjeVrstaId;
+    }
+
+    if (undefined !== spec.ValutaId) {
+        self.ValutaId = spec.ValutaId;
     }
 
     if (undefined !== spec.TrgovanjeGlavaId) {

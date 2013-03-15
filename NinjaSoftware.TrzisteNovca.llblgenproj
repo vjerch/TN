@@ -67,14 +67,17 @@
   <CodeGenerationCyclePreferences>
     <OutputType Value="2">
       <LastUsedPreferences>
-        <DestinationRootFolder Value="" />
+        <DestinationRootFolder Value="G:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\DbScripts\Custom" />
         <FrameworkName Value="DDL SQL" />
         <LanguageName Value="SQL" />
         <PlatformName Value="RDBMS" />
-        <PresetName Value="" />
+        <PresetName Value="SD.Presets.DDLSQL.UpdateScript" />
         <RootNamespace Value="" />
         <TemplateGroup Value="Update DDL SQL" />
-        <TemplateBindings />
+        <TemplateBindings>
+          <Binding Name="SD.TemplateBindings.SqlServerSpecific.DDLSQL" />
+          <Binding Name="SD.TemplateBindings.SharedTemplates.DDLSQL" />
+        </TemplateBindings>
       </LastUsedPreferences>
     </OutputType>
     <OutputType Value="1">
@@ -159,22 +162,6 @@
           <Field Name="StackTrace" Type="string" IsOptional="true" />
         </Fields>
       </EntityDefinition>
-      <EntityDefinition Name="Rok">
-        <Fields>
-          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
-          <Field Name="Naziv" Type="string" MaxLength="50" />
-          <Field Name="RokId" Type="long" IsPrimaryKey="true" />
-          <Field Name="RokTipId" Type="long" />
-          <Field Name="Sifra" Type="string" MaxLength="50" />
-        </Fields>
-      </EntityDefinition>
-      <EntityDefinition Name="RokTipRo">
-        <Fields>
-          <Field Name="Code" Type="string" MaxLength="128" />
-          <Field Name="Name" Type="string" MaxLength="256" />
-          <Field Name="RokTipId" Type="long" IsPrimaryKey="true" />
-        </Fields>
-      </EntityDefinition>
       <EntityDefinition Name="RoleRo">
         <Fields>
           <Field Name="Code" Type="string" MaxLength="128" />
@@ -199,9 +186,18 @@
           <Field Name="PotraznjaDodatak" Type="decimal" Precision="10" Scale="4" />
           <Field Name="Promet" Type="decimal" Precision="18" Scale="2" />
           <Field Name="PrometDodatak" Type="decimal" Precision="10" Scale="4" />
-          <Field Name="RokId" Type="long" />
           <Field Name="TrgovanjeGlavaId" Type="long" />
           <Field Name="TrgovanjeStavkaId" Type="long" IsPrimaryKey="true" />
+          <Field Name="TrgovanjeVrstaId" Type="long" />
+          <Field Name="ValutaId" Type="long" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TrgovanjeVrstaRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="50" />
+          <Field Name="Name" Type="string" MaxLength="50" />
+          <Field Name="SifraSlog" Type="string" MaxLength="50" />
+          <Field Name="TrgovanjeVrstaId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="User">
@@ -211,6 +207,14 @@
           <Field Name="RoleId" Type="long" />
           <Field Name="UserId" Type="long" IsPrimaryKey="true" />
           <Field Name="Username" Type="string" MaxLength="50" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="ValutaRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="50" />
+          <Field Name="Name" Type="string" MaxLength="50" />
+          <Field Name="SifraSlog" Type="string" MaxLength="50" />
+          <Field Name="ValutaId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
     </EntityDefinitions>
@@ -235,19 +239,19 @@
           <FieldFieldRelationship FkField="ParentErrorId" PkField="ErrorId" />
         </FieldRelationships>
       </NormalRelationship>
-      <NormalRelationship Name="Rok.RokTip-RokTipRo.RokCollection" Start=":Rok" End=":RokTipRo" StartNavigator="RokTip" EndNavigator="RokCollection" Type="4">
-        <FieldRelationships>
-          <FieldFieldRelationship FkField="RokTipId" PkField="RokTipId" />
-        </FieldRelationships>
-      </NormalRelationship>
-      <NormalRelationship Name="TrgovanjeStavka.Rok-Rok.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":Rok" StartNavigator="Rok" EndNavigator="TrgovanjeStavkaCollection" Type="4">
-        <FieldRelationships>
-          <FieldFieldRelationship FkField="RokId" PkField="RokId" />
-        </FieldRelationships>
-      </NormalRelationship>
       <NormalRelationship Name="TrgovanjeStavka.TrgovanjeGlava-TrgovanjeGlava.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":TrgovanjeGlava" StartNavigator="TrgovanjeGlava" EndNavigator="TrgovanjeStavkaCollection" Type="4">
         <FieldRelationships>
           <FieldFieldRelationship FkField="TrgovanjeGlavaId" PkField="TrgovanjeGlavaId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavka.TrgovanjeVrsta-TrgovanjeVrstaRo.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":TrgovanjeVrstaRo" StartNavigator="TrgovanjeVrsta" EndNavigator="TrgovanjeStavkaCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TrgovanjeVrstaId" PkField="TrgovanjeVrstaId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavka.Valuta-ValutaRo.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":ValutaRo" StartNavigator="Valuta" EndNavigator="TrgovanjeStavkaCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="ValutaId" PkField="ValutaId" />
         </FieldRelationships>
       </NormalRelationship>
       <NormalRelationship Name="User.Role-RoleRo.UserCollection" Start=":User" End=":RoleRo" StartNavigator="Role" EndNavigator="UserCollection" Type="4">
@@ -268,7 +272,7 @@
         <Sequence Name="@@IDENTITY" />
       </SystemSequences>
       <Catalogs>
-        <Catalog Name="TrzisteNovca" OriginalNameValue="NinjaSoftwareTrzisteNovca" TrackedChanges="1">
+        <Catalog Name="TrzisteNovca">
           <Schemas>
             <Schema Name="dbo">
               <Tables>
@@ -308,22 +312,6 @@
                     <Field Name="StackTrace" Ordinal="6" IsOptional="true" DbType="12" Length="2147483647" />
                   </Fields>
                 </Table>
-                <Table Name="Rok">
-                  <Fields>
-                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
-                    <Field Name="Naziv" Ordinal="2" DbType="12" Length="50" />
-                    <Field Name="RokId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_ed3032145d7ae45e490ba4237cc" DbType="0" Precision="19" />
-                    <Field Name="RokTipId" Ordinal="4" DbType="0" Precision="19" />
-                    <Field Name="Sifra" Ordinal="5" DbType="12" Length="50" />
-                  </Fields>
-                </Table>
-                <Table Name="RokTipRo">
-                  <Fields>
-                    <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
-                    <Field Name="Name" Ordinal="2" DbType="12" Length="256" />
-                    <Field Name="RokTipId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_9fb98c240df8f0aa09ec4ceaa3b" DbType="0" Precision="19" />
-                  </Fields>
-                </Table>
                 <Table Name="RoleRo">
                   <Fields>
                     <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
@@ -348,9 +336,18 @@
                     <Field Name="PotraznjaDodatak" Ordinal="5" DbType="5" Precision="10" Scale="4" />
                     <Field Name="Promet" Ordinal="6" DbType="5" Precision="18" Scale="2" />
                     <Field Name="PrometDodatak" Ordinal="7" DbType="5" Precision="10" Scale="4" />
-                    <Field Name="RokId" Ordinal="8" DbType="0" Precision="19" />
                     <Field Name="TrgovanjeGlavaId" Ordinal="9" DbType="0" Precision="19" />
                     <Field Name="TrgovanjeStavkaId" Ordinal="10" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_b48c25d42bbbd667ce3f02e792c" DbType="0" Precision="19" />
+                    <Field Name="TrgovanjeVrstaId" Ordinal="11" DbType="0" Precision="19" />
+                    <Field Name="ValutaId" Ordinal="12" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="TrgovanjeVrstaRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Name" Ordinal="2" DbType="12" Length="50" />
+                    <Field Name="SifraSlog" Ordinal="3" DbType="12" Length="50" />
+                    <Field Name="TrgovanjeVrstaId" Ordinal="4" IsPrimaryKey="true" PkConstraintName="PK_3cca2ad49d385ff03e172ae6088" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
                 <Table Name="User">
@@ -360,6 +357,14 @@
                     <Field Name="RoleId" Ordinal="3" DbType="0" Precision="19" />
                     <Field Name="UserId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_24218b24e158ab08eb275b53ab2" DbType="0" Precision="19" />
                     <Field Name="Username" Ordinal="5" DbType="12" Length="50" />
+                  </Fields>
+                </Table>
+                <Table Name="ValutaRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Name" Ordinal="2" DbType="12" Length="50" />
+                    <Field Name="SifraSlog" Ordinal="3" DbType="12" Length="50" />
+                    <Field Name="ValutaId" Ordinal="4" IsPrimaryKey="true" PkConstraintName="PK_11cce9f433e95c5a2f16f294f4f" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
               </Tables>
@@ -386,19 +391,19 @@
                 <FieldPair PkField="dbo:Error:ErrorId" FkField="dbo:Error:ParentErrorId" />
               </FieldPairs>
             </ForeignKeyConstraint>
-            <ForeignKeyConstraint Name="dbo:Rok:FK_fcddd17480fa6aeed58816a30e9">
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_19da4ca4001a005135d8dfe21a6">
               <FieldPairs>
-                <FieldPair PkField="dbo:RokTipRo:RokTipId" FkField="dbo:Rok:RokTipId" />
-              </FieldPairs>
-            </ForeignKeyConstraint>
-            <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_2bce43e4429a1dd42d60a67a59c">
-              <FieldPairs>
-                <FieldPair PkField="dbo:Rok:RokId" FkField="dbo:TrgovanjeStavka:RokId" />
+                <FieldPair PkField="dbo:ValutaRo:ValutaId" FkField="dbo:TrgovanjeStavka:ValutaId" />
               </FieldPairs>
             </ForeignKeyConstraint>
             <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_5baa8394c8c809c80f23bdb291e">
               <FieldPairs>
                 <FieldPair PkField="dbo:TrgovanjeGlava:TrgovanjeGlavaId" FkField="dbo:TrgovanjeStavka:TrgovanjeGlavaId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavka:FK_7b4eb684576806c575613e1514c">
+              <FieldPairs>
+                <FieldPair PkField="dbo:TrgovanjeVrstaRo:TrgovanjeVrstaId" FkField="dbo:TrgovanjeStavka:TrgovanjeVrstaId" />
               </FieldPairs>
             </ForeignKeyConstraint>
             <ForeignKeyConstraint Name="dbo:User:FK_a36527a479ea6a74d40fc5b5244">
@@ -450,22 +455,6 @@
             <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":Rok" TargetName="TrzisteNovca:dbo:Rok">
-          <FieldMappings>
-            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
-            <FieldMapping FieldName="Naziv" TargetFieldName="Naziv" />
-            <FieldMapping FieldName="RokId" TargetFieldName="RokId" SequenceToUse="SCOPE_IDENTITY()" />
-            <FieldMapping FieldName="RokTipId" TargetFieldName="RokTipId" />
-            <FieldMapping FieldName="Sifra" TargetFieldName="Sifra" />
-          </FieldMappings>
-        </EntityMapping>
-        <EntityMapping EntityName=":RokTipRo" TargetName="TrzisteNovca:dbo:RokTipRo">
-          <FieldMappings>
-            <FieldMapping FieldName="Code" TargetFieldName="Code" />
-            <FieldMapping FieldName="Name" TargetFieldName="Name" />
-            <FieldMapping FieldName="RokTipId" TargetFieldName="RokTipId" />
-          </FieldMappings>
-        </EntityMapping>
         <EntityMapping EntityName=":RoleRo" TargetName="TrzisteNovca:dbo:RoleRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
@@ -490,9 +479,18 @@
             <FieldMapping FieldName="PotraznjaDodatak" TargetFieldName="PotraznjaDodatak" />
             <FieldMapping FieldName="Promet" TargetFieldName="Promet" />
             <FieldMapping FieldName="PrometDodatak" TargetFieldName="PrometDodatak" />
-            <FieldMapping FieldName="RokId" TargetFieldName="RokId" />
             <FieldMapping FieldName="TrgovanjeGlavaId" TargetFieldName="TrgovanjeGlavaId" />
             <FieldMapping FieldName="TrgovanjeStavkaId" TargetFieldName="TrgovanjeStavkaId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="TrgovanjeVrstaId" TargetFieldName="TrgovanjeVrstaId" />
+            <FieldMapping FieldName="ValutaId" TargetFieldName="ValutaId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TrgovanjeVrstaRo" TargetName="TrzisteNovca:dbo:TrgovanjeVrstaRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+            <FieldMapping FieldName="SifraSlog" TargetFieldName="SifraSlog" />
+            <FieldMapping FieldName="TrgovanjeVrstaId" TargetFieldName="TrgovanjeVrstaId" />
           </FieldMappings>
         </EntityMapping>
         <EntityMapping EntityName=":User" TargetName="TrzisteNovca:dbo:User">
@@ -502,6 +500,14 @@
             <FieldMapping FieldName="RoleId" TargetFieldName="RoleId" />
             <FieldMapping FieldName="UserId" TargetFieldName="UserId" SequenceToUse="SCOPE_IDENTITY()" />
             <FieldMapping FieldName="Username" TargetFieldName="Username" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":ValutaRo" TargetName="TrzisteNovca:dbo:ValutaRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+            <FieldMapping FieldName="SifraSlog" TargetFieldName="SifraSlog" />
+            <FieldMapping FieldName="ValutaId" TargetFieldName="ValutaId" />
           </FieldMappings>
         </EntityMapping>
       </EntityMappings>
