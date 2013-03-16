@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using NinjaSoftware.TrzisteNovca.Models.Home;
+using SD.LLBLGen.Pro.ORMSupportClasses;
+using NinjaSoftware.TrzisteNovca.Models;
+using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Controllers
 {
@@ -12,11 +14,25 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ActionResult Index(DateTime? date)
         {
-            IndexViewModel viewModel = new IndexViewModel(DateTime.Now);
-            return View(viewModel);
+            return RedirectToAction("TrgovanjeDan");
         }
 
+        public ActionResult TrgovanjeDan(DateTime? date)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                if (!date.HasValue)
+                {
+                    date = DateTime.Now.Date;
+                }
+
+                TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaForGuiDisplay(adapter, date.Value);
+
+                return View(trgovanjeGlava);
+            }       
+        }
     }
 }

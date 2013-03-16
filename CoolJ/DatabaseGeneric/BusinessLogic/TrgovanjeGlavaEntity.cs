@@ -14,8 +14,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
     {
         #region Custom properties
 
-        public TrgovanjeGlavaEntity _trgovanjeGlavaPrethodniDan;
-        
+        private TrgovanjeGlavaEntity _trgovanjeGlavaPrethodniDan;
+        public TrgovanjeGlavaEntity TrgovanjeGlavaPrethodniDan 
+        {
+            get
+            {
+                return _trgovanjeGlavaPrethodniDan;
+            }
+        }
+
         private decimal? _ponuda;
         public decimal Ponuda
         {
@@ -63,9 +70,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
             get
             {
-                if (!_ponudaPromjenaPosto.HasValue && null != _trgovanjeGlavaPrethodniDan)
+                if (!_ponudaPromjenaPosto.HasValue && 
+                    null != this.TrgovanjeGlavaPrethodniDan &&
+                    0 != this.TrgovanjeGlavaPrethodniDan.Promet)
                 {
-                    _ponudaPromjenaPosto = (1 - this.Promet / _trgovanjeGlavaPrethodniDan.Promet) * 100;
+                    _ponudaPromjenaPosto = (this.Ponuda /this.TrgovanjeGlavaPrethodniDan.Ponuda - 1) * 100;
                 }
 
                 return _ponudaPromjenaPosto;
@@ -77,9 +86,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
             get
             {
-                if (!_potraznjaPromjenaPosto.HasValue && null != _trgovanjeGlavaPrethodniDan)
+                if (!_potraznjaPromjenaPosto.HasValue && 
+                    null != this.TrgovanjeGlavaPrethodniDan &&
+                    0 != this.TrgovanjeGlavaPrethodniDan.Promet)
                 {
-                    _potraznjaPromjenaPosto = (1 - this.Promet / _trgovanjeGlavaPrethodniDan.Promet) * 100;
+                    _potraznjaPromjenaPosto = (this.Potraznja / this.TrgovanjeGlavaPrethodniDan.Potraznja - 1) * 100;
                 }
 
                 return _potraznjaPromjenaPosto;
@@ -156,10 +167,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             RelationPredicateBucket bucket = new RelationPredicateBucket();
             bucket.PredicateExpression.Add(TrgovanjeGlavaFields.Datum < this.Datum);
 
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
+            prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection);
+
             SortExpression sort = new SortExpression(TrgovanjeGlavaFields.Datum | SortOperator.Descending);
 
             EntityCollection<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = new EntityCollection<TrgovanjeGlavaEntity>(new TrgovanjeGlavaEntityFactory());
-            adapter.FetchEntityCollection(trgovanjeGlavaCollection, bucket, 1, sort);
+            adapter.FetchEntityCollection(trgovanjeGlavaCollection, bucket, 1, sort, prefetchPath);
 
             _trgovanjeGlavaPrethodniDan = trgovanjeGlavaCollection.SingleOrDefault();
         }
@@ -167,6 +181,38 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         #endregion
 
         #region Public static methods
+
+        public static TrgovanjeGlavaEntity FetchTrgovanjeGlavaForGuiDisplay(DataAccessAdapterBase adapter, DateTime date)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(TrgovanjeGlavaFields.Datum <= date.Date);
+
+            SortExpression sort = new SortExpression(TrgovanjeGlavaFields.Datum | SortOperator.Descending);
+
+            EntityCollection<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = new EntityCollection<TrgovanjeGlavaEntity>(new TrgovanjeGlavaEntityFactory());
+            adapter.FetchEntityCollection(trgovanjeGlavaCollection, bucket, 1, sort);
+
+            if (0 == trgovanjeGlavaCollection.Count)
+            {
+                sort = new SortExpression(TrgovanjeGlavaFields.Datum | SortOperator.Ascending);
+                adapter.FetchEntityCollection(trgovanjeGlavaCollection, null, 1, sort);
+            }
+
+            return FetchTrgovanjeGlavaForGuiDisplay(adapter, trgovanjeGlavaCollection.Single().TrgovanjeGlavaId);
+        }
+
+        public static TrgovanjeGlavaEntity FetchTrgovanjeGlavaForGuiDisplay(DataAccessAdapterBase adapter, long trgovanjeGlavaId)
+        { 
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
+            IPrefetchPathElement2 trgovanjeStavkaPrefetchElement = prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection);
+            trgovanjeStavkaPrefetchElement.SubPath.Add(TrgovanjeStavkaEntity.PrefetchPathValuta);
+            trgovanjeStavkaPrefetchElement.SubPath.Add(TrgovanjeStavkaEntity.PrefetchPathTrgovanjeVrsta);
+
+            TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlava(adapter, prefetchPath, trgovanjeGlavaId);
+            trgovanjeGlava.LoadTrgovanjeGlavaPrethodniDan(adapter);
+
+            return trgovanjeGlava;
+        }
 
         public static TrgovanjeGlavaEntity LoadTrgovanjeFromSettFile(DataAccessAdapterBase adapter, string filePath, string fileName)
         {

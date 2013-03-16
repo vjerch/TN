@@ -248,6 +248,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		
 		
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomDataAccessAdapterCode
+
+        //protected override void OnFetchEntityCollection(IRetrievalQuery selectQuery, IEntityCollection2 entityCollectionToFetch)
+        //{
+        //    base.OnFetchEntityCollection(selectQuery, entityCollectionToFetch);
+        //}
+
 		// __LLBLGENPRO_USER_CODE_REGION_END
 		#endregion
 		

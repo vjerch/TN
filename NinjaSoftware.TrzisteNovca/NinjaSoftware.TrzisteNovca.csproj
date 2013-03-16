@@ -134,8 +134,8 @@
     <Compile Include="Models\BackOffice\PagerBase.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
+    <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper.cs" />
-    <Compile Include="Models\Home\IndexViewModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\NsMembershipProvider.cs" />
     <Compile Include="Models\NsRoleProvider.cs" />
@@ -381,12 +381,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\TrgovanjeDan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoolJ\NinjaSoftware.TrzisteNovca.CoolJ.csproj">

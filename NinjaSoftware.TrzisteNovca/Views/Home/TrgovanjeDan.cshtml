@@ -1,0 +1,68 @@
+﻿@model NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity
+@using NinjaSoftware.TrzisteNovca.Models
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+@{
+    ViewBag.Title = "Index";
+
+    string ponudaPromjenaPosto = Model.PonudaPromjenaPosto.HasValue ? Model.PonudaPromjenaPosto.Value.ToString("N2") : "-";
+    string potraznjaPromjenaPosto = Model.PotraznjaPromjenaPosto.HasValue ? Model.PotraznjaPromjenaPosto.Value.ToString("N2") : "-";
+}
+
+<h3>Trgovanje u kunama</h3>
+
+<table>
+    <tr>
+        <th>Ponuda u mil. kn</th>
+        <th>Promjena u %</th>
+        <th>Potražnja u mil. kn</th>
+        <th>Promjena u %</th>
+    </tr>
+    <tr>
+        <td>@Model.Ponuda.ToStringInMilions()</td>        
+        <td>@ponudaPromjenaPosto</td>
+        <td>@Model.Potraznja.ToStringInMilions()</td>
+        <td>@potraznjaPromjenaPosto</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Promet</th>
+        <th>u mil. kn</th>
+        <th>promjena u %</th>
+        <th>kamatna stopa u %</th>
+        <th>promjena u %</th>
+    </tr>
+    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
+    {
+        string prometPromjenaPosto = trgovanjeStavka.PrometPromjenaPosto.HasValue ? trgovanjeStavka.PrometPromjenaPosto.Value.ToString("N2") : "-";
+        string prometDodatakPromjenaPosto =
+            trgovanjeStavka.PrometDodatakPromjenaPosto.HasValue ? trgovanjeStavka.PrometDodatakPromjenaPosto.Value.ToString("N2") : "-";
+    <tr>
+        <td>@trgovanjeStavka.TrgovanjeVrsta.Name</td>
+        <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
+        <td>@prometPromjenaPosto</td>
+        <td>@trgovanjeStavka.PrometDodatak</td>
+        <td>@prometDodatakPromjenaPosto</td>
+    </tr>
+    }
+</table>
+
+<h3>Pozajmice deviza</h3>
+<table>
+    <tr>
+        <th>Valuta</th>
+        <th>Promet u mil.</th>
+        <th>Kamatna stopa u %</th>
+    </tr>
+    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn))
+    { 
+    <tr>
+        <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)</td>
+        <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
+        <td>@trgovanjeStavka.PrometDodatak</td>
+    </tr>
+    }
+</table>
