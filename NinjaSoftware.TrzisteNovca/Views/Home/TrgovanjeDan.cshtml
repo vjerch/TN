@@ -44,25 +44,45 @@
         <td>@trgovanjeStavka.TrgovanjeVrsta.Name</td>
         <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
         <td>@prometPromjenaPosto</td>
-        <td>@trgovanjeStavka.PrometDodatak</td>
+        <td>@trgovanjeStavka.PrometDodatak.ToString("N2")</td>
         <td>@prometDodatakPromjenaPosto</td>
     </tr>
     }
+    <tr>
+        @{
+            string ukupnoPrometPromjenaPosto = Model.PrometPromjenaPosto.HasValue ? Model.PrometPromjenaPosto.Value.ToString("N2") : "-";
+            string ukupnoPrometKamatnaStopaPosto = Model.PrometKamatnaStopaPosto.HasValue ? Model.PrometKamatnaStopaPosto.Value.ToString("N2") : "-";
+            string ukupnoPrometKamatnaStopaPromjenaPosto =
+                Model.PrometKamatnaStopaPromjenaPosto.HasValue ? Model.PrometKamatnaStopaPromjenaPosto.Value.ToString("N2") : "-";
+        }
+        <td>Ukupno:</td>
+        <td>@Model.Promet.ToStringInMilions()</td>
+        <td>@ukupnoPrometPromjenaPosto</td>
+        <td>@ukupnoPrometKamatnaStopaPosto</td>
+        <td>@ukupnoPrometKamatnaStopaPromjenaPosto</td>
+    </tr>
 </table>
 
-<h3>Pozajmice deviza</h3>
-<table>
-    <tr>
-        <th>Valuta</th>
-        <th>Promet u mil.</th>
-        <th>Kamatna stopa u %</th>
-    </tr>
-    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn))
-    { 
-    <tr>
-        <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)</td>
-        <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
-        <td>@trgovanjeStavka.PrometDodatak</td>
-    </tr>
+@{
+    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
     }
-</table>
+
+@if (devizeTrgovanjeStavkaCollection.Count() > 0)
+{
+    <h3>Pozajmice deviza</h3>
+    <table>
+        <tr>
+            <th>Valuta</th>
+            <th>Promet u mil.</th>
+            <th>Kamatna stopa u %</th>
+        </tr>
+        @foreach (TrgovanjeStavkaEntity trgovanjeStavka in devizeTrgovanjeStavkaCollection)
+        { 
+        <tr>
+            <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)</td>
+            <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
+            <td>@trgovanjeStavka.PrometDodatak.ToString("N2")</td>
+        </tr>
+        }
+    </table>
+}

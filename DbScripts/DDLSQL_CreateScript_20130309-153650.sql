@@ -69,14 +69,14 @@ GO
 -- Catalog 'NinjaSoftwareTrzisteNovca'
 -- ----------------------------------------------------------------------------------------------------------------
 
-USE master
-GO
-CREATE DATABASE [NinjaSoftwareTrzisteNovca] /* ON PRIMARY (NAME=NinjaSoftwareTrzisteNovca_dat, FILENAME='c:\mycatalogs\NinjaSoftwareTrzisteNovca.mdf', SIZE=10MB) */
-GO
+--USE master
+--GO
+--CREATE DATABASE [NinjaSoftwareTrzisteNovca] /* ON PRIMARY (NAME=NinjaSoftwareTrzisteNovca_dat, FILENAME='c:\mycatalogs\NinjaSoftwareTrzisteNovca.mdf', SIZE=10MB) */
+--GO
 
 
-USE [NinjaSoftwareTrzisteNovca]
-GO
+--USE [NinjaSoftwareTrzisteNovca]
+--GO
 -- ----------------------------------------------------------------------------------------------------------------
 -- Schema 'dbo'
 -- ----------------------------------------------------------------------------------------------------------------
@@ -190,8 +190,8 @@ GO
 -- Catalog 'NinjaSoftwareTrzisteNovca'
 -- ----------------------------------------------------------------------------------------------------------------
 
-USE [NinjaSoftwareTrzisteNovca]
-GO
+--USE [NinjaSoftwareTrzisteNovca]
+--GO
 -- ----------------------------------------------------------------------------------------------------------------
 -- Primary Key constraints for schema 'dbo'
 -- ----------------------------------------------------------------------------------------------------------------
