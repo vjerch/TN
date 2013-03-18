@@ -3,12 +3,40 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
+@Scripts.Render("/bundles/globalize")
+
 @{
     ViewBag.Title = "Index";
 
     string ponudaPromjenaPosto = Model.PonudaPromjenaPosto.HasValue ? Model.PonudaPromjenaPosto.Value.ToString("N2") : "-";
     string potraznjaPromjenaPosto = Model.PotraznjaPromjenaPosto.HasValue ? Model.PotraznjaPromjenaPosto.Value.ToString("N2") : "-";
+
+    string danTrgovanja = string.Format("{0} ({1})", Model.Datum.ToShortDateString(), Model.Datum.ToString("dddd"));
+    string currentYear = DateTime.Now.Year.ToString();
 }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Globalize.culture("hr");
+
+        $("#inputDatum").datepicker({
+            yearRange: "2000:@currentYear",
+            changeMonth: true,
+            changeYear: true,
+            onSelect: function (dateText) {
+                var datum = Globalize.parseDate(this.value);
+                var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
+
+                window.location.href = '@Url.Action("TrgovanjeDan")' + "?date=" + linkParameter;
+            }
+        });
+    });
+</script>
+
+<h2>Trgovanje na dan @danTrgovanja</h2>
+
+Promjena datuma:
+@Html.TextBox("inputDatum", Model.Datum.ToShortDateString(), new { id = "inputDatum"})
 
 <h3>Trgovanje u kunama</h3>
 
@@ -86,3 +114,10 @@
         }
     </table>
 }
+
+<br />
+<br />
+
+<div>
+    @Html.Raw(Model.Komentar)
+</div>
