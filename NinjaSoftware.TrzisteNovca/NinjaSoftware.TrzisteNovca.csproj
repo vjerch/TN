@@ -137,6 +137,7 @@
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Home\PrometGodina.cs" />
     <Compile Include="Models\NsMembershipProvider.cs" />
     <Compile Include="Models\NsRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -381,7 +382,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
