@@ -27,13 +27,22 @@
         <th></th>
     </tr>
 
-@foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.DataSource) {
+@foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.DataSource)
+{
     <tr>
+        @{
+            string komentar = trgovanjeGlava.Komentar;
+
+            if (komentar.Length > 50)
+            {
+                komentar = komentar.Substring(0, 50);
+            }
+         }
         <td>
             @trgovanjeGlava.Datum.ToShortDateString()
         </td>
         <td>
-            @trgovanjeGlava.Komentar
+            @komentar
         </td>
         <td>
             @Html.ActionLink("Uredi", "TrgovanjeEdit", new { trgovanjeGlavaId = trgovanjeGlava.TrgovanjeGlavaId }) |

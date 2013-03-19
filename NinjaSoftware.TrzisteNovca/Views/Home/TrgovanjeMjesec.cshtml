@@ -1,0 +1,58 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeMjesecViewModel
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.Models
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+@{
+    string valutaGrupa = Request.Params["valutaEnum"] == "Kn" ? "kunama" : "devizama";
+    string title = string.Format("Trgovanje {0} u {1} {2}. godine", valutaGrupa, Request.Params["mjesec"], Request.Params["godina"]);
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<table>
+    <tr>
+        <th>
+            Datum
+        </th>
+        <th>
+            Potražnja
+        </th>
+        <th>
+            Ponuda
+        </th>
+        <th>
+            Promet
+        </th>
+        <th>
+            Kamatna stopa
+        </th>
+    </tr>
+
+@foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
+{
+    <tr>
+        @{
+            decimal? kamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(Model.ValutaEnum);
+            string kamatnaStopaString = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("N2") : "-";        
+        }
+        <td>
+            @Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
+        </td>
+        <td>
+            @trgovanjeGlava.Potraznja(Model.ValutaEnum).ToStringInMilions()
+        </td>
+        <td>
+            @trgovanjeGlava.Ponuda(Model.ValutaEnum).ToStringInMilions()
+        </td>
+        <td>
+            @trgovanjeGlava.Promet(Model.ValutaEnum).ToStringInMilions()
+        </td>
+        <td>
+            @kamatnaStopaString
+        </td>
+    </tr>
+}
+
+</table>

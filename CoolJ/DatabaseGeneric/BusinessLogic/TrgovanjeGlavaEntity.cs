@@ -7,6 +7,7 @@ using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 using NinjaSoftware.Api.Core;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses;
+using NinjaSoftware.Api.CoolJ;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
@@ -23,131 +24,115 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
         }
 
-        private decimal? _ponuda;
-        public decimal Ponuda
+        public decimal Ponuda(ValutaEnum valutaEnum)
         {
-            get
-            {
-                if (!_ponuda.HasValue)
-                {
-                    _ponuda = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Ponuda);
-                }
+            return this.TrgovanjeStavkaCollection.Where(ts => (long)valutaEnum == ts.ValutaId).Sum(ts => ts.Ponuda);
+        }
 
-                return _ponuda.Value;
+        public decimal Potraznja(ValutaEnum valutaEnum)
+        {
+            return this.TrgovanjeStavkaCollection.Where(ts => (long)valutaEnum == ts.ValutaId).Sum(ts => ts.Potraznja);
+        }
+
+        public decimal Promet(ValutaEnum valutaEnum)
+        {
+            return this.TrgovanjeStavkaCollection.Where(ts => (long)valutaEnum == ts.ValutaId).Sum(ts => ts.Promet);
+        }
+
+        public decimal? PonudaPromjenaPosto(ValutaEnum valutaEnum)
+        {
+            decimal ponudaPrethodniDan = 0;
+
+            if (null != this.TrgovanjeGlavaPrethodniDan)
+            {
+                ponudaPrethodniDan = this.TrgovanjeGlavaPrethodniDan.Ponuda(valutaEnum);
+            }
+
+            if (0 != ponudaPrethodniDan)
+            {
+                return (this.Ponuda(valutaEnum) / ponudaPrethodniDan - 1) * 100;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        private decimal? _potraznja;
-        public decimal Potraznja 
+        public decimal? PotraznjaPromjenaPosto(ValutaEnum valutaEnum)
         {
-            get
-            {
-                if (!_potraznja.HasValue)
-                {
-                    _potraznja = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Potraznja);
-                }
+            decimal potraznjaPrethodniDan = 0;
 
-                return _potraznja.Value;
+            if (null != this.TrgovanjeGlavaPrethodniDan)
+            {
+                potraznjaPrethodniDan = this.TrgovanjeGlavaPrethodniDan.Potraznja(valutaEnum);
+            }
+
+            if (0 != potraznjaPrethodniDan)
+            {
+                return (this.Potraznja(valutaEnum) / potraznjaPrethodniDan - 1) * 100;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        private decimal? _promet;
-        public decimal Promet 
+        public decimal? PrometPromjenaPosto(ValutaEnum valutaEnum)
         {
-            get
-            {
-                if (!_promet.HasValue)
-                {
-                    _promet = this.TrgovanjeStavkaCollection.Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).Sum(ts => ts.Promet);
-                }
+            decimal prometPrethodniDan = 0;
 
-                return _promet.Value;
+            if (null != this.TrgovanjeGlavaPrethodniDan)
+            {
+                prometPrethodniDan = this.TrgovanjeGlavaPrethodniDan.Promet(valutaEnum);
+            }
+
+            if (0 != prometPrethodniDan)
+            {
+                return (this.Promet(valutaEnum) / prometPrethodniDan - 1) * 100;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        private decimal? _ponudaPromjenaPosto;
-        public decimal? PonudaPromjenaPosto 
+        public decimal? PrometKamatnaStopaPosto(ValutaEnum valutaEnum)
         {
-            get
-            {
-                if (!_ponudaPromjenaPosto.HasValue && 
-                    null != this.TrgovanjeGlavaPrethodniDan &&
-                    0 != this.TrgovanjeGlavaPrethodniDan.Ponuda)
-                {
-                    _ponudaPromjenaPosto = (this.Ponuda /this.TrgovanjeGlavaPrethodniDan.Ponuda - 1) * 100;
-                }
+            decimal promet = this.Promet(valutaEnum);
 
-                return _ponudaPromjenaPosto;
+            if (0 != promet)
+            {
+                decimal tmp = this.TrgovanjeStavkaCollection.
+                    Where(ts => (long)valutaEnum == ts.ValutaId).
+                    Sum(ts => ts.Promet * ts.PrometDodatak);
+
+                return tmp / promet;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        private decimal? _potraznjaPromjenaPosto;
-        public decimal? PotraznjaPromjenaPosto 
+        public decimal? PrometKamatnaStopaPromjenaPosto(ValutaEnum valutaEnum)
         {
-            get
-            {
-                if (!_potraznjaPromjenaPosto.HasValue && 
-                    null != this.TrgovanjeGlavaPrethodniDan &&
-                    0 != this.TrgovanjeGlavaPrethodniDan.Potraznja)
-                {
-                    _potraznjaPromjenaPosto = (this.Potraznja / this.TrgovanjeGlavaPrethodniDan.Potraznja - 1) * 100;
-                }
+            decimal? prometKamatnaStopa = this.PrometKamatnaStopaPosto(valutaEnum);
+            decimal? prometKamatnaStopaPrethodniDan = 0;
 
-                return _potraznjaPromjenaPosto;
+            if (null != this.TrgovanjeGlavaPrethodniDan)
+            {
+                prometKamatnaStopaPrethodniDan = this.TrgovanjeGlavaPrethodniDan.PrometKamatnaStopaPosto(valutaEnum);
             }
-        }
 
-        private decimal? _prometPromjenaPosto;
-        public decimal? PrometPromjenaPosto 
-        {
-            get
+            if (prometKamatnaStopa.HasValue &&
+                prometKamatnaStopaPrethodniDan.HasValue &&
+                0 != prometKamatnaStopaPrethodniDan)
             {
-                if (!_prometPromjenaPosto.HasValue &&
-                    null != this.TrgovanjeGlavaPrethodniDan &&
-                    0 != this.TrgovanjeGlavaPrethodniDan.Promet)
-                {
-                    _prometPromjenaPosto = (this.Promet / this.TrgovanjeGlavaPrethodniDan.Promet - 1) * 100;
-                }
-
-                return _prometPromjenaPosto;
+                return (Math.Round(prometKamatnaStopa.Value, 2) / Math.Round(prometKamatnaStopaPrethodniDan.Value, 2) - 1) * 100;
             }
-        }
-
-        private decimal? _prometKamatnaStopaPosto;
-        public decimal? PrometKamatnaStopaPosto 
-        {
-            get
+            else
             {
-                if (!_prometKamatnaStopaPosto.HasValue &&
-                    0 != this.Promet)
-                {
-                    decimal tmp = this.TrgovanjeStavkaCollection.
-                        Where(ts => (long)ValutaEnum.Kn == ts.ValutaId).
-                        Sum(ts => ts.Promet * ts.PrometDodatak);
-
-                    _prometKamatnaStopaPosto = tmp / this.Promet;
-                }
-
-                return _prometKamatnaStopaPosto;
-            }
-        }
-
-        private decimal? _prometKamatnaStopaPromjenaPosto;
-        public decimal? PrometKamatnaStopaPromjenaPosto 
-        {
-            get
-            {
-                if (!_prometKamatnaStopaPromjenaPosto.HasValue &&
-                    this.PrometKamatnaStopaPosto.HasValue &&
-                    null != this.TrgovanjeGlavaPrethodniDan &&
-                    this.TrgovanjeGlavaPrethodniDan.PrometKamatnaStopaPosto.HasValue &&
-                    0 != this.TrgovanjeGlavaPrethodniDan.PrometKamatnaStopaPosto)
-                {
-                    _prometKamatnaStopaPromjenaPosto = (Math.Round(this.PrometKamatnaStopaPosto.Value, 2) / 
-                        Math.Round(this.TrgovanjeGlavaPrethodniDan.PrometKamatnaStopaPosto.Value, 2) - 1) * 100;
-                }
-
-                return _prometKamatnaStopaPromjenaPosto;
+                return null;
             }
         }
 
@@ -235,6 +220,30 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         #endregion
 
         #region Public static methods
+
+        public static EntityCollection<TrgovanjeGlavaEntity> FetchTrgovanjeGlavaCollection(DataAccessAdapterBase adapter, int godina, int mjesec, ValutaEnum valutaEnum)
+        {
+            DateTime startDate = new DateTime(godina, mjesec, 1);
+            DateTime endDate = startDate.AddMonths(1);
+
+            return FetchTrgovanjeGlavaCollection(adapter, startDate, endDate, valutaEnum);
+        }
+
+        public static EntityCollection<TrgovanjeGlavaEntity> FetchTrgovanjeGlavaCollection(DataAccessAdapterBase adapter, 
+            DateTime startDate, 
+            DateTime endDate, 
+            ValutaEnum valutaEnum)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(PredicateHelper.FilterValidEntities(startDate, endDate, TrgovanjeGlavaFields.Datum));
+            
+            PredicateExpression valutaPredicate = new PredicateExpression(TrgovanjeStavkaFields.ValutaId == (long)valutaEnum);
+
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
+            prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection, 0, valutaPredicate);
+
+            return FetchTrgovanjeGlavaCollection(adapter, bucket, prefetchPath);
+        }
 
         public static TrgovanjeGlavaEntity FetchTrgovanjeGlavaForGuiDisplay(DataAccessAdapterBase adapter, DateTime date)
         {

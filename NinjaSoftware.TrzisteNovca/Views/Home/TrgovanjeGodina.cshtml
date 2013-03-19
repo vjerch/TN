@@ -1,0 +1,12 @@
+﻿@model IEnumerable<NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec>
+
+@{
+    string title = string.Format("Trgovanje u {0}. godini.", Request.Params["godina"]);
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+@Html.Partial("_TrgovanjeGodinaKuna", Model)
+<br /><br />
+@Html.Partial("_TrgovanjeGodinaDevize", Model)

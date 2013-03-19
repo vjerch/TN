@@ -1,0 +1,59 @@
+﻿@model IEnumerable<NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec>
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+@using NinjaSoftware.TrzisteNovca.Models
+
+<table>
+    <tr>
+        <th colspan="6">
+            @string.Format("Trgovanje kunama u {0}. godini", Request.Params["godina"])
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Mjesec
+        </th>
+        <th>
+            Potražnja
+        </th>
+        <th>
+            Ponuda
+        </th>
+        <th>
+            Promet
+        </th>
+        <th>
+            Kamatna stopa (%)
+        </th>
+        <th>valuta</th>
+    </tr>
+
+@foreach (TrgovanjeMjesec trgovanjeMjesec in Model.Where(tm => tm.Valuta == ValutaEnum.Kn))
+{
+    <tr>
+        @{
+            string potraznja = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions() : "-";
+            string ponuda = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions() : "-";
+            string promet = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions() : "-";
+            string kamatnaStopa = trgovanjeMjesec.KamatnaStopa.HasValue ? trgovanjeMjesec.KamatnaStopa.Value.ToString("N2") : "-";
+        }
+        <td>
+            @Html.ActionLink(trgovanjeMjesec.Mjesec.ToString(), "TrgovanjeMjesec", 
+                new { godina = trgovanjeMjesec.Godina, mjesec = trgovanjeMjesec.Mjesec, valutaEnum = trgovanjeMjesec.Valuta })
+        </td>
+        <td>
+            @potraznja
+        </td>
+        <td>
+            @ponuda
+        </td>
+        <td>
+            @promet
+        </td>
+        <td>
+            @kamatnaStopa
+        </td>
+        <td>@trgovanjeMjesec.Valuta.ToString()</td>
+    </tr>
+}
+
+</table>

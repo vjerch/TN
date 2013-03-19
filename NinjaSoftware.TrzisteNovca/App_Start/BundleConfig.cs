@@ -29,8 +29,8 @@ namespace NinjaSoftware.TrzisteNovca
                 "~/Scripts/knockout-2.1.0.js",
                 "~/Scripts/CoolJEntites.js"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/ckeditor").Include(
-            //    "/ckeditor/ckeditor.js"));
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                "~/Scripts/NinjaSoftwareLib.js"));
         }
     }
 }
