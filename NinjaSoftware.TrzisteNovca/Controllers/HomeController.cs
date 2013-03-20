@@ -28,9 +28,9 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     date = DateTime.Now.Date;
                 }
 
-                TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaForGuiDisplay(adapter, date.Value);
+                TrgovanjeDanViewModel trgovanjeDanViewModel = new TrgovanjeDanViewModel(adapter, date.Value);
 
-                return View(trgovanjeGlava);
+                return View(trgovanjeDanViewModel);
             }       
         }
 
@@ -39,9 +39,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                List<TrgovanjeMjesec> trgovanjeMjesecList = 
-                    NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, godina);
-                return View(trgovanjeMjesecList);
+                TrgovanjeGodinaViewModel trgovanjeGodinaViewModel = new TrgovanjeGodinaViewModel(adapter, godina);
+                return View(trgovanjeGodinaViewModel);
             }
         }
 

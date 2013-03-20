@@ -306,7 +306,7 @@
                   <Fields>
                     <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
                     <Field Name="ErrorDateTime" Ordinal="2" DbType="4" />
-                    <Field Name="ErrorId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_345c01a4dadaa2743b182e09867" DbType="0" Precision="19" />
+                    <Field Name="ErrorId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_345c01a4dadaa2743b182e09867" DbType="0" Precision="19" />
                     <Field Name="Message" Ordinal="4" DbType="12" Length="2147483647" />
                     <Field Name="ParentErrorId" Ordinal="5" IsOptional="true" DbType="0" Precision="19" />
                     <Field Name="StackTrace" Ordinal="6" IsOptional="true" DbType="12" Length="2147483647" />
@@ -449,7 +449,7 @@
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="ErrorDateTime" TargetFieldName="ErrorDateTime" />
-            <FieldMapping FieldName="ErrorId" TargetFieldName="ErrorId" />
+            <FieldMapping FieldName="ErrorId" TargetFieldName="ErrorId" SequenceToUse="SCOPE_IDENTITY()" />
             <FieldMapping FieldName="Message" TargetFieldName="Message" />
             <FieldMapping FieldName="ParentErrorId" TargetFieldName="ParentErrorId" />
             <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />

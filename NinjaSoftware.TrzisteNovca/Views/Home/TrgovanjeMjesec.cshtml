@@ -4,8 +4,8 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
 @{
-    string valutaGrupa = Request.Params["valutaEnum"] == "Kn" ? "kunama" : "devizama";
-    string title = string.Format("Trgovanje {0} u {1} {2}. godine", valutaGrupa, Request.Params["mjesec"], Request.Params["godina"]);
+    string valutaGrupa = Model.ValutaEnum == ValutaEnum.Kn ? "kunama" : "devizama";
+    string title = string.Format("Trgovanje {0} u {1} {2}. godine", valutaGrupa, Helper.DativMjeseca(Model.Mjesec), Model.Godina);
     ViewBag.Title = title;
 }
 
@@ -56,3 +56,44 @@
 }
 
 </table>
+
+@if (ValutaEnum.Kn == Model.ValutaEnum)
+{ 
+<div id="chart">
+
+</div>
+
+<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+        
+<script type="text/javascript">
+    $(document).ready(function () {
+        var linePonuda = @Model.ChartLinePonudaDataSource;
+        var linePotraznja = @Model.ChartLinePotraznjaDataSource;
+        var linePromet = @Model.ChartLinePrometDataSource;
+
+        var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+            title: 'Trgovanje kunama',
+            axes: {
+                xaxis: {
+                    min: 1,
+                    max: 12,
+                    tickInterval: 1
+                },
+                yaxis: {
+                    min: 0
+                }
+            },
+            legend: { 
+                show: true,
+                location: "s",
+                placement: "outside",
+                labels: ["Ponuda", "Potražnja", "Promet"],
+                noColumns: 1
+            }
+        });
+    });
+</script>
+}

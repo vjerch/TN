@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
-using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
+using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric;
 using SD.LLBLGen.Pro.ORMSupportClasses;
+using System.Text;
+using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
@@ -18,6 +20,42 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.Godina = godina;
             this.Mjesec = mjesec;
             this.ValutaEnum = valutaEnum;
+
+            if (ValutaEnum.Kn == valutaEnum)
+            {
+                LoadChartData(this.TrgovanjeGlavaCollection);
+            }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void LoadChartData(IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection)
+        {
+            StringBuilder chartLinePonuda = new StringBuilder(256);
+            chartLinePonuda.Append("[");
+
+            StringBuilder chartLinePotraznja = new StringBuilder(256);
+            chartLinePotraznja.Append("[");
+
+            StringBuilder chartLinePromet = new StringBuilder(256);
+            chartLinePromet.Append("[");
+
+            foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
+            {
+                chartLinePonuda.Append(string.Format("{0},", trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("{0},", trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("{0},", trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+            }
+
+            chartLinePonuda.Append("]");
+            chartLinePotraznja.Append("]");
+            chartLinePromet.Append("]");
+
+            this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());
+            this.ChartLinePotraznjaDataSource = new HtmlString(chartLinePotraznja.ToString());
+            this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
         }
 
         #endregion
@@ -28,6 +66,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public int Godina { get; set; }
         public int Mjesec { get; set; }
         public ValutaEnum ValutaEnum { get; set; }
+        public HtmlString ChartLinePonudaDataSource { get; set; }
+        public HtmlString ChartLinePotraznjaDataSource { get; set; }
+        public HtmlString ChartLinePrometDataSource { get; set; }
 
         #endregion
     }

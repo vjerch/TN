@@ -1,12 +1,50 @@
-﻿@model IEnumerable<NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec>
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaViewModel
 
 @{
-    string title = string.Format("Trgovanje u {0}. godini.", Request.Params["godina"]);
+    string title = string.Format("Trgovanje u {0}. godini.", Model.Godina);
     ViewBag.Title = title;
 }
+
+<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 
 <h2>@title</h2>
 
 @Html.Partial("_TrgovanjeGodinaKuna", Model)
 <br /><br />
 @Html.Partial("_TrgovanjeGodinaDevize", Model)
+
+<div id="chart">
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var linePonuda = @Model.ChartLinePonudaDataSource;
+        var linePotraznja = @Model.ChartLinePotraznjaDataSource;
+        var linePromet = @Model.ChartLinePrometDataSource;
+
+        var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+            title: 'Trgovanje kunama',
+            axes: {
+                xaxis: {
+                    min: 1,
+                    max: 12,
+                    tickInterval: 1
+                },
+                yaxis: {
+                    min: 0
+                }
+            },
+            legend: { 
+                show: true,
+                location: "s",
+                placement: "outside",
+                labels: ["Ponuda", "Potražnja", "Promet"],
+                noColumns: 1
+            }
+        });
+    });
+</script>

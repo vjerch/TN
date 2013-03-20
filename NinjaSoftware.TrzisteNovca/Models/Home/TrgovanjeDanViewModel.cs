@@ -16,17 +16,41 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public TrgovanjeDanViewModel(DataAccessAdapterBase adapter, DateTime date)
         {
             this.TrgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaForGuiDisplay(adapter, date);
+            LoadChartData(adapter, this.TrgovanjeGlava.Datum);
+        }
 
-            IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, date.AddDays(-15), date, ValutaEnum.Kn);
+        #endregion
 
-            StringBuilder charLinePonuda = new StringBuilder(512);
-            charLinePonuda.Append("[");
+        #region PrivateMethods
 
-            StringBuilder charLinePotraznja = new StringBuilder(512);
-            charLinePotraznja.Append("[");
+        private void LoadChartData(DataAccessAdapterBase adapter, DateTime date)
+        {
+            IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, date.AddDays(-14), date.AddDays(1), ValutaEnum.Kn);
 
-            StringBuilder charLinePromet = new StringBuilder(512);
-            charLinePromet.Append("[");
+            StringBuilder chartLinePonuda = new StringBuilder(512);
+            chartLinePonuda.Append("[");
+
+            StringBuilder chartLinePotraznja = new StringBuilder(512);
+            chartLinePotraznja.Append("[");
+
+            StringBuilder chartLinePromet = new StringBuilder(512);
+            chartLinePromet.Append("[");
+
+            foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
+            {
+                string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
+                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+            }
+
+            chartLinePonuda.Append("]");
+            chartLinePotraznja.Append("]");
+            chartLinePromet.Append("]");
+
+            this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());
+            this.ChartLinePotraznjaDataSource = new HtmlString(chartLinePotraznja.ToString());
+            this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
         }
 
         #endregion

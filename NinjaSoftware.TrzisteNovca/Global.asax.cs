@@ -36,10 +36,10 @@ namespace NinjaSoftware.TrzisteNovca
 
             try
             {
-                DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+                DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
                 ErrorEntity.LogException(adapter, exception);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 ErrorEntity error = new ErrorEntity(exception);
                 StringWriter stringWriter = new StringWriter();

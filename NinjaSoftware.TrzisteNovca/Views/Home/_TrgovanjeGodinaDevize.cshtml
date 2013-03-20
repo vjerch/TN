@@ -1,15 +1,15 @@
-﻿@model IEnumerable<NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec>
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using NinjaSoftware.TrzisteNovca.Models
 
 @{
-    IEnumerable<ValutaEnum> valutaCollection = Model.Where(tm => tm.Valuta != ValutaEnum.Kn).Select(tm => tm.Valuta).Distinct();    
+    IEnumerable<ValutaEnum> valutaCollection = Model.TrgovanjeMjesecList.Where(tm => tm.Valuta != ValutaEnum.Kn).Select(tm => tm.Valuta).Distinct();    
 }
 
 <table>
     <tr>
         <th colspan="5">
-            @string.Format("Pozajmice deviza u {0}. godini", Request.Params["godina"])
+            @string.Format("Pozajmice deviza u {0}. godini", Model.Godina)
         </th>
     </tr>
     <tr>
@@ -33,7 +33,7 @@
     <tr>
         <td colspan="5">@valuta.ToString()</td>
     </tr>
-    foreach (TrgovanjeMjesec trgovanjeMjesec in Model.Where(tm => tm.Valuta == valuta))
+    foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == valuta))
     {
         <tr>
             @{

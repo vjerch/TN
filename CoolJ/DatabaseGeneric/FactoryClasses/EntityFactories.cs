@@ -251,7 +251,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new TrgovanjeVrstaRoEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeVrstaRoUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -292,7 +291,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new ValutaRoEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewValutaRoUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code

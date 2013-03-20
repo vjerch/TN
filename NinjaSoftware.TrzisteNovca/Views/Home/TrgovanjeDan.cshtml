@@ -1,22 +1,26 @@
-﻿@model NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.TrgovanjeGlavaEntity
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeDanViewModel
 @using NinjaSoftware.TrzisteNovca.Models
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
 <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 
 @{
-    ViewBag.Title = "Index";
-
-    decimal? ponudaPromjena = Model.PonudaPromjenaPosto(ValutaEnum.Kn);
+    decimal? ponudaPromjena = Model.TrgovanjeGlava.PonudaPromjenaPosto(ValutaEnum.Kn);
     string ponudaPromjenaPosto = ponudaPromjena.HasValue ? ponudaPromjena.Value.ToString("N2") : "-";
 
-    decimal? potraznjaPromjena = Model.PotraznjaPromjenaPosto(ValutaEnum.Kn);
+    decimal? potraznjaPromjena = Model.TrgovanjeGlava.PotraznjaPromjenaPosto(ValutaEnum.Kn);
     string potraznjaPromjenaPosto = potraznjaPromjena.HasValue ? potraznjaPromjena.Value.ToString("N2") : "-";
 
-    string danTrgovanja = string.Format("{0} ({1})", Model.Datum.ToShortDateString(), Model.Datum.ToString("dddd"));
+    string danTrgovanja = string.Format("{0} ({1})", Model.TrgovanjeGlava.Datum.ToShortDateString(), Model.TrgovanjeGlava.Datum.ToString("dddd"));
     string currentYear = DateTime.Now.Year.ToString();
+
+    string title = string.Format("Trgovanje na dan {0}", danTrgovanja);
+    ViewBag.Title = title;    
 }
 
 <script type="text/javascript">
@@ -35,24 +39,36 @@
             }
         });
 
-        var line1 = [['2008-09-30 4:00PM', 4], ['2008-10-30 4:00PM', 6.5], ['2008-11-30 4:00PM', 5.7], ['2008-12-30 4:00PM', 9], ['2009-01-30 4:00PM', 8.2]];
-        var plot1 = $.jqplot('chart', [line1], {
+        var linePonuda = @Model.ChartLinePonudaDataSource;
+        var linePotraznja = @Model.ChartLinePotraznjaDataSource;
+        var linePromet = @Model.ChartLinePrometDataSource;
+
+        var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
             title: 'Trgovanje kunama',
             axes: {
                 xaxis: {
                     renderer: $.jqplot.DateAxisRenderer,
                     tickOptions: { formatString: "%d. %m." }
-                } 
+                },
+                yaxis: {
+                    min: 0
+                }
             },
-            series: [{ lineWidth: 4, markerOptions: { style: 'square'}}]
+            legend: { 
+                show: true,
+                location: "s",
+                placement: "outside",
+                labels: ["Ponuda", "Potražnja", "Promet"],
+                noColumns: 1
+            }
         });
     });
 </script>
 
-<h2>Trgovanje na dan @danTrgovanja</h2>
+<h2>@title</h2>
 
 Promjena datuma:
-@Html.TextBox("inputDatum", Model.Datum.ToShortDateString(), new { id = "inputDatum"})
+@Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToShortDateString(), new { id = "inputDatum"})
 
 <h3>Trgovanje u kunama</h3>
 
@@ -64,9 +80,9 @@ Promjena datuma:
         <th>Promjena u %</th>
     </tr>
     <tr>
-        <td>@Model.Ponuda(ValutaEnum.Kn).ToStringInMilions()</td>        
+        <td>@Model.TrgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions()</td>        
         <td>@ponudaPromjenaPosto</td>
-        <td>@Model.Potraznja(ValutaEnum.Kn).ToStringInMilions()</td>
+        <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()</td>
         <td>@potraznjaPromjenaPosto</td>
     </tr>
 </table>
@@ -79,7 +95,7 @@ Promjena datuma:
         <th>kamatna stopa u %</th>
         <th>promjena u %</th>
     </tr>
-    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
+    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
     {
         string prometPromjenaPosto = trgovanjeStavka.PrometPromjenaPosto.HasValue ? trgovanjeStavka.PrometPromjenaPosto.Value.ToString("N2") : "-";
         string prometDodatakPromjenaPosto =
@@ -94,17 +110,17 @@ Promjena datuma:
     }
     <tr>
         @{
-            decimal? promjenaPosto = Model.PrometPromjenaPosto(ValutaEnum.Kn);
+            decimal? promjenaPosto = Model.TrgovanjeGlava.PrometPromjenaPosto(ValutaEnum.Kn);
             string ukupnoPrometPromjenaPosto = promjenaPosto.HasValue ? promjenaPosto.Value.ToString("N2") : "-";
 
-            decimal? kamatnaStopa = Model.PrometKamatnaStopaPosto(ValutaEnum.Kn);
+            decimal? kamatnaStopa = Model.TrgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
             string ukupnoPrometKamatnaStopaPosto = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("N2") : "-";
 
-            decimal? kamatnaStopaPromjena = Model.PrometKamatnaStopaPromjenaPosto(ValutaEnum.Kn);
+            decimal? kamatnaStopaPromjena = Model.TrgovanjeGlava.PrometKamatnaStopaPromjenaPosto(ValutaEnum.Kn);
             string ukupnoPrometKamatnaStopaPromjenaPosto = kamatnaStopaPromjena.HasValue ? kamatnaStopaPromjena.Value.ToString("N2") : "-";
         }
         <td>Ukupno:</td>
-        <td>@Model.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
+        <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
         <td>@ukupnoPrometPromjenaPosto</td>
         <td>@ukupnoPrometKamatnaStopaPosto</td>
         <td>@ukupnoPrometKamatnaStopaPromjenaPosto</td>
@@ -112,7 +128,7 @@ Promjena datuma:
 </table>
 
 @{
-    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
+    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
     }
 
 @if (devizeTrgovanjeStavkaCollection.Count() > 0)
@@ -139,7 +155,7 @@ Promjena datuma:
 <br />
 
 <div>
-    @Html.Raw(Model.Komentar)
+    @Html.Raw(Model.TrgovanjeGlava.Komentar)
 </div>
 
 <div id="chart">

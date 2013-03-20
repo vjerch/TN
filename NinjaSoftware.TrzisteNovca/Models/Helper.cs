@@ -12,6 +12,8 @@ namespace NinjaSoftware.TrzisteNovca.Models
 {
     public static class Helper
     {
+        #region DataAccess helper
+
         public static DataAccessAdapterBase GetDataAccessAdapterFactory()
         {
             DataAccessAdapterBase adapter;
@@ -35,6 +37,8 @@ namespace NinjaSoftware.TrzisteNovca.Models
 
             return adapter;
         }
+
+        #endregion
 
         #region HTML helpers
 
@@ -165,5 +169,42 @@ namespace NinjaSoftware.TrzisteNovca.Models
         }
 
         #endregion HTML helpers
+
+        #region DateTime helper
+
+        public static string DativMjeseca(int mjesec)
+        {
+            switch (mjesec)
+            { 
+                case 1:
+                    return "siječnju";
+                case 2:
+                    return "veljači";
+                case 3:
+                    return "ožujku";
+                case 4:
+                    return "travnju";
+                case 5:
+                    return "svibnju";
+                case 6:
+                    return "lipnju";
+                case 7:
+                    return "srpnju";
+                case 8:
+                    return "kolovozu";
+                case 9:
+                    return "rujnu";
+                case 10:
+                    return "listopadu";
+                case 11:
+                    return "studenom";
+                case 12:
+                    return "prosincu";
+                default:
+                    return string.Empty;
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,11 +1,11 @@
-﻿@model IEnumerable<NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic.TrgovanjeMjesec>
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using NinjaSoftware.TrzisteNovca.Models
 
 <table>
     <tr>
         <th colspan="6">
-            @string.Format("Trgovanje kunama u {0}. godini", Request.Params["godina"])
+            @string.Format("Trgovanje kunama u {0}. godini", Model.Godina)
         </th>
     </tr>
     <tr>
@@ -27,7 +27,7 @@
         <th>valuta</th>
     </tr>
 
-@foreach (TrgovanjeMjesec trgovanjeMjesec in Model.Where(tm => tm.Valuta == ValutaEnum.Kn))
+@foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn))
 {
     <tr>
         @{

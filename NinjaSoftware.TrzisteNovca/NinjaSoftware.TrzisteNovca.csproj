@@ -138,6 +138,7 @@
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Home\TrgovanjeDanViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeGodinaViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeMjesecViewModel.cs" />
     <Compile Include="Models\NsMembershipProvider.cs" />
     <Compile Include="Models\NsRoleProvider.cs" />
