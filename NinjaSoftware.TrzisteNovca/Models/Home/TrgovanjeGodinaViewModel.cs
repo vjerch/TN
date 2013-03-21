@@ -5,6 +5,8 @@ using System.Web;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using System.Text;
+using System.Web.Mvc;
+using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
@@ -17,6 +19,8 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.TrgovanjeMjesecList = TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, godina);
             this.Godina = godina;
             LoadChartData(this.TrgovanjeMjesecList);
+
+            CreateGodinaSelectList(adapter, godina);
         }
 
         #endregion
@@ -55,6 +59,24 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
         }
 
+        private void CreateGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
+        {
+            IEnumerable<int> godinaCollection = TrgovanjeGlavaEntity.GodinaTrgovanjaCollection(adapter);
+
+            this.GodinaSelectList = new List<SelectListItem>();
+            foreach (int godina in godinaCollection)
+            {
+                SelectListItem selectListItem = new SelectListItem() 
+                { 
+                    Value = godina.ToString(),
+                    Text = godina.ToString(),
+                    Selected = godina == oznacenaGodina
+                };
+
+                this.GodinaSelectList.Add(selectListItem);
+            }
+        }
+
         #endregion
 
         #region Properties
@@ -64,6 +86,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public HtmlString ChartLinePonudaDataSource { get; set; }
         public HtmlString ChartLinePotraznjaDataSource { get; set; }
         public HtmlString ChartLinePrometDataSource { get; set; }
+        public List<SelectListItem> GodinaSelectList { get; set; }
 
         #endregion
     }

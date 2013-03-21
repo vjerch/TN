@@ -8,12 +8,14 @@ using NinjaSoftware.Api.Core;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses;
 using NinjaSoftware.Api.CoolJ;
+using SD.LLBLGen.Pro.LinqSupportClasses;
+using NinjaSoftware.TrzisteNovca.CoolJ.Linq;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class TrgovanjeGlavaEntity
     {
-        #region Custom properties
+        #region Dynamic properties
 
         private TrgovanjeGlavaEntity _trgovanjeGlavaPrethodniDan;
         public TrgovanjeGlavaEntity TrgovanjeGlavaPrethodniDan 
@@ -220,6 +222,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         #endregion
 
         #region Public static methods
+
+        private static List<int> _godinaTrgovanjaCollection;
+        public static List<int> GodinaTrgovanjaCollection(DataAccessAdapterBase adapter)
+        {
+            if (null == _godinaTrgovanjaCollection)
+            {
+                LoadTrgovanjeGodinaList(adapter);
+            }
+
+            return _godinaTrgovanjaCollection;
+        }
+
 
         public static EntityCollection<TrgovanjeGlavaEntity> FetchTrgovanjeGlavaCollection(DataAccessAdapterBase adapter, int godina, int mjesec, ValutaEnum valutaEnum)
         {
@@ -438,6 +452,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             {
                 throw new UserException("Brojčane vrijednosti u datoteci nisu ispravne.");
             }
+        }
+
+        private static void LoadTrgovanjeGodinaList(DataAccessAdapterBase adapter)
+        {
+            LinqMetaData linqMetaData = new LinqMetaData(adapter);
+
+            _godinaTrgovanjaCollection = linqMetaData.TrgovanjeGlava.
+                Select(tg => tg.Datum.Year).
+                Distinct().
+                ToList();
+
+            _godinaTrgovanjaCollection.Sort();
         }
 
         #endregion

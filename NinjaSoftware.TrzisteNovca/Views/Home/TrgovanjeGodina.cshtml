@@ -12,6 +12,8 @@
 
 <h2>@title</h2>
 
+Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodinaa" })
+<br /><br />
 @Html.Partial("_TrgovanjeGodinaKuna", Model)
 <br /><br />
 @Html.Partial("_TrgovanjeGodinaDevize", Model)
@@ -45,6 +47,10 @@
                 labels: ["Ponuda", "Potražnja", "Promet"],
                 noColumns: 1
             }
+        });
+
+        $("#dropDownGodinaa").change(function () {
+            window.location.href = "@Url.Action("TrgovanjeGodina")" + "?godina=" + this.value;
         });
     });
 </script>
