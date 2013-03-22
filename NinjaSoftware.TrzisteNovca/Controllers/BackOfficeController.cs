@@ -54,7 +54,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
             TrgovanjeStavkaEntity e = new TrgovanjeStavkaEntity();
-            
+
             try
             {
                 adapter.StartTransaction(System.Data.IsolationLevel.Serializable, "TrgovanjeSave");
@@ -119,7 +119,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             }
             catch (UserException ex)
             {
-                this.ViewUserErrorMessage = ex.Message;   
+                this.ViewUserErrorMessage = ex.Message;
             }
 
 
@@ -140,5 +140,75 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         #endregion Trgovanje
+
+        #region Repo aukcija
+
+        [HttpGet]
+        public ActionResult RepoAukcijaList(int? pageNumber, string sortField, bool? isSortAscending)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                RepoAukcijaPager repoAukcijaPager = new RepoAukcijaPager();
+                repoAukcijaPager.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
+                return View(repoAukcijaPager);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult RepoAukcijaEdit(long? repoAukcijaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                RepoAukcijaEntity repoAukcija = GetRepoAukcija(adapter, repoAukcijaId);
+                return View(repoAukcija);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult RepoAukcijaEdit(long? repoAukcijaId, FormCollection formCollection)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                RepoAukcijaEntity repoAukcija = GetRepoAukcija(adapter, repoAukcijaId);
+
+                if (TryUpdateAndSaveIEntity2(repoAukcija, adapter, false, false))
+                {
+                    return RedirectToAction("RepoAukcijaList");
+                }
+                else
+                {
+                    return View(repoAukcija);
+                }
+            }
+        }
+
+        private RepoAukcijaEntity GetRepoAukcija(DataAccessAdapterBase adapter, long? repoAukcijaId)
+        {
+            if (repoAukcijaId.HasValue && repoAukcijaId.Value > 0)
+            {
+                return RepoAukcijaEntity.FetchRepoAukcija(adapter, null, repoAukcijaId.Value);
+            }
+            else
+            {
+                return new RepoAukcijaEntity();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult RepoAukcijaDelete(long repoAukcijaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                RepoAukcijaEntity repoAukcija = GetRepoAukcija(adapter, repoAukcijaId);
+                repoAukcija.Delete(adapter);
+                return RedirectToAction("RepoAukcijaList");
+            }
+        }
+
+        #endregion
     }
 }

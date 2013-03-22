@@ -131,14 +131,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BackOffice\RepoAukcijaPager.cs" />
     <Compile Include="Models\BackOffice\PagerBase.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Home\RepoAukcijaViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeDanViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeGodinaRokViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeMjesecRokViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeMjesecViewModel.cs" />
     <Compile Include="Models\NsMembershipProvider.cs" />
     <Compile Include="Models\NsRoleProvider.cs" />
@@ -835,6 +839,10 @@
     <None Include="Scripts\jqplot\examples\quintiles.json" />
     <None Include="Scripts\jqplot\examples\syntaxhighlighter\LGPL-LICENSE" />
     <None Include="Scripts\jqplot\examples\syntaxhighlighter\MIT-LICENSE" />
+    <Content Include="Views\Home\TrgovanjeGodinaRok.cshtml" />
+    <Content Include="Views\Home\TrgovanjeMjesecRok.cshtml" />
+    <Content Include="Views\BackOffice\RepoAukcijaList.cshtml" />
+    <Content Include="Views\BackOffice\RepoAukcijaEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

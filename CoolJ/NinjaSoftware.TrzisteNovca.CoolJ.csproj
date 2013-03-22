@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseGeneric\BusinessLogic\RepoAukcijaEntity.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesecRok.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesecBase.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesec.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeStavkaEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeVrstaRoEntity.cs" />
@@ -90,6 +93,9 @@
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\ErrorEntity.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\EntityClasses\RepoAukcijaEntity.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\RoleRoEntity.cs">
@@ -156,6 +162,9 @@
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\ErrorRelations.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\RelationClasses\RepoAukcijaRelations.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\RoleRoRelations.cs">

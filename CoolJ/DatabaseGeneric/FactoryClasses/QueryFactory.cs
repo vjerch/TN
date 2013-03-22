@@ -2,7 +2,7 @@
 // This is generated code. 
 //////////////////////////////////////////////////////////////
 // Code is generated using LLBLGen Pro version: 3.5
-// Code is generated on: 20. ožujak 2013. 11:24:50
+// Code is generated on: 22. ožujak 2013. 14:51:43
 // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET35
 // Templates vendor: Solutions Design.
 ////////////////////////////////////////////////////////////// 
@@ -117,6 +117,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		public EntityQuery<ErrorEntity> Error
 		{
 			get { return Create<ErrorEntity>(); }
+		}
+
+		/// <summary>Creates and returns a new EntityQuery for the RepoAukcija entity</summary>
+		public EntityQuery<RepoAukcijaEntity> RepoAukcija
+		{
+			get { return Create<RepoAukcijaEntity>(); }
 		}
 
 		/// <summary>Creates and returns a new EntityQuery for the RoleRo entity</summary>

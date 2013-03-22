@@ -74,6 +74,42 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RepoAukcija.</summary>
+	public enum RepoAukcijaFieldIndex
+	{
+		///<summary>BrojAukcije. </summary>
+		BrojAukcije,
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>DatumAukcije. </summary>
+		DatumAukcije,
+		///<summary>DatumReotkupa. </summary>
+		DatumReotkupa,
+		///<summary>FiksnaRepoStopa. </summary>
+		FiksnaRepoStopa,
+		///<summary>GranicnaRepoStopa. </summary>
+		GranicnaRepoStopa,
+		///<summary>KoeficijentRaspodjele. </summary>
+		KoeficijentRaspodjele,
+		///<summary>NajnizaRepoStopa. </summary>
+		NajnizaRepoStopa,
+		///<summary>NajvisaRepoStopa. </summary>
+		NajvisaRepoStopa,
+		///<summary>OdbijenePonudeUkupno. </summary>
+		OdbijenePonudeUkupno,
+		///<summary>PostoPrihvacenihPoGranicnojStopi. </summary>
+		PostoPrihvacenihPoGranicnojStopi,
+		///<summary>PrihvacenePonudeUkupno. </summary>
+		PrihvacenePonudeUkupno,
+		///<summary>PristiglePonudeUkupno. </summary>
+		PristiglePonudeUkupno,
+		///<summary>RepoAukcijaId. </summary>
+		RepoAukcijaId,
+		///<summary>VaganaRepoStopa. </summary>
+		VaganaRepoStopa,
+		/// <summary></summary>
+		AmountOfFields
+	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RoleRo.</summary>
 	public enum RoleRoFieldIndex
 	{
@@ -186,6 +222,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		EntityRoEntity,
 		///<summary>Error</summary>
 		ErrorEntity,
+		///<summary>RepoAukcija</summary>
+		RepoAukcijaEntity,
 		///<summary>RoleRo</summary>
 		RoleRoEntity,
 		///<summary>TrgovanjeGlava</summary>

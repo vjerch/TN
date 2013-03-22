@@ -20,9 +20,6 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('AuditInfo', 'AuditInfo', 1);
 	
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
-	VALUES('Rok', 'Rok', 2);
-	
-INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('TrgovanjeGlava', 'TrgovanjeGlava', 3);
 	
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
@@ -30,6 +27,9 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('User', 'User', 5);
+
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('RepoAukcija', 'RepoAukcija', 6);	
 	
 -- ValutaRo
 INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")

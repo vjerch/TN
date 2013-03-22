@@ -48,11 +48,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (10 + 0));
+			this.InitClass( (11 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
 			InitErrorEntityInfos();
+			InitRepoAukcijaEntityInfos();
 			InitRoleRoEntityInfos();
 			InitTrgovanjeGlavaEntityInfos();
 			InitTrgovanjeStavkaEntityInfos();
@@ -102,6 +103,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("ErrorEntity", "Message", typeof(System.String), false, false, false, false,  (int)ErrorFieldIndex.Message, 2147483647, 0, 0);
 			this.AddElementFieldInfo("ErrorEntity", "ParentErrorId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)ErrorFieldIndex.ParentErrorId, 0, 0, 19);
 			this.AddElementFieldInfo("ErrorEntity", "StackTrace", typeof(System.String), false, false, false, true,  (int)ErrorFieldIndex.StackTrace, 2147483647, 0, 0);
+		}
+		/// <summary>Inits RepoAukcijaEntity's FieldInfo objects</summary>
+		private void InitRepoAukcijaEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(RepoAukcijaFieldIndex), "RepoAukcijaEntity");
+			this.AddElementFieldInfo("RepoAukcijaEntity", "BrojAukcije", typeof(System.String), false, false, false, true,  (int)RepoAukcijaFieldIndex.BrojAukcije, 20, 0, 0);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)RepoAukcijaFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "DatumAukcije", typeof(System.DateTime), false, false, false, false,  (int)RepoAukcijaFieldIndex.DatumAukcije, 0, 0, 0);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "DatumReotkupa", typeof(Nullable<System.DateTime>), false, false, false, true,  (int)RepoAukcijaFieldIndex.DatumReotkupa, 0, 0, 0);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "FiksnaRepoStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.FiksnaRepoStopa, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "GranicnaRepoStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.GranicnaRepoStopa, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "KoeficijentRaspodjele", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.KoeficijentRaspodjele, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "NajnizaRepoStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.NajnizaRepoStopa, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "NajvisaRepoStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.NajvisaRepoStopa, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "OdbijenePonudeUkupno", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.OdbijenePonudeUkupno, 0, 2, 10);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "PostoPrihvacenihPoGranicnojStopi", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.PostoPrihvacenihPoGranicnojStopi, 0, 2, 5);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "PrihvacenePonudeUkupno", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.PrihvacenePonudeUkupno, 0, 2, 10);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "PristiglePonudeUkupno", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.PristiglePonudeUkupno, 0, 2, 10);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "RepoAukcijaId", typeof(System.Int64), true, false, false, false,  (int)RepoAukcijaFieldIndex.RepoAukcijaId, 0, 0, 19);
+			this.AddElementFieldInfo("RepoAukcijaEntity", "VaganaRepoStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)RepoAukcijaFieldIndex.VaganaRepoStopa, 0, 2, 5);
 		}
 		/// <summary>Inits RoleRoEntity's FieldInfo objects</summary>
 		private void InitRoleRoEntityInfos()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
+using NinjaSoftware.Api.CoolJ;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
@@ -55,6 +56,28 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
                 return _prometDodatakPromjenaPosto;
             }
+        }
+
+        #endregion
+
+        #region Static methods
+
+        public static EntityCollection<TrgovanjeStavkaEntity> FetchTrgovanjeStavkaCollection(DataAccessAdapterBase adapter, int godina)
+        {
+            DateTime startDate = new DateTime(godina, 1, 1);
+            DateTime endDate = startDate.AddYears(1);
+
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.Relations.Add(TrgovanjeStavkaEntity.Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
+
+            bucket.PredicateExpression.Add(PredicateHelper.FilterValidEntities(startDate, endDate, TrgovanjeGlavaFields.Datum));
+
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeStavkaEntity);
+            prefetchPath.Add(TrgovanjeStavkaEntity.PrefetchPathTrgovanjeGlava);
+
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, bucket, prefetchPath);
+
+            return trgovanjeStavkaCollection;
         }
 
         #endregion

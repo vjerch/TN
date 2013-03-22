@@ -133,6 +133,86 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
+	/// <summary>Field Creation Class for entity RepoAukcijaEntity</summary>
+	public partial class RepoAukcijaFields
+	{
+		/// <summary>Creates a new RepoAukcijaEntity.BrojAukcije field instance</summary>
+		public static EntityField2 BrojAukcije
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.BrojAukcije);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.DatumAukcije field instance</summary>
+		public static EntityField2 DatumAukcije
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.DatumAukcije);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.DatumReotkupa field instance</summary>
+		public static EntityField2 DatumReotkupa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.DatumReotkupa);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.FiksnaRepoStopa field instance</summary>
+		public static EntityField2 FiksnaRepoStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.FiksnaRepoStopa);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.GranicnaRepoStopa field instance</summary>
+		public static EntityField2 GranicnaRepoStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.GranicnaRepoStopa);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.KoeficijentRaspodjele field instance</summary>
+		public static EntityField2 KoeficijentRaspodjele
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.KoeficijentRaspodjele);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.NajnizaRepoStopa field instance</summary>
+		public static EntityField2 NajnizaRepoStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.NajnizaRepoStopa);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.NajvisaRepoStopa field instance</summary>
+		public static EntityField2 NajvisaRepoStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.NajvisaRepoStopa);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.OdbijenePonudeUkupno field instance</summary>
+		public static EntityField2 OdbijenePonudeUkupno
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.OdbijenePonudeUkupno);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.PostoPrihvacenihPoGranicnojStopi field instance</summary>
+		public static EntityField2 PostoPrihvacenihPoGranicnojStopi
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.PostoPrihvacenihPoGranicnojStopi);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.PrihvacenePonudeUkupno field instance</summary>
+		public static EntityField2 PrihvacenePonudeUkupno
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.PrihvacenePonudeUkupno);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.PristiglePonudeUkupno field instance</summary>
+		public static EntityField2 PristiglePonudeUkupno
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.PristiglePonudeUkupno);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.RepoAukcijaId field instance</summary>
+		public static EntityField2 RepoAukcijaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.RepoAukcijaId);}
+		}
+		/// <summary>Creates a new RepoAukcijaEntity.VaganaRepoStopa field instance</summary>
+		public static EntityField2 VaganaRepoStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(RepoAukcijaFieldIndex.VaganaRepoStopa);}
+		}
+	}
+
 	/// <summary>Field Creation Class for entity RoleRoEntity</summary>
 	public partial class RoleRoFields
 	{

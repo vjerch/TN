@@ -15,9 +15,10 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
     public enum EntityEnum
     {
         AuditInfo = 1,
-        TrgovanjeGlava = 2,
-        TrgovanjeStavka = 3,
-        User = 4
+        TrgovanjeGlava = 3,
+        TrgovanjeStavka = 4,
+        User = 5,
+        RepoAukcija = 6
     }
 
     public enum RoleEnum

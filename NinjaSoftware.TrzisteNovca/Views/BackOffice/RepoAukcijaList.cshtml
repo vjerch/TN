@@ -1,0 +1,48 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.RepoAukcijaPager
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.Common
+@{
+    string title = "Repo aukcije";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj repo aukciju", "RepoAukcijaEdit")
+</p>
+
+<table>
+    <tr>
+        <th>
+            Broj aukcije
+        </th>
+        <th>
+            Datum aukcije
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (RepoAukcijaEntity repoAukcija in Model.DataSource)
+{
+    <tr>
+        <td>
+            @repoAukcija.BrojAukcije
+        </td>
+        <td>
+            @repoAukcija.DatumAukcije
+        </td>
+        <td>
+            @Html.ActionLink("Uredi", "RepoAukcijaEdit", new { repoAukcijaId = repoAukcija.RepoAukcijaId }) |
+            @Html.ActionLink("Obriši", "RepoAukcijaDelete",
+                new { repoAukcijaId = repoAukcija.RepoAukcijaId }, 
+                new { onclick = "return confirm('Jeste li sigurni da želite obrisati repo aukciju?');" })
+        </td>
+    </tr>
+}
+    <tr>
+        <td colspan="3" style="text-align: center;">
+            @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
+        </td>
+    </tr>
+</table>

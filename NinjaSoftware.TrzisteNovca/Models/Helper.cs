@@ -7,6 +7,8 @@ using System.Configuration;
 using NinjaSoftware.Api.CoolJ;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using System.Text;
+using System.Web.Mvc;
+using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 
 namespace NinjaSoftware.TrzisteNovca.Models
 {
@@ -204,6 +206,52 @@ namespace NinjaSoftware.TrzisteNovca.Models
                     return string.Empty;
             }
         }
+
+        #endregion
+
+        #region ViewModel helpers
+
+        public static List<SelectListItem> CreateGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
+        {
+            IEnumerable<int> godinaCollection = TrgovanjeGlavaEntity.GodinaTrgovanjaCollection(adapter);
+
+            List<SelectListItem> godinaSelectList = new List<SelectListItem>();
+            foreach (int godina in godinaCollection)
+            {
+                SelectListItem selectListItem = new SelectListItem()
+                {
+                    Value = godina.ToString(),
+                    Text = godina.ToString(),
+                    Selected = godina == oznacenaGodina
+                };
+
+                godinaSelectList.Add(selectListItem);
+            }
+
+            return godinaSelectList;
+        }
+
+        public static TrgovanjeVrstaEnum[] TrgovanjeVrstaEnumArrayZaPrikaz 
+        { 
+            get
+            {
+                return _trgovanjeVrstaEnumArray;
+            }
+        }
+
+        private static TrgovanjeVrstaEnum[] _trgovanjeVrstaEnumArray = 
+            { 
+                TrgovanjeVrstaEnum.TomNext,
+                TrgovanjeVrstaEnum.SpotNext,
+                TrgovanjeVrstaEnum.RocniDepozit,
+                TrgovanjeVrstaEnum.JedanTjedan,
+                TrgovanjeVrstaEnum.DvaTjedna,
+                TrgovanjeVrstaEnum.JedanMjesec,
+                TrgovanjeVrstaEnum.TriMjeseca,
+                TrgovanjeVrstaEnum.ViseOdTriMjeseca,
+                TrgovanjeVrstaEnum.Opoziv,
+                TrgovanjeVrstaEnum.Prekonocni
+            };
 
         #endregion
     }

@@ -178,6 +178,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty RepoAukcijaEntity objects.</summary>
+	[Serializable]
+	public partial class RepoAukcijaEntityFactory : EntityFactoryBase2<RepoAukcijaEntity> {
+		/// <summary>CTor</summary>
+		public RepoAukcijaEntityFactory() : base("RepoAukcijaEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity, false) { }
+		
+		/// <summary>Creates a new RepoAukcijaEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new RepoAukcijaEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewRepoAukcijaUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty RoleRoEntity objects.</summary>
 	[Serializable]
 	public partial class RoleRoEntityFactory : EntityFactoryBase2<RoleRoEntity> {
@@ -321,6 +341,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					factoryToUse = new ErrorEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity:
+					factoryToUse = new RepoAukcijaEntityFactory();
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					factoryToUse = new RoleRoEntityFactory();

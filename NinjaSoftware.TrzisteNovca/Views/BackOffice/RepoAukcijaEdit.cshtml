@@ -1,0 +1,185 @@
+﻿@model NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.RepoAukcijaEntity
+
+@{
+    string title;
+    if (Model.IsNew)
+    {
+        title = "Unos nove repo aukcije";
+    }
+    else
+    {
+        title = "Uređivanje repo aukcije";
+    }
+    
+    ViewBag.Title = title;
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DatumAukcije").datepicker();
+        $("#DatumReotkupa").datepicker();
+    });
+</script>
+
+<h2>@title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.ConcurrencyGuid)
+    @Html.HiddenFor(model => model.RepoAukcijaId)
+
+    <fieldset>
+
+    <table>
+        
+        <tr>
+            <td>
+                Broj aukcije
+            </td>
+            <td>
+                @Html.EditorFor(model => model.BrojAukcije)
+                @Html.ValidationMessageFor(model => model.BrojAukcije)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Datum aukcije
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.DatumAukcije, new { id = "DatumAukcije", @Value = Model.DatumAukcije.ToString("dd.MM.yyyy") })
+                @Html.ValidationMessageFor(model => model.DatumAukcije)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.DatumReotkupa)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.DatumReotkupa, new { id = "DatumReotkupa", 
+                    @Value = Model.DatumReotkupa.HasValue ? Model.DatumReotkupa.Value.ToString("dd.MM.yyyy") : string.Empty })
+                @Html.ValidationMessageFor(model => model.DatumReotkupa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.FiksnaRepoStopa)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.FiksnaRepoStopa)
+                @Html.ValidationMessageFor(model => model.FiksnaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.GranicnaRepoStopa)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.GranicnaRepoStopa)
+                @Html.ValidationMessageFor(model => model.GranicnaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.KoeficijentRaspodjele)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.KoeficijentRaspodjele)
+                @Html.ValidationMessageFor(model => model.KoeficijentRaspodjele)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.NajnizaRepoStopa)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.NajnizaRepoStopa)
+                @Html.ValidationMessageFor(model => model.NajnizaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.NajvisaRepoStopa)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.NajvisaRepoStopa)
+                @Html.ValidationMessageFor(model => model.NajvisaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.OdbijenePonudeUkupno)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.OdbijenePonudeUkupno)
+                @Html.ValidationMessageFor(model => model.OdbijenePonudeUkupno)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PostoPrihvacenihPoGranicnojStopi)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.PostoPrihvacenihPoGranicnojStopi)
+                @Html.ValidationMessageFor(model => model.PostoPrihvacenihPoGranicnojStopi)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PrihvacenePonudeUkupno)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.PrihvacenePonudeUkupno)
+                @Html.ValidationMessageFor(model => model.PrihvacenePonudeUkupno)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PristiglePonudeUkupno)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.PristiglePonudeUkupno)
+                @Html.ValidationMessageFor(model => model.PristiglePonudeUkupno)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.VaganaRepoStopa)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.VaganaRepoStopa)
+                @Html.ValidationMessageFor(model => model.VaganaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Pohrani" />
+            </td>
+            <td>
+                <input id="cancel" type="submit" value="Odustani" />
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cancel").click(function (e) {
+            e.preventDefault();
+            window.location.href = '@Url.Action("RepoAukcijaList")';
+        });
+    });
+</script>

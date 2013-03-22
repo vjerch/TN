@@ -72,6 +72,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					toReturn = this.Error;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity:
+					toReturn = this.RepoAukcija;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					toReturn = this.RoleRo;
 					break;
@@ -119,6 +122,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 		public DataSource2<ErrorEntity> Error
 		{
 			get { return new DataSource2<ErrorEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting RepoAukcijaEntity instances in the database.</summary>
+		public DataSource2<RepoAukcijaEntity> RepoAukcija
+		{
+			get { return new DataSource2<RepoAukcijaEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		/// <summary>returns the datasource to use in a Linq query when targeting RoleRoEntity instances in the database.</summary>

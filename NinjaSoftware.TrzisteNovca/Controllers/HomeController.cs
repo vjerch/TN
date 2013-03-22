@@ -29,7 +29,6 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                 }
 
                 TrgovanjeDanViewModel trgovanjeDanViewModel = new TrgovanjeDanViewModel(adapter, date.Value);
-
                 return View(trgovanjeDanViewModel);
             }       
         }
@@ -50,9 +49,29 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             using (adapter)
             {
                 TrgovanjeMjesecViewModel trgovanjeMjesecViewModel = new TrgovanjeMjesecViewModel(adapter, godina, mjesec, valutaEnum);
-
                 return View(trgovanjeMjesecViewModel);
             }        
         }
+
+        public ActionResult TrgovanjeGodinaRok(int godina)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeGodinaRokViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokViewModel(adapter, godina);
+                return View(trgovanjeGodinaRokViewModel);
+            }  
+        }
+
+        public ActionResult TrgovanjeMjesecRok(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokViewModel(adapter, godina, mjesec);
+                return View(trgovanjeMjesecRokViewModel);
+            }
+        }
+
     }
 }

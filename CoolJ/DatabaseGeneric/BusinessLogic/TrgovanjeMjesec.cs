@@ -9,11 +9,8 @@ using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 {
-    public class TrgovanjeMjesec
+    public class TrgovanjeMjesec : TrgovanjeMjesecBase
     {
-        public ValutaEnum Valuta { get; set; }
-        public int Godina { get; set; }
-        public int Mjesec { get; set; }
         public decimal? Potraznja { get; set; }
         public decimal? Ponuda { get; set; }
         public decimal? Promet { get; set; }
@@ -23,18 +20,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         {
             List<TrgovanjeMjesec> trgovanjeMjesecList = new List<TrgovanjeMjesec>();
 
-            DateTime startDate = new DateTime(godina, 1, 1);
-            DateTime endDate = startDate.AddYears(1);
-
-            RelationPredicateBucket bucket = new RelationPredicateBucket();
-            bucket.Relations.Add(TrgovanjeStavkaEntity.Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
-
-            bucket.PredicateExpression.Add(PredicateHelper.FilterValidEntities(startDate, endDate, TrgovanjeGlavaFields.Datum));
-
-            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeStavkaEntity);
-            prefetchPath.Add(TrgovanjeStavkaEntity.PrefetchPathTrgovanjeGlava);
-
-            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, bucket, prefetchPath);
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina);
 
             IEnumerable<long> valutaIdCollection = trgovanjeStavkaCollection.Select(ts => ts.ValutaId).Distinct();
 

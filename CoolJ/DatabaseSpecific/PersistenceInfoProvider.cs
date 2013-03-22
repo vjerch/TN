@@ -46,11 +46,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((10 + 0));
+			this.InitClass((11 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
 			InitErrorEntityMappings();
+			InitRepoAukcijaEntityMappings();
 			InitRoleRoEntityMappings();
 			InitTrgovanjeGlavaEntityMappings();
 			InitTrgovanjeStavkaEntityMappings();
@@ -100,6 +101,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "ErrorEntity", "Message", "Message", false, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 3 );
 			this.AddElementFieldMapping( "ErrorEntity", "ParentErrorId", "ParentErrorId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 4 );
 			this.AddElementFieldMapping( "ErrorEntity", "StackTrace", "StackTrace", true, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 5 );
+		}
+		/// <summary>Inits RepoAukcijaEntity's mappings</summary>
+		private void InitRepoAukcijaEntityMappings()
+		{
+			this.AddElementMapping( "RepoAukcijaEntity", @"TrzisteNovca", @"dbo", "RepoAukcija", 15 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "BrojAukcije", "BrojAukcije", true, "NVarChar", 20, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "DatumAukcije", "DatumAukcije", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 2 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "DatumReotkupa", "DatumReotkupa", true, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 3 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "FiksnaRepoStopa", "FiksnaRepoStopa", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 4 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "GranicnaRepoStopa", "GranicnaRepoStopa", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 5 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "KoeficijentRaspodjele", "KoeficijentRaspodjele", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 6 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "NajnizaRepoStopa", "NajnizaRepoStopa", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 7 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "NajvisaRepoStopa", "NajvisaRepoStopa", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 8 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "OdbijenePonudeUkupno", "OdbijenePonudeUkupno", true, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 9 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "PostoPrihvacenihPoGranicnojStopi", "PostoPrihvacenihPoGranicnojStopi", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 10 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "PrihvacenePonudeUkupno", "PrihvacenePonudeUkupno", true, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 11 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "PristiglePonudeUkupno", "PristiglePonudeUkupno", true, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 12 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "RepoAukcijaId", "RepoAukcijaId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 13 );
+			this.AddElementFieldMapping( "RepoAukcijaEntity", "VaganaRepoStopa", "VaganaRepoStopa", true, "Decimal", 0, 2, 5, false, "", null, typeof(System.Decimal), 14 );
 		}
 		/// <summary>Inits RoleRoEntity's mappings</summary>
 		private void InitRoleRoEntityMappings()

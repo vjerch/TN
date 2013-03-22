@@ -20,7 +20,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.Godina = godina;
             LoadChartData(this.TrgovanjeMjesecList);
 
-            CreateGodinaSelectList(adapter, godina);
+            this.GodinaSelectList = Helper.CreateGodinaSelectList(adapter, godina);
         }
 
         #endregion
@@ -57,24 +57,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());
             this.ChartLinePotraznjaDataSource = new HtmlString(chartLinePotraznja.ToString());
             this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
-        }
-
-        private void CreateGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
-        {
-            IEnumerable<int> godinaCollection = TrgovanjeGlavaEntity.GodinaTrgovanjaCollection(adapter);
-
-            this.GodinaSelectList = new List<SelectListItem>();
-            foreach (int godina in godinaCollection)
-            {
-                SelectListItem selectListItem = new SelectListItem() 
-                { 
-                    Value = godina.ToString(),
-                    Text = godina.ToString(),
-                    Selected = godina == oznacenaGodina
-                };
-
-                this.GodinaSelectList.Add(selectListItem);
-            }
         }
 
         #endregion

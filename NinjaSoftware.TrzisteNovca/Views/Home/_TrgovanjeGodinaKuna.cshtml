@@ -1,6 +1,11 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using NinjaSoftware.TrzisteNovca.Models
+@using System.Globalization
+
+@{
+    CultureInfo hrCulture = new CultureInfo("hr");
+    }
 
 <table>
     <tr>
@@ -29,6 +34,8 @@
 
 @foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn))
 {
+    
+    
     <tr>
         @{
             string potraznja = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions() : "-";
@@ -37,7 +44,8 @@
             string kamatnaStopa = trgovanjeMjesec.KamatnaStopa.HasValue ? trgovanjeMjesec.KamatnaStopa.Value.ToString("N2") : "-";
         }
         <td>
-            @Html.ActionLink(trgovanjeMjesec.Mjesec.ToString(), "TrgovanjeMjesec", 
+            @Html.ActionLink(hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesec.Mjesec), 
+                "TrgovanjeMjesec", 
                 new { godina = trgovanjeMjesec.Godina, mjesec = trgovanjeMjesec.Mjesec, valutaEnum = trgovanjeMjesec.Valuta })
         </td>
         <td>

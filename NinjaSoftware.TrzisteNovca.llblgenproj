@@ -67,7 +67,7 @@
   <CodeGenerationCyclePreferences>
     <OutputType Value="2">
       <LastUsedPreferences>
-        <DestinationRootFolder Value="G:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\DbScripts\Custom" />
+        <DestinationRootFolder Value="G:\Documents\Visual Studio 2010\Projects\NinjaSoftware.TrzisteNovca\DbScripts" />
         <FrameworkName Value="DDL SQL" />
         <LanguageName Value="SQL" />
         <PlatformName Value="RDBMS" />
@@ -160,6 +160,25 @@
           <Field Name="Message" Type="string" />
           <Field Name="ParentErrorId" Type="long" IsOptional="true" />
           <Field Name="StackTrace" Type="string" IsOptional="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="RepoAukcija">
+        <Fields>
+          <Field Name="BrojAukcije" Type="string" IsOptional="true" MaxLength="20" />
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="DatumAukcije" Type="datetime" />
+          <Field Name="DatumReotkupa" Type="datetime" IsOptional="true" />
+          <Field Name="FiksnaRepoStopa" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="GranicnaRepoStopa" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="KoeficijentRaspodjele" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="NajnizaRepoStopa" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="NajvisaRepoStopa" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="OdbijenePonudeUkupno" Type="decimal" IsOptional="true" Precision="10" Scale="2" />
+          <Field Name="PostoPrihvacenihPoGranicnojStopi" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
+          <Field Name="PrihvacenePonudeUkupno" Type="decimal" IsOptional="true" Precision="10" Scale="2" />
+          <Field Name="PristiglePonudeUkupno" Type="decimal" IsOptional="true" Precision="10" Scale="2" />
+          <Field Name="RepoAukcijaId" Type="long" IsPrimaryKey="true" />
+          <Field Name="VaganaRepoStopa" Type="decimal" IsOptional="true" Precision="5" Scale="2" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="RoleRo">
@@ -312,6 +331,25 @@
                     <Field Name="StackTrace" Ordinal="6" IsOptional="true" DbType="12" Length="2147483647" />
                   </Fields>
                 </Table>
+                <Table Name="RepoAukcija">
+                  <Fields>
+                    <Field Name="BrojAukcije" Ordinal="1" IsOptional="true" DbType="12" Length="20" />
+                    <Field Name="ConcurrencyGuid" Ordinal="2" DbType="12" Length="50" />
+                    <Field Name="DatumAukcije" Ordinal="3" DbType="4" />
+                    <Field Name="DatumReotkupa" Ordinal="4" IsOptional="true" DbType="4" />
+                    <Field Name="FiksnaRepoStopa" Ordinal="5" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="GranicnaRepoStopa" Ordinal="6" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="KoeficijentRaspodjele" Ordinal="7" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="NajnizaRepoStopa" Ordinal="8" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="NajvisaRepoStopa" Ordinal="9" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="OdbijenePonudeUkupno" Ordinal="10" IsOptional="true" DbType="5" Precision="10" Scale="2" />
+                    <Field Name="PostoPrihvacenihPoGranicnojStopi" Ordinal="11" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                    <Field Name="PrihvacenePonudeUkupno" Ordinal="12" IsOptional="true" DbType="5" Precision="10" Scale="2" />
+                    <Field Name="PristiglePonudeUkupno" Ordinal="13" IsOptional="true" DbType="5" Precision="10" Scale="2" />
+                    <Field Name="RepoAukcijaId" Ordinal="14" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_98fd1e245f4ac2cb3381fe9ef20" DbType="0" Precision="19" />
+                    <Field Name="VaganaRepoStopa" Ordinal="15" IsOptional="true" DbType="5" Precision="5" Scale="2" />
+                  </Fields>
+                </Table>
                 <Table Name="RoleRo">
                   <Fields>
                     <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
@@ -453,6 +491,25 @@
             <FieldMapping FieldName="Message" TargetFieldName="Message" />
             <FieldMapping FieldName="ParentErrorId" TargetFieldName="ParentErrorId" />
             <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":RepoAukcija" TargetName="TrzisteNovca:dbo:RepoAukcija">
+          <FieldMappings>
+            <FieldMapping FieldName="BrojAukcije" TargetFieldName="BrojAukcije" />
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="DatumAukcije" TargetFieldName="DatumAukcije" />
+            <FieldMapping FieldName="DatumReotkupa" TargetFieldName="DatumReotkupa" />
+            <FieldMapping FieldName="FiksnaRepoStopa" TargetFieldName="FiksnaRepoStopa" />
+            <FieldMapping FieldName="GranicnaRepoStopa" TargetFieldName="GranicnaRepoStopa" />
+            <FieldMapping FieldName="KoeficijentRaspodjele" TargetFieldName="KoeficijentRaspodjele" />
+            <FieldMapping FieldName="NajnizaRepoStopa" TargetFieldName="NajnizaRepoStopa" />
+            <FieldMapping FieldName="NajvisaRepoStopa" TargetFieldName="NajvisaRepoStopa" />
+            <FieldMapping FieldName="OdbijenePonudeUkupno" TargetFieldName="OdbijenePonudeUkupno" />
+            <FieldMapping FieldName="PostoPrihvacenihPoGranicnojStopi" TargetFieldName="PostoPrihvacenihPoGranicnojStopi" />
+            <FieldMapping FieldName="PrihvacenePonudeUkupno" TargetFieldName="PrihvacenePonudeUkupno" />
+            <FieldMapping FieldName="PristiglePonudeUkupno" TargetFieldName="PristiglePonudeUkupno" />
+            <FieldMapping FieldName="RepoAukcijaId" TargetFieldName="RepoAukcijaId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="VaganaRepoStopa" TargetFieldName="VaganaRepoStopa" />
           </FieldMappings>
         </EntityMapping>
         <EntityMapping EntityName=":RoleRo" TargetName="TrzisteNovca:dbo:RoleRo">
