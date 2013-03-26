@@ -188,6 +188,22 @@
           <Field Name="RoleId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
+      <EntityDefinition Name="Sudionik">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Naziv" Type="string" MaxLength="256" />
+          <Field Name="SudionikGrupaId" Type="long" />
+          <Field Name="SudionikId" Type="long" IsPrimaryKey="true" />
+          <Field Name="WebAdresa" Type="string" MaxLength="512" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="SudionikGrupaRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="50" />
+          <Field Name="Name" Type="string" MaxLength="128" />
+          <Field Name="SudionikGrupaId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
       <EntityDefinition Name="TrgovanjeGlava">
         <Fields>
           <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
@@ -256,6 +272,11 @@
       <NormalRelationship Name="Error.ParentError-Error.ChildErrorCollection" Start=":Error" End=":Error" StartNavigator="ParentError" EndNavigator="ChildErrorCollection" Type="4" EndIsOptional="true">
         <FieldRelationships>
           <FieldFieldRelationship FkField="ParentErrorId" PkField="ErrorId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="Sudionik.SudionikGrupa-SudionikGrupaRo.SudionikCollection" Start=":Sudionik" End=":SudionikGrupaRo" StartNavigator="SudionikGrupa" EndNavigator="SudionikCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="SudionikGrupaId" PkField="SudionikGrupaId" />
         </FieldRelationships>
       </NormalRelationship>
       <NormalRelationship Name="TrgovanjeStavka.TrgovanjeGlava-TrgovanjeGlava.TrgovanjeStavkaCollection" Start=":TrgovanjeStavka" End=":TrgovanjeGlava" StartNavigator="TrgovanjeGlava" EndNavigator="TrgovanjeStavkaCollection" Type="4">
