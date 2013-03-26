@@ -14,7 +14,10 @@
     </head>
     <body>
         <header>
-            Moj heder
+            @Html.ActionLink("Početna", "Index")
+            @Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")
+            @Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")
+            @Html.ActionLink("Repo aukcija HNB", "RepoAukcija")
         </header>
         <div id="body">
             @RenderSection("featured", required: false)

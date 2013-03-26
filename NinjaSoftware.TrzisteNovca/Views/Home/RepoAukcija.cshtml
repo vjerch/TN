@@ -1,0 +1,139 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.RepoAukcijaViewModel
+@using NinjaSoftware.TrzisteNovca.Models
+
+@{
+    string title = "REPO AUKCIJA";
+    ViewBag.Title = title;
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        Globalize.culture("hr");
+
+        $("#DatumAukcijeDropdown").change(function () {
+            var datumString = this.value;
+            var datumLength = datumString.length;
+
+            if (datumString.substring(datumLength - 1, datumLength) === ".") {
+                datumString = datumString.substring(0, datumLength - 1);
+            }
+
+            var datum = Globalize.parseDate(datumString);
+            var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
+
+            window.location.href = "@Url.Action("RepoAukcija")" + "?datumAukcije=" + linkParameter;
+        });
+    });
+</script>
+
+<h2>@title</h2>
+
+    <table>
+        
+        <tr>
+            <td>Broj aukcije:</td>
+            <td>@Model.RepoAukcija.BrojAukcije</td>
+        </tr>
+        <tr>
+            <td>Datum aukcije:</td>
+            <td>@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)</td>
+        </tr>
+
+        <tr>
+            <td>Datum reotkupa:</td>
+            <td>
+                @{ string datumReotkupa = Model.RepoAukcija.DatumReotkupa.HasValue ? Model.RepoAukcija.DatumReotkupa.Value.ToShortDateString() : "-"; }
+                @datumReotkupa
+            </td>
+        </tr>
+
+        <tr>
+            <td>Ukupan iznos pristiglih ponuda:</td>
+            <td>
+                @{ string pristiglePonude = Model.RepoAukcija.PristiglePonudeUkupno.HasValue ? Model.RepoAukcija.PristiglePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @pristiglePonude
+            </td>
+        </tr>
+
+        <tr>
+            <td>Najviša ponuđena repo stopa:</td>
+            <td>
+                @{ string najvisaRepoStopa = Model.RepoAukcija.NajvisaRepoStopa.HasValue ? Model.RepoAukcija.NajvisaRepoStopa.Value.ToString("N2") : "-"; }
+                @najvisaRepoStopa
+            </td>
+        </tr>
+
+        <tr>
+            <td>Najniža ponuđena repo stopa:</td>
+            <td>
+                @{ string najnizaRepoStopa = Model.RepoAukcija.NajnizaRepoStopa.HasValue ? Model.RepoAukcija.NajnizaRepoStopa.Value.ToString("N2") : "-"; }
+                @najnizaRepoStopa
+            </td>
+        </tr>
+
+        <tr>
+            <td>Ukupan iznos prihvaćenih ponuda:</td>
+            <td>
+                @{ string prihvacenePonude = Model.RepoAukcija.PrihvacenePonudeUkupno.HasValue ? Model.RepoAukcija.PrihvacenePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @prihvacenePonude
+            </td>
+        </tr>
+
+        <tr>
+            <td>Ukupan iznos odbijenih ponuda:</td>
+            <td>
+                @{ string odbijenePonude = Model.RepoAukcija.OdbijenePonudeUkupno.HasValue ? Model.RepoAukcija.OdbijenePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @odbijenePonude
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Vagana repo stopa:
+            </td>
+            <td>
+                @{ string vaganaStopa = Model.RepoAukcija.VaganaRepoStopa.HasValue ? Model.RepoAukcija.VaganaRepoStopa.Value.ToString("N2") : "-"; }
+                @vaganaStopa
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Granična repo stopa:
+            </td>
+            <td>
+                @{ string granicnaStopa = Model.RepoAukcija.GranicnaRepoStopa.HasValue ? Model.RepoAukcija.GranicnaRepoStopa.Value.ToString("N2") : "-"; }
+                @granicnaStopa
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Fiksna repo stopa:
+            </td>
+            <td>
+                @{ string fiksnaStopa = Model.RepoAukcija.FiksnaRepoStopa.HasValue ? Model.RepoAukcija.FiksnaRepoStopa.Value.ToString("N2") : "-"; }
+                @fiksnaStopa
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Prihvaćeno ponuda po graničnoj repo stopi:
+            </td>
+            <td>
+                @{ string postoPrihvacenihPoGranicnojStopi = Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.HasValue ? Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.Value.ToString("N2") : "-"; }
+                @postoPrihvacenihPoGranicnojStopi
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Koeficijent raspodjele:
+            </td>
+            <td>
+                @{ string koeficijentRaspodjele = Model.RepoAukcija.KoeficijentRaspodjele.HasValue ? Model.RepoAukcija.KoeficijentRaspodjele.Value.ToString("N2") : "-"; }
+                @koeficijentRaspodjele
+            </td>
+        </tr>
+    </table>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using SD.LLBLGen.Pro.ORMSupportClasses;
+using System.Web.Mvc;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
@@ -11,10 +12,33 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
     {
         #region Constructor
 
-        public RepoAukcijaViewModel(DataAccessAdapterBase adapter, long repoAukcijaId)
+        public RepoAukcijaViewModel(DataAccessAdapterBase adapter, DateTime? datumAukcije)
         {
-            this.RepoAukcija = RepoAukcijaEntity.FetchRepoAukcija(adapter, null, repoAukcijaId);
-            this.DatumAukcijeList = RepoAukcijaEntity.FetchRepoAukcijaDateCollection(adapter).Select(d => d.ToShortDateString());
+            IEnumerable<DateTime> repoAukcijaDatumList = RepoAukcijaEntity.FetchRepoAukcijaDateCollection(adapter);
+
+            if (datumAukcije.HasValue)
+            {
+                this.RepoAukcija = RepoAukcijaEntity.FetchRepoAukcija(adapter, null, datumAukcije.Value);
+            }
+
+            if (null == this.RepoAukcija)
+            {
+                this.RepoAukcija = RepoAukcijaEntity.FetchRepoAukcija(adapter, null, repoAukcijaDatumList.Max());
+            }
+
+            this.DatumAukcijeSelectList = new List<SelectListItem>();
+
+            foreach (DateTime date in repoAukcijaDatumList)
+            {
+                SelectListItem selectListItem = new SelectListItem() 
+                {
+                    Value = date.ToShortDateString(),
+                    Text = date.ToShortDateString(),
+                    Selected = date == this.RepoAukcija.DatumAukcije
+                };
+
+                this.DatumAukcijeSelectList.Add(selectListItem);
+            }
         }
 
         #endregion
@@ -22,7 +46,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         #region Properties
 
         public RepoAukcijaEntity RepoAukcija { get; set; }
-        public IEnumerable<string> DatumAukcijeList { get; set; }
+        public List<SelectListItem> DatumAukcijeSelectList { get; set; }
 
         #endregion
     }

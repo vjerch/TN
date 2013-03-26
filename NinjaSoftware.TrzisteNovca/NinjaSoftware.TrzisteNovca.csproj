@@ -843,6 +843,7 @@
     <Content Include="Views\Home\TrgovanjeMjesecRok.cshtml" />
     <Content Include="Views\BackOffice\RepoAukcijaList.cshtml" />
     <Content Include="Views\BackOffice\RepoAukcijaEdit.cshtml" />
+    <Content Include="Views\Home\RepoAukcija.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -35,7 +35,7 @@
         
         <tr>
             <td>
-                Broj aukcije
+                Broj aukcije:
             </td>
             <td>
                 @Html.EditorFor(model => model.BrojAukcije)
@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td>
-                Datum aukcije
+                Datum aukcije:
             </td>
             <td>
                 @Html.TextBoxFor(model => model.DatumAukcije, new { id = "DatumAukcije", @Value = Model.DatumAukcije.ToString("dd.MM.yyyy") })
@@ -54,7 +54,7 @@
 
         <tr>
             <td>
-                @Html.LabelFor(model => model.DatumReotkupa)
+                Datum reotkupa:
             </td>
             <td>
                 @Html.TextBoxFor(model => model.DatumReotkupa, new { id = "DatumReotkupa", 
@@ -65,87 +65,7 @@
 
         <tr>
             <td>
-                @Html.LabelFor(model => model.FiksnaRepoStopa)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.FiksnaRepoStopa)
-                @Html.ValidationMessageFor(model => model.FiksnaRepoStopa)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.GranicnaRepoStopa)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.GranicnaRepoStopa)
-                @Html.ValidationMessageFor(model => model.GranicnaRepoStopa)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.KoeficijentRaspodjele)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.KoeficijentRaspodjele)
-                @Html.ValidationMessageFor(model => model.KoeficijentRaspodjele)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.NajnizaRepoStopa)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.NajnizaRepoStopa)
-                @Html.ValidationMessageFor(model => model.NajnizaRepoStopa)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.NajvisaRepoStopa)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.NajvisaRepoStopa)
-                @Html.ValidationMessageFor(model => model.NajvisaRepoStopa)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.OdbijenePonudeUkupno)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.OdbijenePonudeUkupno)
-                @Html.ValidationMessageFor(model => model.OdbijenePonudeUkupno)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.PostoPrihvacenihPoGranicnojStopi)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.PostoPrihvacenihPoGranicnojStopi)
-                @Html.ValidationMessageFor(model => model.PostoPrihvacenihPoGranicnojStopi)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.PrihvacenePonudeUkupno)
-            </td>
-            <td>
-                @Html.EditorFor(model => model.PrihvacenePonudeUkupno)
-                @Html.ValidationMessageFor(model => model.PrihvacenePonudeUkupno)
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.PristiglePonudeUkupno)
+                Ukupan iznos pristiglih ponuda:
             </td>
             <td>
                 @Html.EditorFor(model => model.PristiglePonudeUkupno)
@@ -155,11 +75,91 @@
 
         <tr>
             <td>
-                @Html.LabelFor(model => model.VaganaRepoStopa)
+                Najviša ponuđena repo stopa:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.NajvisaRepoStopa)
+                @Html.ValidationMessageFor(model => model.NajvisaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Najniža ponuđena repo stopa:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.NajnizaRepoStopa)
+                @Html.ValidationMessageFor(model => model.NajnizaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Ukupan iznos prihvaćenih ponuda:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.PrihvacenePonudeUkupno)
+                @Html.ValidationMessageFor(model => model.PrihvacenePonudeUkupno)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Ukupan iznos odbijenih ponuda:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.OdbijenePonudeUkupno)
+                @Html.ValidationMessageFor(model => model.OdbijenePonudeUkupno)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Vagana repo stopa:
             </td>
             <td>
                 @Html.EditorFor(model => model.VaganaRepoStopa)
                 @Html.ValidationMessageFor(model => model.VaganaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Granična repo stopa:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.GranicnaRepoStopa)
+                @Html.ValidationMessageFor(model => model.GranicnaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Fiksna repo stopa:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.FiksnaRepoStopa)
+                @Html.ValidationMessageFor(model => model.FiksnaRepoStopa)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Prihvaćeno ponuda po graničnoj repo stopi:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.PostoPrihvacenihPoGranicnojStopi)
+                @Html.ValidationMessageFor(model => model.PostoPrihvacenihPoGranicnojStopi)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Koeficijent raspodjele:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.KoeficijentRaspodjele)
+                @Html.ValidationMessageFor(model => model.KoeficijentRaspodjele)
             </td>
         </tr>
 

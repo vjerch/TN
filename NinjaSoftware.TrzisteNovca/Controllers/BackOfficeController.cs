@@ -193,7 +193,10 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             }
             else
             {
-                return new RepoAukcijaEntity();
+                RepoAukcijaEntity repoAukcija = new RepoAukcijaEntity();
+                repoAukcija.DatumAukcije = DateTime.Now.Date;
+
+                return repoAukcija;
             }
         }
 

@@ -10,10 +10,25 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class RepoAukcijaEntity
     {
-        public static IEnumerable<DateTime> FetchRepoAukcijaDateCollection(DataAccessAdapterBase adapter)
+        private static List<DateTime> _repoAukcijaDateCollection;
+
+        public static List<DateTime> FetchRepoAukcijaDateCollection(DataAccessAdapterBase adapter)
         {
-            LinqMetaData linqMetaData = new LinqMetaData(adapter);
-            return linqMetaData.RepoAukcija.OrderBy(ra => ra.DatumAukcije).Select(ra => ra.DatumAukcije);
+            if (null == _repoAukcijaDateCollection)
+            {
+                LinqMetaData linqMetaData = new LinqMetaData(adapter);
+                _repoAukcijaDateCollection = linqMetaData.RepoAukcija.OrderBy(ra => ra.DatumAukcije).Select(ra => ra.DatumAukcije).ToList();
+            }
+
+            return _repoAukcijaDateCollection;
+        }
+
+        public static RepoAukcijaEntity FetchRepoAukcija(DataAccessAdapterBase adapter, PrefetchPath2 prefetchPath, DateTime datumAukcije)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(RepoAukcijaFields.DatumAukcije == datumAukcije);
+
+            return FetchRepoAukcijaCollection(adapter, bucket, prefetchPath).SingleOrDefault();
         }
     }
 }
