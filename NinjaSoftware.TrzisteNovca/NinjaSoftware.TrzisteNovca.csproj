@@ -131,8 +131,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BackOffice\SudionikPager.cs" />
     <Compile Include="Models\BackOffice\RepoAukcijaPager.cs" />
-    <Compile Include="Models\BackOffice\PagerBase.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
     <Compile Include="Models\Extensions.cs" />
@@ -844,6 +844,7 @@
     <Content Include="Views\BackOffice\RepoAukcijaList.cshtml" />
     <Content Include="Views\BackOffice\RepoAukcijaEdit.cshtml" />
     <Content Include="Views\Home\RepoAukcija.cshtml" />
+    <Content Include="Views\BackOffice\SudionikList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

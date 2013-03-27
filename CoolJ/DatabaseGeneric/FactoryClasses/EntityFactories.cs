@@ -218,6 +218,48 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty SudionikEntity objects.</summary>
+	[Serializable]
+	public partial class SudionikEntityFactory : EntityFactoryBase2<SudionikEntity> {
+		/// <summary>CTor</summary>
+		public SudionikEntityFactory() : base("SudionikEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikEntity, false) { }
+		
+		/// <summary>Creates a new SudionikEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new SudionikEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSudionikUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
+	/// <summary>Factory to create new, empty SudionikGrupaRoEntity objects.</summary>
+	[Serializable]
+	public partial class SudionikGrupaRoEntityFactory : EntityFactoryBase2<SudionikGrupaRoEntity> {
+		/// <summary>CTor</summary>
+		public SudionikGrupaRoEntityFactory() : base("SudionikGrupaRoEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikGrupaRoEntity, false) { }
+		
+		/// <summary>Creates a new SudionikGrupaRoEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new SudionikGrupaRoEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSudionikGrupaRoUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty TrgovanjeGlavaEntity objects.</summary>
 	[Serializable]
 	public partial class TrgovanjeGlavaEntityFactory : EntityFactoryBase2<TrgovanjeGlavaEntity> {
@@ -347,6 +389,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					factoryToUse = new RoleRoEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikEntity:
+					factoryToUse = new SudionikEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikGrupaRoEntity:
+					factoryToUse = new SudionikGrupaRoEntityFactory();
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaEntity:
 					factoryToUse = new TrgovanjeGlavaEntityFactory();

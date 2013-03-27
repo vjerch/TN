@@ -74,3 +74,25 @@ INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
 
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
 	VALUES('Prekonocni', 'prekonoæni', 10, 'O/N');
+
+-- SudionikGrupaRo
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('Dionicari', 'Dionièari', 1);
+
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('KorisneAdrese', 'Korisne adrese', 2);
+
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('Banke', 'Banke', 3);
+	
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('InvesticijskiFondovi', 'Društva za upravljanje investicijskim fondovima', 4);
+	
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('MirovinskiFondovi', 'Društva za upravljanje mirovinskim fondovima', 5);
+
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('OsiguravajucaDrustva', 'Osiguravajuæa društva', 6);
+
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('StambeneStedionice', 'Stambene štedionice', 7);

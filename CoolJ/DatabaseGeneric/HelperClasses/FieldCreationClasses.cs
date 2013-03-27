@@ -233,6 +233,56 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
+	/// <summary>Field Creation Class for entity SudionikEntity</summary>
+	public partial class SudionikFields
+	{
+		/// <summary>Creates a new SudionikEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new SudionikEntity.Naziv field instance</summary>
+		public static EntityField2 Naziv
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikFieldIndex.Naziv);}
+		}
+		/// <summary>Creates a new SudionikEntity.SudionikGrupaId field instance</summary>
+		public static EntityField2 SudionikGrupaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikFieldIndex.SudionikGrupaId);}
+		}
+		/// <summary>Creates a new SudionikEntity.SudionikId field instance</summary>
+		public static EntityField2 SudionikId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikFieldIndex.SudionikId);}
+		}
+		/// <summary>Creates a new SudionikEntity.WebAdresa field instance</summary>
+		public static EntityField2 WebAdresa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikFieldIndex.WebAdresa);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity SudionikGrupaRoEntity</summary>
+	public partial class SudionikGrupaRoFields
+	{
+		/// <summary>Creates a new SudionikGrupaRoEntity.Code field instance</summary>
+		public static EntityField2 Code
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikGrupaRoFieldIndex.Code);}
+		}
+		/// <summary>Creates a new SudionikGrupaRoEntity.Name field instance</summary>
+		public static EntityField2 Name
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikGrupaRoFieldIndex.Name);}
+		}
+		/// <summary>Creates a new SudionikGrupaRoEntity.SudionikGrupaId field instance</summary>
+		public static EntityField2 SudionikGrupaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SudionikGrupaRoFieldIndex.SudionikGrupaId);}
+		}
+	}
+
 	/// <summary>Field Creation Class for entity TrgovanjeGlavaEntity</summary>
 	public partial class TrgovanjeGlavaFields
 	{

@@ -1,0 +1,40 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.SudionikPager
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+
+@{
+    String title = "Lista sudionika";
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novog sudionika", "SudionikEdit")
+</p>
+<table>
+    <tr>
+        <th>
+            Naziv
+        </th>
+        <th>
+            Web adresa
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (SudionikEntity item in Model.DataSource) {
+    <tr>
+        <td>
+            @item.Naziv
+        </td>
+        <td>
+            @item.WebAdresa
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "SudionikEdit", new { sudionikId = item.SudionikId }) |
+            @Html.ActionLink("Delete", "SudionikDelete", new { sudionikId = item.SudionikId })
+        </td>
+    </tr>
+}
+
+</table>

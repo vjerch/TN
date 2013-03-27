@@ -48,13 +48,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (11 + 0));
+			this.InitClass( (13 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
 			InitErrorEntityInfos();
 			InitRepoAukcijaEntityInfos();
 			InitRoleRoEntityInfos();
+			InitSudionikEntityInfos();
+			InitSudionikGrupaRoEntityInfos();
 			InitTrgovanjeGlavaEntityInfos();
 			InitTrgovanjeStavkaEntityInfos();
 			InitTrgovanjeVrstaRoEntityInfos();
@@ -131,6 +133,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("RoleRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)RoleRoFieldIndex.Code, 128, 0, 0);
 			this.AddElementFieldInfo("RoleRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)RoleRoFieldIndex.Name, 256, 0, 0);
 			this.AddElementFieldInfo("RoleRoEntity", "RoleId", typeof(System.Int64), true, false, false, false,  (int)RoleRoFieldIndex.RoleId, 0, 0, 19);
+		}
+		/// <summary>Inits SudionikEntity's FieldInfo objects</summary>
+		private void InitSudionikEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(SudionikFieldIndex), "SudionikEntity");
+			this.AddElementFieldInfo("SudionikEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)SudionikFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("SudionikEntity", "Naziv", typeof(System.String), false, false, false, false,  (int)SudionikFieldIndex.Naziv, 256, 0, 0);
+			this.AddElementFieldInfo("SudionikEntity", "SudionikGrupaId", typeof(System.Int64), false, true, false, false,  (int)SudionikFieldIndex.SudionikGrupaId, 0, 0, 19);
+			this.AddElementFieldInfo("SudionikEntity", "SudionikId", typeof(System.Int64), true, false, false, false,  (int)SudionikFieldIndex.SudionikId, 0, 0, 19);
+			this.AddElementFieldInfo("SudionikEntity", "WebAdresa", typeof(System.String), false, false, false, false,  (int)SudionikFieldIndex.WebAdresa, 512, 0, 0);
+		}
+		/// <summary>Inits SudionikGrupaRoEntity's FieldInfo objects</summary>
+		private void InitSudionikGrupaRoEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(SudionikGrupaRoFieldIndex), "SudionikGrupaRoEntity");
+			this.AddElementFieldInfo("SudionikGrupaRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)SudionikGrupaRoFieldIndex.Code, 50, 0, 0);
+			this.AddElementFieldInfo("SudionikGrupaRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)SudionikGrupaRoFieldIndex.Name, 128, 0, 0);
+			this.AddElementFieldInfo("SudionikGrupaRoEntity", "SudionikGrupaId", typeof(System.Int64), true, false, false, false,  (int)SudionikGrupaRoFieldIndex.SudionikGrupaId, 0, 0, 19);
 		}
 		/// <summary>Inits TrgovanjeGlavaEntity's FieldInfo objects</summary>
 		private void InitTrgovanjeGlavaEntityInfos()

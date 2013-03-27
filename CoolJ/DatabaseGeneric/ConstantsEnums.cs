@@ -122,6 +122,34 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: Sudionik.</summary>
+	public enum SudionikFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>Naziv. </summary>
+		Naziv,
+		///<summary>SudionikGrupaId. </summary>
+		SudionikGrupaId,
+		///<summary>SudionikId. </summary>
+		SudionikId,
+		///<summary>WebAdresa. </summary>
+		WebAdresa,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: SudionikGrupaRo.</summary>
+	public enum SudionikGrupaRoFieldIndex
+	{
+		///<summary>Code. </summary>
+		Code,
+		///<summary>Name. </summary>
+		Name,
+		///<summary>SudionikGrupaId. </summary>
+		SudionikGrupaId,
+		/// <summary></summary>
+		AmountOfFields
+	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: TrgovanjeGlava.</summary>
 	public enum TrgovanjeGlavaFieldIndex
 	{
@@ -226,6 +254,10 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		RepoAukcijaEntity,
 		///<summary>RoleRo</summary>
 		RoleRoEntity,
+		///<summary>Sudionik</summary>
+		SudionikEntity,
+		///<summary>SudionikGrupaRo</summary>
+		SudionikGrupaRoEntity,
 		///<summary>TrgovanjeGlava</summary>
 		TrgovanjeGlavaEntity,
 		///<summary>TrgovanjeStavka</summary>

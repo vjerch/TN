@@ -46,13 +46,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((11 + 0));
+			this.InitClass((13 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
 			InitErrorEntityMappings();
 			InitRepoAukcijaEntityMappings();
 			InitRoleRoEntityMappings();
+			InitSudionikEntityMappings();
+			InitSudionikGrupaRoEntityMappings();
 			InitTrgovanjeGlavaEntityMappings();
 			InitTrgovanjeStavkaEntityMappings();
 			InitTrgovanjeVrstaRoEntityMappings();
@@ -129,6 +131,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "RoleRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "RoleRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "RoleRoEntity", "RoleId", "RoleId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
+		}
+		/// <summary>Inits SudionikEntity's mappings</summary>
+		private void InitSudionikEntityMappings()
+		{
+			this.AddElementMapping( "SudionikEntity", @"TrzisteNovca", @"dbo", "Sudionik", 5 );
+			this.AddElementFieldMapping( "SudionikEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "SudionikEntity", "Naziv", "Naziv", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "SudionikEntity", "SudionikGrupaId", "SudionikGrupaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
+			this.AddElementFieldMapping( "SudionikEntity", "SudionikId", "SudionikId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 3 );
+			this.AddElementFieldMapping( "SudionikEntity", "WebAdresa", "WebAdresa", false, "NVarChar", 512, 0, 0, false, "", null, typeof(System.String), 4 );
+		}
+		/// <summary>Inits SudionikGrupaRoEntity's mappings</summary>
+		private void InitSudionikGrupaRoEntityMappings()
+		{
+			this.AddElementMapping( "SudionikGrupaRoEntity", @"TrzisteNovca", @"dbo", "SudionikGrupaRo", 3 );
+			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "Name", "Name", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "SudionikGrupaId", "SudionikGrupaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
 		}
 		/// <summary>Inits TrgovanjeGlavaEntity's mappings</summary>
 		private void InitTrgovanjeGlavaEntityMappings()

@@ -78,6 +78,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					toReturn = this.RoleRo;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikEntity:
+					toReturn = this.Sudionik;
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikGrupaRoEntity:
+					toReturn = this.SudionikGrupaRo;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaEntity:
 					toReturn = this.TrgovanjeGlava;
 					break;
@@ -134,6 +140,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 		public DataSource2<RoleRoEntity> RoleRo
 		{
 			get { return new DataSource2<RoleRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting SudionikEntity instances in the database.</summary>
+		public DataSource2<SudionikEntity> Sudionik
+		{
+			get { return new DataSource2<SudionikEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting SudionikGrupaRoEntity instances in the database.</summary>
+		public DataSource2<SudionikGrupaRoEntity> SudionikGrupaRo
+		{
+			get { return new DataSource2<SudionikGrupaRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeGlavaEntity instances in the database.</summary>

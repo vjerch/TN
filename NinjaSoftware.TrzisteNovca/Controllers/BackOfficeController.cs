@@ -213,5 +213,21 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         #endregion
+
+        #region Sudionik
+
+        public ActionResult SudionikList(int? pageNumber, string sortField, bool? isSortAscending)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                SudionikPager sudionikPager = new SudionikPager();
+                sudionikPager.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
+
+                return View(sudionikPager);
+            }
+        }
+
+        #endregion
     }
 }

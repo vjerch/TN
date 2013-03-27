@@ -48,4 +48,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         ViseOdTriMjeseca = 9,
         Prekonocni = 10
     }
+
+    public enum SudionikGrupa
+    {
+        Dionicari = 1,
+        KorisneAdrese = 2,
+        Banke = 3,
+        InvesticijskiFondovi = 4,
+        MirovinskiFondovi = 5,
+        OsiguravajucaDrustva = 6,
+        StambeneStedionice = 7
+    }
 }
