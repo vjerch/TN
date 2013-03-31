@@ -5,6 +5,7 @@ using System.Text;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.Linq;
+using NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses;
 
 namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
@@ -16,8 +17,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
             if (null == _repoAukcijaDateCollection)
             {
-                LinqMetaData linqMetaData = new LinqMetaData(adapter);
-                _repoAukcijaDateCollection = linqMetaData.RepoAukcija.OrderBy(ra => ra.DatumAukcije).Select(ra => ra.DatumAukcije).ToList();
+                EntityCollection<RepoAukcijaEntity> repoAukcijaEntityCollection = new EntityCollection<RepoAukcijaEntity>(new RepoAukcijaEntityFactory());
+                ExcludeIncludeFieldsList includeFieldList = new ExcludeIncludeFieldsList(false);
+                includeFieldList.Add(RepoAukcijaFields.DatumAukcije);
+
+                adapter.FetchEntityCollection(repoAukcijaEntityCollection, includeFieldList, null);
+
+                _repoAukcijaDateCollection = repoAukcijaEntityCollection.OrderByDescending(ra => ra.DatumAukcije).Select(ra => ra.DatumAukcije).ToList();
             }
 
             return _repoAukcijaDateCollection;

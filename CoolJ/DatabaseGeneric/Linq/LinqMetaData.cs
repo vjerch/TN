@@ -87,8 +87,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaEntity:
 					toReturn = this.TrgovanjeGlava;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaHnbEntity:
+					toReturn = this.TrgovanjeGlavaHnb;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity:
 					toReturn = this.TrgovanjeStavka;
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaHnbEntity:
+					toReturn = this.TrgovanjeStavkaHnb;
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity:
 					toReturn = this.TrgovanjeVrstaRo;
@@ -160,10 +166,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 			get { return new DataSource2<TrgovanjeGlavaEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
+		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeGlavaHnbEntity instances in the database.</summary>
+		public DataSource2<TrgovanjeGlavaHnbEntity> TrgovanjeGlavaHnb
+		{
+			get { return new DataSource2<TrgovanjeGlavaHnbEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
 		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeStavkaEntity instances in the database.</summary>
 		public DataSource2<TrgovanjeStavkaEntity> TrgovanjeStavka
 		{
 			get { return new DataSource2<TrgovanjeStavkaEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeStavkaHnbEntity instances in the database.</summary>
+		public DataSource2<TrgovanjeStavkaHnbEntity> TrgovanjeStavkaHnb
+		{
+			get { return new DataSource2<TrgovanjeStavkaHnbEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		/// <summary>returns the datasource to use in a Linq query when targeting TrgovanjeVrstaRoEntity instances in the database.</summary>

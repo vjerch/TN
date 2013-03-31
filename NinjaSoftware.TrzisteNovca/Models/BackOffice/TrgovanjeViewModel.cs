@@ -33,7 +33,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
             {
                 this.TrgovanjeGlava = new TrgovanjeGlavaEntity();
                 this.TrgovanjeGlava.Datum = DateTime.Now;
-                this.TrgovanjeGlava.Komentar = "Neki komentar";
+                this.TrgovanjeGlava.Komentar = "";
                 this.TrgovanjeStavkaCollection = new List<TrgovanjeStavkaEntity>();
             }
         }

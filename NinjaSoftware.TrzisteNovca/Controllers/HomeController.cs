@@ -8,9 +8,14 @@ using NinjaSoftware.TrzisteNovca.Models;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using NinjaSoftware.TrzisteNovca.Models.Home;
+using System.IO;
+using NinjaSoftware.TrzisteNovca.Common;
+using System.Net;
+using HtmlAgilityPack;
 
 namespace NinjaSoftware.TrzisteNovca.Controllers
 {
+    //[HandleError]
     public class HomeController : Controller
     {
         public ActionResult Index(DateTime? date)
@@ -103,6 +108,64 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                 RepoAukcijaViewModel repoAukcijaViewModel = new RepoAukcijaViewModel(adapter, datumAukcije);
                 return View(repoAukcijaViewModel);
             }
+        }
+
+        #endregion
+
+        #region Sudionik
+
+        [HttpGet]
+        public ActionResult SudionikList(long sudionikGrupaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                SudionikViewModel sudionikViewModel = new SudionikViewModel(adapter, sudionikGrupaId);
+                return View(sudionikViewModel);
+            }
+        }
+
+        #endregion
+
+        #region AukcijaTrezorskihZapisa
+
+        [HttpGet]
+        public ActionResult AukcijaTrezorskihZapisa()
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                AukcijaTrezorskihZapisaViewModel viewModel = new AukcijaTrezorskihZapisaViewModel(adapter, AppDomain.CurrentDomain.BaseDirectory);
+                return View(viewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AukcijaTrezorskihZapisaDownload(string fileName)
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.AukcijaTrezorskihZapisaFolderPath(), fileName);
+            return File(path, "application/vnd.ms-excel");
+        }
+
+        #endregion
+
+        #region Kamatne stope HNB
+
+        [HttpGet]
+        public ActionResult FetchKamatneStopeHnb()
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.hnb.hr/monet/novcano-trziste/h-tablice-depozitni-novac.htm");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream responseStream = response.GetResponseStream();
+            StreamReader resultStream = new StreamReader(responseStream);
+            //string source = resultStream.ReadToEnd();
+            
+            HtmlDocument doc = new HtmlDocument();
+            doc.Load(resultStream);
+
+            string s = doc.DocumentNode.SelectNodes("/html[1]/body[1]/table[1]/tbody[1]/tr[5]/td[2]")[0].InnerText;
+
+            return View();
         }
 
         #endregion

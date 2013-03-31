@@ -212,6 +212,13 @@
           <Field Name="TrgovanjeGlavaId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
+      <EntityDefinition Name="TrgovanjeGlavaHnb">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Datum" Type="datetime" />
+          <Field Name="TrgovanjeGlavaHnbId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
       <EntityDefinition Name="TrgovanjeStavka">
         <Fields>
           <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
@@ -225,6 +232,16 @@
           <Field Name="TrgovanjeStavkaId" Type="long" IsPrimaryKey="true" />
           <Field Name="TrgovanjeVrstaId" Type="long" />
           <Field Name="ValutaId" Type="long" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="TrgovanjeStavkaHnb">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="IznosMilijuniKn" Type="decimal" IsOptional="true" Precision="10" Scale="2" />
+          <Field Name="KamatnaStopa" Type="decimal" IsOptional="true" Precision="6" Scale="2" />
+          <Field Name="TrgovanjeGlavaHnbId" Type="long" />
+          <Field Name="TrgovanjeStavkaHnbId" Type="long" IsPrimaryKey="true" />
+          <Field Name="TrgovanjeVrstaId" Type="long" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="TrgovanjeVrstaRo">
@@ -294,6 +311,16 @@
           <FieldFieldRelationship FkField="ValutaId" PkField="ValutaId" />
         </FieldRelationships>
       </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavkaHnb.TrgovanjeGlavaHnb-TrgovanjeGlavaHnb.TrgovanjeStavkaHnbCollection" Start=":TrgovanjeStavkaHnb" End=":TrgovanjeGlavaHnb" StartNavigator="TrgovanjeGlavaHnb" EndNavigator="TrgovanjeStavkaHnbCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TrgovanjeGlavaHnbId" PkField="TrgovanjeGlavaHnbId" />
+        </FieldRelationships>
+      </NormalRelationship>
+      <NormalRelationship Name="TrgovanjeStavkaHnb.TrgovanjeVrsta-TrgovanjeVrstaRo.TrgovanjeStavkaHnbCollection" Start=":TrgovanjeStavkaHnb" End=":TrgovanjeVrstaRo" StartNavigator="TrgovanjeVrsta" EndNavigator="TrgovanjeStavkaHnbCollection" Type="4">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="TrgovanjeVrstaId" PkField="TrgovanjeVrstaId" />
+        </FieldRelationships>
+      </NormalRelationship>
       <NormalRelationship Name="User.Role-RoleRo.UserCollection" Start=":User" End=":RoleRo" StartNavigator="Role" EndNavigator="UserCollection" Type="4">
         <FieldRelationships>
           <FieldFieldRelationship FkField="RoleId" PkField="RoleId" />
@@ -312,7 +339,7 @@
         <Sequence Name="@@IDENTITY" />
       </SystemSequences>
       <Catalogs>
-        <Catalog Name="TrzisteNovca">
+        <Catalog Name="atjanmcs301107hr2706_tn">
           <Schemas>
             <Schema Name="dbo">
               <Tables>
@@ -383,7 +410,7 @@
                     <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
                     <Field Name="Naziv" Ordinal="2" DbType="12" Length="256" />
                     <Field Name="SudionikGrupaId" Ordinal="3" DbType="0" Precision="19" />
-                    <Field Name="SudionikId" Ordinal="4" IsIdentity="true" TrackedChanges="4616" IsPrimaryKey="true" PkConstraintName="PK_d38dda5463dbb7a94aa2fa30373" DbType="0" Precision="19" />
+                    <Field Name="SudionikId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_d38dda5463dbb7a94aa2fa30373" DbType="0" Precision="19" />
                     <Field Name="WebAdresa" Ordinal="5" DbType="12" Length="512" />
                   </Fields>
                 </Table>
@@ -391,7 +418,7 @@
                   <Fields>
                     <Field Name="Code" Ordinal="1" DbType="12" Length="50" />
                     <Field Name="Name" Ordinal="2" DbType="12" Length="128" />
-                    <Field Name="SudionikGrupaId" Ordinal="3" TrackedChanges="4608" IsPrimaryKey="true" PkConstraintName="PK_e0c1c9e4416b472cfecd34697b8" DbType="0" Precision="19" />
+                    <Field Name="SudionikGrupaId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_e0c1c9e4416b472cfecd34697b8" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
                 <Table Name="TrgovanjeGlava">
@@ -400,6 +427,13 @@
                     <Field Name="Datum" Ordinal="2" DbType="4" />
                     <Field Name="Komentar" Ordinal="3" IsOptional="true" DbType="12" Length="2147483647" />
                     <Field Name="TrgovanjeGlavaId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_e70c3a9430685d1ef18a66c72b7" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="TrgovanjeGlavaHnb">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Datum" Ordinal="2" DbType="4" />
+                    <Field Name="TrgovanjeGlavaHnbId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_b7551c04a4bb25446764e1fd434" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
                 <Table Name="TrgovanjeStavka">
@@ -415,6 +449,16 @@
                     <Field Name="TrgovanjeStavkaId" Ordinal="10" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_b48c25d42bbbd667ce3f02e792c" DbType="0" Precision="19" />
                     <Field Name="TrgovanjeVrstaId" Ordinal="11" DbType="0" Precision="19" />
                     <Field Name="ValutaId" Ordinal="12" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="TrgovanjeStavkaHnb">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="IznosMilijuniKn" Ordinal="2" IsOptional="true" DbType="5" Precision="10" Scale="2" />
+                    <Field Name="KamatnaStopa" Ordinal="3" IsOptional="true" DbType="5" Precision="6" Scale="2" />
+                    <Field Name="TrgovanjeGlavaHnbId" Ordinal="4" DbType="0" Precision="19" />
+                    <Field Name="TrgovanjeStavkaHnbId" Ordinal="5" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_964d2cd4de99af6cd17e1c40f50" DbType="0" Precision="19" />
+                    <Field Name="TrgovanjeVrstaId" Ordinal="6" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
                 <Table Name="TrgovanjeVrstaRo">
@@ -466,7 +510,7 @@
                 <FieldPair PkField="dbo:Error:ErrorId" FkField="dbo:Error:ParentErrorId" />
               </FieldPairs>
             </ForeignKeyConstraint>
-            <ForeignKeyConstraint Name="dbo:Sudionik:FK_ec0250d4490984d91316ea62eab" CreatedByDesigner="true">
+            <ForeignKeyConstraint Name="dbo:Sudionik:FK_ec0250d4490984d91316ea62eab">
               <FieldPairs>
                 <FieldPair PkField="dbo:SudionikGrupaRo:SudionikGrupaId" FkField="dbo:Sudionik:SudionikGrupaId" />
               </FieldPairs>
@@ -486,6 +530,16 @@
                 <FieldPair PkField="dbo:TrgovanjeVrstaRo:TrgovanjeVrstaId" FkField="dbo:TrgovanjeStavka:TrgovanjeVrstaId" />
               </FieldPairs>
             </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavkaHnb:FK_31f714f4d9b981f0935f11920c9">
+              <FieldPairs>
+                <FieldPair PkField="dbo:TrgovanjeGlavaHnb:TrgovanjeGlavaHnbId" FkField="dbo:TrgovanjeStavkaHnb:TrgovanjeGlavaHnbId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:TrgovanjeStavkaHnb:FK_fc65ac84afc842c617e89b47646">
+              <FieldPairs>
+                <FieldPair PkField="dbo:TrgovanjeVrstaRo:TrgovanjeVrstaId" FkField="dbo:TrgovanjeStavkaHnb:TrgovanjeVrstaId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
             <ForeignKeyConstraint Name="dbo:User:FK_a36527a479ea6a74d40fc5b5244">
               <FieldPairs>
                 <FieldPair PkField="dbo:RoleRo:RoleId" FkField="dbo:User:RoleId" />
@@ -499,7 +553,7 @@
   <MappingStores>
     <MappingStore Type="2D18D138-1DD2-467E-86CC-4838250611AE">
       <EntityMappings>
-        <EntityMapping EntityName=":AuditInfo" TargetName="TrzisteNovca:dbo:AuditInfo">
+        <EntityMapping EntityName=":AuditInfo" TargetName="atjanmcs301107hr2706_tn:dbo:AuditInfo">
           <FieldMappings>
             <FieldMapping FieldName="ActionDateTime" TargetFieldName="ActionDateTime" />
             <FieldMapping FieldName="AuditInfoActionTypeId" TargetFieldName="AuditInfoActionTypeId" />
@@ -511,21 +565,21 @@
             <FieldMapping FieldName="UserId" TargetFieldName="UserId" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":AuditInfoActionTypeRo" TargetName="TrzisteNovca:dbo:AuditInfoActionTypeRo">
+        <EntityMapping EntityName=":AuditInfoActionTypeRo" TargetName="atjanmcs301107hr2706_tn:dbo:AuditInfoActionTypeRo">
           <FieldMappings>
             <FieldMapping FieldName="AuditInfoActionTypeId" TargetFieldName="AuditInfoActionTypeId" />
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":EntityRo" TargetName="TrzisteNovca:dbo:EntityRo">
+        <EntityMapping EntityName=":EntityRo" TargetName="atjanmcs301107hr2706_tn:dbo:EntityRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="EntityId" TargetFieldName="EntityId" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":Error" TargetName="TrzisteNovca:dbo:Error">
+        <EntityMapping EntityName=":Error" TargetName="atjanmcs301107hr2706_tn:dbo:Error">
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="ErrorDateTime" TargetFieldName="ErrorDateTime" />
@@ -535,7 +589,7 @@
             <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":RepoAukcija" TargetName="TrzisteNovca:dbo:RepoAukcija">
+        <EntityMapping EntityName=":RepoAukcija" TargetName="atjanmcs301107hr2706_tn:dbo:RepoAukcija">
           <FieldMappings>
             <FieldMapping FieldName="BrojAukcije" TargetFieldName="BrojAukcije" />
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
@@ -554,14 +608,14 @@
             <FieldMapping FieldName="VaganaRepoStopa" TargetFieldName="VaganaRepoStopa" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":RoleRo" TargetName="TrzisteNovca:dbo:RoleRo">
+        <EntityMapping EntityName=":RoleRo" TargetName="atjanmcs301107hr2706_tn:dbo:RoleRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
             <FieldMapping FieldName="RoleId" TargetFieldName="RoleId" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":Sudionik" TargetName="TrzisteNovca:dbo:Sudionik">
+        <EntityMapping EntityName=":Sudionik" TargetName="atjanmcs301107hr2706_tn:dbo:Sudionik">
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="Naziv" TargetFieldName="Naziv" />
@@ -570,14 +624,14 @@
             <FieldMapping FieldName="WebAdresa" TargetFieldName="WebAdresa" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":SudionikGrupaRo" TargetName="TrzisteNovca:dbo:SudionikGrupaRo">
+        <EntityMapping EntityName=":SudionikGrupaRo" TargetName="atjanmcs301107hr2706_tn:dbo:SudionikGrupaRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
             <FieldMapping FieldName="SudionikGrupaId" TargetFieldName="SudionikGrupaId" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":TrgovanjeGlava" TargetName="TrzisteNovca:dbo:TrgovanjeGlava">
+        <EntityMapping EntityName=":TrgovanjeGlava" TargetName="atjanmcs301107hr2706_tn:dbo:TrgovanjeGlava">
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="Datum" TargetFieldName="Datum" />
@@ -585,7 +639,14 @@
             <FieldMapping FieldName="TrgovanjeGlavaId" TargetFieldName="TrgovanjeGlavaId" SequenceToUse="SCOPE_IDENTITY()" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":TrgovanjeStavka" TargetName="TrzisteNovca:dbo:TrgovanjeStavka">
+        <EntityMapping EntityName=":TrgovanjeGlavaHnb" TargetName="atjanmcs301107hr2706_tn:dbo:TrgovanjeGlavaHnb">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Datum" TargetFieldName="Datum" />
+            <FieldMapping FieldName="TrgovanjeGlavaHnbId" TargetFieldName="TrgovanjeGlavaHnbId" SequenceToUse="SCOPE_IDENTITY()" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TrgovanjeStavka" TargetName="atjanmcs301107hr2706_tn:dbo:TrgovanjeStavka">
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="Ponuda" TargetFieldName="Ponuda" />
@@ -600,7 +661,17 @@
             <FieldMapping FieldName="ValutaId" TargetFieldName="ValutaId" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":TrgovanjeVrstaRo" TargetName="TrzisteNovca:dbo:TrgovanjeVrstaRo">
+        <EntityMapping EntityName=":TrgovanjeStavkaHnb" TargetName="atjanmcs301107hr2706_tn:dbo:TrgovanjeStavkaHnb">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="IznosMilijuniKn" TargetFieldName="IznosMilijuniKn" />
+            <FieldMapping FieldName="KamatnaStopa" TargetFieldName="KamatnaStopa" />
+            <FieldMapping FieldName="TrgovanjeGlavaHnbId" TargetFieldName="TrgovanjeGlavaHnbId" />
+            <FieldMapping FieldName="TrgovanjeStavkaHnbId" TargetFieldName="TrgovanjeStavkaHnbId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="TrgovanjeVrstaId" TargetFieldName="TrgovanjeVrstaId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":TrgovanjeVrstaRo" TargetName="atjanmcs301107hr2706_tn:dbo:TrgovanjeVrstaRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
@@ -608,7 +679,7 @@
             <FieldMapping FieldName="TrgovanjeVrstaId" TargetFieldName="TrgovanjeVrstaId" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":User" TargetName="TrzisteNovca:dbo:User">
+        <EntityMapping EntityName=":User" TargetName="atjanmcs301107hr2706_tn:dbo:User">
           <FieldMappings>
             <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
             <FieldMapping FieldName="Password" TargetFieldName="Password" />
@@ -617,7 +688,7 @@
             <FieldMapping FieldName="Username" TargetFieldName="Username" />
           </FieldMappings>
         </EntityMapping>
-        <EntityMapping EntityName=":ValutaRo" TargetName="TrzisteNovca:dbo:ValutaRo">
+        <EntityMapping EntityName=":ValutaRo" TargetName="atjanmcs301107hr2706_tn:dbo:ValutaRo">
           <FieldMappings>
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />

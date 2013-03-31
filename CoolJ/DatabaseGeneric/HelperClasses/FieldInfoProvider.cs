@@ -48,7 +48,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (13 + 0));
+			this.InitClass( (15 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
@@ -58,7 +58,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			InitSudionikEntityInfos();
 			InitSudionikGrupaRoEntityInfos();
 			InitTrgovanjeGlavaEntityInfos();
+			InitTrgovanjeGlavaHnbEntityInfos();
 			InitTrgovanjeStavkaEntityInfos();
+			InitTrgovanjeStavkaHnbEntityInfos();
 			InitTrgovanjeVrstaRoEntityInfos();
 			InitUserEntityInfos();
 			InitValutaRoEntityInfos();
@@ -161,6 +163,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("TrgovanjeGlavaEntity", "Komentar", typeof(System.String), false, false, false, true,  (int)TrgovanjeGlavaFieldIndex.Komentar, 2147483647, 0, 0);
 			this.AddElementFieldInfo("TrgovanjeGlavaEntity", "TrgovanjeGlavaId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeGlavaFieldIndex.TrgovanjeGlavaId, 0, 0, 19);
 		}
+		/// <summary>Inits TrgovanjeGlavaHnbEntity's FieldInfo objects</summary>
+		private void InitTrgovanjeGlavaHnbEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(TrgovanjeGlavaHnbFieldIndex), "TrgovanjeGlavaHnbEntity");
+			this.AddElementFieldInfo("TrgovanjeGlavaHnbEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)TrgovanjeGlavaHnbFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeGlavaHnbEntity", "Datum", typeof(System.DateTime), false, false, false, false,  (int)TrgovanjeGlavaHnbFieldIndex.Datum, 0, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeGlavaHnbEntity", "TrgovanjeGlavaHnbId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeGlavaHnbFieldIndex.TrgovanjeGlavaHnbId, 0, 0, 19);
+		}
 		/// <summary>Inits TrgovanjeStavkaEntity's FieldInfo objects</summary>
 		private void InitTrgovanjeStavkaEntityInfos()
 		{
@@ -176,6 +186,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "TrgovanjeStavkaId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeStavkaFieldIndex.TrgovanjeStavkaId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "TrgovanjeVrstaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.TrgovanjeVrstaId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaEntity", "ValutaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaFieldIndex.ValutaId, 0, 0, 19);
+		}
+		/// <summary>Inits TrgovanjeStavkaHnbEntity's FieldInfo objects</summary>
+		private void InitTrgovanjeStavkaHnbEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(TrgovanjeStavkaHnbFieldIndex), "TrgovanjeStavkaHnbEntity");
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, 0, 2, 10);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "KamatnaStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, 0, 2, 6);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeGlavaHnbId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeGlavaHnbId, 0, 0, 19);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeStavkaHnbId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeStavkaHnbId, 0, 0, 19);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeVrstaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeVrstaId, 0, 0, 19);
 		}
 		/// <summary>Inits TrgovanjeVrstaRoEntity's FieldInfo objects</summary>
 		private void InitTrgovanjeVrstaRoEntityInfos()

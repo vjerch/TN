@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -18,6 +20,8 @@
             @Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")
             @Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")
             @Html.ActionLink("Repo aukcija HNB", "RepoAukcija")
+            @Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })
+            @Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa")
         </header>
         <div id="body">
             @RenderSection("featured", required: false)

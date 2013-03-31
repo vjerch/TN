@@ -30,6 +30,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 		{
 			List<IEntityRelation> toReturn = new List<IEntityRelation>();
 			toReturn.Add(this.TrgovanjeStavkaEntityUsingTrgovanjeVrstaId);
+			toReturn.Add(this.TrgovanjeStavkaHnbEntityUsingTrgovanjeVrstaId);
 			return toReturn;
 		}
 
@@ -50,6 +51,21 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 			}
 		}
 
+		/// <summary>Returns a new IEntityRelation object, between TrgovanjeVrstaRoEntity and TrgovanjeStavkaHnbEntity over the 1:n relation they have, using the relation between the fields:
+		/// TrgovanjeVrstaRo.TrgovanjeVrstaId - TrgovanjeStavkaHnb.TrgovanjeVrstaId
+		/// </summary>
+		public virtual IEntityRelation TrgovanjeStavkaHnbEntityUsingTrgovanjeVrstaId
+		{
+			get
+			{
+				IEntityRelation relation = new EntityRelation(SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany, "TrgovanjeStavkaHnbCollection" , true);
+				relation.AddEntityFieldPair(TrgovanjeVrstaRoFields.TrgovanjeVrstaId, TrgovanjeStavkaHnbFields.TrgovanjeVrstaId);
+				relation.InheritanceInfoPkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeVrstaRoEntity", true);
+				relation.InheritanceInfoFkSideEntity = InheritanceInfoProviderSingleton.GetInstance().GetInheritanceInfo("TrgovanjeStavkaHnbEntity", false);
+				return relation;
+			}
+		}
+
 
 		/// <summary>stub, not used in this entity, only for TargetPerEntity entities.</summary>
 		public virtual IEntityRelation GetSubTypeRelation(string subTypeEntityName) { return null; }
@@ -66,6 +82,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.RelationClasses
 	internal static class StaticTrgovanjeVrstaRoRelations
 	{
 		internal static readonly IEntityRelation TrgovanjeStavkaEntityUsingTrgovanjeVrstaIdStatic = new TrgovanjeVrstaRoRelations().TrgovanjeStavkaEntityUsingTrgovanjeVrstaId;
+		internal static readonly IEntityRelation TrgovanjeStavkaHnbEntityUsingTrgovanjeVrstaIdStatic = new TrgovanjeVrstaRoRelations().TrgovanjeStavkaHnbEntityUsingTrgovanjeVrstaId;
 
 		/// <summary>CTor</summary>
 		static StaticTrgovanjeVrstaRoRelations()

@@ -1,0 +1,18 @@
+﻿@using NinjaSoftware.Api.Mvc
+
+@{
+    string title = "Aukcija trezorskih zapisa upload";
+    ViewBag.Title = title;
+
+    NsController nsController = (NsController)ViewContext.Controller;
+}
+
+<h2>@title</h2>
+
+<b>@nsController.ViewUserErrorMessage</b>
+
+<form method="post" enctype="multipart/form-data">
+Odaberite excel datoteku koja odgovara nazivu REZUL_dd_mm_gggg.xls i nakon toga kliknite 'Pohrani'
+    <input type="file" id="FileBlob" name="FileBlob" />
+    <input type="submit" value="Pohrani" />
+</form>

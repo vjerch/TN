@@ -1,0 +1,59 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.SudionikViewModel
+@using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
+
+@{
+    string title;
+
+    if (Model.Sudionik.IsNew || 0 == Model.Sudionik.SudionikId)
+    {
+        title = "Kreiranje novog sudionika";
+    }
+    else
+    {
+        title = "Uređivanje sudionika";
+    }
+    
+    ViewBag.Title = title;
+}
+
+<h2>@title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.Sudionik.SudionikId)
+    @Html.HiddenFor(model => model.Sudionik.ConcurrencyGuid)
+
+    <fieldset>
+        <legend>SudionikEntity</legend>
+
+        <div class="editor-label">
+            Naziv
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sudionik.Naziv)
+            @Html.ValidationMessageFor(model => model.Sudionik.Naziv)
+        </div>
+
+        <div class="editor-label">
+            Grupa
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Sudionik.SudionikGrupaId, 
+            new SelectList(Model.SudionikGrupaCollection, SudionikGrupaRoFields.SudionikGrupaId.Name, SudionikGrupaRoFields.Name.Name, Model.Sudionik.SudionikGrupaId))
+            @Html.ValidationMessageFor(model => model.Sudionik.SudionikGrupaId)
+        </div>
+
+        <div class="editor-label">
+            Web adresa
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Sudionik.WebAdresa)
+            @Html.ValidationMessageFor(model => model.Sudionik.WebAdresa)
+        </div>
+
+        <p>
+            <input type="submit" value="Pohrani" />
+        </p>
+    </fieldset>
+}

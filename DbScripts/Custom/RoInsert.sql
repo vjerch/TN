@@ -30,6 +30,9 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('RepoAukcija', 'RepoAukcija', 6);	
+
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('Sudionik', 'Sudionik', 7);
 	
 -- ValutaRo
 INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")

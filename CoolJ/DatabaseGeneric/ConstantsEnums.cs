@@ -164,6 +164,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: TrgovanjeGlavaHnb.</summary>
+	public enum TrgovanjeGlavaHnbFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>Datum. </summary>
+		Datum,
+		///<summary>TrgovanjeGlavaHnbId. </summary>
+		TrgovanjeGlavaHnbId,
+		/// <summary></summary>
+		AmountOfFields
+	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: TrgovanjeStavka.</summary>
 	public enum TrgovanjeStavkaFieldIndex
 	{
@@ -189,6 +201,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		TrgovanjeVrstaId,
 		///<summary>ValutaId. </summary>
 		ValutaId,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: TrgovanjeStavkaHnb.</summary>
+	public enum TrgovanjeStavkaHnbFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>IznosMilijuniKn. </summary>
+		IznosMilijuniKn,
+		///<summary>KamatnaStopa. </summary>
+		KamatnaStopa,
+		///<summary>TrgovanjeGlavaHnbId. </summary>
+		TrgovanjeGlavaHnbId,
+		///<summary>TrgovanjeStavkaHnbId. </summary>
+		TrgovanjeStavkaHnbId,
+		///<summary>TrgovanjeVrstaId. </summary>
+		TrgovanjeVrstaId,
 		/// <summary></summary>
 		AmountOfFields
 	}
@@ -260,8 +290,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		SudionikGrupaRoEntity,
 		///<summary>TrgovanjeGlava</summary>
 		TrgovanjeGlavaEntity,
+		///<summary>TrgovanjeGlavaHnb</summary>
+		TrgovanjeGlavaHnbEntity,
 		///<summary>TrgovanjeStavka</summary>
 		TrgovanjeStavkaEntity,
+		///<summary>TrgovanjeStavkaHnb</summary>
+		TrgovanjeStavkaHnbEntity,
 		///<summary>TrgovanjeVrstaRo</summary>
 		TrgovanjeVrstaRoEntity,
 		///<summary>User</summary>

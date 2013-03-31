@@ -18,7 +18,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         TrgovanjeGlava = 3,
         TrgovanjeStavka = 4,
         User = 5,
-        RepoAukcija = 6
+        RepoAukcija = 6,
+        Sudionik = 7
     }
 
     public enum RoleEnum
@@ -49,7 +50,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         Prekonocni = 10
     }
 
-    public enum SudionikGrupa
+    public enum SudionikGrupaEnum
     {
         Dionicari = 1,
         KorisneAdrese = 2,

@@ -308,6 +308,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
+	/// <summary>Field Creation Class for entity TrgovanjeGlavaHnbEntity</summary>
+	public partial class TrgovanjeGlavaHnbFields
+	{
+		/// <summary>Creates a new TrgovanjeGlavaHnbEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeGlavaHnbFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new TrgovanjeGlavaHnbEntity.Datum field instance</summary>
+		public static EntityField2 Datum
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeGlavaHnbFieldIndex.Datum);}
+		}
+		/// <summary>Creates a new TrgovanjeGlavaHnbEntity.TrgovanjeGlavaHnbId field instance</summary>
+		public static EntityField2 TrgovanjeGlavaHnbId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeGlavaHnbFieldIndex.TrgovanjeGlavaHnbId);}
+		}
+	}
+
 	/// <summary>Field Creation Class for entity TrgovanjeStavkaEntity</summary>
 	public partial class TrgovanjeStavkaFields
 	{
@@ -365,6 +385,41 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		public static EntityField2 ValutaId
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaFieldIndex.ValutaId);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity TrgovanjeStavkaHnbEntity</summary>
+	public partial class TrgovanjeStavkaHnbFields
+	{
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.IznosMilijuniKn field instance</summary>
+		public static EntityField2 IznosMilijuniKn
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.KamatnaStopa field instance</summary>
+		public static EntityField2 KamatnaStopa
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.KamatnaStopa);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.TrgovanjeGlavaHnbId field instance</summary>
+		public static EntityField2 TrgovanjeGlavaHnbId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.TrgovanjeGlavaHnbId);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.TrgovanjeStavkaHnbId field instance</summary>
+		public static EntityField2 TrgovanjeStavkaHnbId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.TrgovanjeStavkaHnbId);}
+		}
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity.TrgovanjeVrstaId field instance</summary>
+		public static EntityField2 TrgovanjeVrstaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(TrgovanjeStavkaHnbFieldIndex.TrgovanjeVrstaId);}
 		}
 	}
 

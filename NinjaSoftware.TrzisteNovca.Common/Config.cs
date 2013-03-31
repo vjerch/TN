@@ -13,14 +13,19 @@ namespace NinjaSoftware.TrzisteNovca.Common
             return Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
         }
 
-        public static string SettDirectoryPath()
-        {
-            return ConfigurationManager.AppSettings["SettDirectoryPath"];
-        }
-
         public static string PagerPrefixText()
         {
             return ConfigurationManager.AppSettings["PagerPrefixText"];
+        }
+
+        public static string AukcijaTrezorskihZapisaFolderPath()
+        {
+            return ConfigurationManager.AppSettings["AukcijaTrezorskihZapisaFolderPath"];
+        }
+
+        public static string SettFolderPath()
+        {
+            return ConfigurationManager.AppSettings["SettFolderPath"];
         }
     }
 }

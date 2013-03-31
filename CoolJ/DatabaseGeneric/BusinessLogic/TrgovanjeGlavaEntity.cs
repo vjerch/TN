@@ -160,12 +160,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             this.Save(adapter, refetchAfterSave, false);
 
             foreach (TrgovanjeStavkaEntity trgovanjeStavka in this.TrgovanjeStavkaCollection)
-            { 
-                if (trgovanjeStavka.IsDirty)
-                {
-                    this.IsDirty = true;
-                    trgovanjeStavka.Save(adapter, refetchAfterSave, false);
-                }
+            {
+                trgovanjeStavka.Save(adapter, refetchAfterSave, false);
             }
         }
 
@@ -456,12 +452,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
         private static void LoadTrgovanjeGodinaList(DataAccessAdapterBase adapter)
         {
-            LinqMetaData linqMetaData = new LinqMetaData(adapter);
+            EntityCollection<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = new EntityCollection<TrgovanjeGlavaEntity>(new TrgovanjeGlavaEntityFactory());
+            
+            ExcludeIncludeFieldsList includeFieldList = new ExcludeIncludeFieldsList(false);
+            includeFieldList.Add(TrgovanjeGlavaFields.Datum);
 
-            _godinaTrgovanjaCollection = linqMetaData.TrgovanjeGlava.
-                Select(tg => tg.Datum.Year).
-                Distinct().
-                ToList();
+            adapter.FetchEntityCollection(trgovanjeGlavaCollection, includeFieldList, null);
+
+            _godinaTrgovanjaCollection = trgovanjeGlavaCollection.Select(tg => tg.Datum.Year).Distinct().ToList();
 
             _godinaTrgovanjaCollection.Sort();
         }

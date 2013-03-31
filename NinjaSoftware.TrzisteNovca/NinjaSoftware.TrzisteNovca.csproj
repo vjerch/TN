@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Dlls\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NinjaSoftware.Api.CoolJ, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -131,14 +134,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BackOffice\TrgovanjeHnbViewModel.cs" />
     <Compile Include="Models\BackOffice\SudionikPager.cs" />
     <Compile Include="Models\BackOffice\RepoAukcijaPager.cs" />
+    <Compile Include="Models\BackOffice\SudionikViewModel.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Home\AukcijaTrezorskihZapisaViewModel.cs" />
     <Compile Include="Models\Home\RepoAukcijaViewModel.cs" />
+    <Compile Include="Models\Home\SudionikViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeDanViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaRokViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaViewModel.cs" />
@@ -845,6 +852,12 @@
     <Content Include="Views\BackOffice\RepoAukcijaEdit.cshtml" />
     <Content Include="Views\Home\RepoAukcija.cshtml" />
     <Content Include="Views\BackOffice\SudionikList.cshtml" />
+    <Content Include="Views\BackOffice\SudionikEdit.cshtml" />
+    <Content Include="Views\Home\SudionikList.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\BackOffice\AukcijaTrezorskihZapisa.cshtml" />
+    <Content Include="Views\Home\AukcijaTrezorskihZapisa.cshtml" />
+    <Content Include="Views\BackOffice\TrgovanjeHnbEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

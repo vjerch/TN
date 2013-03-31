@@ -2,7 +2,7 @@
 // This is generated code. 
 //////////////////////////////////////////////////////////////
 // Code is generated using LLBLGen Pro version: 3.5
-// Code is generated on: 27. ožujak 2013. 16:36:39
+// Code is generated on: 31. ožujak 2013. 10:37:36
 // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET35
 // Templates vendor: Solutions Design.
 ////////////////////////////////////////////////////////////// 
@@ -149,10 +149,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			get { return Create<TrgovanjeGlavaEntity>(); }
 		}
 
+		/// <summary>Creates and returns a new EntityQuery for the TrgovanjeGlavaHnb entity</summary>
+		public EntityQuery<TrgovanjeGlavaHnbEntity> TrgovanjeGlavaHnb
+		{
+			get { return Create<TrgovanjeGlavaHnbEntity>(); }
+		}
+
 		/// <summary>Creates and returns a new EntityQuery for the TrgovanjeStavka entity</summary>
 		public EntityQuery<TrgovanjeStavkaEntity> TrgovanjeStavka
 		{
 			get { return Create<TrgovanjeStavkaEntity>(); }
+		}
+
+		/// <summary>Creates and returns a new EntityQuery for the TrgovanjeStavkaHnb entity</summary>
+		public EntityQuery<TrgovanjeStavkaHnbEntity> TrgovanjeStavkaHnb
+		{
+			get { return Create<TrgovanjeStavkaHnbEntity>(); }
 		}
 
 		/// <summary>Creates and returns a new EntityQuery for the TrgovanjeVrstaRo entity</summary>

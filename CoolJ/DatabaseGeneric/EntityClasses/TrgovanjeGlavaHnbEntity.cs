@@ -26,19 +26,21 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
 	// __LLBLGENPRO_USER_CODE_REGION_END
-	/// <summary>Entity class which represents the entity 'TrgovanjeVrstaRo'.<br/><br/></summary>
+	
+	/// <summary>Entity class which represents the entity 'TrgovanjeGlavaHnb'.<br/><br/></summary>
 	[Serializable]
 	[JsonObject(MemberSerialization.OptIn)]	
-	public partial class TrgovanjeVrstaRoEntity : CommonEntityBase
+	public partial class TrgovanjeGlavaHnbEntity : CommonEntityBase
 		// __LLBLGENPRO_USER_CODE_REGION_START AdditionalInterfaces
-		// __LLBLGENPRO_USER_CODE_REGION_END	
+		// __LLBLGENPRO_USER_CODE_REGION_END
+			
 	{
 		#region Class Member Declarations
-		private EntityCollection<TrgovanjeStavkaEntity> _trgovanjeStavkaCollection;
 		private EntityCollection<TrgovanjeStavkaHnbEntity> _trgovanjeStavkaHnbCollection;
 
 		// __LLBLGENPRO_USER_CODE_REGION_START PrivateMembers
 		// __LLBLGENPRO_USER_CODE_REGION_END
+		
 		#endregion
 
 		#region Statics
@@ -48,8 +50,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary>All names of fields mapped onto a relation. Usable for in-memory filtering</summary>
 		public static partial class MemberNames
 		{
-			/// <summary>Member name TrgovanjeStavkaCollection</summary>
-			public static readonly string TrgovanjeStavkaCollection = "TrgovanjeStavkaCollection";
 			/// <summary>Member name TrgovanjeStavkaHnbCollection</summary>
 			public static readonly string TrgovanjeStavkaHnbCollection = "TrgovanjeStavkaHnbCollection";
 		}
@@ -61,7 +61,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		public static int GetNumberOfEntities(DataAccessAdapterBase adapter, 
 			IRelationPredicateBucket filterBucket)
 		{
-			EntityCollection entityCollection = new EntityCollection(new TrgovanjeVrstaRoEntityFactory());
+			EntityCollection entityCollection = new EntityCollection(new TrgovanjeGlavaHnbEntityFactory());
 			return adapter.GetDbCount(entityCollection, filterBucket);
 		}
 		
@@ -70,7 +70,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         /// </summary>
         /// <param name="pageNumber">Must be greater than zero.</param>
         /// <param name="sortDirection">Validne vrijednosti su 'asc' i 'desc'.</param>
-        public static EntityCollection<TrgovanjeVrstaRoEntity> FetchTrgovanjeVrstaRoCollectionForPaging(DataAccessAdapterBase adapter,
+        public static EntityCollection<TrgovanjeGlavaHnbEntity> FetchTrgovanjeGlavaHnbCollectionForPaging(DataAccessAdapterBase adapter,
 			RelationPredicateBucket bucket,
 			PrefetchPath2 prefetchPath,
             int pageNumber,
@@ -80,7 +80,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
 			string sortDirection = isSortAscending ? "asc" : "desc";
 
-            Type sortEntityFieldType = typeof(TrgovanjeVrstaRoFields);
+            Type sortEntityFieldType = typeof(TrgovanjeGlavaHnbFields);
             string sortEntityFieldTypeName = SortHelper.GetEntityFieldTypeNameForSorting(sortField, sortEntityFieldType);
             if (!string.IsNullOrWhiteSpace(sortEntityFieldTypeName))
             {
@@ -91,38 +91,38 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 			SortExpression sort = SortHelper.GetSortExpression(sortField, sortDirection, sortEntityFieldType);
 			
-            EntityCollection<TrgovanjeVrstaRoEntity> toReturn = new EntityCollection<TrgovanjeVrstaRoEntity>(new TrgovanjeVrstaRoEntityFactory());
+            EntityCollection<TrgovanjeGlavaHnbEntity> toReturn = new EntityCollection<TrgovanjeGlavaHnbEntity>(new TrgovanjeGlavaHnbEntityFactory());
             adapter.FetchEntityCollection(toReturn, bucket, pageSize, sort, prefetchPath, pageNumber, pageSize);
 
             return toReturn;
         }
 		
-		public static EntityCollection<TrgovanjeVrstaRoEntity> FetchTrgovanjeVrstaRoCollection(DataAccessAdapterBase adapter,
+		public static EntityCollection<TrgovanjeGlavaHnbEntity> FetchTrgovanjeGlavaHnbCollection(DataAccessAdapterBase adapter,
 			IRelationPredicateBucket filterBucket,
 			PrefetchPath2 prefetchPath)
 		{
-			EntityCollection<TrgovanjeVrstaRoEntity> toReturn = new EntityCollection<TrgovanjeVrstaRoEntity>(new TrgovanjeVrstaRoEntityFactory());
+			EntityCollection<TrgovanjeGlavaHnbEntity> toReturn = new EntityCollection<TrgovanjeGlavaHnbEntity>(new TrgovanjeGlavaHnbEntityFactory());
 			adapter.FetchEntityCollection(toReturn, filterBucket, prefetchPath);
 			return toReturn;
 		}
 		
-		public static TrgovanjeVrstaRoEntity FetchTrgovanjeVrstaRo(DataAccessAdapterBase adapter, PrefetchPath2 prefetchPath, long TrgovanjeVrstaRoId)
+		public static TrgovanjeGlavaHnbEntity FetchTrgovanjeGlavaHnb(DataAccessAdapterBase adapter, PrefetchPath2 prefetchPath, long TrgovanjeGlavaHnbId)
 		{
-			TrgovanjeVrstaRoEntity _TrgovanjeVrstaRoEntity = new TrgovanjeVrstaRoEntity(TrgovanjeVrstaRoId);
-			adapter.FetchEntity(_TrgovanjeVrstaRoEntity, prefetchPath);
-			return _TrgovanjeVrstaRoEntity;
+			TrgovanjeGlavaHnbEntity _TrgovanjeGlavaHnbEntity = new TrgovanjeGlavaHnbEntity(TrgovanjeGlavaHnbId);
+			adapter.FetchEntity(_TrgovanjeGlavaHnbEntity, prefetchPath);
+			return _TrgovanjeGlavaHnbEntity;
 		}
 
 		#endregion
 		
 		/// <summary> Static CTor for setting up custom property hashtables. Is executed before the first instance of this entity class or derived classes is constructed. </summary>
-		static TrgovanjeVrstaRoEntity()
+		static TrgovanjeGlavaHnbEntity()
 		{
 			SetupCustomPropertyHashtables();
 		}
 		
 		/// <summary> CTor</summary>
-		public TrgovanjeVrstaRoEntity():base("TrgovanjeVrstaRoEntity")
+		public TrgovanjeGlavaHnbEntity():base("TrgovanjeGlavaHnbEntity")
 		{
 			InitClassEmpty(null, null);
 		}
@@ -130,51 +130,51 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary> CTor</summary>
 		/// <remarks>For framework usage.</remarks>
 		/// <param name="fields">Fields object to set as the fields for this entity.</param>
-		public TrgovanjeVrstaRoEntity(IEntityFields2 fields):base("TrgovanjeVrstaRoEntity")
+		public TrgovanjeGlavaHnbEntity(IEntityFields2 fields):base("TrgovanjeGlavaHnbEntity")
 		{
 			InitClassEmpty(null, fields);
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="validator">The custom validator object for this TrgovanjeVrstaRoEntity</param>
-		public TrgovanjeVrstaRoEntity(IValidator validator):base("TrgovanjeVrstaRoEntity")
+		/// <param name="validator">The custom validator object for this TrgovanjeGlavaHnbEntity</param>
+		public TrgovanjeGlavaHnbEntity(IValidator validator):base("TrgovanjeGlavaHnbEntity")
 		{
 			InitClassEmpty(validator, null);
 		}
 				
 		/// <summary> CTor</summary>
-		/// <param name="trgovanjeVrstaId">PK value for TrgovanjeVrstaRo which data should be fetched into this TrgovanjeVrstaRo object</param>
+		/// <param name="trgovanjeGlavaHnbId">PK value for TrgovanjeGlavaHnb which data should be fetched into this TrgovanjeGlavaHnb object</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public TrgovanjeVrstaRoEntity(System.Int64 trgovanjeVrstaId):base("TrgovanjeVrstaRoEntity")
+		public TrgovanjeGlavaHnbEntity(System.Int64 trgovanjeGlavaHnbId):base("TrgovanjeGlavaHnbEntity")
 		{
 			InitClassEmpty(null, null);
-			this.TrgovanjeVrstaId = trgovanjeVrstaId;
+			this.TrgovanjeGlavaHnbId = trgovanjeGlavaHnbId;
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="trgovanjeVrstaId">PK value for TrgovanjeVrstaRo which data should be fetched into this TrgovanjeVrstaRo object</param>
-		/// <param name="validator">The custom validator object for this TrgovanjeVrstaRoEntity</param>
+		/// <param name="trgovanjeGlavaHnbId">PK value for TrgovanjeGlavaHnb which data should be fetched into this TrgovanjeGlavaHnb object</param>
+		/// <param name="validator">The custom validator object for this TrgovanjeGlavaHnbEntity</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public TrgovanjeVrstaRoEntity(System.Int64 trgovanjeVrstaId, IValidator validator):base("TrgovanjeVrstaRoEntity")
+		public TrgovanjeGlavaHnbEntity(System.Int64 trgovanjeGlavaHnbId, IValidator validator):base("TrgovanjeGlavaHnbEntity")
 		{
 			InitClassEmpty(validator, null);
-			this.TrgovanjeVrstaId = trgovanjeVrstaId;
+			this.TrgovanjeGlavaHnbId = trgovanjeGlavaHnbId;
 		}
 
 		/// <summary> Protected CTor for deserialization</summary>
 		/// <param name="info"></param>
 		/// <param name="context"></param>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected TrgovanjeVrstaRoEntity(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected TrgovanjeGlavaHnbEntity(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 			if(SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				_trgovanjeStavkaCollection = (EntityCollection<TrgovanjeStavkaEntity>)info.GetValue("_trgovanjeStavkaCollection", typeof(EntityCollection<TrgovanjeStavkaEntity>));
 				_trgovanjeStavkaHnbCollection = (EntityCollection<TrgovanjeStavkaHnbEntity>)info.GetValue("_trgovanjeStavkaHnbCollection", typeof(EntityCollection<TrgovanjeStavkaHnbEntity>));
 				this.FixupDeserialization(FieldInfoProviderSingleton.GetInstance());
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START DeserializationConstructor
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 		}
 
 
@@ -186,9 +186,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(propertyName)
 			{
-				case "TrgovanjeStavkaCollection":
-					this.TrgovanjeStavkaCollection.Add((TrgovanjeStavkaEntity)entity);
-					break;
 				case "TrgovanjeStavkaHnbCollection":
 					this.TrgovanjeStavkaHnbCollection.Add((TrgovanjeStavkaHnbEntity)entity);
 					break;
@@ -214,11 +211,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			RelationCollection toReturn = new RelationCollection();
 			switch(fieldName)
 			{
-				case "TrgovanjeStavkaCollection":
-					toReturn.Add(Relations.TrgovanjeStavkaEntityUsingTrgovanjeVrstaId);
-					break;
 				case "TrgovanjeStavkaHnbCollection":
-					toReturn.Add(Relations.TrgovanjeStavkaHnbEntityUsingTrgovanjeVrstaId);
+					toReturn.Add(Relations.TrgovanjeStavkaHnbEntityUsingTrgovanjeGlavaHnbId);
 					break;
 				default:
 					break;				
@@ -248,9 +242,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "TrgovanjeStavkaCollection":
-					this.TrgovanjeStavkaCollection.Add((TrgovanjeStavkaEntity)relatedEntity);
-					break;
 				case "TrgovanjeStavkaHnbCollection":
 					this.TrgovanjeStavkaHnbCollection.Add((TrgovanjeStavkaHnbEntity)relatedEntity);
 					break;
@@ -267,9 +258,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			switch(fieldName)
 			{
-				case "TrgovanjeStavkaCollection":
-					this.PerformRelatedEntityRemoval(this.TrgovanjeStavkaCollection, relatedEntity, signalRelatedEntityManyToOne);
-					break;
 				case "TrgovanjeStavkaHnbCollection":
 					this.PerformRelatedEntityRemoval(this.TrgovanjeStavkaHnbCollection, relatedEntity, signalRelatedEntityManyToOne);
 					break;
@@ -300,7 +288,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override List<IEntityCollection2> GetMemberEntityCollections()
 		{
 			List<IEntityCollection2> toReturn = new List<IEntityCollection2>();
-			toReturn.Add(this.TrgovanjeStavkaCollection);
 			toReturn.Add(this.TrgovanjeStavkaHnbCollection);
 			return toReturn;
 		}
@@ -313,11 +300,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		{
 			if (SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
-				info.AddValue("_trgovanjeStavkaCollection", ((_trgovanjeStavkaCollection!=null) && (_trgovanjeStavkaCollection.Count>0) && !this.MarkedForDeletion)?_trgovanjeStavkaCollection:null);
 				info.AddValue("_trgovanjeStavkaHnbCollection", ((_trgovanjeStavkaHnbCollection!=null) && (_trgovanjeStavkaHnbCollection.Count>0) && !this.MarkedForDeletion)?_trgovanjeStavkaHnbCollection:null);
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			base.GetObjectData(info, context);
 		}
 
@@ -327,16 +314,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <returns>A list of all the EntityRelation objects the type of this instance has. Hierarchy relations are excluded.</returns>
 		protected override List<IEntityRelation> GetAllRelations()
 		{
-			return new TrgovanjeVrstaRoRelations().GetAllRelations();
-		}
-
-		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entities of type 'TrgovanjeStavka' to this entity.</summary>
-		/// <returns></returns>
-		public virtual IRelationPredicateBucket GetRelationInfoTrgovanjeStavkaCollection()
-		{
-			IRelationPredicateBucket bucket = new RelationPredicateBucket();
-			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(TrgovanjeStavkaFields.TrgovanjeVrstaId, null, ComparisonOperator.Equal, this.TrgovanjeVrstaId));
-			return bucket;
+			return new TrgovanjeGlavaHnbRelations().GetAllRelations();
 		}
 
 		/// <summary> Creates a new IRelationPredicateBucket object which contains the predicate expression and relation collection to fetch the related entities of type 'TrgovanjeStavkaHnb' to this entity.</summary>
@@ -344,7 +322,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		public virtual IRelationPredicateBucket GetRelationInfoTrgovanjeStavkaHnbCollection()
 		{
 			IRelationPredicateBucket bucket = new RelationPredicateBucket();
-			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(TrgovanjeStavkaHnbFields.TrgovanjeVrstaId, null, ComparisonOperator.Equal, this.TrgovanjeVrstaId));
+			bucket.PredicateExpression.Add(new FieldCompareValuePredicate(TrgovanjeStavkaHnbFields.TrgovanjeGlavaHnbId, null, ComparisonOperator.Equal, this.TrgovanjeGlavaHnbId));
 			return bucket;
 		}
 		
@@ -352,7 +330,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary>Creates a new instance of the factory related to this entity</summary>
 		protected override IEntityFactory2 CreateEntityFactory()
 		{
-			return EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeVrstaRoEntityFactory));
+			return EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeGlavaHnbEntityFactory));
 		}
 #if !CF
 		/// <summary>Adds the member collections to the collections queue (base first)</summary>
@@ -360,7 +338,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override void AddToMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue) 
 		{
 			base.AddToMemberEntityCollectionsQueue(collectionsQueue);
-			collectionsQueue.Enqueue(this._trgovanjeStavkaCollection);
 			collectionsQueue.Enqueue(this._trgovanjeStavkaHnbCollection);
 		}
 		
@@ -369,7 +346,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override void GetFromMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue)
 		{
 			base.GetFromMemberEntityCollectionsQueue(collectionsQueue);
-			this._trgovanjeStavkaCollection = (EntityCollection<TrgovanjeStavkaEntity>) collectionsQueue.Dequeue();
 			this._trgovanjeStavkaHnbCollection = (EntityCollection<TrgovanjeStavkaHnbEntity>) collectionsQueue.Dequeue();
 
 		}
@@ -379,7 +355,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override bool HasPopulatedMemberEntityCollections()
 		{
 			bool toReturn = false;
-			toReturn |=(this._trgovanjeStavkaCollection != null);
 			toReturn |=(this._trgovanjeStavkaHnbCollection != null);
 			return toReturn ? true : base.HasPopulatedMemberEntityCollections();
 		}
@@ -390,7 +365,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override void CreateMemberEntityCollectionsQueue(Queue<IEntityCollection2> collectionsQueue, Queue<bool> requiredQueue) 
 		{
 			base.CreateMemberEntityCollectionsQueue(collectionsQueue, requiredQueue);
-			collectionsQueue.Enqueue(requiredQueue.Dequeue() ? new EntityCollection<TrgovanjeStavkaEntity>(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeStavkaEntityFactory))) : null);
 			collectionsQueue.Enqueue(requiredQueue.Dequeue() ? new EntityCollection<TrgovanjeStavkaHnbEntity>(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeStavkaHnbEntityFactory))) : null);
 		}
 #endif
@@ -399,7 +373,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		protected override Dictionary<string, object> GetRelatedData()
 		{
 			Dictionary<string, object> toReturn = new Dictionary<string, object>();
-			toReturn.Add("TrgovanjeStavkaCollection", _trgovanjeStavkaCollection);
 			toReturn.Add("TrgovanjeStavkaHnbCollection", _trgovanjeStavkaHnbCollection);
 			return toReturn;
 		}
@@ -411,6 +384,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			OnInitClassMembersComplete();
 		}
 
@@ -423,18 +397,16 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			_fieldsCustomProperties = new Dictionary<string, Dictionary<string, string>>();
 			Dictionary<string, string> fieldHashtable;
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Code", fieldHashtable);
+			_fieldsCustomProperties.Add("ConcurrencyGuid", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Name", fieldHashtable);
+			_fieldsCustomProperties.Add("Datum", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("SifraSlog", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("TrgovanjeVrstaId", fieldHashtable);
+			_fieldsCustomProperties.Add("TrgovanjeGlavaHnbId", fieldHashtable);
 		}
 		#endregion
 
 		/// <summary> Initializes the class with empty data, as if it is a new Entity.</summary>
-		/// <param name="validator">The validator object for this TrgovanjeVrstaRoEntity</param>
+		/// <param name="validator">The validator object for this TrgovanjeGlavaHnbEntity</param>
 		/// <param name="fields">Fields of this entity</param>
 		private void InitClassEmpty(IValidator validator, IEntityFields2 fields)
 		{
@@ -445,6 +417,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassEmpty
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 
 			OnInitialized();
 
@@ -452,9 +425,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 		#region Class Property Declarations
 		/// <summary> The relations object holding all relations of this entity with other entity classes.</summary>
-		public  static TrgovanjeVrstaRoRelations Relations
+		public  static TrgovanjeGlavaHnbRelations Relations
 		{
-			get	{ return new TrgovanjeVrstaRoRelations(); }
+			get	{ return new TrgovanjeGlavaHnbRelations(); }
 		}
 		
 		/// <summary> The custom properties for this entity type.</summary>
@@ -464,18 +437,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			get { return _customProperties;}
 		}
 
-		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'TrgovanjeStavka' for this entity.</summary>
-		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
-		public static IPrefetchPathElement2 PrefetchPathTrgovanjeStavkaCollection
-		{
-			get	{ return new PrefetchPathElement2( new EntityCollection<TrgovanjeStavkaEntity>(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeStavkaEntityFactory))), (IEntityRelation)GetRelationsForField("TrgovanjeStavkaCollection")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity, 0, null, null, null, null, "TrgovanjeStavkaCollection", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany);	}
-		}
-
 		/// <summary> Creates a new PrefetchPathElement2 object which contains all the information to prefetch the related entities of type 'TrgovanjeStavkaHnb' for this entity.</summary>
 		/// <returns>Ready to use IPrefetchPathElement2 implementation.</returns>
 		public static IPrefetchPathElement2 PrefetchPathTrgovanjeStavkaHnbCollection
 		{
-			get	{ return new PrefetchPathElement2( new EntityCollection<TrgovanjeStavkaHnbEntity>(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeStavkaHnbEntityFactory))), (IEntityRelation)GetRelationsForField("TrgovanjeStavkaHnbCollection")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaHnbEntity, 0, null, null, null, null, "TrgovanjeStavkaHnbCollection", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany);	}
+			get	{ return new PrefetchPathElement2( new EntityCollection<TrgovanjeStavkaHnbEntity>(EntityFactoryCache2.GetEntityFactory(typeof(TrgovanjeStavkaHnbEntityFactory))), (IEntityRelation)GetRelationsForField("TrgovanjeStavkaHnbCollection")[0], (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaHnbEntity, (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaHnbEntity, 0, null, null, null, null, "TrgovanjeStavkaHnbCollection", SD.LLBLGen.Pro.ORMSupportClasses.RelationType.OneToMany);	}
 		}
 
 
@@ -502,62 +468,44 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			get { return FieldsCustomProperties;}
 		}
 
-		/// <summary> The Code property of the Entity TrgovanjeVrstaRo<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "TrgovanjeVrstaRo"."Code"<br/>
+		/// <summary> The ConcurrencyGuid property of the Entity TrgovanjeGlavaHnb<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "TrgovanjeGlavaHnb"."ConcurrencyGuid"<br/>
 		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 50<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual System.String Code
+		public virtual System.String ConcurrencyGuid
 		{
-			get { return (System.String)GetValue((int)TrgovanjeVrstaRoFieldIndex.Code, true); }
-			set	{ SetValue((int)TrgovanjeVrstaRoFieldIndex.Code, value); }
+			get { return (System.String)GetValue((int)TrgovanjeGlavaHnbFieldIndex.ConcurrencyGuid, true); }
+			set	{ SetValue((int)TrgovanjeGlavaHnbFieldIndex.ConcurrencyGuid, value); }
 		}
 
-		/// <summary> The Name property of the Entity TrgovanjeVrstaRo<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "TrgovanjeVrstaRo"."Name"<br/>
-		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 50<br/>
+		/// <summary> The Datum property of the Entity TrgovanjeGlavaHnb<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "TrgovanjeGlavaHnb"."Datum"<br/>
+		/// Table field type characteristics (type, precision, scale, length): DateTime, 0, 0, 0<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual System.String Name
+		public virtual System.DateTime Datum
 		{
-			get { return (System.String)GetValue((int)TrgovanjeVrstaRoFieldIndex.Name, true); }
-			set	{ SetValue((int)TrgovanjeVrstaRoFieldIndex.Name, value); }
+			get { return (System.DateTime)GetValue((int)TrgovanjeGlavaHnbFieldIndex.Datum, true); }
+			set	{ SetValue((int)TrgovanjeGlavaHnbFieldIndex.Datum, value); }
 		}
 
-		/// <summary> The SifraSlog property of the Entity TrgovanjeVrstaRo<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "TrgovanjeVrstaRo"."SifraSlog"<br/>
-		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 50<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		[JsonProperty]		
-		public virtual System.String SifraSlog
-		{
-			get { return (System.String)GetValue((int)TrgovanjeVrstaRoFieldIndex.SifraSlog, true); }
-			set	{ SetValue((int)TrgovanjeVrstaRoFieldIndex.SifraSlog, value); }
-		}
-
-		/// <summary> The TrgovanjeVrstaId property of the Entity TrgovanjeVrstaRo<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "TrgovanjeVrstaRo"."TrgovanjeVrstaId"<br/>
+		/// <summary> The TrgovanjeGlavaHnbId property of the Entity TrgovanjeGlavaHnb<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "TrgovanjeGlavaHnb"."TrgovanjeGlavaHnbId"<br/>
 		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, true, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, true, true</remarks>
 		[JsonProperty]		
-		public virtual System.Int64 TrgovanjeVrstaId
+		public virtual System.Int64 TrgovanjeGlavaHnbId
 		{
-			get { return (System.Int64)GetValue((int)TrgovanjeVrstaRoFieldIndex.TrgovanjeVrstaId, true); }
-			set	{ SetValue((int)TrgovanjeVrstaRoFieldIndex.TrgovanjeVrstaId, value); }
-		}
-
-		/// <summary> Gets the EntityCollection with the related entities of type 'TrgovanjeStavkaEntity' which are related to this entity via a relation of type '1:n'. If the EntityCollection hasn't been fetched yet, the collection returned will be empty.<br/><br/></summary>
-		[TypeContainedAttribute(typeof(TrgovanjeStavkaEntity))]
-		public virtual EntityCollection<TrgovanjeStavkaEntity> TrgovanjeStavkaCollection
-		{
-			get { return GetOrCreateEntityCollection<TrgovanjeStavkaEntity, TrgovanjeStavkaEntityFactory>("TrgovanjeVrsta", true, false, ref _trgovanjeStavkaCollection);	}
+			get { return (System.Int64)GetValue((int)TrgovanjeGlavaHnbFieldIndex.TrgovanjeGlavaHnbId, true); }
+			set	{ SetValue((int)TrgovanjeGlavaHnbFieldIndex.TrgovanjeGlavaHnbId, value); }
 		}
 
 		/// <summary> Gets the EntityCollection with the related entities of type 'TrgovanjeStavkaHnbEntity' which are related to this entity via a relation of type '1:n'. If the EntityCollection hasn't been fetched yet, the collection returned will be empty.<br/><br/></summary>
 		[TypeContainedAttribute(typeof(TrgovanjeStavkaHnbEntity))]
 		public virtual EntityCollection<TrgovanjeStavkaHnbEntity> TrgovanjeStavkaHnbCollection
 		{
-			get { return GetOrCreateEntityCollection<TrgovanjeStavkaHnbEntity, TrgovanjeStavkaHnbEntityFactory>("TrgovanjeVrsta", true, false, ref _trgovanjeStavkaHnbCollection);	}
+			get { return GetOrCreateEntityCollection<TrgovanjeStavkaHnbEntity, TrgovanjeStavkaHnbEntityFactory>("TrgovanjeGlavaHnb", true, false, ref _trgovanjeStavkaHnbCollection);	}
 		}
 	
 		/// <summary> Gets the type of the hierarchy this entity is in. </summary>
@@ -576,7 +524,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		[Browsable(false), XmlIgnore]
 		protected override int LLBLGenProEntityTypeValue 
 		{ 
-			get { return (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity; }
+			get { return (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaHnbEntity; }
 		}
 
 		#endregion
@@ -586,6 +534,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
+		
 		#endregion
 
 		#region Included code

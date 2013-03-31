@@ -1,19 +1,18 @@
-﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeViewModel
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.TrgovanjeHnbViewModel
 @using Newtonsoft.Json
 
 @Scripts.Render("/bundles/knockout")
-<script src="../../Scripts/ckeditor/ckeditor.js"></script>
 
 @{
     string title;
     
-    if (Model.TrgovanjeGlava.IsNew)
+    if (Model.TrgovanjeGlavaHnb.IsNew)
     {
         title = "Unos novog trgovanja";
     }
     else
     {
-        title = string.Format("Uređivanje trgovanja za datum {0}", Model.TrgovanjeGlava.Datum.ToShortDateString());
+        title = string.Format("Uređivanje trgovanja za datum {0}", Model.TrgovanjeGlavaHnb.Datum.ToShortDateString());
     }
     
     ViewBag.Title = title;
@@ -24,11 +23,11 @@
 <form id="FormTrgovanje" action="/someServerSideHandler">
     <input type="submit" value="Pohrani" />
 
-    <div data-bind="template: { name: 'TrgovanjeGlavaTemplate', data: trgovanjeGlava }"></div>
+    <div data-bind="template: { name: 'TrgovanjeGlavaHnbTemplate', data: trgovanjeGlavaHnb }"></div>
     
-    <script type="text/html" id="TrgovanjeGlavaTemplate">
+    <script type="text/html" id="TrgovanjeGlavaHnbTemplate">
         <table>
-@if (Model.TrgovanjeGlava.IsNew)
+@if (Model.TrgovanjeGlavaHnb.IsNew)
 {
             <tr>
                 <td>Datum:</td>
@@ -37,13 +36,6 @@
                 </td>
             </tr>
 }
-            <tr>
-                <td>Dnevni komentar:</td>
-                <td>
-                    <textarea id="TextAreaDnevniKomentar" data-bind="value: Komentar"></textarea>
-                </td>
-            </tr>
-        </table>
     </script>
     
     <h3>Rokovi</h3>
@@ -54,10 +46,7 @@
                 <select id="dropDownTrgovanjeVrsta" data-bind="options: $root.trgovanjeVrstaCollection, value: $root.selectedTrgovanjeVrsta, optionsText: 'Name'"></select>
             </td>
             <td>
-                <select id="dropDownValuta" data-bind="options: $root.valutaCollection, value: $root.selectedValuta, optionsText: 'Name'"></select>
-            </td>
-            <td>
-                <input type="button" value="Unesi" onclick="viewModel.addTrgovanjeStavka();" />
+                <input type="button" value="Unesi" onclick="viewModel.addTrgovanjeStavkaHnb();" />
             </td>
         </tr>
     </table>
@@ -66,40 +55,22 @@
         <thead>
             <tr>
                 <th>Naziv</th>
-                <th>Valuta</th>
-                <th>Ponuda</th>
-                <th>Pon. KS/Tečaj/Omjer</th>
-                <th>Potražnja</th>
-                <th>Pot. KS/Tečaj/Omjer</th>
-                <th>Promet</th>
-                <th>Prom. KS/Tečaj/Omjer</th>
+                <th>Iznos</th>
+                <th>KamatnaStopa</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody data-bind="foreach: trgovanjeStavkaCollection">
+        <tbody data-bind="foreach: trgovanjeStavkaHnbCollection">
             <tr>
                 <td data-bind="text: TrgovanjeVrsta.Name"></td>
-                <td data-bind="text: Valuta.Name"></td>
                 <td>
-                    <input class="required number numberCss" data-bind="value: Ponuda, uniqueName: true" />
+                    <input class="required number numberCss" data-bind="value: Iznos, uniqueName: true" />
                 </td>
                 <td>
-                    <input class="required number numberCss" data-bind="value: PonudaDodatak, uniqueName: true" />
+                    <input class="required number numberCss" data-bind="value: KamatnaStopa, uniqueName: true" />
                 </td>
                 <td>
-                    <input class="required number numberCss" data-bind="value: Potraznja, uniqueName: true" />
-                </td>
-                <td>
-                    <input class="required number numberCss" data-bind="value: PotraznjaDodatak, uniqueName: true" />
-                </td>
-                <td>
-                    <input class="required number numberCss" data-bind="value: Promet, uniqueName: true" />
-                </td>
-                <td>
-                    <input class="required number numberCss" data-bind="value: PrometDodatak, uniqueName: true" />
-                </td>
-                <td>
-                    <a href="#" data-bind="click: function(data) { $root.deleteTrgovanjeStavka(data); }"><span>Obriši</span></a>
+                    <a href="#" data-bind="click: function(data) { $root.deleteTrgovanjeStavkaHnb(data); }"><span>Obriši</span></a>
                 </td>
             </tr>
         </tbody>
@@ -107,19 +78,10 @@
 </form>
 
 <script type="text/javascript">
-    Globalize.culture("hr");
-
     $(document).ready(function () {
+        Globalize.culture("hr");
+
         $("#InputDatum").datepicker();
-
-        CKEDITOR.replace("TextAreaDnevniKomentar", {
-            toolbar: "Basic",
-            enterMode: CKEDITOR.ENTER_BR,
-            shiftEnterMode: CKEDITOR.ENTER_P,
-            width: "800px"
-        });
-
-
     });
 
     var trgovanjeViewModel = function () {

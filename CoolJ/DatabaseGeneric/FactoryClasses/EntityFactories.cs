@@ -231,7 +231,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new SudionikEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSudionikUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -252,7 +251,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new SudionikGrupaRoEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSudionikGrupaRoUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -280,6 +278,27 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty TrgovanjeGlavaHnbEntity objects.</summary>
+	[Serializable]
+	public partial class TrgovanjeGlavaHnbEntityFactory : EntityFactoryBase2<TrgovanjeGlavaHnbEntity> {
+		/// <summary>CTor</summary>
+		public TrgovanjeGlavaHnbEntityFactory() : base("TrgovanjeGlavaHnbEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaHnbEntity, false) { }
+		
+		/// <summary>Creates a new TrgovanjeGlavaHnbEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new TrgovanjeGlavaHnbEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeGlavaHnbUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty TrgovanjeStavkaEntity objects.</summary>
 	[Serializable]
 	public partial class TrgovanjeStavkaEntityFactory : EntityFactoryBase2<TrgovanjeStavkaEntity> {
@@ -293,6 +312,27 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new TrgovanjeStavkaEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeStavkaUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
+	/// <summary>Factory to create new, empty TrgovanjeStavkaHnbEntity objects.</summary>
+	[Serializable]
+	public partial class TrgovanjeStavkaHnbEntityFactory : EntityFactoryBase2<TrgovanjeStavkaHnbEntity> {
+		/// <summary>CTor</summary>
+		public TrgovanjeStavkaHnbEntityFactory() : base("TrgovanjeStavkaHnbEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaHnbEntity, false) { }
+		
+		/// <summary>Creates a new TrgovanjeStavkaHnbEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new TrgovanjeStavkaHnbEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeStavkaHnbUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			
 			return toReturn;
 		}
 		#region Included Code
@@ -399,8 +439,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaEntity:
 					factoryToUse = new TrgovanjeGlavaEntityFactory();
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeGlavaHnbEntity:
+					factoryToUse = new TrgovanjeGlavaHnbEntityFactory();
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaEntity:
 					factoryToUse = new TrgovanjeStavkaEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeStavkaHnbEntity:
+					factoryToUse = new TrgovanjeStavkaHnbEntityFactory();
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.TrgovanjeVrstaRoEntity:
 					factoryToUse = new TrgovanjeVrstaRoEntityFactory();

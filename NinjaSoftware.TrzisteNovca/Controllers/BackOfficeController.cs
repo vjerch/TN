@@ -9,6 +9,7 @@ using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using NinjaSoftware.TrzisteNovca.Models.BackOffice;
 using NinjaSoftware.TrzisteNovca.Common;
 using NinjaSoftware.Api.Core;
+using System.Text.RegularExpressions;
 
 namespace NinjaSoftware.TrzisteNovca.Controllers
 {
@@ -104,7 +105,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     {
                         DateTime now = DateTime.Now;
                         string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                            @"Upload\Sett\",
+                            Config.SettFolderPath(),
                             System.IO.Path.GetFileName(httpPostedFileBase.FileName));
 
                         httpPostedFileBase.SaveAs(filePath);
@@ -216,6 +217,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
         #region Sudionik
 
+        [HttpGet]
         public ActionResult SudionikList(int? pageNumber, string sortField, bool? isSortAscending)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
@@ -226,6 +228,98 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
                 return View(sudionikPager);
             }
+        }
+
+        [HttpGet]
+        public ActionResult SudionikEdit(long? sudionikId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                SudionikViewModel sudionikViewModel = new SudionikViewModel(adapter, sudionikId);
+                sudionikViewModel.LoadViewSpecificData(adapter);
+                return View(sudionikViewModel);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SudionikEdit(FormCollection formCollection, long? sudionikId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                SudionikViewModel sudionikViewModel = new SudionikViewModel(adapter, sudionikId);
+
+                if (TryUpdateAndSaveIViewModel(sudionikViewModel, adapter))
+                {
+                    return RedirectToAction("SudionikList");
+                }
+                else
+                {
+                    return View(sudionikViewModel);
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SudionikDelete(long sudionikId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                SudionikEntity sudionik = SudionikEntity.FetchSudionik(adapter, null, sudionikId);
+                sudionik.Delete(adapter);
+
+                return RedirectToAction("SudionikList");
+            }
+        }
+
+        #endregion
+
+        #region AukcijaTrezorskihZapisa
+
+        [HttpGet]
+        public ActionResult AukcijaTrezorskihZapisa()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AukcijaTrezorskihZapisa(FormCollection formCollection)
+        {
+            try
+            {
+                foreach (string file in Request.Files)
+                {
+                    HttpPostedFileBase httpPostedFileBase = Request.Files[file];
+
+                    string fileName = httpPostedFileBase.FileName;
+
+                    if (Regex.IsMatch(fileName, @"REZUL_(\d{1,2})_(\d{1,2})_(\d{4}).xls"))
+                    {
+                        if (httpPostedFileBase.ContentLength > 0)
+                        {
+                            DateTime now = DateTime.Now;
+                            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                                Config.AukcijaTrezorskihZapisaFolderPath(),
+                                System.IO.Path.GetFileName(fileName));
+
+                            httpPostedFileBase.SaveAs(filePath);
+                        }
+                    }
+                    else
+                    {
+                        this.ViewUserErrorMessage = "Neispravan naziv datoteke.";
+                    }
+                }
+            }
+            catch (UserException ex)
+            {
+                this.ViewUserErrorMessage = ex.Message;
+            }
+
+
+            return View();
         }
 
         #endregion

@@ -46,7 +46,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((13 + 0));
+			this.InitClass((15 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
@@ -56,7 +56,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			InitSudionikEntityMappings();
 			InitSudionikGrupaRoEntityMappings();
 			InitTrgovanjeGlavaEntityMappings();
+			InitTrgovanjeGlavaHnbEntityMappings();
 			InitTrgovanjeStavkaEntityMappings();
+			InitTrgovanjeStavkaHnbEntityMappings();
 			InitTrgovanjeVrstaRoEntityMappings();
 			InitUserEntityMappings();
 			InitValutaRoEntityMappings();
@@ -67,7 +69,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits AuditInfoEntity's mappings</summary>
 		private void InitAuditInfoEntityMappings()
 		{
-			this.AddElementMapping( "AuditInfoEntity", @"TrzisteNovca", @"dbo", "AuditInfo", 8 );
+			this.AddElementMapping( "AuditInfoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "AuditInfo", 8 );
 			this.AddElementFieldMapping( "AuditInfoEntity", "ActionDateTime", "ActionDateTime", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 0 );
 			this.AddElementFieldMapping( "AuditInfoEntity", "AuditInfoActionTypeId", "AuditInfoActionTypeId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 1 );
 			this.AddElementFieldMapping( "AuditInfoEntity", "AuditInfoId", "AuditInfoId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
@@ -80,7 +82,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits AuditInfoActionTypeRoEntity's mappings</summary>
 		private void InitAuditInfoActionTypeRoEntityMappings()
 		{
-			this.AddElementMapping( "AuditInfoActionTypeRoEntity", @"TrzisteNovca", @"dbo", "AuditInfoActionTypeRo", 3 );
+			this.AddElementMapping( "AuditInfoActionTypeRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "AuditInfoActionTypeRo", 3 );
 			this.AddElementFieldMapping( "AuditInfoActionTypeRoEntity", "AuditInfoActionTypeId", "AuditInfoActionTypeId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 0 );
 			this.AddElementFieldMapping( "AuditInfoActionTypeRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "AuditInfoActionTypeRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 2 );
@@ -88,7 +90,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits EntityRoEntity's mappings</summary>
 		private void InitEntityRoEntityMappings()
 		{
-			this.AddElementMapping( "EntityRoEntity", @"TrzisteNovca", @"dbo", "EntityRo", 3 );
+			this.AddElementMapping( "EntityRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "EntityRo", 3 );
 			this.AddElementFieldMapping( "EntityRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "EntityRoEntity", "EntityId", "EntityId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 1 );
 			this.AddElementFieldMapping( "EntityRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 2 );
@@ -96,7 +98,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits ErrorEntity's mappings</summary>
 		private void InitErrorEntityMappings()
 		{
-			this.AddElementMapping( "ErrorEntity", @"TrzisteNovca", @"dbo", "Error", 6 );
+			this.AddElementMapping( "ErrorEntity", @"atjanmcs301107hr2706_tn", @"dbo", "Error", 6 );
 			this.AddElementFieldMapping( "ErrorEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "ErrorEntity", "ErrorDateTime", "ErrorDateTime", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 1 );
 			this.AddElementFieldMapping( "ErrorEntity", "ErrorId", "ErrorId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
@@ -107,7 +109,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits RepoAukcijaEntity's mappings</summary>
 		private void InitRepoAukcijaEntityMappings()
 		{
-			this.AddElementMapping( "RepoAukcijaEntity", @"TrzisteNovca", @"dbo", "RepoAukcija", 15 );
+			this.AddElementMapping( "RepoAukcijaEntity", @"atjanmcs301107hr2706_tn", @"dbo", "RepoAukcija", 15 );
 			this.AddElementFieldMapping( "RepoAukcijaEntity", "BrojAukcije", "BrojAukcije", true, "NVarChar", 20, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "RepoAukcijaEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "RepoAukcijaEntity", "DatumAukcije", "DatumAukcije", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 2 );
@@ -127,7 +129,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits RoleRoEntity's mappings</summary>
 		private void InitRoleRoEntityMappings()
 		{
-			this.AddElementMapping( "RoleRoEntity", @"TrzisteNovca", @"dbo", "RoleRo", 3 );
+			this.AddElementMapping( "RoleRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "RoleRo", 3 );
 			this.AddElementFieldMapping( "RoleRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "RoleRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "RoleRoEntity", "RoleId", "RoleId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
@@ -135,7 +137,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits SudionikEntity's mappings</summary>
 		private void InitSudionikEntityMappings()
 		{
-			this.AddElementMapping( "SudionikEntity", @"TrzisteNovca", @"dbo", "Sudionik", 5 );
+			this.AddElementMapping( "SudionikEntity", @"atjanmcs301107hr2706_tn", @"dbo", "Sudionik", 5 );
 			this.AddElementFieldMapping( "SudionikEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "SudionikEntity", "Naziv", "Naziv", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "SudionikEntity", "SudionikGrupaId", "SudionikGrupaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
@@ -145,7 +147,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits SudionikGrupaRoEntity's mappings</summary>
 		private void InitSudionikGrupaRoEntityMappings()
 		{
-			this.AddElementMapping( "SudionikGrupaRoEntity", @"TrzisteNovca", @"dbo", "SudionikGrupaRo", 3 );
+			this.AddElementMapping( "SudionikGrupaRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "SudionikGrupaRo", 3 );
 			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "Name", "Name", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "SudionikGrupaRoEntity", "SudionikGrupaId", "SudionikGrupaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
@@ -153,16 +155,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits TrgovanjeGlavaEntity's mappings</summary>
 		private void InitTrgovanjeGlavaEntityMappings()
 		{
-			this.AddElementMapping( "TrgovanjeGlavaEntity", @"TrzisteNovca", @"dbo", "TrgovanjeGlava", 4 );
+			this.AddElementMapping( "TrgovanjeGlavaEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeGlava", 4 );
 			this.AddElementFieldMapping( "TrgovanjeGlavaEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "TrgovanjeGlavaEntity", "Datum", "Datum", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 1 );
 			this.AddElementFieldMapping( "TrgovanjeGlavaEntity", "Komentar", "Komentar", true, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 2 );
 			this.AddElementFieldMapping( "TrgovanjeGlavaEntity", "TrgovanjeGlavaId", "TrgovanjeGlavaId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 3 );
 		}
+		/// <summary>Inits TrgovanjeGlavaHnbEntity's mappings</summary>
+		private void InitTrgovanjeGlavaHnbEntityMappings()
+		{
+			this.AddElementMapping( "TrgovanjeGlavaHnbEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeGlavaHnb", 3 );
+			this.AddElementFieldMapping( "TrgovanjeGlavaHnbEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "TrgovanjeGlavaHnbEntity", "Datum", "Datum", false, "DateTime", 0, 0, 0, false, "", null, typeof(System.DateTime), 1 );
+			this.AddElementFieldMapping( "TrgovanjeGlavaHnbEntity", "TrgovanjeGlavaHnbId", "TrgovanjeGlavaHnbId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
+		}
 		/// <summary>Inits TrgovanjeStavkaEntity's mappings</summary>
 		private void InitTrgovanjeStavkaEntityMappings()
 		{
-			this.AddElementMapping( "TrgovanjeStavkaEntity", @"TrzisteNovca", @"dbo", "TrgovanjeStavka", 11 );
+			this.AddElementMapping( "TrgovanjeStavkaEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeStavka", 11 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "Ponuda", "Ponuda", false, "Decimal", 0, 2, 18, false, "", null, typeof(System.Decimal), 1 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "PonudaDodatak", "PonudaDodatak", false, "Decimal", 0, 4, 10, false, "", null, typeof(System.Decimal), 2 );
@@ -175,10 +185,21 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "TrgovanjeVrstaId", "TrgovanjeVrstaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 9 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaEntity", "ValutaId", "ValutaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 10 );
 		}
+		/// <summary>Inits TrgovanjeStavkaHnbEntity's mappings</summary>
+		private void InitTrgovanjeStavkaHnbEntityMappings()
+		{
+			this.AddElementMapping( "TrgovanjeStavkaHnbEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeStavkaHnb", 6 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", "IznosMilijuniKn", true, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 1 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "KamatnaStopa", "KamatnaStopa", true, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 2 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeGlavaHnbId", "TrgovanjeGlavaHnbId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeStavkaHnbId", "TrgovanjeStavkaHnbId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 4 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeVrstaId", "TrgovanjeVrstaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 5 );
+		}
 		/// <summary>Inits TrgovanjeVrstaRoEntity's mappings</summary>
 		private void InitTrgovanjeVrstaRoEntityMappings()
 		{
-			this.AddElementMapping( "TrgovanjeVrstaRoEntity", @"TrzisteNovca", @"dbo", "TrgovanjeVrstaRo", 4 );
+			this.AddElementMapping( "TrgovanjeVrstaRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeVrstaRo", 4 );
 			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "Name", "Name", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "TrgovanjeVrstaRoEntity", "SifraSlog", "SifraSlog", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 2 );
@@ -187,7 +208,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits UserEntity's mappings</summary>
 		private void InitUserEntityMappings()
 		{
-			this.AddElementMapping( "UserEntity", @"TrzisteNovca", @"dbo", "User", 5 );
+			this.AddElementMapping( "UserEntity", @"atjanmcs301107hr2706_tn", @"dbo", "User", 5 );
 			this.AddElementFieldMapping( "UserEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "UserEntity", "Password", "Password", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "UserEntity", "RoleId", "RoleId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
@@ -197,7 +218,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Inits ValutaRoEntity's mappings</summary>
 		private void InitValutaRoEntityMappings()
 		{
-			this.AddElementMapping( "ValutaRoEntity", @"TrzisteNovca", @"dbo", "ValutaRo", 4 );
+			this.AddElementMapping( "ValutaRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "ValutaRo", 4 );
 			this.AddElementFieldMapping( "ValutaRoEntity", "Code", "Code", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "ValutaRoEntity", "Name", "Name", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "ValutaRoEntity", "SifraSlog", "SifraSlog", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 2 );
