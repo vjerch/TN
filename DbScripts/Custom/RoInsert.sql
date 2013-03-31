@@ -34,6 +34,12 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('Sudionik', 'Sudionik', 7);
 	
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('TrgovanjeGlavaHnb', 'TrgovanjeGlavaHnb', 8);
+	
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('TrgovanjeStavkaHnb', 'TrgovanjeStavkaHnb', 9);
+	
 -- ValutaRo
 INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")
 	VALUES('Kn', 'Kuna', 1, 'KN');

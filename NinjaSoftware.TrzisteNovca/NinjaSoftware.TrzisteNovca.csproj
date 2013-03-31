@@ -134,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BackOffice\TrgovanjeGlavaHnbPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeHnbViewModel.cs" />
     <Compile Include="Models\BackOffice\SudionikPager.cs" />
     <Compile Include="Models\BackOffice\RepoAukcijaPager.cs" />
@@ -762,6 +763,7 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\messages_hr.js" />
     <Content Include="Scripts\methods_hr.js" />
+    <Content Include="Scripts\NinjaSoftwareLib.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -858,6 +860,7 @@
     <Content Include="Views\BackOffice\AukcijaTrezorskihZapisa.cshtml" />
     <Content Include="Views\Home\AukcijaTrezorskihZapisa.cshtml" />
     <Content Include="Views\BackOffice\TrgovanjeHnbEdit.cshtml" />
+    <Content Include="Views\BackOffice\TrgovanjeGlavaHnbList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

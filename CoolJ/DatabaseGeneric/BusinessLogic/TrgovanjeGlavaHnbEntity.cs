@@ -44,6 +44,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
             RelationPredicateBucket bucket = new RelationPredicateBucket();
             bucket.PredicateExpression.Add(TrgovanjeGlavaHnbFields.Datum == this.Datum.Date);
+            bucket.PredicateExpression.Add(TrgovanjeGlavaHnbFields.TrgovanjeGlavaHnbId != this.TrgovanjeGlavaHnbId);
 
             int count = TrgovanjeGlavaHnbEntity.GetNumberOfEntities(adapter, bucket);
             if (count > 0)

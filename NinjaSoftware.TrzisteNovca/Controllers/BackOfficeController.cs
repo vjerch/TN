@@ -54,7 +54,6 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             string returnJson;
 
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
-            TrgovanjeStavkaEntity e = new TrgovanjeStavkaEntity();
 
             try
             {
@@ -320,6 +319,82 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
 
             return View();
+        }
+
+        #endregion
+
+        #region TrgovanjeHnb
+
+        [HttpGet]
+        public ActionResult TrgovanjeGlavaHnbList(int? pageNumber, string sortField, bool? isSortAscending)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeGlavaHnbPager trgovanjeGlavaHnbPager = new TrgovanjeGlavaHnbPager();
+                trgovanjeGlavaHnbPager.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
+                return View(trgovanjeGlavaHnbPager);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeHnbEdit(long? trgovanjeGlavaHnbId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeHnbViewModel viewModel = new TrgovanjeHnbViewModel(adapter, trgovanjeGlavaHnbId);
+                viewModel.LoadViewSpecificData(adapter);
+                return View(viewModel);
+            }
+        }
+
+        [HttpPost]
+        public ContentResult TrgovanjeHnbSave(long trgovanjeGlavaHnbId, string trgovanjeGlavaHnbJson, string trgovanjeStavkaHnbCollectionJson)
+        {
+            string returnJson;
+
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+
+            try
+            {
+                adapter.StartTransaction(System.Data.IsolationLevel.Serializable, "TrgovanjeHnbSave");
+                TrgovanjeHnbViewModel viewModel = new TrgovanjeHnbViewModel(adapter, trgovanjeGlavaHnbId);
+                viewModel.UpdateModelFromJson(trgovanjeGlavaHnbJson, trgovanjeStavkaHnbCollectionJson);
+                viewModel.Save(adapter);
+
+                adapter.Commit();
+
+                string url = this.Url.Action("TrgovanjeHnbEdit", new { trgovanjeGlavaHnbId = viewModel.TrgovanjeGlavaHnb.TrgovanjeGlavaHnbId });
+                returnJson = string.Format("{{ \"Url\": \"{0}\" }}", url);
+            }
+            catch (UserException ex)
+            {
+                returnJson = string.Format("{{ \"Error\": \"{0}\" }}", ex.Message);
+                adapter.Rollback();
+            }
+            catch (Exception)
+            {
+                adapter.Rollback();
+                throw;
+            }
+            finally
+            {
+                adapter.Dispose();
+            }
+
+            return new ContentResult() { Content = returnJson, ContentType = "application/json" };
+        }
+
+        [HttpGet]
+        public ActionResult DohvatiTrgovanjeHnb()
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                string trgovanjeStavkaHnbCollectionJson = TrgovanjeHnbViewModel.DohvatiWebTrgovanjeGlavaHnb(adapter);
+                return new ContentResult() { Content = trgovanjeStavkaHnbCollectionJson, ContentType = "application/json" };
+            }
         }
 
         #endregion

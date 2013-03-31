@@ -47,3 +47,33 @@ var TrgovanjeStavka = function (spec) {
 
     return self;
 }
+
+var TrgovanjeStavkaHnb = function (spec) {
+    var self = {};
+
+    if (undefined !== spec.ConcurrencyGuid) {
+        self.ConcurrencyGuid = spec.ConcurrencyGuid;
+    }
+
+    if (undefined !== spec.IznosMilijuniKn) {
+        self.IznosMilijuniKn = spec.IznosMilijuniKn;
+    }
+
+    if (undefined !== spec.KamatnaStopa) {
+        self.KamatnaStopa = spec.KamatnaStopa;
+    }
+
+    if (undefined !== spec.TrgovanjeVrstaId) {
+        self.TrgovanjeVrstaId = spec.TrgovanjeVrstaId;
+    }
+
+    if (undefined !== spec.TrgovanjeGlavaHnbId) {
+        self.TrgovanjeGlavaHnbId = spec.TrgovanjeGlavaHnbId;
+    }
+
+    if (undefined !== spec.TrgovanjeStavkaId) {
+        self.TrgovanjeStavkaHnbId = spec.TrgovanjeStavkaHnbId;
+    }
+
+    return self;
+}

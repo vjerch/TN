@@ -22,9 +22,10 @@
 
 <form id="FormTrgovanje" action="/someServerSideHandler">
     <input type="submit" value="Pohrani" />
+    <button onclick="viewModel.dohvatiTrgovanjeStavkaHnbCollection(); return false;">Dohvati podatke</button>
 
     <div data-bind="template: { name: 'TrgovanjeGlavaHnbTemplate', data: trgovanjeGlavaHnb }"></div>
-    
+
     <script type="text/html" id="TrgovanjeGlavaHnbTemplate">
         <table>
 @if (Model.TrgovanjeGlavaHnb.IsNew)
@@ -64,7 +65,7 @@
             <tr>
                 <td data-bind="text: TrgovanjeVrsta.Name"></td>
                 <td>
-                    <input class="required number numberCss" data-bind="value: Iznos, uniqueName: true" />
+                    <input class="required number numberCss" data-bind="value: IznosMilijuniKn, uniqueName: true" />
                 </td>
                 <td>
                     <input class="required number numberCss" data-bind="value: KamatnaStopa, uniqueName: true" />
@@ -78,89 +79,66 @@
 </form>
 
 <script type="text/javascript">
+    Globalize.culture("hr");
+    
     $(document).ready(function () {
-        Globalize.culture("hr");
-
         $("#InputDatum").datepicker();
     });
 
-    var trgovanjeViewModel = function () {
+    var trgovanjeHnbViewModel = function () {
         var self = {};
 
         // data sources
-        self.trgovanjeGlava = ko.observable(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeGlava)));
-        self.trgovanjeStavkaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeStavkaCollection)));
+        self.trgovanjeGlavaHnb = ko.observable(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeGlavaHnb)));
+        self.trgovanjeStavkaHnbCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeStavkaHnbCollection)));
         self.trgovanjeVrstaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.TrgovanjeVrstaCollection)));
-        self.valutaCollection = ko.observableArray(@Html.Raw(JsonConvert.SerializeObject(Model.ValutaCollection)));
         self.selectedTrgovanjeVrsta = ko.observable();
-        self.selectedValuta = ko.observable();
 
         // hr data formating
-        var date = new Date(self.trgovanjeGlava().Datum);
-        self.trgovanjeGlava().Datum = Globalize.format(date, "d");
+        var date = new Date(self.trgovanjeGlavaHnb().Datum);
+        self.trgovanjeGlavaHnb().Datum = Globalize.format(date, "d");
 
-        $(self.trgovanjeStavkaCollection()).each(function () {
-            var tmp = parseFloat(this.Ponuda.toString());
-            this.Ponuda = Globalize.format(tmp, "n2");
+        $(self.trgovanjeStavkaHnbCollection()).each(function () {
+            var tmp = parseFloat(this.IznosMilijuniKn.toString());
+            this.IznosMilijuniKn = Globalize.format(tmp, "n2");
 
-            tmp = parseFloat(this.PonudaDodatak.toString());
-            this.PonudaDodatak = Globalize.format(tmp, "n2");
-
-            tmp = parseFloat(this.Potraznja.toString());
-            this.Potraznja = Globalize.format(tmp, "n2");
-
-            tmp = parseFloat(this.PotraznjaDodatak.toString());
-            this.PotraznjaDodatak = Globalize.format(tmp, "n2");
-
-            tmp = parseFloat(this.Promet.toString());
-            this.Promet = Globalize.format(tmp, "n2");
-
-            tmp = parseFloat(this.PrometDodatak.toString());
-            this.PrometDodatak = Globalize.format(tmp, "n2");
+            tmp = parseFloat(this.KamatnaStopa.toString());
+            this.KamatnaStopa = Globalize.format(tmp, "n2");
         });
 
         // functions
-        self.addTrgovanjeStavka = function() {
+        self.addTrgovanjeStavkaHnb = function() {
             var stavkaExist = false;
-            $(self.trgovanjeStavkaCollection()).each(function () {
-                if (this.TrgovanjeVrstaId === self.selectedTrgovanjeVrsta().TrgovanjeVrstaId &&
-                 this.ValutaId === self.selectedValuta().ValutaId) {
+            $(self.trgovanjeStavkaHnbCollection()).each(function () {
+                if (this.TrgovanjeVrstaId === self.selectedTrgovanjeVrsta().TrgovanjeVrstaId) {
                     stavkaExist = true;
                 }
             });
 
             if (stavkaExist) {
-                alert("Trgovanje '" + self.selectedTrgovanjeVrsta().Name + "' za valutu '" + self.selectedValuta().Name + "' je ranije uneseno.");
+                alert("Trgovanje '" + self.selectedTrgovanjeVrsta().Name + "' je ranije uneseno.");
             }
             else {
-                var trgovanjeStavka = TrgovanjeStavka({
+                var trgovanjeStavkaHnb = TrgovanjeStavkaHnb({
                     TrgovanjeVrstaId: self.selectedTrgovanjeVrsta().TrgovanjeVrstaId,
-                    ValutaId: self.selectedValuta().ValutaId,
-                    Ponuda: 0,
-                    PonudaDodatak: 0,
-                    Potraznja: 0,
-                    PotraznjaDodatak: 0,
-                    Promet: 0,
-                    PrometDodatak: 0
+                    IznosMilijuniKn: 0,
+                    KamatnaStopa: 0,
                 });
 
-                trgovanjeStavka.TrgovanjeVrsta = { "Name": self.selectedTrgovanjeVrsta().Name };
-                trgovanjeStavka.Valuta = { "Name": self.selectedValuta().Name };
+                trgovanjeStavkaHnb.TrgovanjeVrsta = { "Name": self.selectedTrgovanjeVrsta().Name };
 
-                self.trgovanjeStavkaCollection.push(trgovanjeStavka);    
+                self.trgovanjeStavkaHnbCollection.push(trgovanjeStavkaHnb);    
             }
-        }
+        };
 
         self.save = function() {
-            self.trgovanjeGlava().Komentar = CKEDITOR.instances["TextAreaDnevniKomentar"].getData();
-
             $.ajax({
                 type: "POST",
-                url: "@Url.Action("TrgovanjeSave")",
+                url: "@Url.Action("TrgovanjeHnbSave")",
                 data: {
-                    trgovanjeGlavaId: @Model.TrgovanjeGlava.TrgovanjeGlavaId,
-                    trgovanjeGlavaJson: ko.toJSON(self.trgovanjeGlava),
-                    trgovanjeStavkaCollectionJson: ko.toJSON(self.trgovanjeStavkaCollection)
+                    trgovanjeGlavaHnbId: @Model.TrgovanjeGlavaHnb.TrgovanjeGlavaHnbId,
+                    trgovanjeGlavaHnbJson: ko.toJSON(self.trgovanjeGlavaHnb),
+                    trgovanjeStavkaHnbCollectionJson: ko.toJSON(self.trgovanjeStavkaHnbCollection)
                 },
                 success: function (result) {
                     if (result.Error) {
@@ -181,14 +159,41 @@
             });
         };
 
-        self.deleteTrgovanjeStavka = function (trgovanjeStavka) {
-            self.trgovanjeStavkaCollection.remove(trgovanjeStavka);
-        }
+        self.dohvatiTrgovanjeStavkaHnbCollection = function() {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("DohvatiTrgovanjeHnb")",
+                success: function (result) {
+                    self.trgovanjeStavkaHnbCollection.removeAll();
+
+                    $(result).each(function () {
+                        var date = new Date(this.TrgovanjeGlavaHnb.Datum);
+                        self.trgovanjeGlavaHnb().Datum = Globalize.format(date, "d");
+
+                        this.IznosMilijuniKn = Globalize.format(this.IznosMilijuniKn, "n2");
+                        this.KamatnaStopa = Globalize.format(this.KamatnaStopa, "n2");
+
+                        self.trgovanjeStavkaHnbCollection.push(this);
+                    });
+
+                    self.trgovanjeGlavaHnb.valueHasMutated();
+                },
+                error: function () {
+                    alert("Desila se greška prilikom dohvata podataka.");
+                },
+                async: false,
+                cache: false
+            });
+        };
+
+        self.deleteTrgovanjeStavkaHnb = function (trgovanjeStavkaHnb) {
+            self.trgovanjeStavkaHnbCollection.remove(trgovanjeStavkaHnb);
+        };
 
         return self;
     };
 
-    var viewModel = trgovanjeViewModel();
+    var viewModel = trgovanjeHnbViewModel();
     ko.applyBindings(viewModel);
     $("#FormTrgovanje").validate({ submitHandler: viewModel.save });
 </script>
