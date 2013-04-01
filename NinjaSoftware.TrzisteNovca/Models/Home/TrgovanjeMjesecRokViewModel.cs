@@ -19,6 +19,11 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.Godina = godina;
             this.Mjesec = mjesec;
 
+            foreach (TrgovanjeGlavaEntity trgovanjeGlava in this.TrgovanjeGlavaCollection)
+            {
+                trgovanjeGlava.LoadTrgovanjeGlavaPrethodniDan(adapter);
+            }
+
             this.TrgovanjeVrstaList = new List<TrgovanjeVrstaRoEntity>();
             foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in Helper.TrgovanjeVrstaEnumArrayZaPrikaz)
             {

@@ -6,6 +6,7 @@
 <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 
@@ -42,9 +43,10 @@
         var linePonuda = @Model.ChartLinePonudaDataSource;
         var linePotraznja = @Model.ChartLinePotraznjaDataSource;
         var linePromet = @Model.ChartLinePrometDataSource;
+        var lineKamatnaStopa = @Model.ChartLineKamatnaStopaDataSource;
 
-        var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
-            title: 'Trgovanje kunama',
+        var plot = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+            title: 'Trgovanje u milionima kuna',
             axes: {
                 xaxis: {
                     renderer: $.jqplot.DateAxisRenderer,
@@ -55,11 +57,28 @@
                 }
             },
             legend: { 
+                renderer: $.jqplot.EnhancedLegendRenderer,
                 show: true,
                 location: "s",
                 placement: "outside",
                 labels: ["Ponuda", "Potražnja", "Promet"],
-                noColumns: 1
+                marginTop: "35px",
+                rendererOptions: {
+                    numberRows: 1
+                }
+            }
+        });
+
+        var plotKs = $.jqplot('chartKamatnaStopa', [lineKamatnaStopa], {
+            title: 'Prosječna kamatna stopa (%)',
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.DateAxisRenderer,
+                    tickOptions: { formatString: "%d. %m." }
+                },
+                yaxis: {
+                    min: 0
+                }
             }
         });
     });
@@ -164,4 +183,8 @@ Promjena datuma:
 <div id="chart">
 
 </div>
+
+<br /><br /><br />
+<div id="chartKamatnaStopa">
+
 </div>

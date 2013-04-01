@@ -787,6 +787,7 @@
     <Content Include="Scripts\messages_hr.js" />
     <Content Include="Scripts\methods_hr.js" />
     <Content Include="Scripts\NinjaSoftwareLib.js" />
+    <Content Include="Scripts\superfish.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

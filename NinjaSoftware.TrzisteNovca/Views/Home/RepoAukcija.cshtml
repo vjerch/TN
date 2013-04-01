@@ -3,6 +3,9 @@
 @{
     string title = "REPO AUKCIJA";
     ViewBag.Title = title;
+
+    string milKunaString = "mil. kuna";
+    string postoString = "%";
 }
 <script type="text/javascript">
     $(document).ready(function () {
@@ -56,7 +59,9 @@
                 Ukupan iznos pristiglih ponuda:
             </td>
             <td>
-                @{ string pristiglePonude = Model.RepoAukcija.PristiglePonudeUkupno.HasValue ? Model.RepoAukcija.PristiglePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @{ string pristiglePonude = Model.RepoAukcija.PristiglePonudeUkupno.HasValue ? 
+                       string.Format("{0} {1}", Model.RepoAukcija.PristiglePonudeUkupno.Value.ToString("N2"), milKunaString)  : 
+                       "-"; }
                 @pristiglePonude
             </td>
         </tr>
@@ -65,7 +70,9 @@
                 Najviša ponuđena repo stopa:
             </td>
             <td>
-                @{ string najvisaRepoStopa = Model.RepoAukcija.NajvisaRepoStopa.HasValue ? Model.RepoAukcija.NajvisaRepoStopa.Value.ToString("N2") : "-"; }
+                @{ string najvisaRepoStopa = Model.RepoAukcija.NajvisaRepoStopa.HasValue && Model.RepoAukcija.NajvisaRepoStopa.Value > 0 ?
+                       string.Format("{0} {1}", Model.RepoAukcija.NajvisaRepoStopa.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @najvisaRepoStopa
             </td>
         </tr>
@@ -74,7 +81,8 @@
                 Najniža ponuđena repo stopa:
             </td>
             <td>
-                @{ string najnizaRepoStopa = Model.RepoAukcija.NajnizaRepoStopa.HasValue ? Model.RepoAukcija.NajnizaRepoStopa.Value.ToString("N2") : "-"; }
+                @{ string najnizaRepoStopa = Model.RepoAukcija.NajnizaRepoStopa.HasValue && Model.RepoAukcija.NajnizaRepoStopa.Value > 0 ?
+                       string.Format("{0} {1}", Model.RepoAukcija.NajnizaRepoStopa.Value.ToString("N2"), postoString) : "-"; }
                 @najnizaRepoStopa
             </td>
         </tr>
@@ -83,7 +91,8 @@
                 Ukupan iznos prihvaćenih ponuda:
             </td>
             <td>
-                @{ string prihvacenePonude = Model.RepoAukcija.PrihvacenePonudeUkupno.HasValue ? Model.RepoAukcija.PrihvacenePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @{ string prihvacenePonude = Model.RepoAukcija.PrihvacenePonudeUkupno.HasValue ?
+                       string.Format("{0} {1}", Model.RepoAukcija.PrihvacenePonudeUkupno.Value.ToString("N2"), milKunaString) : "-"; }
                 @prihvacenePonude
             </td>
         </tr>
@@ -92,7 +101,9 @@
                 Ukupan iznos odbijenih ponuda:
             </td>
             <td>
-                @{ string odbijenePonude = Model.RepoAukcija.OdbijenePonudeUkupno.HasValue ? Model.RepoAukcija.OdbijenePonudeUkupno.Value.ToStringInMilions() : "-"; }
+                @{ string odbijenePonude = Model.RepoAukcija.OdbijenePonudeUkupno.HasValue ? 
+                       string.Format("{0} {1}", Model.RepoAukcija.OdbijenePonudeUkupno.Value.ToString("N2"), milKunaString) : 
+                       "-"; }
                 @odbijenePonude
             </td>
         </tr>
@@ -101,7 +112,9 @@
                 Vagana repo stopa:
             </td>
             <td>
-                @{ string vaganaStopa = Model.RepoAukcija.VaganaRepoStopa.HasValue ? Model.RepoAukcija.VaganaRepoStopa.Value.ToString("N2") : "-"; }
+                @{ string vaganaStopa = Model.RepoAukcija.VaganaRepoStopa.HasValue && Model.RepoAukcija.VaganaRepoStopa.Value > 0 ?
+                       string.Format("{0} {1}", Model.RepoAukcija.VaganaRepoStopa.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @vaganaStopa
             </td>
         </tr>
@@ -110,7 +123,9 @@
                 Granična repo stopa:
             </td>
             <td>
-                @{ string granicnaStopa = Model.RepoAukcija.GranicnaRepoStopa.HasValue ? Model.RepoAukcija.GranicnaRepoStopa.Value.ToString("N2") : "-"; }
+                @{ string granicnaStopa = Model.RepoAukcija.GranicnaRepoStopa.HasValue && Model.RepoAukcija.GranicnaRepoStopa.Value > 0 ? 
+                       string.Format("{0} {1}", Model.RepoAukcija.GranicnaRepoStopa.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @granicnaStopa
             </td>
         </tr>
@@ -119,7 +134,9 @@
                 Fiksna repo stopa:
             </td>
             <td>
-                @{ string fiksnaStopa = Model.RepoAukcija.FiksnaRepoStopa.HasValue ? Model.RepoAukcija.FiksnaRepoStopa.Value.ToString("N2") : "-"; }
+                @{ string fiksnaStopa = Model.RepoAukcija.FiksnaRepoStopa.HasValue ? 
+                       string.Format("{0} {1}", Model.RepoAukcija.FiksnaRepoStopa.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @fiksnaStopa
             </td>
         </tr>
@@ -128,7 +145,9 @@
                 Prihvaćeno ponuda po graničnoj repo stopi:
             </td>
             <td>
-                @{ string postoPrihvacenihPoGranicnojStopi = Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.HasValue ? Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.Value.ToString("N2") : "-"; }
+                @{ string postoPrihvacenihPoGranicnojStopi = Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.HasValue ? 
+                       string.Format("{0} {1}", Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @postoPrihvacenihPoGranicnojStopi
             </td>
         </tr>
@@ -137,7 +156,9 @@
                 Koeficijent raspodjele:
             </td>
             <td>
-                @{ string koeficijentRaspodjele = Model.RepoAukcija.KoeficijentRaspodjele.HasValue ? Model.RepoAukcija.KoeficijentRaspodjele.Value.ToString("N2") : "-"; }
+                @{ string koeficijentRaspodjele = Model.RepoAukcija.KoeficijentRaspodjele.HasValue ?
+                       string.Format("{0} {1}", Model.RepoAukcija.KoeficijentRaspodjele.Value.ToString("N2"), postoString) : 
+                       "-"; }
                 @koeficijentRaspodjele
             </td>
         </tr>

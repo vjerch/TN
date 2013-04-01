@@ -19,7 +19,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         {
             List<TrgovanjeMjesecRok> trgovanjeMjesecListRok = new List<TrgovanjeMjesecRok>();
 
-            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina);
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection =
+                TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina, ValutaEnum.Kn);
 
             IEnumerable<long> valutaIdCollection = trgovanjeStavkaCollection.Select(ts => ts.ValutaId).Distinct();
 

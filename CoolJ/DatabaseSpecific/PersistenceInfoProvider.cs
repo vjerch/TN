@@ -142,7 +142,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "SudionikEntity", "Naziv", "Naziv", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "SudionikEntity", "SudionikGrupaId", "SudionikGrupaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
 			this.AddElementFieldMapping( "SudionikEntity", "SudionikId", "SudionikId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 3 );
-			this.AddElementFieldMapping( "SudionikEntity", "WebAdresa", "WebAdresa", false, "NVarChar", 512, 0, 0, false, "", null, typeof(System.String), 4 );
+			this.AddElementFieldMapping( "SudionikEntity", "WebAdresa", "WebAdresa", true, "NVarChar", 512, 0, 0, false, "", null, typeof(System.String), 4 );
 		}
 		/// <summary>Inits SudionikGrupaRoEntity's mappings</summary>
 		private void InitSudionikGrupaRoEntityMappings()

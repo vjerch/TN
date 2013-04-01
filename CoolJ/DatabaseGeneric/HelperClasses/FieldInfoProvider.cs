@@ -144,7 +144,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("SudionikEntity", "Naziv", typeof(System.String), false, false, false, false,  (int)SudionikFieldIndex.Naziv, 256, 0, 0);
 			this.AddElementFieldInfo("SudionikEntity", "SudionikGrupaId", typeof(System.Int64), false, true, false, false,  (int)SudionikFieldIndex.SudionikGrupaId, 0, 0, 19);
 			this.AddElementFieldInfo("SudionikEntity", "SudionikId", typeof(System.Int64), true, false, false, false,  (int)SudionikFieldIndex.SudionikId, 0, 0, 19);
-			this.AddElementFieldInfo("SudionikEntity", "WebAdresa", typeof(System.String), false, false, false, false,  (int)SudionikFieldIndex.WebAdresa, 512, 0, 0);
+			this.AddElementFieldInfo("SudionikEntity", "WebAdresa", typeof(System.String), false, false, false, true,  (int)SudionikFieldIndex.WebAdresa, 512, 0, 0);
 		}
 		/// <summary>Inits SudionikGrupaRoEntity's FieldInfo objects</summary>
 		private void InitSudionikGrupaRoEntityInfos()

@@ -563,7 +563,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary> The WebAdresa property of the Entity Sudionik<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "Sudionik"."WebAdresa"<br/>
 		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 512<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): true, false, false</remarks>
 		[JsonProperty]		
 		public virtual System.String WebAdresa
 		{
