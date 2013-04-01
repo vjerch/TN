@@ -47,7 +47,7 @@ table {
 div#header
 {
     background-image: url('icons/images/header_BG_ispod_loga.jpg');
-    background-color: #fff;
+    background-color: #E0DFD5;
     height: 160px;
     background-repeat: repeat-x;
 }
@@ -56,13 +56,14 @@ div#navigation
 {
     background-image: url('icons/images/traka_nav_pattern_03.png');
     background-repeat: repeat-x;
-    background-color: #003300;
+    background-color: #15332D;
     height:56px;
 }
 
 div#content
 {
     border:0px;
+    background-color:#5E7A5C;
     background-position: top;
     background-image: url('icons/images/BG_main.png');
     background-repeat: repeat-x;
@@ -113,6 +114,10 @@ div#footer
 
 .content-box .content  { margin-top:60px; }
 
+.content-box .content h3 { color: #006e5d;font-size: 18px; border-bottom: 2px; border-bottom-style: solid;line-height:2em;}
+
+.content-box .raw { padding:20px 0 20px 0;}
+
 .content-header
 {
   height:140px;
@@ -124,7 +129,7 @@ div#footer
 }
 
 /* TYPO */
-body { font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;}
+html, body { font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;}
 h1 { font-size: 2.2em; line-height:1.5em; font-weight:bold;}
 h2 { font-size: 1.9em; line-height:1.2em; font-weight:bold;}
 h3 { font-size: 1.6em; line-height:1.0em; font-weight:bold;}
@@ -220,3 +225,53 @@ ul#main-nav li a
 }
 
 ul#main-nav li a:hover { text-decoration:underline;}
+
+/* TABLES */
+
+table.default
+{
+    border: 1px solid #C0C0C0;
+    margin: 20px 0 20px 0;
+    font-size: 13px;
+    width: 100%;
+}
+table.default thead
+{
+    background: #e6e6e6 url('icons/images/ui-bg_glass_75_e6e6e6_1x400.png') 50% 50% repeat-x;
+    line-height:30px;
+    font-weight:bold;
+}
+
+table.default thead tr th {padding:5px 0 5px 0;border: 1px solid #C0C0C0; vertical-align:middle;}
+
+table.default tbody tr td { text-align:center;line-height:20px;border: 1px solid #C0C0C0;}
+
+table.default tfoot
+{
+    background-color: #e6e6e6;
+    line-height:30px;
+    font-weight:bold;
+    text-align:center;
+}
+
+table.default tfoot tr td {border: 1px solid #C0C0C0;}
+
+table.default a {color:#006e5d; text-decoration:none;}
+table.default a:hover {text-decoration:underline;}
+table span.value-up
+{
+    background-image: url('icons/images/poz_gore_strelica_za_tablicu.png');
+    background-repeat: no-repeat;
+    width:13px;
+    height:12px;
+    display: inline-block;
+}
+
+table span.value-down
+{
+    background-image: url('icons/images/neg_dolje_strelica_za_tablicu.png');
+    background-repeat: no-repeat;
+    width:13px;
+    height:12px;
+    display: inline-block;
+}

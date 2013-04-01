@@ -7,7 +7,8 @@
     CultureInfo hrCulture = new CultureInfo("hr");
     }
 
-<table>
+<table class="default">
+ <thead>
     <tr>
         <th colspan="6">
             @string.Format("Trgovanje kunama u {0}. godini", Model.Godina)
@@ -31,7 +32,8 @@
         </th>
         <th>valuta</th>
     </tr>
-
+   </thead>
+   <tbody>
 @foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn))
 {
     
@@ -63,5 +65,5 @@
         <td>@trgovanjeMjesec.Valuta.ToString()</td>
     </tr>
 }
-
+</tbody>
 </table>

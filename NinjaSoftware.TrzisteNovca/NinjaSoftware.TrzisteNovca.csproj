@@ -181,6 +181,7 @@
     <Content Include="Content\icons\images\strelica_vise_link.png" />
     <Content Include="Content\icons\images\tel.png" />
     <Content Include="Content\icons\images\traka_nav_pattern_03.png" />
+    <Content Include="Content\icons\images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\icons\traka_nav.png" />
     <Content Include="Content\style.css" />
     <Content Include="Global.asax" />

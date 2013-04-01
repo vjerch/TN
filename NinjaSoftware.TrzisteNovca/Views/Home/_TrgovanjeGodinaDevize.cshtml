@@ -9,7 +9,8 @@
     CultureInfo hrCulture = new CultureInfo("hr");
 }
 
-<table>
+<table class="default">
+<thead>
     <tr>
         <th colspan="5">
             @string.Format("Pozajmice deviza u {0}. godini", Model.Godina)
@@ -30,7 +31,8 @@
         </th>
         <th>valuta</th>
     </tr>
-
+    </thead>
+    <tbody>
 @foreach (ValutaEnum valuta in valutaCollection)
 {
     <tr>
@@ -63,4 +65,5 @@
         </tr>
     }
 }
+</tbody>
 </table>

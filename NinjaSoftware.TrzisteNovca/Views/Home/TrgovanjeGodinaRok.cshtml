@@ -23,7 +23,8 @@
     Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
     <br />
     <br />
-    <table>
+    <table class="default">
+    <thead>
         <tr>
             <th>
             </th>
@@ -36,6 +37,8 @@
                 UKUPNO
             </th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
             <th>
                 Mjesec
@@ -92,5 +95,6 @@
                 </td>
             </tr>
         }
+        </tbody>
     </table>
 </div>
