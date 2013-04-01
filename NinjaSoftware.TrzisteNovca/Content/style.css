@@ -116,6 +116,8 @@ div#footer
 
 .content-box .content h3 { color: #006e5d;font-size: 18px; border-bottom: 2px; border-bottom-style: solid;line-height:2em;}
 
+.content-box .raw { padding:20px 0 20px 0;}
+
 .content-header
 {
   height:140px;
@@ -127,7 +129,7 @@ div#footer
 }
 
 /* TYPO */
-body { font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;}
+html, body { font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;}
 h1 { font-size: 2.2em; line-height:1.5em; font-weight:bold;}
 h2 { font-size: 1.9em; line-height:1.2em; font-weight:bold;}
 h3 { font-size: 1.6em; line-height:1.0em; font-weight:bold;}
