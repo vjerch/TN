@@ -40,8 +40,8 @@
         {
             TrgovanjeStavkaEntity trgovanjeStavka = trgovanjeGlava.TrgovanjeStavkaCollection.
                 Where(ts => ts.TrgovanjeVrstaId == (long)trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-            
-            
+
+
             string prometString = "-";
             string kamatnaStopaString = "-";
 
@@ -55,8 +55,12 @@
             <td>@kamatnaStopaString</td>
         }
 
-        <td>todo</td>
-        <td>todo</td>
+        <td>@trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
+        @{
+            decimal? ukupnoKamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
+            string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
+            }
+        <td>@ukupnoKamatnaStopaString</td>
     </tr>
     }
 </table>

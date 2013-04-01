@@ -194,7 +194,7 @@
           <Field Name="Naziv" Type="string" MaxLength="256" />
           <Field Name="SudionikGrupaId" Type="long" />
           <Field Name="SudionikId" Type="long" IsPrimaryKey="true" />
-          <Field Name="WebAdresa" Type="string" MaxLength="512" />
+          <Field Name="WebAdresa" Type="string" IsOptional="true" MaxLength="512" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="SudionikGrupaRo">
@@ -411,7 +411,7 @@
                     <Field Name="Naziv" Ordinal="2" DbType="12" Length="256" />
                     <Field Name="SudionikGrupaId" Ordinal="3" DbType="0" Precision="19" />
                     <Field Name="SudionikId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_d38dda5463dbb7a94aa2fa30373" DbType="0" Precision="19" />
-                    <Field Name="WebAdresa" Ordinal="5" DbType="12" Length="512" />
+                    <Field Name="WebAdresa" Ordinal="5" IsOptional="true" DbType="12" Length="512" />
                   </Fields>
                 </Table>
                 <Table Name="SudionikGrupaRo">
