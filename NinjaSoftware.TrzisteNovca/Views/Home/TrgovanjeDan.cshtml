@@ -74,7 +74,8 @@
         
         <h3>
             Trgovanje u kunama</h3>
-        <table>
+        <table class="default">
+        <thead>
             <tr>
                 <th>
                     Ponuda u mil. kn
@@ -89,18 +90,24 @@
                     Promjena u %
                 </th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>@Model.TrgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@ponudaPromjenaPosto
+                <td>@ponudaPromjenaPosto @if (ponudaPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                 </td>
                 <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@potraznjaPromjenaPosto
+                <td>@potraznjaPromjenaPosto @if (potraznjaPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                 </td>
             </tr>
+            </tbody>
         </table>
-        <table>
+        <table class="default">
+        <thead>
             <tr>
                 <th>
                     Promet
@@ -118,6 +125,8 @@
                     promjena u %
                 </th>
             </tr>
+            </thead>
+            <tbody>
             @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
             {
                 string prometPromjenaPosto = trgovanjeStavka.PrometPromjenaPosto.HasValue ? trgovanjeStavka.PrometPromjenaPosto.Value.ToString("N2") : "-";
@@ -128,14 +137,19 @@
                     </td>
                     <td>@trgovanjeStavka.Promet.ToStringInMilions()
                     </td>
-                    <td>@prometPromjenaPosto
+                    <td>@prometPromjenaPosto @if (prometPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                     </td>
-                    <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
+                    <td>@trgovanjeStavka.PrometDodatak.ToString("N2") @if (trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                     </td>
-                    <td>@prometDodatakPromjenaPosto
+                    <td>@prometDodatakPromjenaPosto @if (prometDodatakPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                     </td>
                 </tr>
             }
+            </tbody>
+            <tfoot>
             <tr>
                 @{
                     decimal? promjenaPosto = Model.TrgovanjeGlava.PrometPromjenaPosto(ValutaEnum.Kn);
@@ -152,13 +166,17 @@
                 </td>
                 <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@ukupnoPrometPromjenaPosto
+                    <td>@ukupnoPrometPromjenaPosto    @if (ukupnoPrometPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                 </td>
-                <td>@ukupnoPrometKamatnaStopaPosto
+                <td>@ukupnoPrometKamatnaStopaPosto @if (ukupnoPrometKamatnaStopaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                 </td>
-                <td>@ukupnoPrometKamatnaStopaPromjenaPosto
+                <td>@ukupnoPrometKamatnaStopaPromjenaPosto @if (ukupnoPrometKamatnaStopaPromjenaPosto.Contains("-"))
+                                                           {<span class="value-down"></span>}else{ <span class="value-up"></span>}
                 </td>
             </tr>
+            </tfoot>
         </table>
         @{
             IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
@@ -167,7 +185,8 @@
         {
             <h3>
                 Pozajmice deviza</h3>
-            <table>
+            <table class="default">
+            <thead>
                 <tr>
                     <th>
                         Valuta
@@ -179,6 +198,8 @@
                         Kamatna stopa u %
                     </th>
                 </tr>
+                </thead>
+                <tbody>
                 @foreach (TrgovanjeStavkaEntity trgovanjeStavka in devizeTrgovanjeStavkaCollection)
                 { 
                     <tr>
@@ -186,10 +207,12 @@
                         </td>
                         <td>@trgovanjeStavka.Promet.ToStringInMilions()
                         </td>
-                        <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
+                        <td>@trgovanjeStavka.PrometDodatak.ToString("N2") 
+                        @if(trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-")){<span class="value-down"></span>}else{ <span class="value-up"></span>}
                         </td>
                     </tr>
                 }
+                </tbody>
             </table>
         }
         <br />
