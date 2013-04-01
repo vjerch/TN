@@ -2,13 +2,10 @@
 @using NinjaSoftware.TrzisteNovca.Models
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-
 <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
-
 @{
     decimal? ponudaPromjena = Model.TrgovanjeGlava.PonudaPromjenaPosto(ValutaEnum.Kn);
     string ponudaPromjenaPosto = ponudaPromjena.HasValue ? ponudaPromjena.Value.ToString("N2") : "-";
@@ -22,7 +19,6 @@
     string title = string.Format("Trgovanje na dan {0}", danTrgovanja);
     ViewBag.Title = title;    
 }
-
 <script type="text/javascript">
     $(document).ready(function () {
         Globalize.culture("hr");
@@ -65,103 +61,143 @@
     });
 </script>
 <div class="content-header">
-<h1>Dnevni pokazatelj trgovanja</h1>
-<h3>i kretanje kamatnih stopa</h3>
+    <h1>
+        Dnevni pokazatelj trgovanja</h1>
+    <h3>
+        i kretanje kamatnih stopa</h3>
 </div>
 <div class="content-box">
-<h1>@title</h1>
-Promjena datuma:
-@Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToShortDateString(), new { id = "inputDatum"})
+    <h1>@title</h1>
+    <div class="content">
+        Promjena datuma:
+        @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToShortDateString(), new { id = "inputDatum" })
+        
+        <h3>
+            Trgovanje u kunama</h3>
+        <table>
+            <tr>
+                <th>
+                    Ponuda u mil. kn
+                </th>
+                <th>
+                    Promjena u %
+                </th>
+                <th>
+                    Potražnja u mil. kn
+                </th>
+                <th>
+                    Promjena u %
+                </th>
+            </tr>
+            <tr>
+                <td>@Model.TrgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions()
+                </td>
+                <td>@ponudaPromjenaPosto
+                </td>
+                <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()
+                </td>
+                <td>@potraznjaPromjenaPosto
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>
+                    Promet
+                </th>
+                <th>
+                    u mil. kn
+                </th>
+                <th>
+                    promjena u %
+                </th>
+                <th>
+                    kamatna stopa u %
+                </th>
+                <th>
+                    promjena u %
+                </th>
+            </tr>
+            @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
+            {
+                string prometPromjenaPosto = trgovanjeStavka.PrometPromjenaPosto.HasValue ? trgovanjeStavka.PrometPromjenaPosto.Value.ToString("N2") : "-";
+                string prometDodatakPromjenaPosto =
+                    trgovanjeStavka.PrometDodatakPromjenaPosto.HasValue ? trgovanjeStavka.PrometDodatakPromjenaPosto.Value.ToString("N2") : "-";
+                <tr>
+                    <td>@trgovanjeStavka.TrgovanjeVrsta.Name
+                    </td>
+                    <td>@trgovanjeStavka.Promet.ToStringInMilions()
+                    </td>
+                    <td>@prometPromjenaPosto
+                    </td>
+                    <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
+                    </td>
+                    <td>@prometDodatakPromjenaPosto
+                    </td>
+                </tr>
+            }
+            <tr>
+                @{
+                    decimal? promjenaPosto = Model.TrgovanjeGlava.PrometPromjenaPosto(ValutaEnum.Kn);
+                    string ukupnoPrometPromjenaPosto = promjenaPosto.HasValue ? promjenaPosto.Value.ToString("N2") : "-";
 
-<h3>Trgovanje u kunama</h3>
+                    decimal? kamatnaStopa = Model.TrgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
+                    string ukupnoPrometKamatnaStopaPosto = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("N2") : "-";
 
-<table>
-    <tr>
-        <th>Ponuda u mil. kn</th>
-        <th>Promjena u %</th>
-        <th>Potražnja u mil. kn</th>
-        <th>Promjena u %</th>
-    </tr>
-    <tr>
-        <td>@Model.TrgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions()</td>        
-        <td>@ponudaPromjenaPosto</td>
-        <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()</td>
-        <td>@potraznjaPromjenaPosto</td>
-    </tr>
-</table>
-
-<table>
-    <tr>
-        <th>Promet</th>
-        <th>u mil. kn</th>
-        <th>promjena u %</th>
-        <th>kamatna stopa u %</th>
-        <th>promjena u %</th>
-    </tr>
-    @foreach (TrgovanjeStavkaEntity trgovanjeStavka in Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId == (long)ValutaEnum.Kn))
-    {
-        string prometPromjenaPosto = trgovanjeStavka.PrometPromjenaPosto.HasValue ? trgovanjeStavka.PrometPromjenaPosto.Value.ToString("N2") : "-";
-        string prometDodatakPromjenaPosto =
-            trgovanjeStavka.PrometDodatakPromjenaPosto.HasValue ? trgovanjeStavka.PrometDodatakPromjenaPosto.Value.ToString("N2") : "-";
-    <tr>
-        <td>@trgovanjeStavka.TrgovanjeVrsta.Name</td>
-        <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
-        <td>@prometPromjenaPosto</td>
-        <td>@trgovanjeStavka.PrometDodatak.ToString("N2")</td>
-        <td>@prometDodatakPromjenaPosto</td>
-    </tr>
-    }
-    <tr>
+                    decimal? kamatnaStopaPromjena = Model.TrgovanjeGlava.PrometKamatnaStopaPromjenaPosto(ValutaEnum.Kn);
+                    string ukupnoPrometKamatnaStopaPromjenaPosto = kamatnaStopaPromjena.HasValue ? kamatnaStopaPromjena.Value.ToString("N2") : "-";
+                }
+                <td>
+                    Ukupno:
+                </td>
+                <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()
+                </td>
+                <td>@ukupnoPrometPromjenaPosto
+                </td>
+                <td>@ukupnoPrometKamatnaStopaPosto
+                </td>
+                <td>@ukupnoPrometKamatnaStopaPromjenaPosto
+                </td>
+            </tr>
+        </table>
         @{
-            decimal? promjenaPosto = Model.TrgovanjeGlava.PrometPromjenaPosto(ValutaEnum.Kn);
-            string ukupnoPrometPromjenaPosto = promjenaPosto.HasValue ? promjenaPosto.Value.ToString("N2") : "-";
-
-            decimal? kamatnaStopa = Model.TrgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
-            string ukupnoPrometKamatnaStopaPosto = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("N2") : "-";
-
-            decimal? kamatnaStopaPromjena = Model.TrgovanjeGlava.PrometKamatnaStopaPromjenaPosto(ValutaEnum.Kn);
-            string ukupnoPrometKamatnaStopaPromjenaPosto = kamatnaStopaPromjena.HasValue ? kamatnaStopaPromjena.Value.ToString("N2") : "-";
+            IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
         }
-        <td>Ukupno:</td>
-        <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
-        <td>@ukupnoPrometPromjenaPosto</td>
-        <td>@ukupnoPrometKamatnaStopaPosto</td>
-        <td>@ukupnoPrometKamatnaStopaPromjenaPosto</td>
-    </tr>
-</table>
-
-@{
-    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
-    }
-
-@if (devizeTrgovanjeStavkaCollection.Count() > 0)
-{
-    <h3>Pozajmice deviza</h3>
-    <table>
-        <tr>
-            <th>Valuta</th>
-            <th>Promet u mil.</th>
-            <th>Kamatna stopa u %</th>
-        </tr>
-        @foreach (TrgovanjeStavkaEntity trgovanjeStavka in devizeTrgovanjeStavkaCollection)
-        { 
-        <tr>
-            <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)</td>
-            <td>@trgovanjeStavka.Promet.ToStringInMilions()</td>
-            <td>@trgovanjeStavka.PrometDodatak.ToString("N2")</td>
-        </tr>
+        @if (devizeTrgovanjeStavkaCollection.Count() > 0)
+        {
+            <h3>
+                Pozajmice deviza</h3>
+            <table>
+                <tr>
+                    <th>
+                        Valuta
+                    </th>
+                    <th>
+                        Promet u mil.
+                    </th>
+                    <th>
+                        Kamatna stopa u %
+                    </th>
+                </tr>
+                @foreach (TrgovanjeStavkaEntity trgovanjeStavka in devizeTrgovanjeStavkaCollection)
+                { 
+                    <tr>
+                        <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)
+                        </td>
+                        <td>@trgovanjeStavka.Promet.ToStringInMilions()
+                        </td>
+                        <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
+                        </td>
+                    </tr>
+                }
+            </table>
         }
-    </table>
-}
-
-<br />
-<br />
-
-<div>
-    @Html.Raw(Model.TrgovanjeGlava.Komentar)
-</div>
-
-<div id="chart">
-
-</div>
+        <br />
+        <br />
+        <div>
+            @Html.Raw(Model.TrgovanjeGlava.Komentar)
+        </div>
+        <div id="chart">
+        </div>
+    </div>
 </div>
