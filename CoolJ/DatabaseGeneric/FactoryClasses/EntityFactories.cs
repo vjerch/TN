@@ -191,7 +191,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new HtmlPageEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewHtmlPageUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -252,7 +251,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new SistemskaInstancaPodatakaRoEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSistemskaInstancaPodatakaRoUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code

@@ -1,0 +1,42 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Admin.HtmlPagePager
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+
+@{
+    ViewBag.Title = "HtmlPagePager";
+}
+
+<h2>HtmlPagePager</h2>
+
+<p>
+    @Html.ActionLink("Create New", "HtmlPageEdit")
+</p>
+<table>
+    <tr>
+        <th>
+            Naziv
+        </th>
+        <th>
+            Sistemski?
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (HtmlPageEntity htmlPage in Model.DataSource)
+{
+    <tr>
+        <td>
+            @htmlPage.Name
+        </td>
+        <td>
+            @{
+                string isSystemString = htmlPage.SistemskaInstancaPodatakaId.HasValue ? "Da" : "Ne";
+            }
+            @isSystemString
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "HtmlPageEdit", new { htmlPageId = htmlPage.HtmlPageId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -26,21 +26,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
 	// __LLBLGENPRO_USER_CODE_REGION_END
-	
 	/// <summary>Entity class which represents the entity 'HtmlPage'.<br/><br/></summary>
 	[Serializable]
 	[JsonObject(MemberSerialization.OptIn)]	
 	public partial class HtmlPageEntity : CommonEntityBase
 		// __LLBLGENPRO_USER_CODE_REGION_START AdditionalInterfaces
-		// __LLBLGENPRO_USER_CODE_REGION_END
-			
+		// __LLBLGENPRO_USER_CODE_REGION_END	
 	{
 		#region Class Member Declarations
 		private SistemskaInstancaPodatakaRoEntity _sistemskaInstancaPodataka;
 
 		// __LLBLGENPRO_USER_CODE_REGION_START PrivateMembers
 		// __LLBLGENPRO_USER_CODE_REGION_END
-		
 		#endregion
 
 		#region Statics
@@ -178,7 +175,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START DeserializationConstructor
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 		}
 
 		
@@ -326,7 +322,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			base.GetObjectData(info, context);
 		}
 
@@ -402,7 +397,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			OnInitClassMembersComplete();
 		}
 
@@ -420,6 +414,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			_fieldsCustomProperties.Add("Html", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("HtmlPageId", fieldHashtable);
+			fieldHashtable = new Dictionary<string, string>();
+			_fieldsCustomProperties.Add("Name", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("SistemskaInstancaPodatakaId", fieldHashtable);
 		}
@@ -470,7 +466,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassEmpty
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 
 			OnInitialized();
 
@@ -554,6 +549,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			set	{ SetValue((int)HtmlPageFieldIndex.HtmlPageId, value); }
 		}
 
+		/// <summary> The Name property of the Entity HtmlPage<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "HtmlPage"."Name"<br/>
+		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 64<br/>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
+		[JsonProperty]		
+		public virtual System.String Name
+		{
+			get { return (System.String)GetValue((int)HtmlPageFieldIndex.Name, true); }
+			set	{ SetValue((int)HtmlPageFieldIndex.Name, value); }
+		}
+
 		/// <summary> The SistemskaInstancaPodatakaId property of the Entity HtmlPage<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "HtmlPage"."SistemskaInstancaPodatakaId"<br/>
 		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
@@ -610,7 +616,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
-		
 		#endregion
 
 		#region Included code

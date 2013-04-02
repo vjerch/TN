@@ -39,6 +39,9 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('TrgovanjeStavkaHnb', 'TrgovanjeStavkaHnb', 9);
+
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('HtmlPage', 'HtmlPage', 10);
 	
 -- ValutaRo
 INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")

@@ -1,5 +1,6 @@
 ﻿@{
-    if ("backoffice" == @ViewContext.RouteData.Values["Controller"].ToString().ToLower())
+    if ("backoffice" == @ViewContext.RouteData.Values["Controller"].ToString().ToLower() ||
+        "admin" == @ViewContext.RouteData.Values["Controller"].ToString().ToLower())
     {
         Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
     }

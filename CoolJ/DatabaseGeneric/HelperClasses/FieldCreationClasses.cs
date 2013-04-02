@@ -151,6 +151,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.HtmlPageId);}
 		}
+		/// <summary>Creates a new HtmlPageEntity.Name field instance</summary>
+		public static EntityField2 Name
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.Name);}
+		}
 		/// <summary>Creates a new HtmlPageEntity.SistemskaInstancaPodatakaId field instance</summary>
 		public static EntityField2 SistemskaInstancaPodatakaId
 		{

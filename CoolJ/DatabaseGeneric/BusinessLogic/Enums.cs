@@ -21,7 +21,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         RepoAukcija = 6,
         Sudionik = 7,
         TrgovanjeGlavaHnb = 8,
-        TrgovanjeStavkaHnb = 9
+        TrgovanjeStavkaHnb = 9,
+        HtmlPage = 10
     }
 
     public enum RoleEnum

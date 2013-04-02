@@ -129,11 +129,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BackOfficeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\HtmlPagePager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaHnbPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeHnbViewModel.cs" />
     <Compile Include="Models\BackOffice\SudionikPager.cs" />
@@ -887,6 +889,8 @@
     <Content Include="Views\Home\AukcijaTrezorskihZapisa.cshtml" />
     <Content Include="Views\BackOffice\TrgovanjeHnbEdit.cshtml" />
     <Content Include="Views\BackOffice\TrgovanjeGlavaHnbList.cshtml" />
+    <Content Include="Views\Admin\HtmlPageList.cshtml" />
+    <Content Include="Views\Admin\HtmlPageEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

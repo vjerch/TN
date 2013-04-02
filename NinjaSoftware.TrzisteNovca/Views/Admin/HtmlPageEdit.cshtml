@@ -1,0 +1,53 @@
+﻿@model NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses.HtmlPageEntity
+@using NinjaSoftware.Api.Mvc
+
+@{
+    ViewBag.Title = "HtmlPageEdit";
+    NsController nsController = (NsController)ViewContext.Controller;
+}
+
+<script src="../../Scripts/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        CKEDITOR.replace("Html", {
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            width: "800px"
+        });
+    });
+</script>
+
+<h2>HtmlPageEdit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <span style="color: red;"><b>@nsController.ViewUserErrorMessage</b></span>
+
+    @Html.HiddenFor(model => model.HtmlPageId)
+    @Html.HiddenFor(model => model.ConcurrencyGuid)
+
+    <fieldset>
+        <legend>HtmlPageEntity</legend>
+
+        <div class="editor-label">
+            Naziv
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name, "TextAreaHtmlEdit")
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            Html
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Html)
+            @Html.ValidationMessageFor(model => model.Html)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}

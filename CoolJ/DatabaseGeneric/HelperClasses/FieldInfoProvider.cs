@@ -117,6 +117,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("HtmlPageEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.ConcurrencyGuid, 50, 0, 0);
 			this.AddElementFieldInfo("HtmlPageEntity", "Html", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.Html, 2147483647, 0, 0);
 			this.AddElementFieldInfo("HtmlPageEntity", "HtmlPageId", typeof(System.Int64), true, false, false, false,  (int)HtmlPageFieldIndex.HtmlPageId, 0, 0, 19);
+			this.AddElementFieldInfo("HtmlPageEntity", "Name", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.Name, 64, 0, 0);
 			this.AddElementFieldInfo("HtmlPageEntity", "SistemskaInstancaPodatakaId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)HtmlPageFieldIndex.SistemskaInstancaPodatakaId, 0, 0, 19);
 		}
 		/// <summary>Inits RepoAukcijaEntity's FieldInfo objects</summary>

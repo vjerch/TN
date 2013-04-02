@@ -83,6 +83,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		Html,
 		///<summary>HtmlPageId. </summary>
 		HtmlPageId,
+		///<summary>Name. </summary>
+		Name,
 		///<summary>SistemskaInstancaPodatakaId. </summary>
 		SistemskaInstancaPodatakaId,
 		/// <summary></summary>
