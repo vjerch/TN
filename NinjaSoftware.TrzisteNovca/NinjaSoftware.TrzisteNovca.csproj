@@ -891,6 +891,7 @@
     <Content Include="Views\BackOffice\TrgovanjeGlavaHnbList.cshtml" />
     <Content Include="Views\Admin\HtmlPageList.cshtml" />
     <Content Include="Views\Admin\HtmlPageEdit.cshtml" />
+    <Content Include="Views\Home\HtmlPage.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

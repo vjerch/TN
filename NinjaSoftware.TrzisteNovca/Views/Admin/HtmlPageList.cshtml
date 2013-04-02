@@ -16,7 +16,7 @@
             Naziv
         </th>
         <th>
-            Sistemski?
+            SistemskiInstancaPodatakaId
         </th>
         <th></th>
     </tr>
@@ -28,10 +28,7 @@
             @htmlPage.Name
         </td>
         <td>
-            @{
-                string isSystemString = htmlPage.SistemskaInstancaPodatakaId.HasValue ? "Da" : "Ne";
-            }
-            @isSystemString
+            @htmlPage.SistemskaInstancaPodatakaId
         </td>
         <td>
             @Html.ActionLink("Edit", "HtmlPageEdit", new { htmlPageId = htmlPage.HtmlPageId })

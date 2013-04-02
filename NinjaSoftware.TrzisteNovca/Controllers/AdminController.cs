@@ -48,30 +48,20 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             {
                 HtmlPageEntity htmlPage = GetHtmlPage(adapter, htmlPageId);
 
-                UpdateModel(htmlPage);
-
-                if (Helper.IsSafeHtml(formCollection["Html"]))
+                if (TryUpdateAndSaveIEntity2(htmlPage, adapter, false, false))
                 {
-                    if (TryUpdateAndSaveIEntity2(htmlPage, adapter, false, false))
-                    {
-                        return RedirectToAction("HtmlPageList");
-                    }
-                    else
-                    {
-                        return View(htmlPage);
-                    }
+                    return RedirectToAction("HtmlPageList");
                 }
                 else
                 {
-                    this.ViewUserErrorMessage = "Unsafe HTML";
-                    return View();
+                    return View(htmlPage);
                 }
             }
         }
 
         private HtmlPageEntity GetHtmlPage(DataAccessAdapterBase adapter, long? htmlPageId)
         {
-            if (htmlPageId.HasValue)
+            if (htmlPageId.HasValue && htmlPageId.Value > 0)
             {
                 return HtmlPageEntity.FetchHtmlPage(adapter, null, htmlPageId.Value);
             }

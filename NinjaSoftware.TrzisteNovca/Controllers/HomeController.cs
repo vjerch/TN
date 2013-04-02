@@ -169,5 +169,38 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         #endregion
+
+        #region HtmlPage
+
+        [HttpGet]
+        public ActionResult SysHtmlPage(long sistemskaInstancaPodatakaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                HtmlPageEntity htmlPage = HtmlPageEntity.FetchHtmlPage(adapter, sistemskaInstancaPodatakaId);
+                return View("HtmlPage" ,htmlPage);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult HtmlPage(long htmlPageId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                HtmlPageEntity htmlPage = HtmlPageEntity.FetchHtmlPage(adapter, null, htmlPageId);
+                return View(htmlPage);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult PdfDownload(string folderName, string fileName)
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
+            return File(path, "application/pdf");
+        }
+
+        #endregion
     }
 }

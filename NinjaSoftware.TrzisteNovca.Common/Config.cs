@@ -27,5 +27,10 @@ namespace NinjaSoftware.TrzisteNovca.Common
         {
             return ConfigurationManager.AppSettings["SettFolderPath"];
         }
+
+        public static string PdfFolderPath()
+        {
+            return ConfigurationManager.AppSettings["PdfFolderPath"];
+        }
     }
 }
