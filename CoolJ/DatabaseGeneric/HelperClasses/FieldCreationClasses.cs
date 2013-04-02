@@ -133,6 +133,31 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
+	/// <summary>Field Creation Class for entity HtmlPageEntity</summary>
+	public partial class HtmlPageFields
+	{
+		/// <summary>Creates a new HtmlPageEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new HtmlPageEntity.Html field instance</summary>
+		public static EntityField2 Html
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.Html);}
+		}
+		/// <summary>Creates a new HtmlPageEntity.HtmlPageId field instance</summary>
+		public static EntityField2 HtmlPageId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.HtmlPageId);}
+		}
+		/// <summary>Creates a new HtmlPageEntity.SistemskaInstancaPodatakaId field instance</summary>
+		public static EntityField2 SistemskaInstancaPodatakaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(HtmlPageFieldIndex.SistemskaInstancaPodatakaId);}
+		}
+	}
+
 	/// <summary>Field Creation Class for entity RepoAukcijaEntity</summary>
 	public partial class RepoAukcijaFields
 	{
@@ -230,6 +255,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		public static EntityField2 RoleId
 		{
 			get { return (EntityField2)EntityFieldFactory.Create(RoleRoFieldIndex.RoleId);}
+		}
+	}
+
+	/// <summary>Field Creation Class for entity SistemskaInstancaPodatakaRoEntity</summary>
+	public partial class SistemskaInstancaPodatakaRoFields
+	{
+		/// <summary>Creates a new SistemskaInstancaPodatakaRoEntity.Code field instance</summary>
+		public static EntityField2 Code
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SistemskaInstancaPodatakaRoFieldIndex.Code);}
+		}
+		/// <summary>Creates a new SistemskaInstancaPodatakaRoEntity.Name field instance</summary>
+		public static EntityField2 Name
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SistemskaInstancaPodatakaRoFieldIndex.Name);}
+		}
+		/// <summary>Creates a new SistemskaInstancaPodatakaRoEntity.SistemskaInstancaPodatakaId field instance</summary>
+		public static EntityField2 SistemskaInstancaPodatakaId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(SistemskaInstancaPodatakaRoFieldIndex.SistemskaInstancaPodatakaId);}
 		}
 	}
 

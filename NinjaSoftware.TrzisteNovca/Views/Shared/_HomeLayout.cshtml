@@ -11,6 +11,14 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/globalize")
+
+    <script type="text/javascript" src="../../Scripts/superfish.js"></script>
+    <link rel="stylesheet" href="../../Content/superfish.css" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#main-nav").superfish();
+        });
+    </script>
 </head>
 <body>
     <div id="header">
@@ -32,13 +40,27 @@
         <div class="wrapper">
             <ul id="main-nav">
                 <li>@Html.ActionLink("Početna", "Index")</li>
-                <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
-                <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>
+                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>                
                 <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
                 <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
                 <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
             </ul>
         </div>
+@*            <ul id="main-nav" class="sf-menu">
+                <li>@Html.ActionLink("Početna", "Index")</li>
+                <li>
+                    testing 1 2 3 ...
+                    <ul>
+                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>                
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
+                <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
+                <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
+            </ul>
+        </div>*@
     </div>
     <div id="content">
         @RenderBody()

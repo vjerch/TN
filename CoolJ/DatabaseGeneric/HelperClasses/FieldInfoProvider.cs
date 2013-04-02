@@ -48,13 +48,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (15 + 0));
+			this.InitClass( (17 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
 			InitErrorEntityInfos();
+			InitHtmlPageEntityInfos();
 			InitRepoAukcijaEntityInfos();
 			InitRoleRoEntityInfos();
+			InitSistemskaInstancaPodatakaRoEntityInfos();
 			InitSudionikEntityInfos();
 			InitSudionikGrupaRoEntityInfos();
 			InitTrgovanjeGlavaEntityInfos();
@@ -108,6 +110,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("ErrorEntity", "ParentErrorId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)ErrorFieldIndex.ParentErrorId, 0, 0, 19);
 			this.AddElementFieldInfo("ErrorEntity", "StackTrace", typeof(System.String), false, false, false, true,  (int)ErrorFieldIndex.StackTrace, 2147483647, 0, 0);
 		}
+		/// <summary>Inits HtmlPageEntity's FieldInfo objects</summary>
+		private void InitHtmlPageEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(HtmlPageFieldIndex), "HtmlPageEntity");
+			this.AddElementFieldInfo("HtmlPageEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("HtmlPageEntity", "Html", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.Html, 2147483647, 0, 0);
+			this.AddElementFieldInfo("HtmlPageEntity", "HtmlPageId", typeof(System.Int64), true, false, false, false,  (int)HtmlPageFieldIndex.HtmlPageId, 0, 0, 19);
+			this.AddElementFieldInfo("HtmlPageEntity", "SistemskaInstancaPodatakaId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)HtmlPageFieldIndex.SistemskaInstancaPodatakaId, 0, 0, 19);
+		}
 		/// <summary>Inits RepoAukcijaEntity's FieldInfo objects</summary>
 		private void InitRepoAukcijaEntityInfos()
 		{
@@ -135,6 +146,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("RoleRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)RoleRoFieldIndex.Code, 128, 0, 0);
 			this.AddElementFieldInfo("RoleRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)RoleRoFieldIndex.Name, 256, 0, 0);
 			this.AddElementFieldInfo("RoleRoEntity", "RoleId", typeof(System.Int64), true, false, false, false,  (int)RoleRoFieldIndex.RoleId, 0, 0, 19);
+		}
+		/// <summary>Inits SistemskaInstancaPodatakaRoEntity's FieldInfo objects</summary>
+		private void InitSistemskaInstancaPodatakaRoEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(SistemskaInstancaPodatakaRoFieldIndex), "SistemskaInstancaPodatakaRoEntity");
+			this.AddElementFieldInfo("SistemskaInstancaPodatakaRoEntity", "Code", typeof(System.String), false, false, false, false,  (int)SistemskaInstancaPodatakaRoFieldIndex.Code, 64, 0, 0);
+			this.AddElementFieldInfo("SistemskaInstancaPodatakaRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)SistemskaInstancaPodatakaRoFieldIndex.Name, 128, 0, 0);
+			this.AddElementFieldInfo("SistemskaInstancaPodatakaRoEntity", "SistemskaInstancaPodatakaId", typeof(System.Int64), true, false, false, false,  (int)SistemskaInstancaPodatakaRoFieldIndex.SistemskaInstancaPodatakaId, 0, 0, 19);
 		}
 		/// <summary>Inits SudionikEntity's FieldInfo objects</summary>
 		private void InitSudionikEntityInfos()

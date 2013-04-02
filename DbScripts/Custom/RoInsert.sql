@@ -105,3 +105,16 @@ INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
 
 INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
 	VALUES('StambeneStedionice', 'Stambene štedionice', 7);
+
+-- SistemskaInstancaPodataka
+INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
+	VALUES('ONamaHr', 'O nama HR verzija', 1);
+
+INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
+	VALUES('ONamaEn', 'O nama EN verzija', 2);
+
+INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
+	VALUES('Sett', 'Sustav SETT', 3);
+
+INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
+	VALUES('Kontakt', 'Kontakt', 4);

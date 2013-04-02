@@ -46,13 +46,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((15 + 0));
+			this.InitClass((17 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
 			InitErrorEntityMappings();
+			InitHtmlPageEntityMappings();
 			InitRepoAukcijaEntityMappings();
 			InitRoleRoEntityMappings();
+			InitSistemskaInstancaPodatakaRoEntityMappings();
 			InitSudionikEntityMappings();
 			InitSudionikGrupaRoEntityMappings();
 			InitTrgovanjeGlavaEntityMappings();
@@ -106,6 +108,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "ErrorEntity", "ParentErrorId", "ParentErrorId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 4 );
 			this.AddElementFieldMapping( "ErrorEntity", "StackTrace", "StackTrace", true, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 5 );
 		}
+		/// <summary>Inits HtmlPageEntity's mappings</summary>
+		private void InitHtmlPageEntityMappings()
+		{
+			this.AddElementMapping( "HtmlPageEntity", @"atjanmcs301107hr2706_tn", @"dbo", "HtmlPage", 4 );
+			this.AddElementFieldMapping( "HtmlPageEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "HtmlPageEntity", "Html", "Html", false, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "HtmlPageEntity", "HtmlPageId", "HtmlPageId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
+			this.AddElementFieldMapping( "HtmlPageEntity", "SistemskaInstancaPodatakaId", "SistemskaInstancaPodatakaId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
+		}
 		/// <summary>Inits RepoAukcijaEntity's mappings</summary>
 		private void InitRepoAukcijaEntityMappings()
 		{
@@ -133,6 +144,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "RoleRoEntity", "Code", "Code", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "RoleRoEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "RoleRoEntity", "RoleId", "RoleId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
+		}
+		/// <summary>Inits SistemskaInstancaPodatakaRoEntity's mappings</summary>
+		private void InitSistemskaInstancaPodatakaRoEntityMappings()
+		{
+			this.AddElementMapping( "SistemskaInstancaPodatakaRoEntity", @"atjanmcs301107hr2706_tn", @"dbo", "SistemskaInstancaPodatakaRo", 3 );
+			this.AddElementFieldMapping( "SistemskaInstancaPodatakaRoEntity", "Code", "Code", false, "NVarChar", 64, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "SistemskaInstancaPodatakaRoEntity", "Name", "Name", false, "NVarChar", 128, 0, 0, false, "", null, typeof(System.String), 1 );
+			this.AddElementFieldMapping( "SistemskaInstancaPodatakaRoEntity", "SistemskaInstancaPodatakaId", "SistemskaInstancaPodatakaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 2 );
 		}
 		/// <summary>Inits SudionikEntity's mappings</summary>
 		private void InitSudionikEntityMappings()

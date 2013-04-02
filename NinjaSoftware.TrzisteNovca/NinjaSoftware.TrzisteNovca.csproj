@@ -184,6 +184,7 @@
     <Content Include="Content\icons\images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\icons\traka_nav.png" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\superfish.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />

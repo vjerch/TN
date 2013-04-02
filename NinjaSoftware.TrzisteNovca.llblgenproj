@@ -162,6 +162,14 @@
           <Field Name="StackTrace" Type="string" IsOptional="true" />
         </Fields>
       </EntityDefinition>
+      <EntityDefinition Name="HtmlPage">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Html" Type="string" />
+          <Field Name="HtmlPageId" Type="long" IsPrimaryKey="true" />
+          <Field Name="SistemskaInstancaPodatakaId" Type="long" IsOptional="true" />
+        </Fields>
+      </EntityDefinition>
       <EntityDefinition Name="RepoAukcija">
         <Fields>
           <Field Name="BrojAukcije" Type="string" IsOptional="true" MaxLength="20" />
@@ -186,6 +194,13 @@
           <Field Name="Code" Type="string" MaxLength="128" />
           <Field Name="Name" Type="string" MaxLength="256" />
           <Field Name="RoleId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
+      <EntityDefinition Name="SistemskaInstancaPodatakaRo">
+        <Fields>
+          <Field Name="Code" Type="string" MaxLength="64" />
+          <Field Name="Name" Type="string" MaxLength="128" />
+          <Field Name="SistemskaInstancaPodatakaId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
       <EntityDefinition Name="Sudionik">
@@ -291,6 +306,11 @@
           <FieldFieldRelationship FkField="ParentErrorId" PkField="ErrorId" />
         </FieldRelationships>
       </NormalRelationship>
+      <NormalRelationship Name="HtmlPage.SistemskaInstancaPodataka-SistemskaInstancaPodatakaRo.HtmlPageCollection" Start=":HtmlPage" End=":SistemskaInstancaPodatakaRo" StartNavigator="SistemskaInstancaPodataka" EndNavigator="HtmlPageCollection" Type="4" EndIsOptional="true">
+        <FieldRelationships>
+          <FieldFieldRelationship FkField="SistemskaInstancaPodatakaId" PkField="SistemskaInstancaPodatakaId" />
+        </FieldRelationships>
+      </NormalRelationship>
       <NormalRelationship Name="Sudionik.SudionikGrupa-SudionikGrupaRo.SudionikCollection" Start=":Sudionik" End=":SudionikGrupaRo" StartNavigator="SudionikGrupa" EndNavigator="SudionikCollection" Type="4">
         <FieldRelationships>
           <FieldFieldRelationship FkField="SudionikGrupaId" PkField="SudionikGrupaId" />
@@ -379,6 +399,14 @@
                     <Field Name="StackTrace" Ordinal="6" IsOptional="true" DbType="12" Length="2147483647" />
                   </Fields>
                 </Table>
+                <Table Name="HtmlPage">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Html" Ordinal="2" DbType="12" Length="2147483647" />
+                    <Field Name="HtmlPageId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_ee3a00f4ebbbf79025b4a9e0f54" DbType="0" Precision="19" />
+                    <Field Name="SistemskaInstancaPodatakaId" Ordinal="4" IsOptional="true" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
                 <Table Name="RepoAukcija">
                   <Fields>
                     <Field Name="BrojAukcije" Ordinal="1" IsOptional="true" DbType="12" Length="20" />
@@ -403,6 +431,13 @@
                     <Field Name="Code" Ordinal="1" DbType="12" Length="128" />
                     <Field Name="Name" Ordinal="2" DbType="12" Length="256" />
                     <Field Name="RoleId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_170de0f44939388fcb1bce06ff0" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="SistemskaInstancaPodatakaRo">
+                  <Fields>
+                    <Field Name="Code" Ordinal="1" DbType="12" Length="64" />
+                    <Field Name="Name" Ordinal="2" DbType="12" Length="128" />
+                    <Field Name="SistemskaInstancaPodatakaId" Ordinal="3" IsPrimaryKey="true" PkConstraintName="PK_49d125f47db8c80a1205304e1eb" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
                 <Table Name="Sudionik">
@@ -510,6 +545,11 @@
                 <FieldPair PkField="dbo:Error:ErrorId" FkField="dbo:Error:ParentErrorId" />
               </FieldPairs>
             </ForeignKeyConstraint>
+            <ForeignKeyConstraint Name="dbo:HtmlPage:FK_e6dee4747d780888910abb6d8fd">
+              <FieldPairs>
+                <FieldPair PkField="dbo:SistemskaInstancaPodatakaRo:SistemskaInstancaPodatakaId" FkField="dbo:HtmlPage:SistemskaInstancaPodatakaId" />
+              </FieldPairs>
+            </ForeignKeyConstraint>
             <ForeignKeyConstraint Name="dbo:Sudionik:FK_ec0250d4490984d91316ea62eab">
               <FieldPairs>
                 <FieldPair PkField="dbo:SudionikGrupaRo:SudionikGrupaId" FkField="dbo:Sudionik:SudionikGrupaId" />
@@ -589,6 +629,14 @@
             <FieldMapping FieldName="StackTrace" TargetFieldName="StackTrace" />
           </FieldMappings>
         </EntityMapping>
+        <EntityMapping EntityName=":HtmlPage" TargetName="atjanmcs301107hr2706_tn:dbo:HtmlPage">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Html" TargetFieldName="Html" />
+            <FieldMapping FieldName="HtmlPageId" TargetFieldName="HtmlPageId" SequenceToUse="SCOPE_IDENTITY()" />
+            <FieldMapping FieldName="SistemskaInstancaPodatakaId" TargetFieldName="SistemskaInstancaPodatakaId" />
+          </FieldMappings>
+        </EntityMapping>
         <EntityMapping EntityName=":RepoAukcija" TargetName="atjanmcs301107hr2706_tn:dbo:RepoAukcija">
           <FieldMappings>
             <FieldMapping FieldName="BrojAukcije" TargetFieldName="BrojAukcije" />
@@ -613,6 +661,13 @@
             <FieldMapping FieldName="Code" TargetFieldName="Code" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
             <FieldMapping FieldName="RoleId" TargetFieldName="RoleId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":SistemskaInstancaPodatakaRo" TargetName="atjanmcs301107hr2706_tn:dbo:SistemskaInstancaPodatakaRo">
+          <FieldMappings>
+            <FieldMapping FieldName="Code" TargetFieldName="Code" />
+            <FieldMapping FieldName="Name" TargetFieldName="Name" />
+            <FieldMapping FieldName="SistemskaInstancaPodatakaId" TargetFieldName="SistemskaInstancaPodatakaId" />
           </FieldMappings>
         </EntityMapping>
         <EntityMapping EntityName=":Sudionik" TargetName="atjanmcs301107hr2706_tn:dbo:Sudionik">
