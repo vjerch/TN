@@ -30,23 +30,23 @@
     <h2>@title</h2>
 </div>
 <div class="content-box">
-    <table>
+    <table class="default" style="width: 450px">
         <tr>
-            <td>
+            <td style="text-align: right">
                 Broj aukcije:
             </td>
             <td>@Model.RepoAukcija.BrojAukcije
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Datum aukcije:
             </td>
             <td>@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Datum reotkupa:
             </td>
             <td>
@@ -55,7 +55,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Ukupan iznos pristiglih ponuda:
             </td>
             <td>
@@ -66,7 +66,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Najviša ponuđena repo stopa:
             </td>
             <td>
@@ -76,8 +76,8 @@
                 @najvisaRepoStopa
             </td>
         </tr>
-        <tr>
-            <td>
+        <tr >
+            <td style="text-align: right">
                 Najniža ponuđena repo stopa:
             </td>
             <td>
@@ -87,7 +87,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Ukupan iznos prihvaćenih ponuda:
             </td>
             <td>
@@ -97,7 +97,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Ukupan iznos odbijenih ponuda:
             </td>
             <td>
@@ -108,7 +108,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Vagana repo stopa:
             </td>
             <td>
@@ -119,7 +119,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Granična repo stopa:
             </td>
             <td>
@@ -130,7 +130,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Fiksna repo stopa:
             </td>
             <td>
@@ -141,7 +141,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Prihvaćeno ponuda po graničnoj repo stopi:
             </td>
             <td>
@@ -152,7 +152,7 @@
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="text-align: right">
                 Koeficijent raspodjele:
             </td>
             <td>

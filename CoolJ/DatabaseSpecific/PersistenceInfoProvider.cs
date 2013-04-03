@@ -210,8 +210,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		{
 			this.AddElementMapping( "TrgovanjeStavkaHnbEntity", @"atjanmcs301107hr2706_tn", @"dbo", "TrgovanjeStavkaHnb", 6 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
-			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", "IznosMilijuniKn", true, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 1 );
-			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "KamatnaStopa", "KamatnaStopa", true, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 2 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", "IznosMilijuniKn", false, "Decimal", 0, 2, 10, false, "", null, typeof(System.Decimal), 1 );
+			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "KamatnaStopa", "KamatnaStopa", false, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 2 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeGlavaHnbId", "TrgovanjeGlavaHnbId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeStavkaHnbId", "TrgovanjeStavkaHnbId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 4 );
 			this.AddElementFieldMapping( "TrgovanjeStavkaHnbEntity", "TrgovanjeVrstaId", "TrgovanjeVrstaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 5 );

@@ -212,8 +212,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		{
 			this.AddFieldIndexEnumForElementName(typeof(TrgovanjeStavkaHnbFieldIndex), "TrgovanjeStavkaHnbEntity");
 			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.ConcurrencyGuid, 50, 0, 0);
-			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, 0, 2, 10);
-			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "KamatnaStopa", typeof(Nullable<System.Decimal>), false, false, false, true,  (int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, 0, 2, 6);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "IznosMilijuniKn", typeof(System.Decimal), false, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, 0, 2, 10);
+			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "KamatnaStopa", typeof(System.Decimal), false, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, 0, 2, 6);
 			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeGlavaHnbId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeGlavaHnbId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeStavkaHnbId", typeof(System.Int64), true, false, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeStavkaHnbId, 0, 0, 19);
 			this.AddElementFieldInfo("TrgovanjeStavkaHnbEntity", "TrgovanjeVrstaId", typeof(System.Int64), false, true, false, false,  (int)TrgovanjeStavkaHnbFieldIndex.TrgovanjeVrstaId, 0, 0, 19);

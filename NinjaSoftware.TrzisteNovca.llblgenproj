@@ -253,8 +253,8 @@
       <EntityDefinition Name="TrgovanjeStavkaHnb">
         <Fields>
           <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
-          <Field Name="IznosMilijuniKn" Type="decimal" IsOptional="true" Precision="10" Scale="2" />
-          <Field Name="KamatnaStopa" Type="decimal" IsOptional="true" Precision="6" Scale="2" />
+          <Field Name="IznosMilijuniKn" Type="decimal" Precision="10" Scale="2" />
+          <Field Name="KamatnaStopa" Type="decimal" Precision="6" Scale="2" />
           <Field Name="TrgovanjeGlavaHnbId" Type="long" />
           <Field Name="TrgovanjeStavkaHnbId" Type="long" IsPrimaryKey="true" />
           <Field Name="TrgovanjeVrstaId" Type="long" />
@@ -491,8 +491,8 @@
                 <Table Name="TrgovanjeStavkaHnb">
                   <Fields>
                     <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
-                    <Field Name="IznosMilijuniKn" Ordinal="2" IsOptional="true" DbType="5" Precision="10" Scale="2" />
-                    <Field Name="KamatnaStopa" Ordinal="3" IsOptional="true" DbType="5" Precision="6" Scale="2" />
+                    <Field Name="IznosMilijuniKn" Ordinal="2" DbType="5" Precision="10" Scale="2" />
+                    <Field Name="KamatnaStopa" Ordinal="3" DbType="5" Precision="6" Scale="2" />
                     <Field Name="TrgovanjeGlavaHnbId" Ordinal="4" DbType="0" Precision="19" />
                     <Field Name="TrgovanjeStavkaHnbId" Ordinal="5" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_964d2cd4de99af6cd17e1c40f50" DbType="0" Precision="19" />
                     <Field Name="TrgovanjeVrstaId" Ordinal="6" DbType="0" Precision="19" />

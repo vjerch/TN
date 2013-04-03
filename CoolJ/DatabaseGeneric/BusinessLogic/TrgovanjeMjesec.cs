@@ -11,6 +11,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 {
     public class TrgovanjeMjesec : TrgovanjeMjesecBase
     {
+        public ValutaEnum Valuta { get; set; }
         public decimal? Potraznja { get; set; }
         public decimal? Ponuda { get; set; }
         public decimal? Promet { get; set; }

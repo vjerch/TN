@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesecRokHnb.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeStavkaHnbEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\HtmlPageEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeGlavaHnbEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\SudionikEntity.cs" />

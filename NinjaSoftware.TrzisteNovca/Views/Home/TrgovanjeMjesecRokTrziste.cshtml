@@ -1,4 +1,4 @@
-﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeMjesecRokViewModel
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeMjesecRokTrzisteViewModel
 @using NinjaSoftware.TrzisteNovca.Models
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
@@ -10,7 +10,8 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-    <table>
+    <table class="default">
+      <thead>
         <tr>
             <th>
             </th>
@@ -47,6 +48,8 @@
                 stopa (%)
             </th>
         </tr>
+      </thead>
+      <tbody>
         @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
         {
             <tr>
@@ -80,5 +83,6 @@
                 <td>@ukupnoKamatnaStopaString</td>
             </tr>
         }
+      </tbody>
     </table>
 </div>

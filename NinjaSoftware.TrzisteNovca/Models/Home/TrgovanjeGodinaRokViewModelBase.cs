@@ -10,15 +10,13 @@ using System.Web.Mvc;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
-    public class TrgovanjeGodinaRokViewModel
+    public class TrgovanjeGodinaRokViewModelBase
     {
         #region Constructors
 
-        public TrgovanjeGodinaRokViewModel(DataAccessAdapterBase adapter, int godina)
+        public TrgovanjeGodinaRokViewModelBase(DataAccessAdapterBase adapter, int godina)
         {
             this.Godina = godina;
-
-            this.TrgovanjeMjesecRokCollection = TrgovanjeMjesecRok.GetTrgovanjeMjesecRokCollection(adapter, godina, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
 
             this.TrgovanjeVrstaList = new List<TrgovanjeVrstaRoEntity>();
             foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in Helper.TrgovanjeVrstaEnumArrayZaPrikaz)
@@ -26,8 +24,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 TrgovanjeVrstaRoEntity trgovanjeVrsta = TrgovanjeVrstaRoEntity.FetchTrgovanjeVrstaRo(adapter, null, (long)trgovanjeVrstaEnum);
                 this.TrgovanjeVrstaList.Add(trgovanjeVrsta);
             }
-
-            this.GodinaSelectList = Helper.CreateGodinaSelectList(adapter, godina);
         }
 
         #endregion
@@ -35,7 +31,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         #region Properties
 
         public List<TrgovanjeVrstaRoEntity> TrgovanjeVrstaList { get; set; }
-        public IEnumerable<TrgovanjeMjesecRok> TrgovanjeMjesecRokCollection { get; set; }
         public int Godina { get; set; }
         public List<SelectListItem> GodinaSelectList { get; set; }
 

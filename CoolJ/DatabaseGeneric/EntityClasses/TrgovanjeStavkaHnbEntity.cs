@@ -610,22 +610,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary> The IznosMilijuniKn property of the Entity TrgovanjeStavkaHnb<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "TrgovanjeStavkaHnb"."IznosMilijuniKn"<br/>
 		/// Table field type characteristics (type, precision, scale, length): Decimal, 10, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): true, false, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual Nullable<System.Decimal> IznosMilijuniKn
+		public virtual System.Decimal IznosMilijuniKn
 		{
-			get { return (Nullable<System.Decimal>)GetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, false); }
+			get { return (System.Decimal)GetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, true); }
 			set	{ SetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, value); }
 		}
 
 		/// <summary> The KamatnaStopa property of the Entity TrgovanjeStavkaHnb<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "TrgovanjeStavkaHnb"."KamatnaStopa"<br/>
 		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): true, false, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual Nullable<System.Decimal> KamatnaStopa
+		public virtual System.Decimal KamatnaStopa
 		{
-			get { return (Nullable<System.Decimal>)GetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, false); }
+			get { return (System.Decimal)GetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, true); }
 			set	{ SetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, value); }
 		}
 

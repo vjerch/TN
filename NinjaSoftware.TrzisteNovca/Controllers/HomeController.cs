@@ -79,18 +79,76 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     godina = DateTime.Now.Year;
                 }
 
-                TrgovanjeGodinaRokViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokViewModel(adapter, godina.Value);
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
                 return View(trgovanjeGodinaRokViewModel);
             }  
         }
 
         [HttpGet]
-        public ActionResult TrgovanjeMjesecRok(int godina, int mjesec)
+        public ActionResult TrgovanjeGodinaRokKamatneStope(int? godina)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                TrgovanjeMjesecRokViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokViewModel(adapter, godina, mjesec);
+                if (!godina.HasValue)
+                {
+                    godina = DateTime.Now.Year;
+                }
+
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
+                return View(trgovanjeGodinaRokViewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokTrziste(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                return View(trgovanjeMjesecRokViewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokTrzisteKamatneStope(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                return View(trgovanjeMjesecRokViewModel);
+            }
+        }
+
+        #endregion
+
+        #region TrgovanjeHnb
+
+        [HttpGet]
+        public ActionResult TrgovanjeGodinaRokHnbKamatneStope(int? godina)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                if (!godina.HasValue)
+                {
+                    godina = DateTime.Now.Year;
+                }
+
+                TrgovanjeGodinaRokHnbViewModel viewModel = new TrgovanjeGodinaRokHnbViewModel(adapter, godina.Value);
+                return View(viewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokHnbKamatneStope(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokHnbViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokHnbViewModel(adapter, godina, mjesec);
                 return View(trgovanjeMjesecRokViewModel);
             }
         }

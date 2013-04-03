@@ -8,21 +8,15 @@ using SD.LLBLGen.Pro.ORMSupportClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
-    public class TrgovanjeMjesecRokViewModel
+    public class TrgovanjeMjesecRokViewModelBase
     {
 
         #region Constructors
 
-        public TrgovanjeMjesecRokViewModel(DataAccessAdapterBase adapter, int godina, int mjesec)
+        public TrgovanjeMjesecRokViewModelBase(DataAccessAdapterBase adapter, int godina, int mjesec)
         {
-            this.TrgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, godina, mjesec, ValutaEnum.Kn).OrderBy(tg => tg.Datum);
             this.Godina = godina;
             this.Mjesec = mjesec;
-
-            foreach (TrgovanjeGlavaEntity trgovanjeGlava in this.TrgovanjeGlavaCollection)
-            {
-                trgovanjeGlava.LoadTrgovanjeGlavaPrethodniDan(adapter);
-            }
 
             this.TrgovanjeVrstaList = new List<TrgovanjeVrstaRoEntity>();
             foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in Helper.TrgovanjeVrstaEnumArrayZaPrikaz)
@@ -37,7 +31,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         #region Properties
 
         public List<TrgovanjeVrstaRoEntity> TrgovanjeVrstaList { get; set; }
-        public IEnumerable<TrgovanjeGlavaEntity> TrgovanjeGlavaCollection { get; set; }
         public int Godina { get; set; }
         public int Mjesec { get; set; }
 
