@@ -115,7 +115,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "HtmlPageEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
 			this.AddElementFieldMapping( "HtmlPageEntity", "Html", "Html", false, "NVarChar", 2147483647, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "HtmlPageEntity", "HtmlPageId", "HtmlPageId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
-			this.AddElementFieldMapping( "HtmlPageEntity", "Name", "Name", false, "NVarChar", 64, 0, 0, false, "", null, typeof(System.String), 3 );
+			this.AddElementFieldMapping( "HtmlPageEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 3 );
 			this.AddElementFieldMapping( "HtmlPageEntity", "SistemskaInstancaPodatakaId", "SistemskaInstancaPodatakaId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 4 );
 		}
 		/// <summary>Inits RepoAukcijaEntity's mappings</summary>

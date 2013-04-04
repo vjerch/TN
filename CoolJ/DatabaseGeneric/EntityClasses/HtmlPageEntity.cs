@@ -551,7 +551,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 		/// <summary> The Name property of the Entity HtmlPage<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "HtmlPage"."Name"<br/>
-		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 64<br/>
+		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 256<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
 		public virtual System.String Name

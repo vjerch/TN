@@ -167,7 +167,7 @@
           <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
           <Field Name="Html" Type="string" />
           <Field Name="HtmlPageId" Type="long" IsPrimaryKey="true" />
-          <Field Name="Name" Type="string" MaxLength="64" />
+          <Field Name="Name" Type="string" MaxLength="256" />
           <Field Name="SistemskaInstancaPodatakaId" Type="long" IsOptional="true" />
         </Fields>
       </EntityDefinition>
@@ -406,7 +406,7 @@
                     <Field Name="Html" Ordinal="2" DbType="12" Length="2147483647" />
                     <Field Name="HtmlPageId" Ordinal="3" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_ee3a00f4ebbbf79025b4a9e0f54" DbType="0" Precision="19" />
                     <Field Name="SistemskaInstancaPodatakaId" Ordinal="4" IsOptional="true" DbType="0" Precision="19" />
-                    <Field Name="Name" Ordinal="5" DbType="12" Length="64" />
+                    <Field Name="Name" Ordinal="5" DbType="12" Length="256" />
                   </Fields>
                 </Table>
                 <Table Name="RepoAukcija">
