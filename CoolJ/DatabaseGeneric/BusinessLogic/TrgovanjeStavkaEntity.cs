@@ -64,7 +64,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         #region Static methods
 
         public static EntityCollection<TrgovanjeStavkaEntity> FetchTrgovanjeStavkaCollection(DataAccessAdapterBase adapter, 
-            int godina, ValutaEnum valutaEnum)
+            int godina, ValutaEnum? valutaEnum)
         {
             DateTime startDate = new DateTime(godina, 1, 1);
             DateTime endDate = startDate.AddYears(1);
@@ -73,7 +73,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             bucket.Relations.Add(TrgovanjeStavkaEntity.Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
             
             bucket.PredicateExpression.Add(PredicateHelper.FilterValidEntities(startDate, endDate, TrgovanjeGlavaFields.Datum));
-            bucket.PredicateExpression.Add(TrgovanjeStavkaFields.ValutaId == (long)valutaEnum);
+
+            if (valutaEnum.HasValue)
+            {
+                bucket.PredicateExpression.Add(TrgovanjeStavkaFields.ValutaId == (long)valutaEnum);
+            }
 
             PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeStavkaEntity);
             prefetchPath.Add(TrgovanjeStavkaEntity.PrefetchPathTrgovanjeGlava);

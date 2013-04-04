@@ -188,12 +188,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         #region AukcijaTrezorskihZapisa
 
         [HttpGet]
-        public ActionResult AukcijaTrezorskihZapisa()
+        public ActionResult AukcijaTrezorskihZapisa(int? pageNumber, string sortField, bool? isSortAscending)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                AukcijaTrezorskihZapisaViewModel viewModel = new AukcijaTrezorskihZapisaViewModel(adapter, AppDomain.CurrentDomain.BaseDirectory);
+                AukcijaTrezorskihZapisaPager viewModel = new AukcijaTrezorskihZapisaPager(adapter, AppDomain.CurrentDomain.BaseDirectory);
+                viewModel.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
                 return View(viewModel);
             }
         }
