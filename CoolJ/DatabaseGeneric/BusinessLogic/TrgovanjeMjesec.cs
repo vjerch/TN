@@ -11,6 +11,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 {
     public class TrgovanjeMjesec : TrgovanjeMjesecBase
     {
+        public ValutaEnum Valuta { get; set; }
         public decimal? Potraznja { get; set; }
         public decimal? Ponuda { get; set; }
         public decimal? Promet { get; set; }
@@ -20,7 +21,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         {
             List<TrgovanjeMjesec> trgovanjeMjesecList = new List<TrgovanjeMjesec>();
 
-            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina);
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection = 
+                TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina, null);
 
             IEnumerable<long> valutaIdCollection = trgovanjeStavkaCollection.Select(ts => ts.ValutaId).Distinct();
 

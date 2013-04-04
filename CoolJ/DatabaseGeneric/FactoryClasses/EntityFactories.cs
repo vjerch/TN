@@ -178,6 +178,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty HtmlPageEntity objects.</summary>
+	[Serializable]
+	public partial class HtmlPageEntityFactory : EntityFactoryBase2<HtmlPageEntity> {
+		/// <summary>CTor</summary>
+		public HtmlPageEntityFactory() : base("HtmlPageEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.HtmlPageEntity, false) { }
+		
+		/// <summary>Creates a new HtmlPageEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new HtmlPageEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewHtmlPageUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty RepoAukcijaEntity objects.</summary>
 	[Serializable]
 	public partial class RepoAukcijaEntityFactory : EntityFactoryBase2<RepoAukcijaEntity> {
@@ -210,6 +230,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		public override IEntity2 Create(IEntityFields2 fields) {
 			IEntity2 toReturn = new RoleRoEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewRoleRoUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
+	/// <summary>Factory to create new, empty SistemskaInstancaPodatakaRoEntity objects.</summary>
+	[Serializable]
+	public partial class SistemskaInstancaPodatakaRoEntityFactory : EntityFactoryBase2<SistemskaInstancaPodatakaRoEntity> {
+		/// <summary>CTor</summary>
+		public SistemskaInstancaPodatakaRoEntityFactory() : base("SistemskaInstancaPodatakaRoEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SistemskaInstancaPodatakaRoEntity, false) { }
+		
+		/// <summary>Creates a new SistemskaInstancaPodatakaRoEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new SistemskaInstancaPodatakaRoEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewSistemskaInstancaPodatakaRoUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
 			return toReturn;
 		}
@@ -291,7 +331,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new TrgovanjeGlavaHnbEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeGlavaHnbUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -332,7 +371,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new TrgovanjeStavkaHnbEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewTrgovanjeStavkaHnbUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -424,11 +462,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					factoryToUse = new ErrorEntityFactory();
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.HtmlPageEntity:
+					factoryToUse = new HtmlPageEntityFactory();
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity:
 					factoryToUse = new RepoAukcijaEntityFactory();
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					factoryToUse = new RoleRoEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SistemskaInstancaPodatakaRoEntity:
+					factoryToUse = new SistemskaInstancaPodatakaRoEntityFactory();
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikEntity:
 					factoryToUse = new SudionikEntityFactory();

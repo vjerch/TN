@@ -2,7 +2,7 @@
 // This is generated code. 
 //////////////////////////////////////////////////////////////
 // Code is generated using LLBLGen Pro version: 3.5
-// Code is generated on: 31. ožujak 2013. 10:37:36
+// Code is generated on: 4. travanj 2013. 18:24:15
 // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET35
 // Templates vendor: Solutions Design.
 ////////////////////////////////////////////////////////////// 
@@ -119,6 +119,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			get { return Create<ErrorEntity>(); }
 		}
 
+		/// <summary>Creates and returns a new EntityQuery for the HtmlPage entity</summary>
+		public EntityQuery<HtmlPageEntity> HtmlPage
+		{
+			get { return Create<HtmlPageEntity>(); }
+		}
+
 		/// <summary>Creates and returns a new EntityQuery for the RepoAukcija entity</summary>
 		public EntityQuery<RepoAukcijaEntity> RepoAukcija
 		{
@@ -129,6 +135,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		public EntityQuery<RoleRoEntity> RoleRo
 		{
 			get { return Create<RoleRoEntity>(); }
+		}
+
+		/// <summary>Creates and returns a new EntityQuery for the SistemskaInstancaPodatakaRo entity</summary>
+		public EntityQuery<SistemskaInstancaPodatakaRoEntity> SistemskaInstancaPodatakaRo
+		{
+			get { return Create<SistemskaInstancaPodatakaRoEntity>(); }
 		}
 
 		/// <summary>Creates and returns a new EntityQuery for the Sudionik entity</summary>

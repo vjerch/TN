@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesecRokHnb.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeStavkaHnbEntity.cs" />
+    <Compile Include="DatabaseGeneric\BusinessLogic\HtmlPageEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeGlavaHnbEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\SudionikEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\RepoAukcijaEntity.cs" />
@@ -97,10 +100,16 @@
     <Compile Include="DatabaseGeneric\EntityClasses\ErrorEntity.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
+    <Compile Include="DatabaseGeneric\EntityClasses\HtmlPageEntity.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\RepoAukcijaEntity.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\RoleRoEntity.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\EntityClasses\SistemskaInstancaPodatakaRoEntity.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\SudionikEntity.cs">
@@ -178,10 +187,16 @@
     <Compile Include="DatabaseGeneric\RelationClasses\ErrorRelations.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
+    <Compile Include="DatabaseGeneric\RelationClasses\HtmlPageRelations.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\RepoAukcijaRelations.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\RoleRoRelations.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\RelationClasses\SistemskaInstancaPodatakaRoRelations.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\SudionikGrupaRoRelations.cs">

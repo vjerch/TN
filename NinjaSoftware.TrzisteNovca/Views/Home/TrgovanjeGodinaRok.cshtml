@@ -1,4 +1,4 @@
-﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaRokViewModel
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaRokTrzisteViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using System.Globalization
@@ -68,7 +68,7 @@
             <tr>
                 <td>
                     @Html.ActionLink(@hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesecRok.Mjesec),
-                "TrgovanjeMjesecRok",
+                "TrgovanjeMjesecRokTrziste",
                 new { godina = Model.Godina, mjesec = trgovanjeMjesecRok.Mjesec })
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)

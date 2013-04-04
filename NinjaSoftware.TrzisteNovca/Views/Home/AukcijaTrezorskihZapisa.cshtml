@@ -1,5 +1,7 @@
-﻿@model NinjaSoftware.TrzisteNovca.Models.Home.AukcijaTrezorskihZapisaViewModel
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.AukcijaTrezorskihZapisaPager
 @using System.Collections.Generic
+@using NinjaSoftware.TrzisteNovca.Common
+
 @{
     string title = "Aukcije trezorskih zapisa";
     ViewBag.Title = title;
@@ -8,7 +10,8 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-    <table>
+    <table class="default" style="width: 500px">
+      <thead>
         <tr>
             <th>
                 Datum aukcije
@@ -16,15 +19,25 @@
             <th>
             </th>
         </tr>
-        @foreach (KeyValuePair<DateTime, string> aukcija in Model.AukcijaDateDictionary)
+      </thead>
+      <tbody>
+        @foreach (KeyValuePair<DateTime, string> aukcija in Model.DictionaryDataSource)
         { 
             <tr>
                 @{ string path = string.Format("Upload/AukcijaTZ/{0}", aukcija.Value); }
                 <td>@aukcija.Key.ToShortDateString()
                 </td>
-                <td>@Html.ActionLink("Download", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })
+                <td>@Html.ActionLink("Excel datoteka", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })
                 </td>
             </tr>
         }
+      </tbody>
+      <tfoot>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
+            </td>
+        </tr>      
+      </tfoot>
     </table>
 </div>

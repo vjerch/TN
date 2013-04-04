@@ -79,18 +79,76 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     godina = DateTime.Now.Year;
                 }
 
-                TrgovanjeGodinaRokViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokViewModel(adapter, godina.Value);
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
                 return View(trgovanjeGodinaRokViewModel);
             }  
         }
 
         [HttpGet]
-        public ActionResult TrgovanjeMjesecRok(int godina, int mjesec)
+        public ActionResult TrgovanjeGodinaRokKamatneStope(int? godina)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                TrgovanjeMjesecRokViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokViewModel(adapter, godina, mjesec);
+                if (!godina.HasValue)
+                {
+                    godina = DateTime.Now.Year;
+                }
+
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
+                return View(trgovanjeGodinaRokViewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokTrziste(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                return View(trgovanjeMjesecRokViewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokTrzisteKamatneStope(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                return View(trgovanjeMjesecRokViewModel);
+            }
+        }
+
+        #endregion
+
+        #region TrgovanjeHnb
+
+        [HttpGet]
+        public ActionResult TrgovanjeGodinaRokHnbKamatneStope(int? godina)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                if (!godina.HasValue)
+                {
+                    godina = DateTime.Now.Year;
+                }
+
+                TrgovanjeGodinaRokHnbViewModel viewModel = new TrgovanjeGodinaRokHnbViewModel(adapter, godina.Value);
+                return View(viewModel);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult TrgovanjeMjesecRokHnbKamatneStope(int godina, int mjesec)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                TrgovanjeMjesecRokHnbViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokHnbViewModel(adapter, godina, mjesec);
                 return View(trgovanjeMjesecRokViewModel);
             }
         }
@@ -130,12 +188,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         #region AukcijaTrezorskihZapisa
 
         [HttpGet]
-        public ActionResult AukcijaTrezorskihZapisa()
+        public ActionResult AukcijaTrezorskihZapisa(int? pageNumber, string sortField, bool? isSortAscending)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                AukcijaTrezorskihZapisaViewModel viewModel = new AukcijaTrezorskihZapisaViewModel(adapter, AppDomain.CurrentDomain.BaseDirectory);
+                AukcijaTrezorskihZapisaPager viewModel = new AukcijaTrezorskihZapisaPager(adapter, AppDomain.CurrentDomain.BaseDirectory);
+                viewModel.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
                 return View(viewModel);
             }
         }
@@ -166,6 +225,39 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             string s = doc.DocumentNode.SelectNodes("/html[1]/body[1]/table[1]/tbody[1]/tr[5]/td[2]")[0].InnerText;
 
             return View();
+        }
+
+        #endregion
+
+        #region HtmlPage
+
+        [HttpGet]
+        public ActionResult SysHtmlPage(long sistemskaInstancaPodatakaId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                HtmlPageEntity htmlPage = HtmlPageEntity.FetchHtmlPage(adapter, sistemskaInstancaPodatakaId);
+                return View("HtmlPage" ,htmlPage);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult HtmlPage(long htmlPageId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                HtmlPageEntity htmlPage = HtmlPageEntity.FetchHtmlPage(adapter, null, htmlPageId);
+                return View(htmlPage);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult PdfDownload(string folderName, string fileName)
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
+            return File(path, "application/pdf");
         }
 
         #endregion

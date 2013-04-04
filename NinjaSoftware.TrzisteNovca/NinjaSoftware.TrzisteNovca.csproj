@@ -129,11 +129,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BackOfficeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\HtmlPagePager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaHnbPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeHnbViewModel.cs" />
     <Compile Include="Models\BackOffice\SudionikPager.cs" />
@@ -145,12 +147,16 @@
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Home\AukcijaTrezorskihZapisaViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeGodinaRokHnbViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeGodinaRokTrzisteViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeMjesecRokHnbViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeMjesecRokTrzisteViewModel.cs" />
     <Compile Include="Models\Home\RepoAukcijaViewModel.cs" />
     <Compile Include="Models\Home\SudionikViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeDanViewModel.cs" />
-    <Compile Include="Models\Home\TrgovanjeGodinaRokViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeGodinaRokViewModelBase.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaViewModel.cs" />
-    <Compile Include="Models\Home\TrgovanjeMjesecRokViewModel.cs" />
+    <Compile Include="Models\Home\TrgovanjeMjesecRokViewModelBase.cs" />
     <Compile Include="Models\Home\TrgovanjeMjesecViewModel.cs" />
     <Compile Include="Models\NsMembershipProvider.cs" />
     <Compile Include="Models\NsRoleProvider.cs" />
@@ -184,6 +190,7 @@
     <Content Include="Content\icons\images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\icons\traka_nav.png" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\superfish.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -788,6 +795,7 @@
     <Content Include="Scripts\messages_hr.js" />
     <Content Include="Scripts\methods_hr.js" />
     <Content Include="Scripts\NinjaSoftwareLib.js" />
+    <Content Include="Scripts\superfish.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -873,7 +881,6 @@
     <None Include="Scripts\jqplot\examples\syntaxhighlighter\LGPL-LICENSE" />
     <None Include="Scripts\jqplot\examples\syntaxhighlighter\MIT-LICENSE" />
     <Content Include="Views\Home\TrgovanjeGodinaRok.cshtml" />
-    <Content Include="Views\Home\TrgovanjeMjesecRok.cshtml" />
     <Content Include="Views\BackOffice\RepoAukcijaList.cshtml" />
     <Content Include="Views\BackOffice\RepoAukcijaEdit.cshtml" />
     <Content Include="Views\Home\RepoAukcija.cshtml" />
@@ -885,6 +892,14 @@
     <Content Include="Views\Home\AukcijaTrezorskihZapisa.cshtml" />
     <Content Include="Views\BackOffice\TrgovanjeHnbEdit.cshtml" />
     <Content Include="Views\BackOffice\TrgovanjeGlavaHnbList.cshtml" />
+    <Content Include="Views\Admin\HtmlPageList.cshtml" />
+    <Content Include="Views\Admin\HtmlPageEdit.cshtml" />
+    <Content Include="Views\Home\HtmlPage.cshtml" />
+    <Content Include="Views\Home\TrgovanjeMjesecRokTrziste.cshtml" />
+    <Content Include="Views\Home\TrgovanjeMjesecRokTrzisteKamatneStope.cshtml" />
+    <Content Include="Views\Home\TrgovanjeGodinaRokKamatneStope.cshtml" />
+    <Content Include="Views\Home\TrgovanjeMjesecRokHnbKamatneStope.cshtml" />
+    <Content Include="Views\Home\TrgovanjeGodinaRokHnbKamatneStope.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

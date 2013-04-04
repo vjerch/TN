@@ -11,7 +11,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 {
     public class TrgovanjeMjesecBase
     {
-        public ValutaEnum Valuta { get; set; }
         public int Godina { get; set; }
         public int Mjesec { get; set; }
     }

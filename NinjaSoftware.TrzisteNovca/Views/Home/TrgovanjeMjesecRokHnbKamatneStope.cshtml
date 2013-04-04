@@ -1,0 +1,59 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeMjesecRokHnbViewModel
+@using NinjaSoftware.TrzisteNovca.Models
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+@{
+    string title = string.Format("Kamatne stope u {0} {1}. godine", Helper.DativMjeseca(Model.Mjesec), Model.Godina);
+    ViewBag.Title = title;
+}
+<div class="content-header">
+    <h1>@title</h1>
+</div>
+<div class="content-box">
+    <table class="default">
+      <thead>
+        <tr>
+            <th>Datum
+            </th>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+            { 
+                <th>@trgovanjeVrsta.Name
+                </th>
+            }
+            <th>
+                UKUPNO
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (TrgovanjeGlavaHnbEntity trgovanjeGlavaHnb in Model.TrgovanjeGlavaHnbCollection)
+        {
+            <tr>
+                <td>@Html.ActionLink(trgovanjeGlavaHnb.Datum.ToShortDateString(), "TrgovanjeDanHnb", new { date = trgovanjeGlavaHnb.Datum.ToString("yyyy-MM-dd") })
+                </td>
+                @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+                {
+                    TrgovanjeStavkaHnbEntity trgovanjeStavka = trgovanjeGlavaHnb.TrgovanjeStavkaHnbCollection.
+                        Where(ts => ts.TrgovanjeVrstaId == (long)trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+
+
+                    string kamatnaStopaString = "-";
+
+                    if (null != trgovanjeStavka)
+                    {
+                        kamatnaStopaString = trgovanjeStavka.KamatnaStopa.ToString("N2");
+                    }
+            
+                    <td>@kamatnaStopaString
+                    </td>
+                }
+                @{
+                    decimal? ukupnoKamatnaStopa = trgovanjeGlavaHnb.KamatnaStopaUkupno();
+                    string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
+                    }
+                <td>@ukupnoKamatnaStopaString</td>
+            </tr>
+        }
+      </tbody>
+    </table>
+</div>

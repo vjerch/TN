@@ -19,7 +19,7 @@ namespace NinjaSoftware.TrzisteNovca.Models
         public static DataAccessAdapterBase GetDataAccessAdapterFactory()
         {
             DataAccessAdapterBase adapter;
-            switch (ConfigurationManager.ConnectionStrings[2].ProviderName)
+            switch (ConfigurationManager.ConnectionStrings[1].ProviderName)
             {
                 case "System.Data.SqlClient":
                     adapter = new NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific.DataAccessAdapter();
@@ -210,11 +210,20 @@ namespace NinjaSoftware.TrzisteNovca.Models
         #endregion
 
         #region ViewModel helpers
+        public static List<SelectListItem> CreateTrgovanjeGlavaHnbGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
+        {
+            IEnumerable<int> godinaCollection = TrgovanjeGlavaHnbEntity.GodinaTrgovanjaCollection(adapter);
+            return CreateGodinaSelectList(godinaCollection, oznacenaGodina);        
+        }
 
-        public static List<SelectListItem> CreateGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
+        public static List<SelectListItem> CreateTrgovanjeGlavaGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
         {
             IEnumerable<int> godinaCollection = TrgovanjeGlavaEntity.GodinaTrgovanjaCollection(adapter);
+            return CreateGodinaSelectList(godinaCollection, oznacenaGodina);
+        }
 
+        public static List<SelectListItem> CreateGodinaSelectList(IEnumerable<int> godinaCollection, int oznacenaGodina)
+        {
             List<SelectListItem> godinaSelectList = new List<SelectListItem>();
             foreach (int godina in godinaCollection)
             {

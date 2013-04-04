@@ -74,6 +74,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: HtmlPage.</summary>
+	public enum HtmlPageFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>Html. </summary>
+		Html,
+		///<summary>HtmlPageId. </summary>
+		HtmlPageId,
+		///<summary>Name. </summary>
+		Name,
+		///<summary>SistemskaInstancaPodatakaId. </summary>
+		SistemskaInstancaPodatakaId,
+		/// <summary></summary>
+		AmountOfFields
+	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RepoAukcija.</summary>
 	public enum RepoAukcijaFieldIndex
 	{
@@ -119,6 +135,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		Name,
 		///<summary>RoleId. </summary>
 		RoleId,
+		/// <summary></summary>
+		AmountOfFields
+	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: SistemskaInstancaPodatakaRo.</summary>
+	public enum SistemskaInstancaPodatakaRoFieldIndex
+	{
+		///<summary>Code. </summary>
+		Code,
+		///<summary>Name. </summary>
+		Name,
+		///<summary>SistemskaInstancaPodatakaId. </summary>
+		SistemskaInstancaPodatakaId,
 		/// <summary></summary>
 		AmountOfFields
 	}
@@ -280,10 +308,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		EntityRoEntity,
 		///<summary>Error</summary>
 		ErrorEntity,
+		///<summary>HtmlPage</summary>
+		HtmlPageEntity,
 		///<summary>RepoAukcija</summary>
 		RepoAukcijaEntity,
 		///<summary>RoleRo</summary>
 		RoleRoEntity,
+		///<summary>SistemskaInstancaPodatakaRo</summary>
+		SistemskaInstancaPodatakaRoEntity,
 		///<summary>Sudionik</summary>
 		SudionikEntity,
 		///<summary>SudionikGrupaRo</summary>

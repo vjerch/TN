@@ -72,11 +72,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ErrorEntity:
 					toReturn = this.Error;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.HtmlPageEntity:
+					toReturn = this.HtmlPage;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity:
 					toReturn = this.RepoAukcija;
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RoleRoEntity:
 					toReturn = this.RoleRo;
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SistemskaInstancaPodatakaRoEntity:
+					toReturn = this.SistemskaInstancaPodatakaRo;
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.SudionikEntity:
 					toReturn = this.Sudionik;
@@ -136,6 +142,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 			get { return new DataSource2<ErrorEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
+		/// <summary>returns the datasource to use in a Linq query when targeting HtmlPageEntity instances in the database.</summary>
+		public DataSource2<HtmlPageEntity> HtmlPage
+		{
+			get { return new DataSource2<HtmlPageEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
 		/// <summary>returns the datasource to use in a Linq query when targeting RepoAukcijaEntity instances in the database.</summary>
 		public DataSource2<RepoAukcijaEntity> RepoAukcija
 		{
@@ -146,6 +158,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 		public DataSource2<RoleRoEntity> RoleRo
 		{
 			get { return new DataSource2<RoleRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting SistemskaInstancaPodatakaRoEntity instances in the database.</summary>
+		public DataSource2<SistemskaInstancaPodatakaRoEntity> SistemskaInstancaPodatakaRo
+		{
+			get { return new DataSource2<SistemskaInstancaPodatakaRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		/// <summary>returns the datasource to use in a Linq query when targeting SudionikEntity instances in the database.</summary>

@@ -11,7 +11,8 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-    <table>
+    <table class="default">
+      <thead>
         <tr>
             <th>
                 Datum
@@ -29,6 +30,8 @@
                 Kamatna stopa
             </th>
         </tr>
+      </thead>
+      <tbody>
         @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
         {
             <tr>
@@ -53,6 +56,7 @@
                 </td>
             </tr>
         }
+      </tbody>
     </table>
     @if (ValutaEnum.Kn == Model.ValutaEnum)
     { 

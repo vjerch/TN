@@ -20,7 +20,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             this.Godina = godina;
             LoadChartData(this.TrgovanjeMjesecList);
 
-            this.GodinaSelectList = Helper.CreateGodinaSelectList(adapter, godina);
+            this.GodinaSelectList = Helper.CreateTrgovanjeGlavaGodinaSelectList(adapter, godina);
         }
 
         #endregion

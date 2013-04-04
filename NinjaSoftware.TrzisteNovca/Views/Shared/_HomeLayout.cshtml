@@ -11,6 +11,15 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/globalize")
+    @Scripts.Render("~/bundles/custom")
+
+    <script type="text/javascript" src="../../Scripts/superfish.js"></script>
+    <link rel="stylesheet" href="../../Content/superfish.css" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#main-nav").superfish();
+        });
+    </script>
 </head>
 <body>
     <div id="header">
@@ -21,9 +30,9 @@
             <div style="float:right;">
             <ul id="top-nav">
                 <li>@Html.ActionLink("Početna", "Index")</li>
-                <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
-                <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>
-                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija", null, new { style = "border: 0px;" })</li>
+                <li>@Html.ActionLink("Konferencija", "HtmlPage", new { htmlPageId = 5 })</li>
+                <li>@Html.ActionLink("O nama", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 1 })</li>
+                <li>@Html.ActionLink("Sustav SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 3 }, new { style = "border: 0px;" })</li>
             </ul>
             </div>
         </div>
@@ -32,13 +41,27 @@
         <div class="wrapper">
             <ul id="main-nav">
                 <li>@Html.ActionLink("Početna", "Index")</li>
-                <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
-                <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>
+                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>                
                 <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
                 <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
                 <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
             </ul>
         </div>
+@*            <ul id="main-nav" class="sf-menu">
+                <li>@Html.ActionLink("Početna", "Index")</li>
+                <li>
+                    testing 1 2 3 ...
+                    <ul>
+                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>                
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
+                <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
+                <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
+            </ul>
+        </div>*@
     </div>
     <div id="content">
         @RenderBody()
@@ -66,8 +89,8 @@
             <div style="float:right;">
             <ul id="bottom-nav">
                 <li>@Html.ActionLink("Početna", "Index")</li>
-                <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina")</li>
-                <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok")</li>
+                <li>@Html.ActionLink("Kamatne stope HNB-a", "TrgovanjeGodinaRokHnbKamatneStope")</li>
+                <li>@Html.ActionLink("Kamatne stope na Tržištu novca", "TrgovanjeGodinaRokKamatneStope")</li>
                 <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija", null, new { style = "border: 0px;" })</li>
             </ul>
             </div>

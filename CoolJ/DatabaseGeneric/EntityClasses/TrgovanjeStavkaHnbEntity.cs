@@ -26,14 +26,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
 	// __LLBLGENPRO_USER_CODE_REGION_END
-	
 	/// <summary>Entity class which represents the entity 'TrgovanjeStavkaHnb'.<br/><br/></summary>
 	[Serializable]
 	[JsonObject(MemberSerialization.OptIn)]	
 	public partial class TrgovanjeStavkaHnbEntity : CommonEntityBase
 		// __LLBLGENPRO_USER_CODE_REGION_START AdditionalInterfaces
-		// __LLBLGENPRO_USER_CODE_REGION_END
-			
+		// __LLBLGENPRO_USER_CODE_REGION_END	
 	{
 		#region Class Member Declarations
 		private TrgovanjeGlavaHnbEntity _trgovanjeGlavaHnb;
@@ -41,7 +39,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 		// __LLBLGENPRO_USER_CODE_REGION_START PrivateMembers
 		// __LLBLGENPRO_USER_CODE_REGION_END
-		
 		#endregion
 
 		#region Statics
@@ -186,7 +183,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START DeserializationConstructor
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 		}
 
 		
@@ -354,7 +350,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			}
 			// __LLBLGENPRO_USER_CODE_REGION_START GetObjectInfo
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			base.GetObjectData(info, context);
 		}
 
@@ -440,7 +435,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassMembers
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			OnInitClassMembersComplete();
 		}
 
@@ -545,7 +539,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 			// __LLBLGENPRO_USER_CODE_REGION_START InitClassEmpty
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 
 			OnInitialized();
 
@@ -617,22 +610,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary> The IznosMilijuniKn property of the Entity TrgovanjeStavkaHnb<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "TrgovanjeStavkaHnb"."IznosMilijuniKn"<br/>
 		/// Table field type characteristics (type, precision, scale, length): Decimal, 10, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): true, false, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual Nullable<System.Decimal> IznosMilijuniKn
+		public virtual System.Decimal IznosMilijuniKn
 		{
-			get { return (Nullable<System.Decimal>)GetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, false); }
+			get { return (System.Decimal)GetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, true); }
 			set	{ SetValue((int)TrgovanjeStavkaHnbFieldIndex.IznosMilijuniKn, value); }
 		}
 
 		/// <summary> The KamatnaStopa property of the Entity TrgovanjeStavkaHnb<br/><br/></summary>
 		/// <remarks>Mapped on  table field: "TrgovanjeStavkaHnb"."KamatnaStopa"<br/>
 		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): true, false, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual Nullable<System.Decimal> KamatnaStopa
+		public virtual System.Decimal KamatnaStopa
 		{
-			get { return (Nullable<System.Decimal>)GetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, false); }
+			get { return (System.Decimal)GetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, true); }
 			set	{ SetValue((int)TrgovanjeStavkaHnbFieldIndex.KamatnaStopa, value); }
 		}
 
@@ -733,7 +726,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		
 		// __LLBLGENPRO_USER_CODE_REGION_START CustomEntityCode
 		// __LLBLGENPRO_USER_CODE_REGION_END
-		
 		#endregion
 
 		#region Included code
