@@ -4,6 +4,7 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	z-index:1000;
 }
 .sf-menu li {
 	position: relative;
@@ -44,32 +45,36 @@
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
 .sf-menu a {
-	border-left: 1px solid #fff;
-	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
-	border-top: 1px solid rgba(255,255,255,.5);
+	border-left: 1px solid #15322d;
+	border-top: 1px solid #15322d; /* fallback colour must use full shorthand */
+	border-top: 1px solid rgb(21,50,45);
 	padding: .75em 1em;
 	text-decoration:none;
 	zoom: 1; /* IE7 */
 }
 .sf-menu a {
-	color: #13a;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 15px;
+    color: #fff;
+    text-transform:uppercase;
+    line-height: 32px;
 }
 .sf-menu li {
-	background: #BDD2FF;
+	background-color:transparent;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
 	transition: background .2s;
 }
 .sf-menu ul li {
-	background: #AABDE6;
+	background: #183C35;
 }
 .sf-menu ul ul li {
-	background: #9AAEDB;
+	background: #183C35;
 }
 .sf-menu li:hover,
 .sf-menu li.sfHover {
-	background: #CFDEFF;
+	background: #5E7A5C;
 	/* only transition out, not in */
 	-webkit-transition: none;
 	transition: none;
@@ -80,16 +85,17 @@
 	padding-right: 2.25em;
 	min-width: 1px; /* trigger IE7 hasLayout so spans position accurately */
 }
-.sf-sub-indicator {
-	position: absolute;
-	display: block;
-	right: .75em;
-	top: .9em;
-	width: 10px;
-	height: 10px;
-	text-indent: -999em;
-	overflow: hidden;
-	background: url(../images/arrows-ffffff.png) no-repeat 0 -100px;
+.sf-sub-indicator
+{
+    position: absolute;
+    display: block;
+    right: .75em;
+    top: .9em;
+    width: 10px;
+    height: 10px;
+    text-indent: -999em;
+    overflow: hidden;
+    background: url('icons/images/arrows-ffffff.png') no-repeat 0 -100px;
 }
 
 li:hover > a .sf-sub-indicator,

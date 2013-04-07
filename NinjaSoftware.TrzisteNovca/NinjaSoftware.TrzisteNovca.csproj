@@ -166,6 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\icons\images\arrows-ffffff.png" />
     <Content Include="Content\icons\images\BG_footer.png" />
     <Content Include="Content\icons\images\BG_main.png" />
     <Content Include="Content\icons\images\grafika_ispod_slogana.png" />
@@ -406,6 +407,7 @@
     <Content Include="Scripts\CoolJEntites.js" />
     <Content Include="Scripts\globalize.culture.hr.js" />
     <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jqplot\changes.txt" />
     <Content Include="Scripts\jqplot\copyright.txt" />
     <Content Include="Scripts\jqplot\docs\files\changes-txt.html" />
