@@ -101,6 +101,9 @@ div#footer
   background-color:#fff;
 }
 
+.content-box ul { list-style-type:disc; }
+.content-box ol { list-style-type:decimal; }
+
 .content-box h1
 {
     margin: -20px -20px -40px -20px;
