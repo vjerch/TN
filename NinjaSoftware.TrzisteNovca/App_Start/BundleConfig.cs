@@ -13,7 +13,8 @@ namespace NinjaSoftware.TrzisteNovca
                 "~/Content/main.css",
                 "~/Content/jquery.ui.css",
                 "~/Content/jquery.ui.theme.css",
-                "~/Content/jquery.ui.datepicker.css"));
+                "~/Content/jquery.ui.datepicker.css",
+                "~/Content/grid960.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",

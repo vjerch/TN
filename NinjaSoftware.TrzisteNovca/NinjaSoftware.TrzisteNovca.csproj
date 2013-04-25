@@ -205,6 +205,7 @@
     <Content Include="Content\layout\pismo_slika_bez_sjene.png" />
     <Content Include="Content\layout\print.png" />
     <Content Include="Content\layout\print_hover.png" />
+    <Content Include="Content\layout\separator_tablica.png" />
     <Content Include="Content\layout\strelica_dolje.png" />
     <Content Include="Content\layout\strelica_gore.png" />
     <Content Include="Content\layout\strelica_za_naslov_desna.png" />
@@ -943,7 +944,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49643</DevelopmentServerPort>
+          <DevelopmentServerPort>4121</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

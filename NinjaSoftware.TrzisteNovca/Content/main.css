@@ -3,7 +3,7 @@
  padding: 0;
 }
 
-h1 {
+h1, h4 {
  margin: 0;
 }
 
@@ -23,6 +23,7 @@ h1 { font-size: 33px; }
 h2 { font-size: 22px; }
 h3
 {
+    margin-top:40px;
     border-color: #006757;
     text-transform:uppercase;
     font-size: 20px;
@@ -47,6 +48,16 @@ h3:after
     float: right;
     margin-top:19px;
     margin-right:-3px;
+}
+
+h4
+{
+    margin-top:40px;
+    line-height: 47px;
+    font-size: 16px;
+    background-image: url('layout/traka_naslov_graf.gif');
+    background-repeat: repeat-x;
+    text-transform: uppercase;
 }
 
 /* LAYOUT */
@@ -136,7 +147,22 @@ div.tn-datepicker .print
     float:left;
 }
 
+div.chart-box
+{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #C0C0C0;
+    padding: 40px 20px;
+}
+
 /*Table*/
+div.table-fixed-m { width:600px;display: table;margin: 0 auto;}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}
+  
 table.default
 {
     width:100%;
@@ -149,28 +175,49 @@ table.default
 
 table.default thead, table.default tfoot
 {
-    background: #e6e6e6 url('layout/tablica_pattern.jpg') repeat-x;
+    background: #edf3d1 url('layout/tablica_pattern.jpg') repeat-x;
     font-weight: bold;
     text-align: center;
     line-height:30px;
-    
 }
-table.default thead tr th, table.default tfoot tr td{padding:0 10px 0 10px;}
+
+table.default tbody { line-height:30px; text-align: center;}
+
+table.default thead tr th, table.default tbody tr td, table.default tfoot tr td
+{
+    background-position: right center;
+    background-image: url('layout/separator_tablica.png');
+    background-repeat: no-repeat;
+}
+
+table.default tbody tr td
+{
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #C0C0C0;
+}
+
+table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child
+{
+    background-image: none;
+}
+
 table span.value-up
 {
-    background-image: url('icons/images/poz_gore_strelica_za_tablicu.png');
+    background-image: url('layout/strelica_gore.png');
     background-repeat: no-repeat;
-    width:13px;
-    height:12px;
+    width: 13px;
+    height: 12px;
     display: inline-block;
 }
 
+
 table span.value-down
 {
-    background-image: url('icons/images/neg_dolje_strelica_za_tablicu.png');
+    background-image: url('layout/strelica_dolje.png');
     background-repeat: no-repeat;
-    width:13px;
-    height:12px;
+    width: 13px;
+    height: 12px;
     display: inline-block;
 }
 
